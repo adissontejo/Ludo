@@ -4,16 +4,18 @@ SETS
   COLORS = {RED, GREEN, YELLOW, BLUE};
   PIECES
 
-CONSTANTS
+ABSTRACT_CONSTANTS
   colorOf,
-  numColors,
-  numPiecesByColor,
-  numExternal,
-  numInternal,
   diceOptions,
   stars,
   startPoint,
   colorsOrder
+  
+CONCRETE_CONSTANTS
+  numColors,
+  numPiecesByColor,
+  numExternal,
+  numInternal
 
 PROPERTIES
   numPiecesByColor = 4 &

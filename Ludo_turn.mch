@@ -24,11 +24,11 @@ INVARIANT
   // array de de cores que finalizaram o jogo
   finishOrder : 0..numColors-1 >+> COLORS &
   finishOrder : FIN(finishOrder) &
-  gameStarted = TRUE => (
+  (gameStarted = FALSE or (
     card(enabledColors) >= 2 &
     color : enabledColors &
     ran(finishOrder) <: enabledColors
-  )
+  ))
 
 INITIALISATION
   gameStarted := FALSE ||
