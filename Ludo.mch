@@ -167,5 +167,37 @@ OPERATIONS
     THEN
       oo := turn.finishOrder ||
       turn.endGame
+    END;
+    
+  // operações de pre condicao
+    
+  rr <-- pre_pickColor(cc) =
+    PRE cc : COLORS 
+    THEN rr := bool(cc /: turn.enabledColors & turn.gameStarted = FALSE)
+    END;
+    
+  rr <-- pre_unpickColor(cc) =
+    PRE cc : COLORS 
+    THEN rr := bool(cc /: turn.enabledColors & turn.gameStarted = FALSE)
+    END;
+    
+  rr <-- pre_initGame =
+    rr := bool(turn.gameStarted = FALSE & card(turn.enabledColors) >= 2);
+    
+  
+  rr <-- pre_free(pp) = 
+    PRE pp : PIECES 
+    THEN rr := bool(turn.gameStarted = TRUE & colorOf(pp) = turn.color & canFree(pp))
+    END;
+    
+  rr <-- pre_rollDice =
+    rr := bool(turn.gameStarted = TRUE & turn.hasRoll = TRUE & (turn.diceValue = 0 or not(hasActions)));
+    
+  rr <-- pre_nextTurn =
+      rr := bool(turn.gameStarted = TRUE & turn.hasRoll = FALSE & (turn.diceValue = 0 or not(hasActions)) & card(turn.finishOrder) < card(turn.enabledColors));
+
+  rr <-- pre_walk(pp) =
+    PRE pp : PIECES 
+    THEN rr := bool(turn.gameStarted = TRUE & colorOf(pp) = turn.color & canWalk(pp))
     END
 END
