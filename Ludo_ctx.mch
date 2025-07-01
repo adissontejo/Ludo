@@ -5,15 +5,17 @@ SETS
   PIECES
 
 ABSTRACT_CONSTANTS
-  colorOf,
   diceOptions,
-  stars,
-  startPoint,
-  colorsOrder
+  stars
   
 CONCRETE_CONSTANTS
+  colorOf,
+  startPoint,
+  colorsOrder,
+  piecesOrder,
   numColors,
   numPiecesByColor,
+  numPieces,
   numExternal,
   numInternal
 
@@ -23,6 +25,8 @@ PROPERTIES
   numInternal = 6 &
   numColors : NAT &
   numColors = card(COLORS) &
+  numPieces : NAT &
+  numPieces = numPiecesByColor * numColors & 
   diceOptions = 1..6 &
   stars <: 0..numExternal-1 &
   stars = {8,21,34,47} &
@@ -38,6 +42,9 @@ PROPERTIES
   
   // array de cores, função bijetiva
   colorsOrder : 0..numColors-1 >->> COLORS &
-  colorsOrder = { 0 |-> RED, 1 |-> GREEN, 2 |-> YELLOW, 3 |-> BLUE }
+  colorsOrder = { 0 |-> RED, 1 |-> GREEN, 2 |-> YELLOW, 3 |-> BLUE } &
+  
+  // array de peças, função bijetiva
+  piecesOrder : 0..numPieces-1 >->> PIECES
 
 END

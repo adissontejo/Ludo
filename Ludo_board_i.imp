@@ -1,0 +1,79 @@
+/* Ludo_board_i
+ * Author: LENOVO
+ * Creation date: 23/06/2025
+ */
+
+IMPLEMENTATION Ludo_board_i
+REFINES Ludo_board
+
+SEES Ludo_ctx
+
+CONCRETE_VARIABLES
+  externalBoard,
+  internalBoard
+ 
+INVARIANT
+  externalBoard : PIECES --> -1..numExternal-1 &
+  internalBoard : PIECES --> -1..numInternal-1 &
+  dom(externalBoard |> {-1}) /\ dom(internalBoard |> {-1}) = lockedPieces &
+  externalBoard |>> {-1} = externalPos &
+  internalBoard |>> {-1} = internalPos
+
+INITIALISATION
+  externalBoard := PIECES * {-1};
+  internalBoard := PIECES * {-1}
+
+OPERATIONS
+  
+  clear =
+    BEGIN
+      externalBoard := PIECES * {-1};
+      internalBoard := PIECES * {-1}
+    END;
+    
+  setFree(pp) = 
+    BEGIN
+      externalBoard(pp) := 0
+    END;
+    
+  setExternalPos(pp, nn) =
+    BEGIN
+      VAR rest, currentColor, hasOtherColor, otherColor, otherPos, ii
+      IN
+        rest := nn mod 13;
+        IF rest /= 0 & rest /= 8
+        THEN
+          ii := 0;
+          currentColor := colorOf(pp);
+          hasOtherColor := FALSE;
+          WHILE ii < numPieces & hasOtherColor = FALSE
+          DO
+            otherColor := colorOf(piecesOrder(ii));
+            otherPos := externalBoard(piecesOrder(ii));
+            IF otherColor /= currentColor & otherPos = nn THEN
+              externalBoard(piecesOrder(ii)) := -1;
+              hasOtherColor := TRUE
+            END;
+            ASSERT hasOtherColor = TRUE => card(externalPos |> {nn}) = 0 THEN skip END;
+            ii := ii + 1
+          INVARIANT
+            externalBoard : PIECES --> -1..numExternal-1 &
+            hasOtherColor : BOOL &
+            ii : NAT &
+            ii <= numPieces &
+            hasOtherColor = TRUE <=> (((piecesOrder[0..ii-1] <| externalPos)~;colorOf)[{nn}]) - {colorOf(pp)} /= {} &
+            hasOtherColor = TRUE => card(externalBoard |> {nn}) = 0
+            
+          VARIANT numPieces - ii
+          END
+        END
+      END;
+      externalBoard(pp) := nn
+    END;
+    
+  setInternalPos(pp, nn) =
+    BEGIN
+      externalBoard(pp) := -1;
+      internalBoard(pp) := nn
+    END
+END
