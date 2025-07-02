@@ -1,0 +1,27 @@
+THEORY BalanceX IS
+Ludo_ctx,3,0,0,3,0,0,0;
+WellDefinednessProperties,3,0,0,3,0,0,0
+END
+&
+THEORY ProofState IS
+Proved(0);
+Proved(0);
+Proved(0)
+END
+&
+THEORY MethodList IS
+pr;
+pr;
+pr
+END
+&
+THEORY PassList IS
+Force(0),?;
+Force(0),?;
+Force(0),?
+END
+&
+THEORY Status IS
+Ludo_ctx,3,0,3,0,0,0;
+WellDefinednessProperties,3,0,3,0,0,0
+END

@@ -1,0 +1,140 @@
+THEORY BalanceX IS
+Ludo_turn_i,36,0,0,28,0,0,0;
+Initialisation,4,0,0,4,0,0,0;
+Operation_initGame,7,0,0,6,0,0,0;
+Operation_nextTurn,12,0,0,6,0,0,0;
+Operation_pickColor,2,0,0,2,0,0,0;
+Operation_rollDice,1,0,0,1,0,0,0;
+Operation_unpickColor,2,0,0,1,0,0,0;
+WellDefinednessInitialisation,2,0,0,2,0,0,0;
+WellDefinedness_initGame,6,0,0,6,0,0,0
+END
+&
+THEORY ProofState IS
+Proved(0);
+Proved(0);
+Proved(0);
+Proved(0);
+Proved(0);
+Proved(0);
+Proved(0);
+Proved(0);
+Proved(0);
+Unproved;
+Proved(0);
+Unproved;
+Proved(0);
+Unproved;
+Proved(0);
+Proved(0);
+Proved(0);
+Proved(0);
+Unproved;
+Unproved;
+Unproved;
+Proved(0);
+Proved(0);
+Proved(0);
+Proved(0);
+Proved(0);
+Unproved;
+Proved(0);
+Unproved;
+Proved(0);
+Proved(0);
+Proved(0);
+Proved(0);
+Proved(0);
+Proved(0);
+Proved(0)
+END
+&
+THEORY MethodList IS
+pr;
+pr;
+pr;
+pr;
+pr;
+pr;
+pr;
+pr;
+pr;
+?;
+pr;
+?;
+pr;
+?;
+pr;
+pr;
+pr;
+pr;
+?;
+?;
+?;
+pr;
+pr;
+pr;
+pr;
+pr;
+?;
+pr;
+?;
+pr;
+pr;
+pr;
+pr;
+pr;
+pr;
+pr
+END
+&
+THEORY PassList IS
+Force(0),?;
+Force(0),?;
+Force(0),?;
+Force(0),?;
+Force(0),?;
+Force(0),?;
+Force(0),?;
+Force(0),?;
+Force(0),?;
+Force(0),(?; 0);
+Force(0),?;
+Force(0),(?; 0);
+Force(0),?;
+Force(0),(?; 0);
+Force(0),?;
+Force(0),?;
+Force(0),?;
+Force(0),?;
+Force(0),(?; 0);
+Force(0),(?; 0);
+Force(0),(?; 0);
+Force(0),?;
+Force(0),?;
+Force(0),?;
+Force(0),?;
+Force(0),?;
+Force(0),(?; 0);
+Force(0),?;
+Force(0),(?; 0);
+Force(0),?;
+Force(0),?;
+Force(0),?;
+Force(0),?;
+Force(0),?;
+Force(0),?;
+Force(0),?
+END
+&
+THEORY Status IS
+Ludo_turn_i,36,0,28,0,0,0;
+Initialisation,4,0,4,0,0,0;
+Operation_initGame,7,0,6,0,0,0;
+Operation_nextTurn,12,0,6,0,0,0;
+Operation_pickColor,2,0,2,0,0,0;
+Operation_rollDice,1,0,1,0,0,0;
+Operation_unpickColor,2,0,1,0,0,0;
+WellDefinednessInitialisation,2,0,2,0,0,0;
+WellDefinedness_initGame,6,0,6,0,0,0
+END

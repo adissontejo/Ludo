@@ -1,0 +1,98 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(8) & _f(9) & _f(51) & _f(18) & WellDefinedness_initGame.6,(_f(19) & _f(21) & _f(52) => _f(7));
+_f(1) & _f(2) & _f(8) & _f(9) & _f(51) & _f(18) & WellDefinedness_initGame.5,(_f(19) & _f(21) & _f(52) => _f(31));
+_f(1) & _f(2) & _f(8) & _f(9) & _f(51) & _f(18) & WellDefinedness_initGame.4,(_f(19) & _f(52) => _f(54));
+_f(1) & _f(2) & _f(8) & _f(9) & _f(51) & _f(18) & WellDefinedness_initGame.3,(_f(19) & _f(52) => _f(53));
+_f(1) & _f(2) & _f(8) & _f(9) & _f(51) & _f(18) & WellDefinedness_initGame.2,(_f(19) & _f(52) => _f(7));
+_f(1) & _f(2) & _f(8) & _f(9) & _f(51) & _f(18) & WellDefinedness_initGame.1,(_f(19) & _f(52) => _f(31));
+_f(1) & _f(2) & WellDefinednessInitialisation.2,(_f(50) => _f(7));
+_f(1) & _f(2) & WellDefinednessInitialisation.1,(_f(50) => _f(6));
+_f(1) & _f(2) & _f(8) & _f(9) & Operation_rollDice.1,(_f(33) & _f(48) & _f(3) => _f(49));
+_f(1) & _f(2) & _f(8) & _f(9) & Operation_nextTurn.12,(_f(33) & _f(34) & _f(35) & _f(3) => _f(47));
+_f(1) & _f(2) & _f(8) & _f(9) & Operation_nextTurn.11,(_f(33) & _f(34) & _f(35) & _f(3) => _f(46));
+_f(1) & _f(2) & _f(8) & _f(9) & Operation_nextTurn.10,(_f(33) & _f(34) & _f(35) & _f(3) => _f(45));
+_f(1) & _f(2) & _f(8) & _f(9) & Operation_nextTurn.9,(_f(33) & _f(34) & _f(35) & _f(36) & _f(3) => _f(7));
+_f(1) & _f(2) & _f(8) & _f(9) & Operation_nextTurn.8,(_f(33) & _f(34) & _f(35) & _f(36) & _f(3) => _f(44));
+_f(1) & _f(2) & _f(8) & _f(9) & Operation_nextTurn.7,(_f(33) & _f(34) & _f(35) & _f(36) & _f(3) => _f(43));
+_f(1) & _f(2) & _f(8) & _f(9) & Operation_nextTurn.6,(_f(33) & _f(34) & _f(35) & _f(36) & _f(3) => _f(42));
+_f(1) & _f(2) & _f(8) & _f(9) & Operation_nextTurn.5,(_f(33) & _f(34) & _f(35) & _f(36) & _f(3) => _f(41));
+_f(1) & _f(2) & _f(8) & _f(9) & Operation_nextTurn.4,(_f(33) & _f(34) & _f(35) & _f(36) & _f(3) => _f(40));
+_f(1) & _f(2) & _f(8) & _f(9) & Operation_nextTurn.3,(_f(33) & _f(34) & _f(35) & _f(3) => _f(39));
+_f(1) & _f(2) & _f(8) & _f(9) & Operation_nextTurn.2,(_f(33) & _f(34) & _f(35) & _f(3) => _f(38));
+_f(1) & _f(2) & _f(8) & _f(9) & Operation_nextTurn.1,(_f(33) & _f(34) & _f(35) & _f(3) => _f(37));
+_f(1) & _f(2) & _f(8) & _f(9) & Operation_initGame.7,(_f(12) & _f(18) & _f(19) & _f(21) & _f(30) => _f(32));
+_f(1) & _f(2) & _f(8) & _f(9) & Operation_initGame.6,(_f(12) & _f(18) & _f(19) & _f(21) & _f(30) => _f(7));
+_f(1) & _f(2) & _f(8) & _f(9) & Operation_initGame.5,(_f(12) & _f(18) & _f(19) & _f(21) & _f(30) => _f(31));
+_f(1) & _f(2) & _f(8) & _f(9) & Operation_initGame.4,(_f(12) & _f(18) & _f(19) & _f(20) & _f(28) => _f(29));
+_f(1) & _f(2) & _f(8) & _f(9) & Operation_initGame.3,(_f(12) & _f(18) & _f(19) & _f(26) => _f(27));
+_f(1) & _f(2) & _f(8) & _f(9) & Operation_initGame.2,(_f(12) & _f(18) & _f(19) & _f(20) & _f(24) => _f(25));
+_f(1) & _f(2) & _f(8) & _f(9) & Operation_initGame.1,(_f(12) & _f(18) & _f(22) => _f(23));
+_f(1) & _f(2) & _f(8) & _f(9) & Operation_unpickColor.2,(_f(10) & _f(15) & _f(12) & _f(3) => _f(17));
+_f(1) & _f(2) & _f(8) & _f(9) & Operation_unpickColor.1,(_f(10) & _f(15) & _f(12) & _f(3) => _f(16));
+_f(1) & _f(2) & _f(8) & _f(9) & Operation_pickColor.2,(_f(10) & _f(11) & _f(12) & _f(3) => _f(14));
+_f(1) & _f(2) & _f(8) & _f(9) & Operation_pickColor.1,(_f(10) & _f(11) & _f(12) & _f(3) => _f(13));
+_f(1) & _f(2) & Initialisation.4,(_f(3) => _f(7));
+_f(1) & _f(2) & Initialisation.3,(_f(3) => _f(6));
+_f(1) & _f(2) & Initialisation.2,(_f(3) => _f(5));
+_f(1) & _f(2) & Initialisation.1,(_f(3) => _f(4))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+COLORS: FIN(INTEGER) & not(COLORS = {}) & PIECES: FIN(INTEGER) & not(PIECES = {}) & ((numPiecesByColor) = (4)) & ((numExternal) = (52)) & ((numInternal) = (6)) & ((numColors) = (4)) & ((card(COLORS)) = (numColors)) & ((numPieces) : (NAT)) & ((numPieces) = ((numPiecesByColor * numColors))) & ((diceOptions) = (((1) .. (6)))) & stars : POW( ((0) .. ((numExternal - 1)))) & ((stars) = (({8}\/{21}\/{34}\/{47}))) & startPoint : COLORS +-> ((0) .. (51)) & startPoint : COLORS --> ((0) .. (51)) & startPoint~ : ((0) .. (51)) +-> COLORS & ((startPoint) : (((COLORS) >-> (((0) .. (51)))))) & ((card(PIECES)) = ((numPiecesByColor * numColors))) & colorsOrder : ((0) .. (3)) +-> COLORS & colorsOrder : ((0) .. (3)) >+> COLORS & colorsOrder : ((0) .. (3)) +->> COLORS & colorsOrder : ((0) .. (3)) --> COLORS & dom(colorsOrder) = ((0) .. (3)) & colorsOrder~ : COLORS +-> ((0) .. (3)) & ran(colorsOrder) = COLORS & ((colorsOrder) : (((((0) .. (3))) >->> (COLORS)))) & colorOf : PIECES +-> COLORS & colorOf : PIECES --> COLORS & colorOf : PIECES +->> COLORS & dom(colorOf) = PIECES & ran(colorOf) = COLORS & ((colorOf) : (((PIECES) -->> (COLORS)))) & !(cc).(((((cc) : (COLORS))) => (((((colorOf)~ )[({cc})]) : (FIN(PIECES))) & ((card(((colorOf)~ )[({cc})])) = (numPiecesByColor))))) & piecesOrder : ((0) .. (15)) +-> PIECES & piecesOrder : ((0) .. (15)) >+> PIECES & piecesOrder : ((0) .. (15)) +->> PIECES & piecesOrder : ((0) .. (15)) --> PIECES & dom(piecesOrder) = ((0) .. (15)) & piecesOrder~ : PIECES +-> ((0) .. (15)) & ran(piecesOrder) = PIECES & ((piecesOrder) : (((((0) .. (15))) >->> (PIECES))));
+"Refinement is correct";
+(((COLORS * ({FALSE}))) : (((COLORS) --> (BOOL))));
+((dom((((COLORS * ({FALSE}))) |> (({TRUE}))))) = ({}));
+((0) : (dom(colorsOrder)));
+((colorsOrder) : (((dom(colorsOrder)) +-> (ran(colorsOrder)))));
+((gameStarted$1) : (BOOL)) & ((enabledColors) : (POW(COLORS))) & ((enabledColors) : (FIN(enabledColors))) & ((color$1) : (COLORS)) & ((hasRoll$1) : (BOOL)) & ((diceValue$1) : (((0) .. (6)))) & ((sixSequenceCount$1) : (((0) .. (2)))) & finishOrder$1 : ((0) .. ((numColors - 1))) +-> COLORS & finishOrder$1~ : COLORS +-> ((0) .. ((numColors - 1))) & ((finishOrder$1) : (((((0) .. ((numColors - 1)))) >+> (COLORS)))) & ((finishOrder$1) : (FIN(finishOrder$1))) & ((((gameStarted$1) = (FALSE))) or ((2 <= card(enabledColors)) & ((color$1) : (enabledColors)) & ran(finishOrder$1) : POW( enabledColors)));
+((gameStarted) = (gameStarted$1)) & ((color) = (color$1)) & ((hasRoll) = (hasRoll$1)) & ((diceValue) = (diceValue$1)) & ((sixSequenceCount) = (sixSequenceCount$1)) & ((finishOrder) = (finishOrder$1)) & colorEnabled$1 : COLORS +-> BOOL & dom(colorEnabled$1) = COLORS & ((colorEnabled$1) : (((COLORS) --> (BOOL)))) & ((dom(((colorEnabled$1) |> (({TRUE}))))) = (enabledColors));
+((cc) : (COLORS));
+not(((cc) : (enabledColors)));
+((gameStarted$1) = (FALSE));
+((((colorEnabled$1) <+ (({((cc) |-> (TRUE))})))) : (((COLORS) --> (BOOL))));
+((dom(((((colorEnabled$1) <+ (({((cc) |-> (TRUE))})))) |> (({TRUE}))))) = (((enabledColors) \/ (({cc})))));
+((cc) : (enabledColors));
+((((colorEnabled$1) <+ (({((cc) |-> (FALSE))})))) : (((COLORS) --> (BOOL))));
+((dom(((((colorEnabled$1) <+ (({((cc) |-> (FALSE))})))) |> (({TRUE}))))) = ((enabledColors - ({cc}))));
+(2 <= card(enabledColors));
+((ii) : (((0) .. ((numColors - 1)))));
+(((colorEnabled$1 )((colorsOrder )(ii))) = (FALSE));
+not((((colorEnabled$1 )((colorsOrder )(ii))) = (FALSE)));
+"Loop initialisation";
+((0) : (((0) .. ((numColors - 1)))));
+"Loop invariant is preserved";
+(((ii + 1)) : (((0) .. ((numColors - 1)))));
+"Loop variant is positive";
+(0 <= (numColors - ii));
+"Variant is decreasing";
+((numColors - (ii + 1)) +1 <= (numColors - ii));
+"End of loop";
+((ii) : (dom(colorsOrder)));
+(((colorsOrder )(ii)) : (enabledColors));
+((gameStarted$1) = (TRUE));
+((hasRoll$1) = (FALSE));
+(card(finishOrder$1) +1 <= card(enabledColors));
+((nn) : (((1) .. (numColors))));
+((TRUE) = (hasRoll$1));
+((0) = (diceValue$1));
+((0) = (sixSequenceCount$1));
+((color$1) : (dom((colorsOrder)~)));
+(((colorsOrder)~) : (((dom((colorsOrder)~)) +-> (ran((colorsOrder)~)))));
+(0 <= (((colorsOrder)~ )(color$1) + nn));
+(1 <= numColors);
+(((((((colorsOrder)~ )(color$1) + nn)) mod (numColors))) : (dom(colorsOrder)));
+not(((SET(nn).(((nn) : (((1) .. (numColors)))) & (((colorsOrder )((((((colorsOrder)~ )(color$1) + nn)) mod (numColors)))) : ((enabledColors - ran(finishOrder$1)))))) = ({})));
+((((SET(nn).(((nn) : (((1) .. (numColors)))) & (((colorsOrder )((((((colorsOrder)~ )(color$1) + nn)) mod (numColors)))) : ((enabledColors - ran(finishOrder$1)))))) /\ ((INTEGER - NATURAL)))) : (FIN(INTEGER)));
+(((colorsOrder )((((((colorsOrder)~ )(color$1) + min(SET(nn).(((nn) : (((1) .. (numColors)))) & (((colorsOrder )((((((colorsOrder)~ )(color$1) + nn)) mod (numColors)))) : ((enabledColors - ran(finishOrder$1)))))))) mod (numColors)))) = (color$1));
+((hasRoll$1) = (TRUE));
+#(dd$1).(((dd$1) : (((1) .. (6)))) & ((((dd$1) = (6))) => ((((sixSequenceCount$1 +1 <= 2)) => (((hasRoll$1) = (FALSE)) & ((dd$1) = (5)) & (((sixSequenceCount$1 + 1)) = (sixSequenceCount$1)) & ((colorEnabled$1) : (((COLORS) --> (BOOL)))) & ((dom(((colorEnabled$1) |> (({TRUE}))))) = (enabledColors)) & ((5) = (dd$1)))) & (sixSequenceCount$1 +1 <= 2))) & ((not(((dd$1) = (6)))) => (((dd$1) = (5)) & ((colorEnabled$1) : (((COLORS) --> (BOOL)))) & ((dom(((colorEnabled$1) |> (({TRUE}))))) = (enabledColors)) & ((5) = (dd$1)))));
+"Initialisation is well defined";
+((gameStarted) = (FALSE));
+"Operation is well defined";
+(((colorsOrder )(ii)) : (dom(colorEnabled$1)));
+((colorEnabled$1) : (((dom(colorEnabled$1)) +-> (ran(colorEnabled$1)))))
+END
+&
+THEORY EnumerateX
+END

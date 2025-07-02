@@ -1,0 +1,48 @@
+THEORY BalanceX IS
+Ludo_ctx_i,10,0,0,4,2,0,0;
+ValuesLemmas,10,0,0,4,2,0,0
+END
+&
+THEORY ProofState IS
+Proved(0);
+Unproved;
+Unproved;
+Unproved;
+Proved(1);
+Unproved;
+Proved(0);
+Proved(0);
+Proved(1);
+Proved(0)
+END
+&
+THEORY MethodList IS
+pr;
+?;
+?;
+?;
+pr;
+?;
+pr;
+pr;
+pr;
+pr
+END
+&
+THEORY PassList IS
+Force(0),?;
+Force(0),(?; 0);
+Force(0),(?; 0);
+Force(0),(?; 0);
+Force(1),(?; 0);
+Force(0),(?; 0);
+Force(0),?;
+Force(0),?;
+Force(1),(?; 0);
+Force(0),?
+END
+&
+THEORY Status IS
+Ludo_ctx_i,10,0,6,0,0,0;
+ValuesLemmas,10,0,6,0,0,0
+END

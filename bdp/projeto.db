@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<db_xml>
+    <atelierb version="3_7_ubuntu-cvs" />
+    <project decomp_dir="C:\Metodos\projeto\bdp\expand_src" old_decomp_dir="C:\Metodos\projeto\bdp\src">
+        <!-- Definition directory list -->
+        <!-- Proof mechanisms -->
+        <!-- Component file list -->
+        <component_file path="C:/Metodos/projeto" name="Ludo" suffix="mch" user="anaca">
+            <component name="Ludo" type="specification" />
+        </component_file>
+        <component_file path="C:/Metodos/projeto" name="Ludo_board" suffix="mch" user="anaca">
+            <component name="Ludo_board" type="specification" />
+        </component_file>
+        <component_file path="C:/Metodos/projeto" name="Ludo_board_i" suffix="imp" user="anaca">
+            <component name="Ludo_board_i" type="implementation" />
+        </component_file>
+        <component_file path="C:/Metodos/projeto" name="Ludo_ctx" suffix="mch" user="anaca">
+            <component name="Ludo_ctx" type="specification" />
+        </component_file>
+        <component_file path="C:/Metodos/projeto" name="Ludo_ctx_i" suffix="imp" user="anaca">
+            <component name="Ludo_ctx_i" type="implementation" />
+        </component_file>
+        <component_file path="C:/Metodos/projeto" name="Ludo_turn" suffix="mch" user="anaca">
+            <component name="Ludo_turn" type="specification" />
+        </component_file>
+        <component_file path="C:/Metodos/projeto" name="Ludo_turn_i" suffix="imp" user="anaca">
+            <component name="Ludo_turn_i" type="implementation" />
+        </component_file>
+    </project>
+</db_xml>

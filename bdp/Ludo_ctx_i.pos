@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Proof_Obligations version="1.0" author="pmi2Pos" xmlns="https://www.atelierb.eu/Formats/pog">
+<Proof_Obligation>
+<Tag>ValuesLemmas</Tag>
+<Simple_Goal status="Proved">
+<Tag>Valuation is correct</Tag>
+<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+</Simple_Goal>
+<Simple_Goal status="Proved">
+<Tag>Valuation is correct</Tag>
+<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+</Simple_Goal>
+<Simple_Goal status="Proved">
+<Tag>Valuation is correct</Tag>
+<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+</Simple_Goal>
+<Simple_Goal status="Unproved">
+<Tag>Valuation is correct</Tag>
+<Proof_State proofState="Unproved" passList="Force(0),(?; 0)" methodList="?"/>
+</Simple_Goal>
+<Simple_Goal status="Proved">
+<Tag>Valuation is correct</Tag>
+<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+</Simple_Goal>
+<Simple_Goal status="Unproved">
+<Tag>Valuation is correct</Tag>
+<Proof_State proofState="Unproved" passList="Force(0),(?; 0)" methodList="?"/>
+</Simple_Goal>
+<Simple_Goal status="Unproved">
+<Tag>Valuation is correct</Tag>
+<Proof_State proofState="Unproved" passList="Force(0),(?; 0)" methodList="?"/>
+</Simple_Goal>
+<Simple_Goal status="Unproved">
+<Tag>Valuation is correct</Tag>
+<Proof_State proofState="Unproved" passList="Force(0),(?; 0)" methodList="?"/>
+</Simple_Goal>
+<Simple_Goal status="Unproved">
+<Tag>Valuation is correct</Tag>
+<Proof_State proofState="Unproved" passList="Force(0),(?; 0)" methodList="?"/>
+</Simple_Goal>
+<Simple_Goal status="Unproved">
+<Tag>Valuation is correct</Tag>
+<Proof_State proofState="Unproved" passList="Force(0),(?; 0)" methodList="?"/>
+</Simple_Goal>
+<Simple_Goal status="Unproved">
+<Tag>Valuation is correct</Tag>
+<Proof_State proofState="Unproved" passList="Force(0),(?; 0)" methodList="?"/>
+</Simple_Goal>
+<Simple_Goal status="Proved">
+<Tag>Valuation is correct</Tag>
+<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+</Simple_Goal>
+<Simple_Goal status="Proved">
+<Tag>Valuation is correct</Tag>
+<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+</Simple_Goal>
+<Simple_Goal status="Proved">
+<Tag>Valuation is correct</Tag>
+<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+</Simple_Goal>
+<Simple_Goal status="Proved">
+<Tag>Valuation is correct</Tag>
+<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+</Simple_Goal>
+<Simple_Goal status="Proved">
+<Tag>Valuation is correct</Tag>
+<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+</Simple_Goal>
+</Proof_Obligation>
+</Proof_Obligations>

@@ -1,0 +1,125 @@
+/* Ludo_turn_i
+ * Author: anaca
+ * Creation date: 25/06/2025
+ */
+
+IMPLEMENTATION Ludo_turn_i
+REFINES Ludo_turn
+
+SEES Ludo_ctx
+
+
+CONCRETE_VARIABLES
+  gameStarted,
+  colorEnabled, //concrete
+  color,
+  hasRoll,
+  diceValue,
+  sixSequenceCount,
+  finishOrder
+
+INVARIANT
+  colorEnabled : COLORS --> BOOL &
+  dom(colorEnabled |> {TRUE}) = enabledColors 
+
+INITIALISATION
+  gameStarted := FALSE;
+  colorEnabled := COLORS * {FALSE};
+  color := colorsOrder(0);
+  hasRoll := FALSE;
+  diceValue := 0;
+  sixSequenceCount := 0;
+  finishOrder := {}
+
+
+OPERATIONS
+  pickColor(cc) =
+    BEGIN
+      colorEnabled(cc) := TRUE
+    END;
+
+ 
+  unpickColor(cc) = 
+    BEGIN
+      colorEnabled(cc) := FALSE
+    END;
+
+
+  initGame = 
+    BEGIN
+      gameStarted := TRUE;
+      VAR ii IN
+          ii := 0;
+          WHILE colorEnabled(colorsOrder(ii)) = FALSE
+              DO ii := ii + 1
+          INVARIANT ii : 0..(numColors - 1)
+          VARIANT numColors - ii
+          END;
+          color := colorsOrder(ii)
+      END;
+      hasRoll := TRUE;
+      diceValue := 0;
+      sixSequenceCount := 0;
+      finishOrder := {}
+    END;
+
+
+  // zera o valor do dado atual, e caso a peça tenha turno extra ele altera hasRoll pra TRUE
+  computeAction(extraTurn, finished) =
+    BEGIN
+      diceValue := 0;
+      IF finished = TRUE 
+        THEN
+          finishOrder(card(finishOrder)) := color;
+          hasRoll := FALSE
+      ELSIF extraTurn = TRUE 
+        THEN
+          hasRoll := TRUE
+      END
+    END;
+
+
+  nextTurn = 
+    BEGIN
+    /*  hasRoll := TRUE ||
+      sixSequenceCount := 0 ||
+      diceValue := 0 ||
+      LET numJumps
+      BE
+        // menor número de pulos em cores para a próxima cor válida de acordo com colorsOrder
+        numJumps = min({ nn | 
+          nn : 1..numColors & colorsOrder((turnIndex + nn) mod numColors) : enabledColors - ran(finishOrder)
+        })
+      IN color := colorsOrder((turnIndex + numJumps) mod numColors)
+      END*/
+      skip
+    END;
+
+
+  value <-- rollDice = 
+    BEGIN
+      VAR dd IN
+        dd := 5;
+        value := dd;
+        IF dd = 6 THEN
+          IF sixSequenceCount < 2 THEN
+            sixSequenceCount := sixSequenceCount + 1;
+            diceValue := dd
+          ELSE
+            sixSequenceCount := 0;
+            hasRoll := FALSE;
+            diceValue := 0
+          END
+        ELSE
+          hasRoll := FALSE;
+          diceValue := dd
+        END
+      END
+    END;
+
+
+  endGame =
+    BEGIN  
+        gameStarted := FALSE
+    END
+END

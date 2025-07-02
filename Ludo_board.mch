@@ -79,6 +79,10 @@ OPERATIONS
     THEN 
       internalPos(pp) := nn ||
       externalPos := {pp} <<| externalPos
-    END
+    END;
  
+  bb <-- isFinished(color) =
+      PRE color : COLORS
+      THEN bb := bool(colorOf~[{color}] <: internalPos~[{numInternal-1}])
+      END
 END

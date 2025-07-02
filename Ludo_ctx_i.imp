@@ -5,37 +5,31 @@
 
 IMPLEMENTATION Ludo_ctx_i
 REFINES Ludo_ctx
+    
+PROPERTIES
+    
+  startPoint : COLORS --> 0..51
+    
 VALUES
+  COLORS = 0..3;
   PIECES = 0..15;
   colorOf = {
-    0 |-> RED,
-    1 |-> RED,
-    2 |-> RED,
-    3 |-> RED,
-    4 |-> GREEN,
-    5 |-> GREEN,
-    6 |-> GREEN,
-    7 |-> GREEN,
-    8 |-> YELLOW,
-    9 |-> YELLOW,
-    10 |-> YELLOW,
-    11 |-> YELLOW,
-    12 |-> BLUE,
-    13 |-> BLUE,
-    14 |-> BLUE,
-    15 |-> BLUE
+    0 |-> 0, 1 |-> 0, 2 |-> 0, 3 |-> 0,
+    4 |-> 1, 5 |-> 1, 6 |-> 1, 7 |-> 1,
+    8 |-> 2, 9 |-> 2, 10 |-> 2, 11 |-> 2,
+    12 |-> 3, 13 |-> 3, 14 |-> 3, 15 |-> 3
   };
   numColors = 4;
   numPiecesByColor = 4;
   numPieces = 16;
   numExternal = 52;
   numInternal = 6;
-  startPoint = {RED |-> 0, GREEN |-> 13, YELLOW |-> 26, BLUE |-> 39};
-  colorsOrder = { 0 |-> RED, 1 |-> GREEN, 2 |-> YELLOW, 3 |-> BLUE };
+  startPoint = {0 |-> 0, 1 |-> 13, 2 |-> 26, 3 |-> 39};
+  colorsOrder = { 0 |-> 0, 1 |-> 1, 2 |-> 2, 3 |-> 3 };
   piecesOrder = { 
-    0 |-> 0, 1 |-> 1, 2 |-> 2, 3 |-> 3,
-    4 |-> 4, 5 |-> 5, 6 |-> 6, 7 |-> 7,
-    8 |-> 8, 9 |-> 9, 10 |-> 10, 11 |-> 11,
-    12 |-> 12, 13 |-> 13, 14 |-> 14, 15 |-> 15
+        0 |-> 0,  1 |-> 1,  2 |-> 2,  3 |-> 3,
+       4 |-> 4, 5 |-> 5, 6 |-> 6, 7 |-> 7,
+          8 |-> 8, 9 |-> 9, 10 |-> 10, 11 |-> 11,
+         12 |-> 12, 13 |-> 13, 14 |-> 14, 15 |-> 15
   }
 END
