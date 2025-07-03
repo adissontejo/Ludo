@@ -16,9 +16,13 @@ CONCRETE_VARIABLES
   hasRoll,
   diceValue,
   sixSequenceCount,
-  finishOrder
+  finishList,
+  finishCount
 
 INVARIANT
+  finishList : 0..3 --> COLORS &
+  finishCount : 0..4 &
+  0..finishCount-1 <| finishList = finishOrder &
   colorEnabled : COLORS --> BOOL &
   dom(colorEnabled |> {TRUE}) = enabledColors 
 
@@ -29,7 +33,8 @@ INITIALISATION
   hasRoll := FALSE;
   diceValue := 0;
   sixSequenceCount := 0;
-  finishOrder := {}
+  finishList := colorsOrder;
+  finishCount := 0
 
 
 OPERATIONS
@@ -48,11 +53,14 @@ OPERATIONS
   initGame = 
     BEGIN
       gameStarted := TRUE;
-      VAR ii IN
+      VAR ii, isEnabled IN
           ii := 0;
-          WHILE colorEnabled(colorsOrder(ii)) = FALSE
-              DO ii := ii + 1
-          INVARIANT ii : 0..(numColors - 1)
+          isEnabled := colorEnabled(colorsOrder(ii));
+          WHILE isEnabled = FALSE
+          DO
+            ii := ii + 1;
+            isEnabled := colorEnabled(colorsOrder(ii))
+          INVARIANT ii : 0..(numColors - 1) & isEnabled = colorEnabled(colorsOrder(ii))
           VARIANT numColors - ii
           END;
           color := colorsOrder(ii)
@@ -60,7 +68,8 @@ OPERATIONS
       hasRoll := TRUE;
       diceValue := 0;
       sixSequenceCount := 0;
-      finishOrder := {}
+      finishList := colorsOrder;
+      finishCount := 0
     END;
 
 
@@ -70,7 +79,8 @@ OPERATIONS
       diceValue := 0;
       IF finished = TRUE 
         THEN
-          finishOrder(card(finishOrder)) := color;
+          finishList(finishCount) := color;
+          finishCount := finishCount + 1;
           hasRoll := FALSE
       ELSIF extraTurn = TRUE 
         THEN

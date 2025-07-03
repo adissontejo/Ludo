@@ -1,0 +1,240 @@
+﻿/* Ludo_i
+ * Author: LENOVO
+ * Creation date: 03/07/2025
+ */
+
+IMPLEMENTATION Ludo_i
+REFINES Ludo
+
+SEES Ludo_ctx
+IMPORTS
+  board.Ludo_board,
+  turn.Ludo_turn
+
+DEFINITIONS
+  // ponto final externo
+  finishPoint(color) == (startPoint(color) + numExternal - 2) mod numExternal;
+
+  // diferença entre duas posições externas
+  stepsDiff(n1, n2) == (n2 - n1 + numExternal) mod numExternal;
+
+  // quantidade de passos para chegar no ponto final externo
+  stepsToFinish(piece) == stepsDiff(board.externalPos(piece), finishPoint(colorOf(piece)));
+
+LOCAL_OPERATIONS
+  bb <-- isFinished(color) =
+    PRE color : COLORS
+    THEN bb := bool(colorOf~[{color}] <: board.internalPos~[{numInternal-1}])
+    END;
+
+  bb <-- canFree(pp) =
+    PRE pp : PIECES
+    THEN
+      bb := bool(
+        turn.diceValue = 6 &
+        pp : board.lockedPieces &
+        card(board.externalPos |> {startPoint(colorOf(pp))}) < 2
+      )
+    END;
+
+  bb <-- isPathFree(n1, n2) =
+    PRE n1 : 0..51 & n2 : 0..51
+    THEN
+      bb := bool(
+        !nn . (
+          nn : 0..numExternal-1 & nn /= n1 & stepsDiff(n1, nn) <= stepsDiff(n1, n2) =>
+          card(board.externalPos |> {nn}) < 2
+        )
+      )
+    END;
+
+  bb <-- canWalk(pp) =
+    PRE pp : PIECES
+    THEN
+      /*bb := bool(
+        turn.diceValue /= 0 &
+        pp /: board.lockedPieces &
+        (pp : dom(board.externalPos) =>
+          (
+            turn.diceValue <= stepsToFinish(pp) &
+            isPathFree(board.externalPos(pp), (board.externalPos(pp) + turn.diceValue) mod numExternal)
+          ) or (
+            turn.diceValue - stepsToFinish(pp) - 1 < numInternal &
+            isPathFree(board.externalPos(pp), finishPoint(colorOf(pp)))
+          )
+        ) &
+        (pp : dom(board.internalPos) =>
+          board.internalPos(pp) + turn.diceValue < numInternal
+        )
+      )*/
+      bb := TRUE
+    END;
+
+
+
+OPERATIONS
+  bb <-- isFinished(color) =
+    BEGIN
+      bb := TRUE
+    END;
+
+  bb <-- canFree(pp) =
+    BEGIN
+      bb := TRUE
+    END;
+
+  bb <-- isPathFree(n1, n2) =
+    BEGIN
+      bb := TRUE
+    END;
+
+  bb <-- canWalk(pp) =
+    BEGIN
+      bb := TRUE
+    END;
+
+  pickColor(cc) =
+    BEGIN
+      turn.pickColor(cc)
+    END;
+
+
+  unpickColor(cc) =
+    BEGIN
+      turn.unpickColor(cc)
+    END;
+
+
+  initGame =
+    BEGIN
+      turn.initGame;
+      board.clear
+    END;
+
+
+  free(pp) =
+    BEGIN
+      turn.computeAction(FALSE, FALSE);
+      board.setFree(pp)
+    END;
+
+
+  vv <-- rollDice =
+    BEGIN
+      vv <-- turn.rollDice
+    END;
+
+
+  nextTurn =
+    BEGIN
+      turn.nextTurn
+    END;
+
+
+  walk(pp) =
+    BEGIN
+      /*IF pp : dom(board.externalPos) & turn.diceValue <= stepsToFinish(pp) THEN
+        LET newPos
+        BE newPos = (turn.diceValue + board.externalPos(pp)) mod numExternal
+        IN
+          board.setExternalPos(pp, newPos) ||
+          IF
+            newPos /: (stars \/ ran(startPoint)) &
+            (board.externalPos~;colorOf)[{newPos}] - {colorOf(pp)} /= {}
+          THEN
+            turn.computeAction(TRUE, FALSE)
+          ELSE
+            turn.computeAction(FALSE, FALSE)
+          END
+        END
+      ELSE
+        IF pp : dom(board.externalPos) THEN
+          board.setInternalPos(pp, turn.diceValue - stepsToFinish(pp) - 1)
+        ELSE
+          board.setInternalPos(pp, turn.diceValue + board.internalPos(pp))
+        END ||
+        IF
+	  ((pp : dom(board.internalPos) & turn.diceValue + board.internalPos(pp) = numInternal - 1)
+	  or (pp : dom(board.externalPos) & turn.diceValue - stepsToFinish(pp) - 1 = numInternal - 1))
+        THEN
+          IF card(board.internalPos~[{numInternal-1}] /\ colorOf~[{turn.color}]) = numPiecesByColor - 1 THEN
+            turn.computeAction(FALSE, TRUE)
+          ELSE
+            turn.computeAction(TRUE, FALSE)
+          END
+        ELSE
+          turn.computeAction(FALSE, FALSE)
+        END
+      END */
+      skip
+    END;
+
+
+  dd <-- getDiceValue =
+    BEGIN
+      //dd := turn.diceValue
+      skip
+    END;
+
+
+  ee, ii <-- getBoard =
+    BEGIN
+      //ee, ii := board.externalPos, board.internalPos
+      skip
+    END;
+
+
+  cc <-- getTurn =
+    BEGIN
+      //cc := turn.color
+      skip
+    END;
+
+
+  oo <-- finishGame =
+    BEGIN
+      //oo := turn.finishOrder;
+      turn.endGame
+    END;
+// operações de pre condicao
+
+  rr <-- pre_pickColor(cc) =
+    BEGIN
+      //rr := bool(cc /: turn.enabledColors & turn.gameStarted = FALSE)
+      rr := TRUE
+    END;
+
+  rr <-- pre_unpickColor(cc) =
+    BEGIN
+      //rr := bool(cc /: turn.enabledColors & turn.gameStarted = FALSE)
+      rr := TRUE
+    END;
+
+  rr <-- pre_initGame =
+    BEGIN
+      rr := TRUE
+    END;
+
+  rr <-- pre_free(pp) =
+    BEGIN
+      //rr := bool(turn.gameStarted = TRUE & colorOf(pp) = turn.color & canFree(pp))
+      rr := TRUE
+    END;
+
+  rr <-- pre_rollDice =
+    BEGIN
+      //rr := bool(turn.gameStarted = TRUE & turn.hasRoll = TRUE & (turn.diceValue = 0 or not(hasActions)));
+      rr := TRUE
+    END;
+
+  rr <-- pre_walk(pp) =
+    BEGIN
+      //rr := bool(turn.gameStarted = TRUE & colorOf(pp) = turn.color & canWalk(pp))
+      rr := TRUE
+    END;
+
+  rr <-- pre_nextTurn =
+    BEGIN
+      rr := TRUE
+    END
+END
