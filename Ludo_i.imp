@@ -70,12 +70,32 @@ LOCAL_OPERATIONS
       bb := TRUE
     END;
 
-
-
 OPERATIONS
   bb <-- isFinished(color) =
     BEGIN
-      bb := TRUE
+        bb := TRUE;
+        VAR ii, piece, pieceColor, piecePos, endPos IN
+            ii := 0;
+            endPos := numInternal-1;
+            WHILE ii < numPieces & bb = TRUE
+              DO
+                piece := piecesOrder(ii);
+                pieceColor := colorOf(piece);
+                piecePos := internalBoard(piece);
+
+                IF pieceColor = color & piecePos /= endPos THEN
+                    bb := FALSE
+                END;
+                ii := ii + 1
+
+            INVARIANT
+                ii : 0..numPieces &
+                internalBoard : PIECES --> -1..numInternal-1 &
+                internalBoard |>> {-1} = internalPos &
+                bb = TRUE <=> colorOf~[{color}] /\ piecesOrder[0..ii-1] <: internalBoard~[{numInternal-1}]
+            VARIANT numPieces - ii
+            END
+        END
     END;
 
   bb <-- canFree(pp) =

@@ -38,15 +38,15 @@ OPERATIONS
   clear =
     lockedPieces, externalPos, internalPos := PIECES, {}, {};
 
-  // peça uma peça, e se a quantidade de peças for menor que 2 na posição inicial, 
+  // peça uma peça, e se a quantidade de peças for menor que 2 na posição inicial,
   // ela libera a peça
   // regra de barreira
-  setFree(pp) = 
+  setFree(pp) =
     PRE
       pp : PIECES &
       pp : lockedPieces &
       card(externalPos |> {startPoint(colorOf(pp))}) < 2
-    THEN 
+    THEN
       lockedPieces := lockedPieces - {pp} ||
       externalPos(pp) := startPoint(colorOf(pp))
     END;
@@ -62,13 +62,13 @@ OPERATIONS
       card(externalPos |> {nn}) < 2
     THEN
       // acao de comer outra peça {
-      IF 
+      IF
         nn /: (stars \/ ran(startPoint)) &
         (externalPos~;colorOf)[{nn}] - {colorOf(pp)} /= {}
       THEN
         externalPos := (externalPos |>> {nn}) <+ {pp |-> nn} ||
         lockedPieces := lockedPieces \/ externalPos~[{nn}]
-      // } 
+      // }
       ELSE
         externalPos(pp) := nn
       END
@@ -76,13 +76,8 @@ OPERATIONS
 
   setInternalPos(pp, nn) =
     PRE pp : PIECES & pp /: lockedPieces & nn : 0..numInternal-1
-    THEN 
+    THEN
       internalPos(pp) := nn ||
       externalPos := {pp} <<| externalPos
-    END;
- 
-  bb <-- isFinished(color) =
-      PRE color : COLORS
-      THEN bb := bool(colorOf~[{color}] <: internalPos~[{numInternal-1}])
-      END
+    END
 END
