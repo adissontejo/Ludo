@@ -95,8 +95,8 @@ THEORY ListConstraintsX IS
 END
 &
 THEORY ListOperationsX IS
-  Internal_List_Operations(Machine(Ludo_board))==(clear,setFree,setExternalPos,setInternalPos,isFinished);
-  List_Operations(Machine(Ludo_board))==(clear,setFree,setExternalPos,setInternalPos,isFinished)
+  Internal_List_Operations(Machine(Ludo_board))==(clear,setFree,setExternalPos,setInternalPos,getPos);
+  List_Operations(Machine(Ludo_board))==(clear,setFree,setExternalPos,setInternalPos,getPos)
 END
 &
 THEORY ListInputX IS
@@ -104,7 +104,7 @@ THEORY ListInputX IS
   List_Input(Machine(Ludo_board),setFree)==(pp);
   List_Input(Machine(Ludo_board),setExternalPos)==(pp,nn);
   List_Input(Machine(Ludo_board),setInternalPos)==(pp,nn);
-  List_Input(Machine(Ludo_board),isFinished)==(color)
+  List_Input(Machine(Ludo_board),getPos)==(pp)
 END
 &
 THEORY ListOutputX IS
@@ -112,7 +112,7 @@ THEORY ListOutputX IS
   List_Output(Machine(Ludo_board),setFree)==(?);
   List_Output(Machine(Ludo_board),setExternalPos)==(?);
   List_Output(Machine(Ludo_board),setInternalPos)==(?);
-  List_Output(Machine(Ludo_board),isFinished)==(bb)
+  List_Output(Machine(Ludo_board),getPos)==(ee,ii)
 END
 &
 THEORY ListHeaderX IS
@@ -120,7 +120,7 @@ THEORY ListHeaderX IS
   List_Header(Machine(Ludo_board),setFree)==(setFree(pp));
   List_Header(Machine(Ludo_board),setExternalPos)==(setExternalPos(pp,nn));
   List_Header(Machine(Ludo_board),setInternalPos)==(setInternalPos(pp,nn));
-  List_Header(Machine(Ludo_board),isFinished)==(bb <-- isFinished(color))
+  List_Header(Machine(Ludo_board),getPos)==(ee,ii <-- getPos(pp))
 END
 &
 THEORY ListOperationGuardX END
@@ -130,11 +130,11 @@ THEORY ListPreconditionX IS
   List_Precondition(Machine(Ludo_board),setFree)==(pp: PIECES & pp: lockedPieces & card(externalPos|>{startPoint(colorOf(pp))})<2);
   List_Precondition(Machine(Ludo_board),setExternalPos)==(pp: PIECES & pp/:lockedPieces & pp/:dom(internalPos) & nn: 0..numExternal-1 & card(externalPos|>{nn})<2);
   List_Precondition(Machine(Ludo_board),setInternalPos)==(pp: PIECES & pp/:lockedPieces & nn: 0..numInternal-1);
-  List_Precondition(Machine(Ludo_board),isFinished)==(color: COLORS)
+  List_Precondition(Machine(Ludo_board),getPos)==(pp: PIECES)
 END
 &
 THEORY ListSubstitutionX IS
-  Expanded_List_Substitution(Machine(Ludo_board),isFinished)==(color: COLORS | bb:=bool(colorOf~[{color}] <: internalPos~[{numInternal-1}]));
+  Expanded_List_Substitution(Machine(Ludo_board),getPos)==(pp: PIECES | pp: dom(externalPos) ==> ee,ii:=externalPos(pp), -1 [] not(pp: dom(externalPos)) ==> (pp: dom(internalPos) ==> ee,ii:= -1,internalPos(pp) [] not(pp: dom(internalPos)) ==> ee,ii:= -1, -1));
   Expanded_List_Substitution(Machine(Ludo_board),setInternalPos)==(pp: PIECES & pp/:lockedPieces & nn: 0..numInternal-1 | internalPos,externalPos:=internalPos<+{pp|->nn},{pp}<<|externalPos);
   Expanded_List_Substitution(Machine(Ludo_board),setExternalPos)==(pp: PIECES & pp/:lockedPieces & pp/:dom(internalPos) & nn: 0..numExternal-1 & card(externalPos|>{nn})<2 | nn/:(stars\/ran(startPoint)) & (externalPos~;colorOf)[{nn}]-{colorOf(pp)}/={} ==> externalPos,lockedPieces:=externalPos|>>{nn}<+{pp|->nn},lockedPieces\/externalPos~[{nn}] [] not(nn/:(stars\/ran(startPoint)) & (externalPos~;colorOf)[{nn}]-{colorOf(pp)}/={}) ==> externalPos:=externalPos<+{pp|->nn});
   Expanded_List_Substitution(Machine(Ludo_board),setFree)==(pp: PIECES & pp: lockedPieces & card(externalPos|>{startPoint(colorOf(pp))})<2 | lockedPieces,externalPos:=lockedPieces-{pp},externalPos<+{pp|->startPoint(colorOf(pp))});
@@ -143,7 +143,7 @@ THEORY ListSubstitutionX IS
   List_Substitution(Machine(Ludo_board),setFree)==(lockedPieces:=lockedPieces-{pp} || externalPos(pp):=startPoint(colorOf(pp)));
   List_Substitution(Machine(Ludo_board),setExternalPos)==(IF nn/:(stars\/ran(startPoint)) & (externalPos~;colorOf)[{nn}]-{colorOf(pp)}/={} THEN externalPos:=externalPos|>>{nn}<+{pp|->nn} || lockedPieces:=lockedPieces\/externalPos~[{nn}] ELSE externalPos(pp):=nn END);
   List_Substitution(Machine(Ludo_board),setInternalPos)==(internalPos(pp):=nn || externalPos:={pp}<<|externalPos);
-  List_Substitution(Machine(Ludo_board),isFinished)==(bb:=bool(colorOf~[{color}] <: internalPos~[{numInternal-1}]))
+  List_Substitution(Machine(Ludo_board),getPos)==(IF pp: dom(externalPos) THEN ee,ii:=externalPos(pp), -1 ELSIF pp: dom(internalPos) THEN ee,ii:= -1,internalPos(pp) ELSE ee,ii:= -1, -1 END)
 END
 &
 THEORY ListConstantsX IS
@@ -195,11 +195,11 @@ THEORY ListANYVarX IS
   List_ANY_Var(Machine(Ludo_board),setFree)==(?);
   List_ANY_Var(Machine(Ludo_board),setExternalPos)==(?);
   List_ANY_Var(Machine(Ludo_board),setInternalPos)==(?);
-  List_ANY_Var(Machine(Ludo_board),isFinished)==(?)
+  List_ANY_Var(Machine(Ludo_board),getPos)==(?)
 END
 &
 THEORY ListOfIdsX IS
-  List_Of_Ids(Machine(Ludo_board)) == (? | ? | internalPos,externalPos,lockedPieces | ? | clear,setFree,setExternalPos,setInternalPos,isFinished | ? | seen(Machine(Ludo_ctx)) | ? | Ludo_board);
+  List_Of_Ids(Machine(Ludo_board)) == (? | ? | internalPos,externalPos,lockedPieces | ? | clear,setFree,setExternalPos,setInternalPos,getPos | ? | seen(Machine(Ludo_ctx)) | ? | Ludo_board);
   List_Of_HiddenCst_Ids(Machine(Ludo_board)) == (? | ?);
   List_Of_VisibleCst_Ids(Machine(Ludo_board)) == (?);
   List_Of_VisibleVar_Ids(Machine(Ludo_board)) == (? | ?);
@@ -216,8 +216,8 @@ THEORY VariablesEnvX IS
 END
 &
 THEORY OperationsEnvX IS
-  Operations(Machine(Ludo_board)) == (Type(isFinished) == Cst(btype(BOOL,?,?),atype(COLORS,?,?));Type(setInternalPos) == Cst(No_type,atype(PIECES,?,?)*btype(INTEGER,?,?));Type(setExternalPos) == Cst(No_type,atype(PIECES,?,?)*btype(INTEGER,?,?));Type(setFree) == Cst(No_type,atype(PIECES,?,?));Type(clear) == Cst(No_type,No_type));
-  Observers(Machine(Ludo_board)) == (Type(isFinished) == Cst(btype(BOOL,?,?),atype(COLORS,?,?)))
+  Operations(Machine(Ludo_board)) == (Type(getPos) == Cst(btype(INTEGER,?,?)*btype(INTEGER,?,?),atype(PIECES,?,?));Type(setInternalPos) == Cst(No_type,atype(PIECES,?,?)*btype(INTEGER,?,?));Type(setExternalPos) == Cst(No_type,atype(PIECES,?,?)*btype(INTEGER,?,?));Type(setFree) == Cst(No_type,atype(PIECES,?,?));Type(clear) == Cst(No_type,No_type));
+  Observers(Machine(Ludo_board)) == (Type(getPos) == Cst(btype(INTEGER,?,?)*btype(INTEGER,?,?),atype(PIECES,?,?)))
 END
 &
 THEORY TCIntRdX IS

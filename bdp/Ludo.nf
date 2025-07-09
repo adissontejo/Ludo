@@ -309,7 +309,7 @@ THEORY ListOfIdsX IS
   List_Of_VisibleCst_Ids(Machine(Ludo_ctx)) == (colorOf,startPoint,colorsOrder,piecesOrder,numColors,numPiecesByColor,numPieces,numExternal,numInternal);
   List_Of_VisibleVar_Ids(Machine(Ludo_ctx)) == (? | ?);
   List_Of_Ids_SeenBNU(Machine(Ludo_ctx)) == (?: ?);
-  List_Of_Ids(Machine(Ludo_board)) == (? | ? | internalPos,externalPos,lockedPieces | ? | clear,setFree,setExternalPos,setInternalPos,isFinished | ? | seen(Machine(Ludo_ctx)) | ? | Ludo_board);
+  List_Of_Ids(Machine(Ludo_board)) == (? | ? | internalPos,externalPos,lockedPieces | ? | clear,setFree,setExternalPos,setInternalPos,getPos | ? | seen(Machine(Ludo_ctx)) | ? | Ludo_board);
   List_Of_HiddenCst_Ids(Machine(Ludo_board)) == (? | ?);
   List_Of_VisibleCst_Ids(Machine(Ludo_board)) == (?);
   List_Of_VisibleVar_Ids(Machine(Ludo_board)) == (? | ?);

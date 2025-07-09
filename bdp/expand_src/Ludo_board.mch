@@ -38,7 +38,7 @@ OPERATIONS
   clear =
     lockedPieces , externalPos , internalPos := PIECES , {} , {} ;
 
-  // peça uma peça, e se a quantidade de peças for menor que 2 na posição inicial, 
+  // peça uma peça, e se a quantidade de peças for menor que 2 na posição inicial,
   // ela libera a peça
   // regra de barreira
   setFree ( pp ) =
@@ -68,7 +68,7 @@ OPERATIONS
       THEN
         externalPos := ( externalPos |>> { nn } ) <+ { pp |-> nn } ||
         lockedPieces := lockedPieces \/ externalPos ~ [ { nn } ]
-      // } 
+      // }
       ELSE
         externalPos ( pp ) := nn
       END
@@ -81,8 +81,15 @@ OPERATIONS
       externalPos := { pp } <<| externalPos
     END ;
 
-  bb <-- isFinished ( color ) =
-      PRE color : COLORS
-      THEN bb := bool ( colorOf ~ [ { color } ] <: internalPos ~ [ { numInternal - 1 } ] )
+  ee , ii <-- getPos ( pp ) =
+    PRE pp : PIECES
+    THEN
+      IF pp : dom ( externalPos ) THEN
+          ee , ii := externalPos ( pp ) , - 1
+      ELSIF pp : dom ( internalPos ) THEN
+          ee , ii := - 1 , internalPos ( pp )
+      ELSE
+          ee , ii := - 1 , - 1
       END
+    END
 END

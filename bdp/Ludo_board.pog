@@ -2366,6 +2366,85 @@
             </Goal>
         </Simple_Goal>
     </Proof_Obligation>
+    <Proof_Obligation goalHash="86990263438910050">
+        <Tag>WellDefinedness_getPos</Tag>
+        <Definition name="B definitions"/>
+        <Definition name="ctx"/>
+        <Definition name="cst"/>
+        <Definition name="lprp"/>
+        <Definition name="inprp"/>
+        <Definition name="inext"/>
+        <Definition name="seext"/>
+        <Definition name="inv"/>
+        <Definition name="ass"/>
+        <Hypothesis>
+            <Exp_Comparison op=":">
+                <Id value="pp" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board.bxml:1:5:5:3:1:1"/>
+                <Id value="PIECES" typref="0" tag="C:\Metodos\projeto\bdp\Ludo_board.bxml:1:5:5:3:1:2"/>
+            </Exp_Comparison>
+        </Hypothesis>
+        <Local_Hyp num="1">
+            <Exp_Comparison op=":">
+                <Id value="pp" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board.bxml:1:5:5:4:1:1:1:1"/>
+                <Unary_Exp op="dom" typref="0">
+                    <Id value="externalPos" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board.bxml:1:5:5:4:1:1:1:2:1"/>
+                </Unary_Exp>
+            </Exp_Comparison>
+        </Local_Hyp>
+        <Local_Hyp num="2">
+            <Unary_Pred op="not">
+                <Exp_Comparison op=":">
+                    <Id value="pp" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board.bxml:1:5:5:4:1:1:1:1"/>
+                    <Unary_Exp op="dom" typref="0">
+                        <Id value="externalPos" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board.bxml:1:5:5:4:1:1:1:2:1"/>
+                    </Unary_Exp>
+                </Exp_Comparison>
+            </Unary_Pred>
+        </Local_Hyp>
+        <Local_Hyp num="3">
+            <Exp_Comparison op=":">
+                <Id value="pp" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board.bxml:1:5:5:4:1:3:1:1:1:1"/>
+                <Unary_Exp op="dom" typref="0">
+                    <Id value="internalPos" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board.bxml:1:5:5:4:1:3:1:1:1:2:1"/>
+                </Unary_Exp>
+            </Exp_Comparison>
+        </Local_Hyp>
+        <Simple_Goal>
+            <Tag>Operation is well defined</Tag>
+            <Ref_Hyp num="1"/>
+            <Goal>
+                <Exp_Comparison op=":">
+                    <Id value="externalPos" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board.bxml:1:5:5:4:1:2:1:2:1:1"/>
+                    <Binary_Exp op="+-&gt;" typref="3">
+                        <Unary_Exp op="dom" typref="0">
+                            <Id value="externalPos" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board.bxml:1:5:5:4:1:2:1:2:1:1"/>
+                        </Unary_Exp>
+                        <Unary_Exp op="ran" typref="0">
+                            <Id value="externalPos" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board.bxml:1:5:5:4:1:2:1:2:1:1"/>
+                        </Unary_Exp>
+                    </Binary_Exp>
+                </Exp_Comparison>
+            </Goal>
+        </Simple_Goal>
+        <Simple_Goal>
+            <Tag>Operation is well defined</Tag>
+            <Ref_Hyp num="2"/>
+            <Ref_Hyp num="3"/>
+            <Goal>
+                <Exp_Comparison op=":">
+                    <Id value="internalPos" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board.bxml:1:5:5:4:1:3:1:2:1:2:2:1"/>
+                    <Binary_Exp op="+-&gt;" typref="3">
+                        <Unary_Exp op="dom" typref="0">
+                            <Id value="internalPos" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board.bxml:1:5:5:4:1:3:1:2:1:2:2:1"/>
+                        </Unary_Exp>
+                        <Unary_Exp op="ran" typref="0">
+                            <Id value="internalPos" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board.bxml:1:5:5:4:1:3:1:2:1:2:2:1"/>
+                        </Unary_Exp>
+                    </Binary_Exp>
+                </Exp_Comparison>
+            </Goal>
+        </Simple_Goal>
+    </Proof_Obligation>
     <TypeInfos>
         <Type id="0">
             <Unary_Exp op="POW">

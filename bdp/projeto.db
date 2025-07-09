@@ -3,6 +3,7 @@
     <atelierb version="3_7_ubuntu-cvs" />
     <project decomp_dir="C:\Metodos\projeto\bdp\expand_src" old_decomp_dir="C:\Metodos\projeto\bdp\src">
         <!-- Definition directory list -->
+        <definition_dir path="C:\Metodos\projeto" />
         <!-- Proof mechanisms -->
         <!-- Component file list -->
         <component_file path="C:/Metodos/projeto" name="Ludo" suffix="mch" user="anaca">
@@ -19,6 +20,9 @@
         </component_file>
         <component_file path="C:/Metodos/projeto" name="Ludo_ctx_i" suffix="imp" user="anaca">
             <component name="Ludo_ctx_i" type="implementation" />
+        </component_file>
+        <component_file path="C:\Metodos\projeto" name="Ludo_i" suffix="imp" user="anaca">
+            <component name="Ludo_i" type="implementation" />
         </component_file>
         <component_file path="C:/Metodos/projeto" name="Ludo_turn" suffix="mch" user="anaca">
             <component name="Ludo_turn" type="specification" />

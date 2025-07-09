@@ -79,5 +79,17 @@ OPERATIONS
     THEN
       internalPos(pp) := nn ||
       externalPos := {pp} <<| externalPos
+    END;
+    
+  ee, ii <-- getPos(pp) = 
+    PRE pp : PIECES 
+    THEN 
+      IF pp : dom(externalPos) THEN 
+          ee, ii := externalPos(pp), -1
+      ELSIF pp : dom(internalPos) THEN 
+          ee, ii := -1, internalPos(pp)
+      ELSE 
+          ee, ii := -1, -1
+      END
     END
 END

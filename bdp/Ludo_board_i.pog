@@ -2245,8 +2245,8 @@
             </Goal>
         </Simple_Goal>
     </Proof_Obligation>
-    <Proof_Obligation goalHash="8055215629537406618">
-        <Tag>Operation_isFinished</Tag>
+    <Proof_Obligation goalHash="13902694171491914070">
+        <Tag>Operation_getPos</Tag>
         <Definition name="B definitions"/>
         <Definition name="ctx"/>
         <Definition name="mchcst"/>
@@ -2260,440 +2260,137 @@
         <Definition name="ass"/>
         <Local_Hyp num="1">
             <Exp_Comparison op=":">
-                <Id value="color" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:3:1:1"/>
-                <Id value="COLORS" typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:3:1:2"/>
+                <Id value="pp" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:3:1:1"/>
+                <Id value="PIECES" typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:3:1:2"/>
             </Exp_Comparison>
         </Local_Hyp>
         <Local_Hyp num="2">
             <Exp_Comparison op=":">
-                <Id value="ii" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:1:1"/>
-                <Binary_Exp op=".." typref="0">
-                    <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:1:2:1"/>
-                    <Id value="numPieces" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:1:2:2"/>
-                </Binary_Exp>
+                <Id value="pp" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:4:1:1:1:1"/>
+                <Unary_Exp op="dom" typref="0">
+                    <Id value="externalPos" typref="2" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:4:1:1:1:2:1"/>
+                </Unary_Exp>
             </Exp_Comparison>
         </Local_Hyp>
         <Local_Hyp num="3">
-            <Binary_Pred op="&lt;=&gt;">
-                <Exp_Comparison op="=">
-                    <Id value="bb" typref="6" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:1:1,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:1:1,"/>
-                    <Boolean_Literal value="TRUE" typref="6" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:1:2"/>
+            <Unary_Pred op="not">
+                <Exp_Comparison op=":">
+                    <Id value="pp" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:4:1:1:1:1"/>
+                    <Unary_Exp op="dom" typref="0">
+                        <Id value="externalPos" typref="2" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:4:1:1:1:2:1"/>
+                    </Unary_Exp>
                 </Exp_Comparison>
-                <Exp_Comparison op="&lt;:">
-                    <Binary_Exp op="/\" typref="0">
-                        <Binary_Exp op="[" typref="0">
-                            <Unary_Exp op="~" typref="2">
-                                <Id value="colorOf" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:1:1:1"/>
-                            </Unary_Exp>
-                            <Nary_Exp op="{" typref="0">
-                                <Id value="color" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:1:2:1"/>
-                            </Nary_Exp>
-                        </Binary_Exp>
-                        <Binary_Exp op="[" typref="0">
-                            <Id value="piecesOrder" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:2:1"/>
-                            <Binary_Exp op=".." typref="0">
-                                <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:2:2:1"/>
-                                <Binary_Exp op="-i" typref="1">
-                                    <Id value="ii" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:2:2:2:1"/>
-                                    <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:2:2:2:2"/>
-                                </Binary_Exp>
-                            </Binary_Exp>
-                        </Binary_Exp>
-                    </Binary_Exp>
-                    <Binary_Exp op="[" typref="0">
-                        <Unary_Exp op="~" typref="2">
-                            <Id value="internalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:2,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:2:1:1,"/>
-                        </Unary_Exp>
-                        <Nary_Exp op="{" typref="0">
-                            <Binary_Exp op="-i" typref="1">
-                                <Id value="numInternal" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:2:2:1:1"/>
-                                <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:2:2:1:2"/>
-                            </Binary_Exp>
-                        </Nary_Exp>
-                    </Binary_Exp>
-                </Exp_Comparison>
-            </Binary_Pred>
+            </Unary_Pred>
         </Local_Hyp>
         <Local_Hyp num="4">
-            <Exp_Comparison op="&lt;i">
-                <Id value="ii" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:1:1:1:1"/>
-                <Id value="numPieces" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:1:1:1:2"/>
+            <Exp_Comparison op=":">
+                <Id value="pp" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:4:1:3:1:1:1:1"/>
+                <Unary_Exp op="dom" typref="0">
+                    <Id value="internalPos" typref="2" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:4:1:3:1:1:1:2:1"/>
+                </Unary_Exp>
             </Exp_Comparison>
         </Local_Hyp>
         <Local_Hyp num="5">
-            <Exp_Comparison op="=">
-                <Id value="bb" typref="6" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:1:1,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:1:1:2:1,"/>
-                <Boolean_Literal value="TRUE" typref="6" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:1:1:2:2"/>
-            </Exp_Comparison>
-        </Local_Hyp>
-        <Local_Hyp num="6">
-            <Exp_Comparison op="=">
-                <Binary_Exp op="(" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:4:1:1:1:1">
-                    <Id value="colorOf" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:2:2:1:1"/>
-                    <Binary_Exp op="(" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:2:2:1:2">
-                        <Id value="piecesOrder" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:1:2:1:1"/>
-                        <Id value="ii" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:1:2:1:2"/>
-                    </Binary_Exp>
-                </Binary_Exp>
-                <Id value="color" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:4:1:1:1:2"/>
-            </Exp_Comparison>
-        </Local_Hyp>
-        <Local_Hyp num="7">
             <Unary_Pred op="not">
-                <Exp_Comparison op="=">
-                    <Binary_Exp op="(" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:4:1:1:2:1">
-                        <Id value="internalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:2,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:3:2:1:1,"/>
-                        <Binary_Exp op="(" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:3:2:1:2">
-                            <Id value="piecesOrder" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:1:2:1:1"/>
-                            <Id value="ii" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:1:2:1:2"/>
-                        </Binary_Exp>
-                    </Binary_Exp>
-                    <Binary_Exp op="-i" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:4:1:1:2:2">
-                        <Id value="numInternal" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:2:2:1:1"/>
-                        <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:2:2:1:2"/>
-                    </Binary_Exp>
+                <Exp_Comparison op=":">
+                    <Id value="pp" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:4:1:3:1:1:1:1"/>
+                    <Unary_Exp op="dom" typref="0">
+                        <Id value="internalPos" typref="2" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:4:1:3:1:1:1:2:1"/>
+                    </Unary_Exp>
                 </Exp_Comparison>
             </Unary_Pred>
         </Local_Hyp>
-        <Local_Hyp num="8">
-            <Unary_Pred op="not">
-                <Nary_Pred op="&amp;">
-                    <Exp_Comparison op="=">
-                        <Binary_Exp op="(" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:4:1:1:1:1">
-                            <Id value="colorOf" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:2:2:1:1"/>
-                            <Binary_Exp op="(" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:2:2:1:2">
-                                <Id value="piecesOrder" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:1:2:1:1"/>
-                                <Id value="ii" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:1:2:1:2"/>
-                            </Binary_Exp>
-                        </Binary_Exp>
-                        <Id value="color" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:4:1:1:1:2"/>
-                    </Exp_Comparison>
-                    <Unary_Pred op="not">
-                        <Exp_Comparison op="=">
-                            <Binary_Exp op="(" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:4:1:1:2:1">
-                                <Id value="internalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:2,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:3:2:1:1,"/>
-                                <Binary_Exp op="(" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:3:2:1:2">
-                                    <Id value="piecesOrder" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:1:2:1:1"/>
-                                    <Id value="ii" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:1:2:1:2"/>
-                                </Binary_Exp>
-                            </Binary_Exp>
-                            <Binary_Exp op="-i" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:4:1:1:2:2">
-                                <Id value="numInternal" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:2:2:1:1"/>
-                                <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:2:2:1:2"/>
-                            </Binary_Exp>
-                        </Exp_Comparison>
-                    </Unary_Pred>
-                </Nary_Pred>
-            </Unary_Pred>
-        </Local_Hyp>
-        <Local_Hyp num="9">
-            <Unary_Pred op="not">
-                <Nary_Pred op="&amp;">
-                    <Exp_Comparison op="&lt;i">
-                        <Id value="ii" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:1:1:1:1"/>
-                        <Id value="numPieces" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:1:1:1:2"/>
-                    </Exp_Comparison>
-                    <Exp_Comparison op="=">
-                        <Id value="bb" typref="6" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:1:1,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:1:1:2:1,"/>
-                        <Boolean_Literal value="TRUE" typref="6" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:1:1:2:2"/>
-                    </Exp_Comparison>
-                </Nary_Pred>
-            </Unary_Pred>
-        </Local_Hyp>
         <Simple_Goal>
-            <Tag>Loop initialisation</Tag>
-            <Ref_Hyp num="1"/>
-            <Goal>
-                <Exp_Comparison op=":">
-                    <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:1:1,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:1:2:1"/>
-                    <Binary_Exp op=".." typref="0">
-                        <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:1:2:1"/>
-                        <Id value="numPieces" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:1:2:2"/>
-                    </Binary_Exp>
-                </Exp_Comparison>
-            </Goal>
-        </Simple_Goal>
-        <Simple_Goal>
-            <Tag>Loop initialisation</Tag>
-            <Ref_Hyp num="1"/>
-            <Goal>
-                <Exp_Comparison op="&lt;:">
-                    <Binary_Exp op="/\" typref="0">
-                        <Binary_Exp op="[" typref="0">
-                            <Unary_Exp op="~" typref="2">
-                                <Id value="colorOf" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:1:1:1"/>
-                            </Unary_Exp>
-                            <Nary_Exp op="{" typref="0">
-                                <Id value="color" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:1:2:1"/>
-                            </Nary_Exp>
-                        </Binary_Exp>
-                        <Binary_Exp op="[" typref="0">
-                            <Id value="piecesOrder" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:2:1"/>
-                            <Binary_Exp op=".." typref="0">
-                                <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:2:2:1"/>
-                                <Binary_Exp op="-i" typref="1">
-                                    <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:2:2:2:1,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:1:2:1"/>
-                                    <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:2:2:2:2"/>
-                                </Binary_Exp>
-                            </Binary_Exp>
-                        </Binary_Exp>
-                    </Binary_Exp>
-                    <Binary_Exp op="[" typref="0">
-                        <Unary_Exp op="~" typref="2">
-                            <Id value="internalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:2,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:2:1:1,"/>
-                        </Unary_Exp>
-                        <Nary_Exp op="{" typref="0">
-                            <Binary_Exp op="-i" typref="1">
-                                <Id value="numInternal" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:2:2:1:1"/>
-                                <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:2:2:1:2"/>
-                            </Binary_Exp>
-                        </Nary_Exp>
-                    </Binary_Exp>
-                </Exp_Comparison>
-            </Goal>
-        </Simple_Goal>
-        <Simple_Goal>
-            <Tag>Loop invariant is preserved</Tag>
+            <Tag>Refinement is correct</Tag>
             <Ref_Hyp num="1"/>
             <Ref_Hyp num="2"/>
-            <Ref_Hyp num="3"/>
-            <Ref_Hyp num="4"/>
-            <Ref_Hyp num="5"/>
-            <Ref_Hyp num="6"/>
-            <Ref_Hyp num="7"/>
-            <Goal>
-                <Exp_Comparison op=":">
-                    <Binary_Exp op="+i" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:1:1">
-                        <Id value="ii" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:5:2:1:1"/>
-                        <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:5:2:1:2"/>
-                    </Binary_Exp>
-                    <Binary_Exp op=".." typref="0">
-                        <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:1:2:1"/>
-                        <Id value="numPieces" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:1:2:2"/>
-                    </Binary_Exp>
-                </Exp_Comparison>
-            </Goal>
-        </Simple_Goal>
-        <Simple_Goal>
-            <Tag>Loop invariant is preserved</Tag>
-            <Ref_Hyp num="1"/>
-            <Ref_Hyp num="2"/>
-            <Ref_Hyp num="3"/>
-            <Ref_Hyp num="4"/>
-            <Ref_Hyp num="5"/>
-            <Ref_Hyp num="6"/>
-            <Ref_Hyp num="7"/>
-            <Goal>
-                <Unary_Pred op="not">
-                    <Exp_Comparison op="&lt;:">
-                        <Binary_Exp op="/\" typref="0">
-                            <Binary_Exp op="[" typref="0">
-                                <Unary_Exp op="~" typref="2">
-                                    <Id value="colorOf" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:1:1:1"/>
-                                </Unary_Exp>
-                                <Nary_Exp op="{" typref="0">
-                                    <Id value="color" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:1:2:1"/>
-                                </Nary_Exp>
-                            </Binary_Exp>
-                            <Binary_Exp op="[" typref="0">
-                                <Id value="piecesOrder" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:2:1"/>
-                                <Binary_Exp op=".." typref="0">
-                                    <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:2:2:1"/>
-                                    <Binary_Exp op="-i" typref="1">
-                                        <Binary_Exp op="+i" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:2:2:2:1">
-                                            <Id value="ii" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:5:2:1:1"/>
-                                            <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:5:2:1:2"/>
-                                        </Binary_Exp>
-                                        <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:2:2:2:2"/>
-                                    </Binary_Exp>
-                                </Binary_Exp>
-                            </Binary_Exp>
-                        </Binary_Exp>
-                        <Binary_Exp op="[" typref="0">
-                            <Unary_Exp op="~" typref="2">
-                                <Id value="internalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:2,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:2:1:1,"/>
-                            </Unary_Exp>
-                            <Nary_Exp op="{" typref="0">
-                                <Binary_Exp op="-i" typref="1">
-                                    <Id value="numInternal" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:2:2:1:1"/>
-                                    <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:2:2:1:2"/>
-                                </Binary_Exp>
-                            </Nary_Exp>
-                        </Binary_Exp>
-                    </Exp_Comparison>
-                </Unary_Pred>
-            </Goal>
-        </Simple_Goal>
-        <Simple_Goal>
-            <Tag>Loop invariant is preserved</Tag>
-            <Ref_Hyp num="1"/>
-            <Ref_Hyp num="2"/>
-            <Ref_Hyp num="3"/>
-            <Ref_Hyp num="4"/>
-            <Ref_Hyp num="5"/>
-            <Ref_Hyp num="8"/>
-            <Goal>
-                <Exp_Comparison op=":">
-                    <Binary_Exp op="+i" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:1:1">
-                        <Id value="ii" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:5:2:1:1"/>
-                        <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:5:2:1:2"/>
-                    </Binary_Exp>
-                    <Binary_Exp op=".." typref="0">
-                        <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:1:2:1"/>
-                        <Id value="numPieces" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:1:2:2"/>
-                    </Binary_Exp>
-                </Exp_Comparison>
-            </Goal>
-        </Simple_Goal>
-        <Simple_Goal>
-            <Tag>Loop invariant is preserved</Tag>
-            <Ref_Hyp num="1"/>
-            <Ref_Hyp num="2"/>
-            <Ref_Hyp num="3"/>
-            <Ref_Hyp num="4"/>
-            <Ref_Hyp num="5"/>
-            <Ref_Hyp num="8"/>
-            <Goal>
-                <Binary_Pred op="&lt;=&gt;">
-                    <Exp_Comparison op="=">
-                        <Id value="bb" typref="6" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:1:1,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:1:1,"/>
-                        <Boolean_Literal value="TRUE" typref="6" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:1:2"/>
-                    </Exp_Comparison>
-                    <Exp_Comparison op="&lt;:">
-                        <Binary_Exp op="/\" typref="0">
-                            <Binary_Exp op="[" typref="0">
-                                <Unary_Exp op="~" typref="2">
-                                    <Id value="colorOf" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:1:1:1"/>
-                                </Unary_Exp>
-                                <Nary_Exp op="{" typref="0">
-                                    <Id value="color" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:1:2:1"/>
-                                </Nary_Exp>
-                            </Binary_Exp>
-                            <Binary_Exp op="[" typref="0">
-                                <Id value="piecesOrder" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:2:1"/>
-                                <Binary_Exp op=".." typref="0">
-                                    <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:2:2:1"/>
-                                    <Binary_Exp op="-i" typref="1">
-                                        <Binary_Exp op="+i" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:2:2:2:1">
-                                            <Id value="ii" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:5:2:1:1"/>
-                                            <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:5:2:1:2"/>
-                                        </Binary_Exp>
-                                        <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:2:2:2:2"/>
-                                    </Binary_Exp>
-                                </Binary_Exp>
-                            </Binary_Exp>
-                        </Binary_Exp>
-                        <Binary_Exp op="[" typref="0">
-                            <Unary_Exp op="~" typref="2">
-                                <Id value="internalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:2,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:2:1:1,"/>
-                            </Unary_Exp>
-                            <Nary_Exp op="{" typref="0">
-                                <Binary_Exp op="-i" typref="1">
-                                    <Id value="numInternal" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:2:2:1:1"/>
-                                    <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:2:2:1:2"/>
-                                </Binary_Exp>
-                            </Nary_Exp>
-                        </Binary_Exp>
-                    </Exp_Comparison>
-                </Binary_Pred>
-            </Goal>
-        </Simple_Goal>
-        <Simple_Goal>
-            <Tag>Loop variant is positive</Tag>
-            <Ref_Hyp num="1"/>
-            <Ref_Hyp num="2"/>
-            <Ref_Hyp num="3"/>
-            <Goal>
-                <Exp_Comparison op="&lt;=i">
-                    <Integer_Literal value="0" typref="1"/>
-                    <Binary_Exp op="-i" typref="1">
-                        <Id value="numPieces" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:4:1:1"/>
-                        <Id value="ii" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:4:1:2"/>
-                    </Binary_Exp>
-                </Exp_Comparison>
-            </Goal>
-        </Simple_Goal>
-        <Simple_Goal>
-            <Tag>Variant is decreasing</Tag>
-            <Ref_Hyp num="1"/>
-            <Ref_Hyp num="2"/>
-            <Ref_Hyp num="3"/>
-            <Ref_Hyp num="4"/>
-            <Ref_Hyp num="5"/>
-            <Ref_Hyp num="6"/>
-            <Ref_Hyp num="7"/>
-            <Goal>
-                <Exp_Comparison op="&lt;i">
-                    <Binary_Exp op="-i" typref="1">
-                        <Id value="numPieces" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:4:1:1"/>
-                        <Binary_Exp op="+i" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:4:1:2">
-                            <Id value="ii" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:5:2:1:1"/>
-                            <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:5:2:1:2"/>
-                        </Binary_Exp>
-                    </Binary_Exp>
-                    <Binary_Exp op="-i" typref="1">
-                        <Id value="numPieces" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:4:1:1"/>
-                        <Id value="ii" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:4:1:2"/>
-                    </Binary_Exp>
-                </Exp_Comparison>
-            </Goal>
-        </Simple_Goal>
-        <Simple_Goal>
-            <Tag>Variant is decreasing</Tag>
-            <Ref_Hyp num="1"/>
-            <Ref_Hyp num="2"/>
-            <Ref_Hyp num="3"/>
-            <Ref_Hyp num="4"/>
-            <Ref_Hyp num="5"/>
-            <Ref_Hyp num="8"/>
-            <Goal>
-                <Exp_Comparison op="&lt;i">
-                    <Binary_Exp op="-i" typref="1">
-                        <Id value="numPieces" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:4:1:1"/>
-                        <Binary_Exp op="+i" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:4:1:2">
-                            <Id value="ii" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:5:2:1:1"/>
-                            <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:5:2:1:2"/>
-                        </Binary_Exp>
-                    </Binary_Exp>
-                    <Binary_Exp op="-i" typref="1">
-                        <Id value="numPieces" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:4:1:1"/>
-                        <Id value="ii" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:4:1:2"/>
-                    </Binary_Exp>
-                </Exp_Comparison>
-            </Goal>
-        </Simple_Goal>
-        <Simple_Goal>
-            <Tag>End of loop</Tag>
-            <Ref_Hyp num="1"/>
-            <Ref_Hyp num="2"/>
-            <Ref_Hyp num="3"/>
-            <Ref_Hyp num="9"/>
             <Goal>
                 <Exp_Comparison op="=">
-                    <Id value="bb" typref="6" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:1:1"/>
-                    <Boolean_Exp typref="6">
-                        <Exp_Comparison op="&lt;:">
-                            <Binary_Exp op="[" typref="0">
-                                <Unary_Exp op="~" typref="2">
-                                    <Id value="colorOf" typref="2" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:4:1:2:1:1:1:1:1"/>
-                                </Unary_Exp>
-                                <Nary_Exp op="{" typref="0">
-                                    <Id value="color" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:4:1:2:1:1:1:2:1"/>
-                                </Nary_Exp>
-                            </Binary_Exp>
-                            <Binary_Exp op="[" typref="0">
-                                <Unary_Exp op="~" typref="2">
-                                    <Id value="internalPos" typref="2" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:4:1:2:1:1:2:1:1"/>
-                                </Unary_Exp>
-                                <Nary_Exp op="{" typref="0">
-                                    <Binary_Exp op="-i" typref="1">
-                                        <Id value="numInternal" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:4:1:2:1:1:2:2:1:1"/>
-                                        <Integer_Literal value="1" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:4:1:2:1:1:2:2:1:2"/>
-                                    </Binary_Exp>
-                                </Nary_Exp>
-                            </Binary_Exp>
-                        </Exp_Comparison>
-                    </Boolean_Exp>
+                    <Binary_Exp op="(" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:1:1">
+                        <Id value="externalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:1,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:1:2:1:1,"/>
+                        <Id value="pp" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:1:2:1:2"/>
+                    </Binary_Exp>
+                    <Binary_Exp op="(" typref="1">
+                        <Id value="externalPos" typref="2" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:4:1:2:1:2:1:1"/>
+                        <Id value="pp" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:4:1:2:1:2:1:2"/>
+                    </Binary_Exp>
+                </Exp_Comparison>
+            </Goal>
+        </Simple_Goal>
+        <Simple_Goal>
+            <Tag>Refinement is correct</Tag>
+            <Ref_Hyp num="1"/>
+            <Ref_Hyp num="2"/>
+            <Goal>
+                <Exp_Comparison op="=">
+                    <Binary_Exp op="(" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:1:2">
+                        <Id value="internalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:2,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:1,"/>
+                        <Id value="pp" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:2"/>
+                    </Binary_Exp>
+                    <Integer_Literal value="-1" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:4:1:2:1:2:2"/>
+                </Exp_Comparison>
+            </Goal>
+        </Simple_Goal>
+        <Simple_Goal>
+            <Tag>Refinement is correct</Tag>
+            <Ref_Hyp num="1"/>
+            <Ref_Hyp num="3"/>
+            <Ref_Hyp num="4"/>
+            <Goal>
+                <Exp_Comparison op="=">
+                    <Binary_Exp op="(" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:1:1">
+                        <Id value="externalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:1,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:1:2:1:1,"/>
+                        <Id value="pp" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:1:2:1:2"/>
+                    </Binary_Exp>
+                    <Integer_Literal value="-1" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:4:1:3:1:2:1:2:1"/>
+                </Exp_Comparison>
+            </Goal>
+        </Simple_Goal>
+        <Simple_Goal>
+            <Tag>Refinement is correct</Tag>
+            <Ref_Hyp num="1"/>
+            <Ref_Hyp num="3"/>
+            <Ref_Hyp num="4"/>
+            <Goal>
+                <Exp_Comparison op="=">
+                    <Binary_Exp op="(" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:1:2">
+                        <Id value="internalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:2,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:1,"/>
+                        <Id value="pp" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:2"/>
+                    </Binary_Exp>
+                    <Binary_Exp op="(" typref="1">
+                        <Id value="internalPos" typref="2" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:4:1:3:1:2:1:2:2:1"/>
+                        <Id value="pp" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:4:1:3:1:2:1:2:2:2"/>
+                    </Binary_Exp>
+                </Exp_Comparison>
+            </Goal>
+        </Simple_Goal>
+        <Simple_Goal>
+            <Tag>Refinement is correct</Tag>
+            <Ref_Hyp num="1"/>
+            <Ref_Hyp num="3"/>
+            <Ref_Hyp num="5"/>
+            <Goal>
+                <Exp_Comparison op="=">
+                    <Binary_Exp op="(" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:1:1">
+                        <Id value="externalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:1,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:1:2:1:1,"/>
+                        <Id value="pp" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:1:2:1:2"/>
+                    </Binary_Exp>
+                    <Integer_Literal value="-1" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:4:1:3:1:3:1:2:1"/>
+                </Exp_Comparison>
+            </Goal>
+        </Simple_Goal>
+        <Simple_Goal>
+            <Tag>Refinement is correct</Tag>
+            <Ref_Hyp num="1"/>
+            <Ref_Hyp num="3"/>
+            <Ref_Hyp num="5"/>
+            <Goal>
+                <Exp_Comparison op="=">
+                    <Binary_Exp op="(" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:1:2">
+                        <Id value="internalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:2,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:1,"/>
+                        <Id value="pp" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:2"/>
+                    </Binary_Exp>
+                    <Integer_Literal value="-1" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:4:1:3:1:3:1:2:2"/>
                 </Exp_Comparison>
             </Goal>
         </Simple_Goal>
@@ -3357,8 +3054,8 @@
             </Goal>
         </Simple_Goal>
     </Proof_Obligation>
-    <Proof_Obligation goalHash="14131020805396541137">
-        <Tag>WellDefinedness_isFinished</Tag>
+    <Proof_Obligation goalHash="7589656304848256866">
+        <Tag>WellDefinedness_getPos</Tag>
         <Definition name="B definitions"/>
         <Definition name="ctx"/>
         <Definition name="mchcst"/>
@@ -3372,102 +3069,32 @@
         <Definition name="ass"/>
         <Hypothesis>
             <Exp_Comparison op=":">
-                <Id value="color" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:3:1:1"/>
-                <Id value="COLORS" typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:3:1:2"/>
+                <Id value="pp" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:3:1:1"/>
+                <Id value="PIECES" typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_board.bxml:1:5:5:3:1:2"/>
             </Exp_Comparison>
         </Hypothesis>
-        <Local_Hyp num="1">
-            <Exp_Comparison op=":">
-                <Id value="ii" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:1:1"/>
-                <Binary_Exp op=".." typref="0">
-                    <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:1:2:1"/>
-                    <Id value="numPieces" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:1:2:2"/>
-                </Binary_Exp>
-            </Exp_Comparison>
-        </Local_Hyp>
-        <Local_Hyp num="2">
-            <Binary_Pred op="&lt;=&gt;">
-                <Exp_Comparison op="=">
-                    <Id value="bb" typref="6" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:1:1,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:1:1,"/>
-                    <Boolean_Literal value="TRUE" typref="6" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:1:2"/>
-                </Exp_Comparison>
-                <Exp_Comparison op="&lt;:">
-                    <Binary_Exp op="/\" typref="0">
-                        <Binary_Exp op="[" typref="0">
-                            <Unary_Exp op="~" typref="2">
-                                <Id value="colorOf" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:1:1:1"/>
-                            </Unary_Exp>
-                            <Nary_Exp op="{" typref="0">
-                                <Id value="color" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:1:2:1"/>
-                            </Nary_Exp>
-                        </Binary_Exp>
-                        <Binary_Exp op="[" typref="0">
-                            <Id value="piecesOrder" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:2:1"/>
-                            <Binary_Exp op=".." typref="0">
-                                <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:2:2:1"/>
-                                <Binary_Exp op="-i" typref="1">
-                                    <Id value="ii" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:2:2:2:1"/>
-                                    <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:1:2:2:2:2"/>
-                                </Binary_Exp>
-                            </Binary_Exp>
-                        </Binary_Exp>
-                    </Binary_Exp>
-                    <Binary_Exp op="[" typref="0">
-                        <Unary_Exp op="~" typref="2">
-                            <Id value="internalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:2,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:2:1:1,"/>
-                        </Unary_Exp>
-                        <Nary_Exp op="{" typref="0">
-                            <Binary_Exp op="-i" typref="1">
-                                <Id value="numInternal" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:2:2:1:1"/>
-                                <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:3:1:4:2:2:2:1:2"/>
-                            </Binary_Exp>
-                        </Nary_Exp>
-                    </Binary_Exp>
-                </Exp_Comparison>
-            </Binary_Pred>
-        </Local_Hyp>
-        <Local_Hyp num="3">
-            <Exp_Comparison op="&lt;i">
-                <Id value="ii" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:1:1:1:1"/>
-                <Id value="numPieces" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:1:1:1:2"/>
-            </Exp_Comparison>
-        </Local_Hyp>
-        <Local_Hyp num="4">
-            <Exp_Comparison op="=">
-                <Id value="bb" typref="6" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:1:1,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:1:1:2:1,"/>
-                <Boolean_Literal value="TRUE" typref="6" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:1:1:2:2"/>
-            </Exp_Comparison>
-        </Local_Hyp>
         <Simple_Goal>
             <Tag>Operation is well defined</Tag>
-            <Ref_Hyp num="1"/>
-            <Ref_Hyp num="2"/>
-            <Ref_Hyp num="3"/>
-            <Ref_Hyp num="4"/>
             <Goal>
                 <Exp_Comparison op=":">
-                    <Id value="ii" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:1:2:1:2"/>
+                    <Id value="pp" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:1:2:1:2"/>
                     <Unary_Exp op="dom" typref="0">
-                        <Id value="piecesOrder" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:1:2:1:1"/>
+                        <Id value="externalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:1,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:1:2:1:1,"/>
                     </Unary_Exp>
                 </Exp_Comparison>
             </Goal>
         </Simple_Goal>
         <Simple_Goal>
             <Tag>Operation is well defined</Tag>
-            <Ref_Hyp num="1"/>
-            <Ref_Hyp num="2"/>
-            <Ref_Hyp num="3"/>
-            <Ref_Hyp num="4"/>
             <Goal>
                 <Exp_Comparison op=":">
-                    <Id value="piecesOrder" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:1:2:1:1"/>
+                    <Id value="externalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:1,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:1:2:1:1,"/>
                     <Binary_Exp op="+-&gt;" typref="3">
                         <Unary_Exp op="dom" typref="0">
-                            <Id value="piecesOrder" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:1:2:1:1"/>
+                            <Id value="externalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:1,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:1:2:1:1,"/>
                         </Unary_Exp>
                         <Unary_Exp op="ran" typref="0">
-                            <Id value="piecesOrder" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:1:2:1:1"/>
+                            <Id value="externalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:1,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:1:2:1:1,"/>
                         </Unary_Exp>
                     </Binary_Exp>
                 </Exp_Comparison>
@@ -3475,75 +3102,26 @@
         </Simple_Goal>
         <Simple_Goal>
             <Tag>Operation is well defined</Tag>
-            <Ref_Hyp num="1"/>
-            <Ref_Hyp num="2"/>
-            <Ref_Hyp num="3"/>
-            <Ref_Hyp num="4"/>
             <Goal>
                 <Exp_Comparison op=":">
-                    <Binary_Exp op="(" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:2:2:1:2">
-                        <Id value="piecesOrder" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:1:2:1:1"/>
-                        <Id value="ii" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:1:2:1:2"/>
-                    </Binary_Exp>
+                    <Id value="pp" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:2"/>
                     <Unary_Exp op="dom" typref="0">
-                        <Id value="colorOf" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:2:2:1:1"/>
+                        <Id value="internalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:2,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:1,"/>
                     </Unary_Exp>
                 </Exp_Comparison>
             </Goal>
         </Simple_Goal>
         <Simple_Goal>
             <Tag>Operation is well defined</Tag>
-            <Ref_Hyp num="1"/>
-            <Ref_Hyp num="2"/>
-            <Ref_Hyp num="3"/>
-            <Ref_Hyp num="4"/>
             <Goal>
                 <Exp_Comparison op=":">
-                    <Id value="colorOf" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:2:2:1:1"/>
+                    <Id value="internalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:2,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:1,"/>
                     <Binary_Exp op="+-&gt;" typref="3">
                         <Unary_Exp op="dom" typref="0">
-                            <Id value="colorOf" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:2:2:1:1"/>
+                            <Id value="internalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:2,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:1,"/>
                         </Unary_Exp>
                         <Unary_Exp op="ran" typref="0">
-                            <Id value="colorOf" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:2:2:1:1"/>
-                        </Unary_Exp>
-                    </Binary_Exp>
-                </Exp_Comparison>
-            </Goal>
-        </Simple_Goal>
-        <Simple_Goal>
-            <Tag>Operation is well defined</Tag>
-            <Ref_Hyp num="1"/>
-            <Ref_Hyp num="2"/>
-            <Ref_Hyp num="3"/>
-            <Ref_Hyp num="4"/>
-            <Goal>
-                <Exp_Comparison op=":">
-                    <Binary_Exp op="(" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:3:2:1:2">
-                        <Id value="piecesOrder" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:1:2:1:1"/>
-                        <Id value="ii" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:1:2:1:2"/>
-                    </Binary_Exp>
-                    <Unary_Exp op="dom" typref="0">
-                        <Id value="internalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:2,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:3:2:1:1,"/>
-                    </Unary_Exp>
-                </Exp_Comparison>
-            </Goal>
-        </Simple_Goal>
-        <Simple_Goal>
-            <Tag>Operation is well defined</Tag>
-            <Ref_Hyp num="1"/>
-            <Ref_Hyp num="2"/>
-            <Ref_Hyp num="3"/>
-            <Ref_Hyp num="4"/>
-            <Goal>
-                <Exp_Comparison op=":">
-                    <Id value="internalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:2,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:3:2:1:1,"/>
-                    <Binary_Exp op="+-&gt;" typref="3">
-                        <Unary_Exp op="dom" typref="0">
-                            <Id value="internalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:2,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:3:2:1:1,"/>
-                        </Unary_Exp>
-                        <Unary_Exp op="ran" typref="0">
-                            <Id value="internalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:2,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:3:2:1:3:2:1:1,"/>
+                            <Id value="internalBoard" suffix="1" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:3:2,C:\Metodos\projeto\bdp\Ludo_board_i.bxml:1:6:5:3:1:2:2:1:1,"/>
                         </Unary_Exp>
                     </Binary_Exp>
                 </Exp_Comparison>

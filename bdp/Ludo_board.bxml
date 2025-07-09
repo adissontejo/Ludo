@@ -1311,126 +1311,213 @@
 </Nary_Sub>
 </Body>
 </Operation>
-<Operation name='isFinished'>
+<Operation name='getPos'>
 <Attr>
-<Pos l='84' c='3' s='2' endLine='87'/>
+<Pos l='84' c='3' s='2' endLine='94'/>
 </Attr>
 <Output_Parameters>
-<Id value='bb' typref='0'>
+<Id value='ee' typref='1'>
 <Attr>
 <Pos l='84' c='3' s='2'/>
 </Attr>
 </Id>
+<Id value='ii' typref='1'>
+<Attr>
+<Pos l='84' c='7' s='2'/>
+</Attr>
+</Id>
 </Output_Parameters>
 <Input_Parameters>
-<Id value='color' typref='14'>
+<Id value='pp' typref='13'>
 <Attr>
-<Pos l='84' c='21' s='5'/>
+<Pos l='84' c='21' s='2'/>
 </Attr>
 </Id>
 </Input_Parameters>
 <Precondition>
 <Exp_Comparison op=':'>
 <Attr>
-<Pos l='85' c='17' s='1'/>
+<Pos l='85' c='12' s='1'/>
 </Attr>
-<Id value='color' typref='14'>
+<Id value='pp' typref='13'>
 <Attr>
-<Pos l='85' c='11' s='5'/>
+<Pos l='85' c='9' s='2'/>
 </Attr>
 </Id>
-<Id value='COLORS' typref='9'>
+<Id value='PIECES' typref='4'>
 <Attr>
-<Pos l='85' c='19' s='6'/>
+<Pos l='85' c='14' s='6'/>
 </Attr>
 </Id>
 </Exp_Comparison>
 </Precondition>
 <Body>
+<If_Sub elseif='no'>
+<Attr>
+<Pos l='87' c='7' s='2'/>
+</Attr>
+<Condition>
+<Exp_Comparison op=':'>
+<Attr>
+<Pos l='87' c='13' s='1'/>
+</Attr>
+<Id value='pp' typref='13'>
+<Attr>
+<Pos l='87' c='10' s='2'/>
+</Attr>
+</Id>
+<Unary_Exp op='dom' typref='4'>
+<Attr>
+<Pos l='87' c='15' s='3'/>
+</Attr>
+<Id value='externalPos' typref='5'>
+<Attr>
+<Pos l='87' c='19' s='11'/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+</Condition>
+<Then>
 <Assignement_Sub>
 <Attr>
-<Pos l='86' c='15' s='2'/>
+<Pos l='88' c='18' s='2'/>
 </Attr>
 <Variables>
-<Id value='bb' typref='0'>
+<Id value='ee' typref='1'>
 <Attr>
-<Pos l='86' c='12' s='2'/>
+<Pos l='88' c='11' s='2'/>
+</Attr>
+</Id>
+<Id value='ii' typref='1'>
+<Attr>
+<Pos l='88' c='15' s='2'/>
 </Attr>
 </Id>
 </Variables>
 <Values>
-<Boolean_Exp typref='0'>
+<Binary_Exp op='(' typref='1'>
 <Attr>
-<Pos l='86' c='18' s='4'/>
+<Pos l='88' c='32' s='0'/>
 </Attr>
-<Exp_Comparison op='&lt;:'>
+<Id value='externalPos' typref='5'>
 <Attr>
-<Pos l='86' c='41' s='2'/>
-</Attr>
-<Binary_Exp op='[' typref='4'>
-<Attr>
-<Pos l='86' c='23' s='7'/>
-</Attr>
-<Unary_Exp op='~' typref='16'>
-<Attr>
-<Pos l='86' c='23' s='7'/>
-</Attr>
-<Id value='colorOf' typref='12'>
-<Attr>
-<Pos l='86' c='23' s='7'/>
+<Pos l='88' c='21' s='11'/>
 </Attr>
 </Id>
-</Unary_Exp>
-<Nary_Exp op='{' typref='9'>
+<Id value='pp' typref='13'>
 <Attr>
-<Pos l='86' c='32' s='1'/>
-</Attr>
-<Id value='color' typref='14'>
-<Attr>
-<Pos l='86' c='33' s='5'/>
+<Pos l='88' c='33' s='2'/>
 </Attr>
 </Id>
-</Nary_Exp>
 </Binary_Exp>
-<Binary_Exp op='[' typref='4'>
+<Integer_Literal value='-1' typref='1'>
 <Attr>
-<Pos l='86' c='44' s='11'/>
+<Pos l='88' c='39' s='1'/>
 </Attr>
-<Unary_Exp op='~' typref='11'>
+</Integer_Literal>
+</Values>
+</Assignement_Sub>
+</Then>
+<Else>
+<If_Sub elseif='yes'>
+<Condition>
+<Exp_Comparison op=':'>
 <Attr>
-<Pos l='86' c='44' s='11'/>
+<Pos l='89' c='16' s='1'/>
+</Attr>
+<Id value='pp' typref='13'>
+<Attr>
+<Pos l='89' c='13' s='2'/>
+</Attr>
+</Id>
+<Unary_Exp op='dom' typref='4'>
+<Attr>
+<Pos l='89' c='18' s='3'/>
 </Attr>
 <Id value='internalPos' typref='5'>
 <Attr>
-<Pos l='86' c='44' s='11'/>
+<Pos l='89' c='22' s='11'/>
 </Attr>
 </Id>
 </Unary_Exp>
-<Nary_Exp op='{' typref='2'>
+</Exp_Comparison>
+</Condition>
+<Then>
+<Assignement_Sub>
 <Attr>
-<Pos l='86' c='57' s='1'/>
+<Pos l='90' c='18' s='2'/>
 </Attr>
-<Binary_Exp op='-i' typref='1'>
+<Variables>
+<Id value='ee' typref='1'>
 <Attr>
-<Pos l='86' c='69' s='1'/>
-</Attr>
-<Id value='numInternal' typref='1'>
-<Attr>
-<Pos l='86' c='58' s='11'/>
+<Pos l='90' c='11' s='2'/>
 </Attr>
 </Id>
-<Integer_Literal value='1' typref='1'>
+<Id value='ii' typref='1'>
 <Attr>
-<Pos l='86' c='70' s='1'/>
+<Pos l='90' c='15' s='2'/>
+</Attr>
+</Id>
+</Variables>
+<Values>
+<Integer_Literal value='-1' typref='1'>
+<Attr>
+<Pos l='90' c='22' s='1'/>
 </Attr>
 </Integer_Literal>
+<Binary_Exp op='(' typref='1'>
+<Attr>
+<Pos l='90' c='36' s='0'/>
+</Attr>
+<Id value='internalPos' typref='5'>
+<Attr>
+<Pos l='90' c='25' s='11'/>
+</Attr>
+</Id>
+<Id value='pp' typref='13'>
+<Attr>
+<Pos l='90' c='37' s='2'/>
+</Attr>
+</Id>
 </Binary_Exp>
-</Nary_Exp>
-</Binary_Exp>
-</Exp_Comparison>
-</Boolean_Exp>
 </Values>
 </Assignement_Sub>
+</Then>
+<Else>
+<Assignement_Sub>
+<Attr>
+<Pos l='92' c='18' s='2'/>
+</Attr>
+<Variables>
+<Id value='ee' typref='1'>
+<Attr>
+<Pos l='92' c='11' s='2'/>
+</Attr>
+</Id>
+<Id value='ii' typref='1'>
+<Attr>
+<Pos l='92' c='15' s='2'/>
+</Attr>
+</Id>
+</Variables>
+<Values>
+<Integer_Literal value='-1' typref='1'>
+<Attr>
+<Pos l='92' c='22' s='1'/>
+</Attr>
+</Integer_Literal>
+<Integer_Literal value='-1' typref='1'>
+<Attr>
+<Pos l='92' c='26' s='1'/>
+</Attr>
+</Integer_Literal>
+</Values>
+</Assignement_Sub>
+</Else>
+</If_Sub>
+</Else>
+</If_Sub>
 </Body>
 </Operation>
 </Operations>
@@ -1531,14 +1618,6 @@
 <Id value='PIECES'/>
 <Id value='INTEGER'/>
 </Binary_Exp>
-</Type>
-<Type id='16'>
-<Unary_Exp op='POW'>
-<Binary_Exp op='*'>
-<Id value='COLORS'/>
-<Id value='PIECES'/>
-</Binary_Exp>
-</Unary_Exp>
 </Type>
 </TypeInfos>
 

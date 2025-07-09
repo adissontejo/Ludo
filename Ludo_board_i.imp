@@ -75,5 +75,11 @@ OPERATIONS
     BEGIN
       externalBoard(pp) := -1;
       internalBoard(pp) := nn
+    END;
+    
+  ee, ii <-- getPos(pp) = 
+    BEGIN
+      ee := externalBoard(pp);
+      ii := internalBoard(pp)
     END
 END

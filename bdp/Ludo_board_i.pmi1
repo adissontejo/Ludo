@@ -1,37 +1,37 @@
 THEORY BalanceX IS
-Ludo_board_i,68,0,0,30,0,0,0;
+Ludo_board_i,68,0,0,42,0,0,0;
 Initialisation,4,0,0,4,0,0,0;
 Operation_clear,4,0,0,4,0,0,0;
 Operation_isFinished,10,0,0,7,0,0,0;
 Operation_setExternalPos,19,0,0,6,0,0,0;
 Operation_setFree,3,0,0,1,0,0,0;
 Operation_setInternalPos,5,0,0,2,0,0,0;
-WellDefinedness_isFinished,6,0,0,1,0,0,0;
-WellDefinedness_setExternalPos,17,0,0,5,0,0,0
+WellDefinedness_isFinished,6,0,0,5,0,0,0;
+WellDefinedness_setExternalPos,17,0,0,13,0,0,0
 END
 &
 THEORY ProofState IS
 Proved(0);
+Proved(0);
+Proved(0);
+Proved(0);
+Proved(0);
 Unproved;
-Unproved;
+Proved(0);
+Proved(0);
+Proved(0);
 Unproved;
 Unproved;
 Unproved;
 Proved(0);
 Proved(0);
-Unproved;
-Unproved;
-Unproved;
-Unproved;
-Unproved;
-Unproved;
-Unproved;
-Unproved;
 Proved(0);
 Unproved;
-Unproved;
-Unproved;
-Unproved;
+Proved(0);
+Proved(0);
+Proved(0);
+Proved(0);
+Proved(0);
 Proved(0);
 Proved(0);
 Unproved;
@@ -154,26 +154,26 @@ END
 &
 THEORY PassList IS
 Force(0),?;
+Force(0),?;
+Force(0),?;
+Force(0),?;
+Force(0),?;
 Force(0),(?; 0);
-Force(0),(?; 0);
+Force(0),?;
+Force(0),?;
+Force(0),?;
 Force(0),(?; 0);
 Force(0),(?; 0);
 Force(0),(?; 0);
 Force(0),?;
 Force(0),?;
-Force(0),(?; 0);
-Force(0),(?; 0);
-Force(0),(?; 0);
-Force(0),(?; 0);
-Force(0),(?; 0);
-Force(0),(?; 0);
-Force(0),(?; 0);
-Force(0),(?; 0);
 Force(0),?;
 Force(0),(?; 0);
-Force(0),(?; 0);
-Force(0),(?; 0);
-Force(0),(?; 0);
+Force(0),?;
+Force(0),?;
+Force(0),?;
+Force(0),?;
+Force(0),?;
 Force(0),?;
 Force(0),?;
 Force(0),(?; 0);
@@ -224,13 +224,13 @@ Force(0),?
 END
 &
 THEORY Status IS
-Ludo_board_i,68,0,30,0,0,0;
+Ludo_board_i,68,0,42,0,0,0;
 Initialisation,4,0,4,0,0,0;
 Operation_clear,4,0,4,0,0,0;
 Operation_isFinished,10,0,7,0,0,0;
 Operation_setExternalPos,19,0,6,0,0,0;
 Operation_setFree,3,0,1,0,0,0;
 Operation_setInternalPos,5,0,2,0,0,0;
-WellDefinedness_isFinished,6,0,1,0,0,0;
-WellDefinedness_setExternalPos,17,0,5,0,0,0
+WellDefinedness_isFinished,6,0,5,0,0,0;
+WellDefinedness_setExternalPos,17,0,13,0,0,0
 END

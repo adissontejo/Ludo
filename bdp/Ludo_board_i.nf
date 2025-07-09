@@ -91,8 +91,8 @@ THEORY ListConstraintsX IS
 END
 &
 THEORY ListOperationsX IS
-  Internal_List_Operations(Implementation(Ludo_board_i))==(clear,setFree,setExternalPos,setInternalPos,isFinished);
-  List_Operations(Implementation(Ludo_board_i))==(clear,setFree,setExternalPos,setInternalPos,isFinished)
+  Internal_List_Operations(Implementation(Ludo_board_i))==(clear,setFree,setExternalPos,setInternalPos,getPos);
+  List_Operations(Implementation(Ludo_board_i))==(clear,setFree,setExternalPos,setInternalPos,getPos)
 END
 &
 THEORY ListInputX IS
@@ -100,7 +100,7 @@ THEORY ListInputX IS
   List_Input(Implementation(Ludo_board_i),setFree)==(pp);
   List_Input(Implementation(Ludo_board_i),setExternalPos)==(pp,nn);
   List_Input(Implementation(Ludo_board_i),setInternalPos)==(pp,nn);
-  List_Input(Implementation(Ludo_board_i),isFinished)==(color)
+  List_Input(Implementation(Ludo_board_i),getPos)==(pp)
 END
 &
 THEORY ListOutputX IS
@@ -108,7 +108,7 @@ THEORY ListOutputX IS
   List_Output(Implementation(Ludo_board_i),setFree)==(?);
   List_Output(Implementation(Ludo_board_i),setExternalPos)==(?);
   List_Output(Implementation(Ludo_board_i),setInternalPos)==(?);
-  List_Output(Implementation(Ludo_board_i),isFinished)==(bb)
+  List_Output(Implementation(Ludo_board_i),getPos)==(ee,ii)
 END
 &
 THEORY ListHeaderX IS
@@ -116,7 +116,7 @@ THEORY ListHeaderX IS
   List_Header(Implementation(Ludo_board_i),setFree)==(setFree(pp));
   List_Header(Implementation(Ludo_board_i),setExternalPos)==(setExternalPos(pp,nn));
   List_Header(Implementation(Ludo_board_i),setInternalPos)==(setInternalPos(pp,nn));
-  List_Header(Implementation(Ludo_board_i),isFinished)==(bb <-- isFinished(color))
+  List_Header(Implementation(Ludo_board_i),getPos)==(ee,ii <-- getPos(pp))
 END
 &
 THEORY ListPreconditionX IS
@@ -128,12 +128,12 @@ THEORY ListPreconditionX IS
   List_Precondition(Implementation(Ludo_board_i),setExternalPos)==(pp: PIECES & pp/:lockedPieces & pp/:dom(internalPos) & nn: 0..numExternal-1 & card(externalPos|>{nn})<2);
   Own_Precondition(Implementation(Ludo_board_i),setInternalPos)==(btrue);
   List_Precondition(Implementation(Ludo_board_i),setInternalPos)==(pp: PIECES & pp/:lockedPieces & nn: 0..numInternal-1);
-  Own_Precondition(Implementation(Ludo_board_i),isFinished)==(btrue);
-  List_Precondition(Implementation(Ludo_board_i),isFinished)==(color: COLORS)
+  Own_Precondition(Implementation(Ludo_board_i),getPos)==(btrue);
+  List_Precondition(Implementation(Ludo_board_i),getPos)==(pp: PIECES)
 END
 &
 THEORY ListSubstitutionX IS
-  Expanded_List_Substitution(Implementation(Ludo_board_i),isFinished)==(color: COLORS | bb:=TRUE;@(ii,piece,pieceColor,piecePos,endPos).((0: INT | ii:=0);(numInternal-1: INT & numInternal: INT & 1: INT | endPos:=numInternal-1);WHILE ii<numPieces & bb = TRUE DO (ii: dom(piecesOrder) | piece:=piecesOrder(ii));(piece: dom(colorOf) | pieceColor:=colorOf(piece));(piece: dom(internalBoard) | piecePos:=internalBoard(piece));(pieceColor = color & piecePos/=endPos ==> bb:=FALSE [] not(pieceColor = color & piecePos/=endPos) ==> skip);(ii+1: INT & ii: INT & 1: INT | ii:=ii+1) INVARIANT ii: 0..numPieces & internalBoard: PIECES --> -1..numInternal-1 & internalBoard|>>{ -1} = internalPos & bb = TRUE <=> colorOf~[{color}]/\piecesOrder[0..ii-1] <: internalBoard~[{numInternal-1}] VARIANT numPieces-ii END));
+  Expanded_List_Substitution(Implementation(Ludo_board_i),getPos)==(pp: PIECES | (externalBoard(pp): INT & pp: dom(externalBoard) | ee:=externalBoard(pp));(internalBoard(pp): INT & pp: dom(internalBoard) | ii:=internalBoard(pp)));
   Expanded_List_Substitution(Implementation(Ludo_board_i),setInternalPos)==(pp: PIECES & pp/:lockedPieces & nn: 0..numInternal-1 | (pp: dom(externalBoard) & -1: INT & 0: INT & 1: INT | externalBoard:=externalBoard<+{pp|-> -1});(pp: dom(internalBoard) & nn: INT | internalBoard:=internalBoard<+{pp|->nn}));
   Expanded_List_Substitution(Implementation(Ludo_board_i),setExternalPos)==(pp: PIECES & pp/:lockedPieces & pp/:dom(internalPos) & nn: 0..numExternal-1 & card(externalPos|>{nn})<2 | @(rest,currentColor,hasOtherColor,otherColor,otherPos,ii).((nn mod 13: NAT & nn: NAT & 13: NAT1 | rest:=nn mod 13);(rest/=0 & rest/=8 ==> ((0: INT | ii:=0);(pp: dom(colorOf) | currentColor:=colorOf(pp));hasOtherColor:=FALSE;WHILE ii<numPieces & hasOtherColor = FALSE DO (ii: dom(piecesOrder) & piecesOrder(ii): dom(colorOf) | otherColor:=colorOf(piecesOrder(ii)));(ii: dom(piecesOrder) & piecesOrder(ii): dom(externalBoard) | otherPos:=externalBoard(piecesOrder(ii)));(otherColor/=currentColor & otherPos = nn ==> ((ii: dom(piecesOrder) & piecesOrder(ii): dom(externalBoard) & -1: INT & 0: INT & 1: INT | externalBoard:=externalBoard<+{piecesOrder(ii)|-> -1});hasOtherColor:=TRUE) [] not(otherColor/=currentColor & otherPos = nn) ==> skip);(assert(hasOtherColor = TRUE => card(externalPos|>{nn}) = 0) | hasOtherColor = TRUE => card(externalPos|>{nn}) = 0 ==> skip);(ii+1: INT & ii: INT & 1: INT | ii:=ii+1) INVARIANT externalBoard: PIECES --> -1..numExternal-1 & hasOtherColor: BOOL & ii: NAT & ii<=numPieces & hasOtherColor = TRUE <=> ((piecesOrder[0..ii-1]<|externalPos)~;colorOf)[{nn}]-{colorOf(pp)}/={} & hasOtherColor = TRUE => card(externalBoard|>{nn}) = 0 VARIANT numPieces-ii END) [] not(rest/=0 & rest/=8) ==> skip));(pp: dom(externalBoard) & nn: INT | externalBoard:=externalBoard<+{pp|->nn}));
   Expanded_List_Substitution(Implementation(Ludo_board_i),setFree)==(pp: PIECES & pp: lockedPieces & card(externalPos|>{startPoint(colorOf(pp))})<2 & pp: dom(externalBoard) & 0: INT | externalBoard:=externalBoard<+{pp|->0});
@@ -142,7 +142,7 @@ THEORY ListSubstitutionX IS
   List_Substitution(Implementation(Ludo_board_i),setFree)==(externalBoard(pp):=0);
   List_Substitution(Implementation(Ludo_board_i),setExternalPos)==(VAR rest,currentColor,hasOtherColor,otherColor,otherPos,ii IN rest:=nn mod 13;IF rest/=0 & rest/=8 THEN ii:=0;currentColor:=colorOf(pp);hasOtherColor:=FALSE;WHILE ii<numPieces & hasOtherColor = FALSE DO otherColor:=colorOf(piecesOrder(ii));otherPos:=externalBoard(piecesOrder(ii));IF otherColor/=currentColor & otherPos = nn THEN externalBoard(piecesOrder(ii)):= -1;hasOtherColor:=TRUE END;ASSERT hasOtherColor = TRUE => card(externalPos|>{nn}) = 0 THEN skip END;ii:=ii+1 INVARIANT externalBoard: PIECES --> -1..numExternal-1 & hasOtherColor: BOOL & ii: NAT & ii<=numPieces & hasOtherColor = TRUE <=> ((piecesOrder[0..ii-1]<|externalPos)~;colorOf)[{nn}]-{colorOf(pp)}/={} & hasOtherColor = TRUE => card(externalBoard|>{nn}) = 0 VARIANT numPieces-ii END END END;externalBoard(pp):=nn);
   List_Substitution(Implementation(Ludo_board_i),setInternalPos)==(externalBoard(pp):= -1;internalBoard(pp):=nn);
-  List_Substitution(Implementation(Ludo_board_i),isFinished)==(bb:=TRUE;VAR ii,piece,pieceColor,piecePos,endPos IN ii:=0;endPos:=numInternal-1;WHILE ii<numPieces & bb = TRUE DO piece:=piecesOrder(ii);pieceColor:=colorOf(piece);piecePos:=internalBoard(piece);IF pieceColor = color & piecePos/=endPos THEN bb:=FALSE END;ii:=ii+1 INVARIANT ii: 0..numPieces & internalBoard: PIECES --> -1..numInternal-1 & internalBoard|>>{ -1} = internalPos & bb = TRUE <=> colorOf~[{color}]/\piecesOrder[0..ii-1] <: internalBoard~[{numInternal-1}] VARIANT numPieces-ii END END)
+  List_Substitution(Implementation(Ludo_board_i),getPos)==(ee:=externalBoard(pp);ii:=internalBoard(pp))
 END
 &
 THEORY ListConstantsX IS
@@ -199,7 +199,7 @@ THEORY ListIncludedOperationsX END
 &
 THEORY InheritedEnvX IS
   VisibleVariables(Implementation(Ludo_board_i))==(Type(externalBoard) == Mvv(SetOf(atype(PIECES,"[PIECES","]PIECES")*btype(INTEGER, -1,numExternal-1)));Type(internalBoard) == Mvv(SetOf(atype(PIECES,"[PIECES","]PIECES")*btype(INTEGER, -1,numInternal-1))));
-  Operations(Implementation(Ludo_board_i))==(Type(isFinished) == Cst(btype(BOOL,?,?),atype(COLORS,?,?));Type(setInternalPos) == Cst(No_type,atype(PIECES,?,?)*btype(INTEGER,?,?));Type(setExternalPos) == Cst(No_type,atype(PIECES,?,?)*btype(INTEGER,?,?));Type(setFree) == Cst(No_type,atype(PIECES,?,?));Type(clear) == Cst(No_type,No_type))
+  Operations(Implementation(Ludo_board_i))==(Type(getPos) == Cst(btype(INTEGER,?,?)*btype(INTEGER,?,?),atype(PIECES,?,?));Type(setInternalPos) == Cst(No_type,atype(PIECES,?,?)*btype(INTEGER,?,?));Type(setExternalPos) == Cst(No_type,atype(PIECES,?,?)*btype(INTEGER,?,?));Type(setFree) == Cst(No_type,atype(PIECES,?,?));Type(clear) == Cst(No_type,No_type))
 END
 &
 THEORY ListVisibleStaticX IS
@@ -209,7 +209,7 @@ THEORY ListVisibleStaticX IS
 END
 &
 THEORY ListOfIdsX IS
-  List_Of_Ids(Implementation(Ludo_board_i)) == (? | ? | ? | ? | clear,setFree,setExternalPos,setInternalPos,isFinished | ? | seen(Machine(Ludo_ctx)) | ? | Ludo_board_i);
+  List_Of_Ids(Implementation(Ludo_board_i)) == (? | ? | ? | ? | clear,setFree,setExternalPos,setInternalPos,getPos | ? | seen(Machine(Ludo_ctx)) | ? | Ludo_board_i);
   List_Of_HiddenCst_Ids(Implementation(Ludo_board_i)) == (? | ?);
   List_Of_VisibleCst_Ids(Implementation(Ludo_board_i)) == (?);
   List_Of_VisibleVar_Ids(Implementation(Ludo_board_i)) == (internalBoard,externalBoard | ?);
@@ -226,8 +226,7 @@ THEORY VisibleVariablesEnvX IS
 END
 &
 THEORY VariablesLocEnvX IS
-  Variables_Loc(Implementation(Ludo_board_i),setExternalPos, 1) == (Type(rest) == Lvl(btype(INTEGER,?,?));Type(currentColor) == Lvl(atype(COLORS,?,?));Type(hasOtherColor) == Lvl(btype(BOOL,?,?));Type(otherColor) == Lvl(atype(COLORS,?,?));Type(otherPos) == Lvl(btype(INTEGER,?,?));Type(ii) == Lvl(btype(INTEGER,?,?)));
-  Variables_Loc(Implementation(Ludo_board_i),isFinished, 1) == (Type(ii) == Lvl(btype(INTEGER,?,?));Type(piece) == Lvl(atype(PIECES,?,?));Type(pieceColor) == Lvl(atype(COLORS,?,?));Type(piecePos) == Lvl(btype(INTEGER,?,?));Type(endPos) == Lvl(btype(INTEGER,?,?)))
+  Variables_Loc(Implementation(Ludo_board_i),setExternalPos, 1) == (Type(rest) == Lvl(btype(INTEGER,?,?));Type(currentColor) == Lvl(atype(COLORS,?,?));Type(hasOtherColor) == Lvl(btype(BOOL,?,?));Type(otherColor) == Lvl(atype(COLORS,?,?));Type(otherPos) == Lvl(btype(INTEGER,?,?));Type(ii) == Lvl(btype(INTEGER,?,?)))
 END
 &
 THEORY TCIntRdX IS

@@ -1,4 +1,6 @@
 THEORY ProofList IS
+_f(1) & _f(2) & _f(13) & _f(14) & WellDefinedness_getPos.2,(_f(72) & _f(73) & _f(70) => _f(75));
+_f(1) & _f(2) & _f(13) & _f(14) & WellDefinedness_getPos.1,(_f(71) & _f(70) => _f(74));
 _f(1) & _f(2) & _f(13) & _f(14) & _f(24) & _f(25) & _f(3) & _f(26) & WellDefinedness_setExternalPos.2,(_f(4) & _f(70) => _f(66));
 _f(1) & _f(2) & _f(13) & _f(14) & _f(24) & _f(25) & _f(3) & _f(26) & WellDefinedness_setExternalPos.1,(_f(4) & _f(70) => _f(65));
 _f(1) & _f(2) & _f(13) & WellDefinednessPrecondition_setExternalPos.1,(_f(14) & _f(24) & _f(25) & _f(3) & _f(64) => _f(62));
@@ -127,7 +129,12 @@ not(not(((nn) : (((stars) \/ (ran(startPoint)))))) & not((((((((externalPos)~) ;
 (((colorOf )(pp)) : (dom(startPoint)));
 ((startPoint) : (((dom(startPoint)) +-> (ran(startPoint)))));
 ((((externalPos) |> (({(startPoint )((colorOf )(pp))})))) : (FIN(((externalPos) |> (({(startPoint )((colorOf )(pp))}))))));
-"Operation is well defined"
+"Operation is well defined";
+((pp) : (dom(externalPos)));
+not(((pp) : (dom(externalPos))));
+((pp) : (dom(internalPos)));
+((externalPos) : (((dom(externalPos)) +-> (ran(externalPos)))));
+((internalPos) : (((dom(internalPos)) +-> (ran(internalPos)))))
 END
 &
 THEORY EnumerateX
