@@ -23,8 +23,9 @@ INVARIANT
   finishList : 0..3 --> COLORS &
   finishCount : 0..4 &
   0..finishCount-1 <| finishList = finishOrder &
+  finishCount = card(finishOrder) &
   colorEnabled : COLORS --> BOOL &
-  dom(colorEnabled |> {TRUE}) = enabledColors 
+  dom(colorEnabled |> {TRUE}) = enabledColors
 
 INITIALISATION
   gameStarted := FALSE;
@@ -38,18 +39,18 @@ INITIALISATION
 
 
 LOCAL_OPERATIONS
-   bb <-- isColorFinished(cc) = 
+   bb <-- isColorFinished(cc) =
        PRE cc : COLORS
        THEN
            bb := bool(cc : ran(finishList))
        END;
-    
+
    nn <-- turnIndex =
        nn := colorsOrder~(color)
-       
+
 OPERATIONS
-    
-  bb <-- isColorFinished(cc) = 
+
+  bb <-- isColorFinished(cc) =
   BEGIN
       VAR ii, color IN
           ii := 0;
@@ -65,8 +66,8 @@ OPERATIONS
           color := colorsOrder(ii)
       END
   END;
-  
-  nn <-- turnIndex = 
+
+  nn <-- turnIndex =
   BEGIN
       VAR ii, isColorTurn, color IN
           ii := 0;
@@ -85,20 +86,20 @@ OPERATIONS
           color := colorsOrder(ii)
       END
   END;
-  
+
   pickColor(cc) =
     BEGIN
       colorEnabled(cc) := TRUE
     END;
 
- 
-  unpickColor(cc) = 
+
+  unpickColor(cc) =
     BEGIN
       colorEnabled(cc) := FALSE
     END;
 
 
-  initGame = 
+  initGame =
     BEGIN
       gameStarted := TRUE;
       VAR ii, isEnabled IN
@@ -125,19 +126,19 @@ OPERATIONS
   computeAction(extraTurn, finished) =
     BEGIN
       diceValue := 0;
-      IF finished = TRUE 
+      IF finished = TRUE
         THEN
           finishList(finishCount) := color;
           finishCount := finishCount + 1;
           hasRoll := FALSE
-      ELSIF extraTurn = TRUE 
+      ELSIF extraTurn = TRUE
         THEN
           hasRoll := TRUE
       END
     END;
 
 
-  nextTurn = 
+  nextTurn =
     BEGIN
       VAR numJumps, color, isFinished, currentIndex, enabled
       IN
@@ -147,26 +148,26 @@ OPERATIONS
           isFinished := FALSE;
           WHILE numJumps < numColors & (enabled = FALSE or isFinished = TRUE)
           DO
-              
+
               numJumps := numJumps + 1;
               color := colorsOrder((currentIndex + numJumps) mod numColors);
               isFinished <-- isColorFinished(color);
               enabled := colorEnabled(color)
-              
-          INVARIANT numJumps <= numColors & 
-                    enabled : BOOL &  
+
+          INVARIANT numJumps <= numColors &
+                    enabled : BOOL &
                     isFinished : BOOL &
-                    ({ nn | 
+                    ({ nn |
           nn : 1..numJumps-1 & colorsOrder((currentIndex + nn) mod numColors) : enabledColors - ran(finishOrder)
         } = {})
           VARIANT numColors - numJumps
           END
-          
+
       END
     END;
 
 
-  value <-- rollDice = 
+  value <-- rollDice =
     BEGIN
       VAR dd IN
         dd := 5;
@@ -189,7 +190,19 @@ OPERATIONS
 
 
   endGame =
-    BEGIN  
+    BEGIN
         gameStarted := FALSE
-    END
+    END;
+
+  value <-- getDiceValue =
+      value := diceValue;
+
+  cc <-- getColor =
+      cc := color;
+
+  nn <-- numWinners =
+      nn := finishCount;
+
+  cc <-- placement(nn) =
+      cc := finishList(nn)
 END

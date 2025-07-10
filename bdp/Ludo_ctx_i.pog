@@ -27,98 +27,98 @@
             <Id value="PIECES" typref="0"/>
         </Set>
         <Exp_Comparison op="=">
-            <Id value="numPiecesByColor" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:1:1"/>
-            <Integer_Literal value="4" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:1:2"/>
+            <Id value="numPiecesByColor" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:1:1"/>
+            <Integer_Literal value="4" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:1:2"/>
         </Exp_Comparison>
         <Exp_Comparison op="=">
-            <Id value="numExternal" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:2:1"/>
-            <Integer_Literal value="52" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:2:2"/>
+            <Id value="numExternal" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:2:1"/>
+            <Integer_Literal value="52" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:2:2"/>
         </Exp_Comparison>
         <Exp_Comparison op="=">
-            <Id value="numInternal" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:3:1"/>
-            <Integer_Literal value="6" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:3:2"/>
+            <Id value="numInternal" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:3:1"/>
+            <Integer_Literal value="6" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:3:2"/>
         </Exp_Comparison>
         <Exp_Comparison op="=">
-            <Id value="numColors" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:4:1"/>
-            <Integer_Literal value="4" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:4:2"/>
+            <Id value="numColors" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:4:1"/>
+            <Integer_Literal value="4" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:4:2"/>
         </Exp_Comparison>
         <Exp_Comparison op="=">
             <Unary_Exp op="card" typref="1">
-                <Id value="COLORS" typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:5:1:1"/>
+                <Id value="COLORS" typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:5:1:1"/>
             </Unary_Exp>
-            <Id value="numColors" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:5:2"/>
+            <Id value="numColors" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:5:2"/>
         </Exp_Comparison>
         <Exp_Comparison op=":">
-            <Id value="numPieces" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:6:1"/>
-            <Id value="NAT" typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:6:2"/>
+            <Id value="numPieces" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:6:1"/>
+            <Id value="NAT" typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:6:2"/>
         </Exp_Comparison>
         <Exp_Comparison op="=">
-            <Id value="numPieces" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:7:1"/>
+            <Id value="numPieces" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:7:1"/>
             <Binary_Exp op="*i" typref="1">
-                <Id value="numPiecesByColor" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:7:2:1"/>
-                <Id value="numColors" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:7:2:2"/>
+                <Id value="numPiecesByColor" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:7:2:1"/>
+                <Id value="numColors" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:7:2:2"/>
             </Binary_Exp>
         </Exp_Comparison>
         <Exp_Comparison op="=">
-            <Id value="diceOptions" typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:8:1"/>
+            <Id value="diceOptions" typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:8:1"/>
             <Binary_Exp op=".." typref="0">
-                <Integer_Literal value="1" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:8:2:1"/>
-                <Integer_Literal value="6" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:8:2:2"/>
+                <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:8:2:1"/>
+                <Integer_Literal value="6" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:8:2:2"/>
             </Binary_Exp>
         </Exp_Comparison>
         <Exp_Comparison op="&lt;:">
-            <Id value="stars" typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:9:1"/>
+            <Id value="stars" typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:9:1"/>
             <Binary_Exp op=".." typref="0">
-                <Integer_Literal value="0" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:9:2:1"/>
+                <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:9:2:1"/>
                 <Binary_Exp op="-i" typref="1">
-                    <Id value="numExternal" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:9:2:2:1"/>
-                    <Integer_Literal value="1" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:9:2:2:2"/>
+                    <Id value="numExternal" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:9:2:2:1"/>
+                    <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:9:2:2:2"/>
                 </Binary_Exp>
             </Binary_Exp>
         </Exp_Comparison>
         <Exp_Comparison op="=">
-            <Id value="stars" typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:10:1"/>
+            <Id value="stars" typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:10:1"/>
             <Nary_Exp op="{" typref="0">
-                <Integer_Literal value="8" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:10:2:1"/>
-                <Integer_Literal value="21" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:10:2:2"/>
-                <Integer_Literal value="34" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:10:2:3"/>
-                <Integer_Literal value="47" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:10:2:4"/>
+                <Integer_Literal value="8" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:10:2:1"/>
+                <Integer_Literal value="21" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:10:2:2"/>
+                <Integer_Literal value="34" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:10:2:3"/>
+                <Integer_Literal value="47" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:10:2:4"/>
             </Nary_Exp>
         </Exp_Comparison>
         <Exp_Comparison op=":">
-            <Id value="startPoint" typref="2" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:11:1"/>
+            <Id value="startPoint" typref="2" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:11:1"/>
             <Binary_Exp op="&gt;-&gt;" typref="3">
-                <Id value="COLORS" typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:11:2:1"/>
+                <Id value="COLORS" typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:11:2:1"/>
                 <Binary_Exp op=".." typref="0">
-                    <Integer_Literal value="0" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:11:2:2:1"/>
-                    <Integer_Literal value="51" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:11:2:2:2"/>
+                    <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:11:2:2:1"/>
+                    <Integer_Literal value="51" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:11:2:2:2"/>
                 </Binary_Exp>
             </Binary_Exp>
         </Exp_Comparison>
         <Exp_Comparison op="=">
             <Unary_Exp op="card" typref="1">
-                <Id value="PIECES" typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:12:1:1"/>
+                <Id value="PIECES" typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:12:1:1"/>
             </Unary_Exp>
             <Binary_Exp op="*i" typref="1">
-                <Id value="numPiecesByColor" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:12:2:1"/>
-                <Id value="numColors" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:12:2:2"/>
+                <Id value="numPiecesByColor" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:12:2:1"/>
+                <Id value="numColors" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:12:2:2"/>
             </Binary_Exp>
         </Exp_Comparison>
         <Exp_Comparison op=":">
-            <Id value="colorsOrder" typref="2" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:13:1"/>
+            <Id value="colorsOrder" typref="2" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:13:1"/>
             <Binary_Exp op="&gt;-&gt;&gt;" typref="3">
                 <Binary_Exp op=".." typref="0">
-                    <Integer_Literal value="0" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:13:2:1:1"/>
-                    <Integer_Literal value="3" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:13:2:1:2"/>
+                    <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:13:2:1:1"/>
+                    <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:13:2:1:2"/>
                 </Binary_Exp>
-                <Id value="COLORS" typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:13:2:2"/>
+                <Id value="COLORS" typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:13:2:2"/>
             </Binary_Exp>
         </Exp_Comparison>
         <Exp_Comparison op=":">
-            <Id value="colorOf" typref="2" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:14:1"/>
+            <Id value="colorOf" typref="2" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:14:1"/>
             <Binary_Exp op="--&gt;&gt;" typref="3">
-                <Id value="PIECES" typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:14:2:1"/>
-                <Id value="COLORS" typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:14:2:2"/>
+                <Id value="PIECES" typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:14:2:1"/>
+                <Id value="COLORS" typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:14:2:2"/>
             </Binary_Exp>
         </Exp_Comparison>
         <Quantified_Pred type="!">
@@ -128,48 +128,48 @@
             <Body>
                 <Binary_Pred op="=&gt;">
                     <Exp_Comparison op=":">
-                        <Id value="cc" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:15:2:1:1:1"/>
-                        <Id value="COLORS" typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:15:2:1:1:2"/>
+                        <Id value="cc" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:15:2:1:1:1"/>
+                        <Id value="COLORS" typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:15:2:1:1:2"/>
                     </Exp_Comparison>
                     <Nary_Pred op="&amp;">
                         <Exp_Comparison op=":">
                             <Binary_Exp op="[" typref="0">
                                 <Unary_Exp op="~" typref="2">
-                                    <Id value="colorOf" typref="2" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:15:2:1:2:1:1:1:1"/>
+                                    <Id value="colorOf" typref="2" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:15:2:1:2:1:1:1:1"/>
                                 </Unary_Exp>
                                 <Nary_Exp op="{" typref="0">
-                                    <Id value="cc" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:15:2:1:2:1:1:2:1"/>
+                                    <Id value="cc" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:15:2:1:2:1:1:2:1"/>
                                 </Nary_Exp>
                             </Binary_Exp>
                             <Unary_Exp op="FIN" typref="4">
-                                <Id value="PIECES" typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:15:2:1:2:1:2:1"/>
+                                <Id value="PIECES" typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:15:2:1:2:1:2:1"/>
                             </Unary_Exp>
                         </Exp_Comparison>
                         <Exp_Comparison op="=">
                             <Unary_Exp op="card" typref="1">
                                 <Binary_Exp op="[" typref="0">
                                     <Unary_Exp op="~" typref="2">
-                                        <Id value="colorOf" typref="2" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:15:2:1:2:2:1:1:1:1"/>
+                                        <Id value="colorOf" typref="2" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:15:2:1:2:2:1:1:1:1"/>
                                     </Unary_Exp>
                                     <Nary_Exp op="{" typref="0">
-                                        <Id value="cc" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:15:2:1:2:2:1:1:2:1"/>
+                                        <Id value="cc" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:15:2:1:2:2:1:1:2:1"/>
                                     </Nary_Exp>
                                 </Binary_Exp>
                             </Unary_Exp>
-                            <Id value="numPiecesByColor" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:15:2:1:2:2:2"/>
+                            <Id value="numPiecesByColor" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:15:2:1:2:2:2"/>
                         </Exp_Comparison>
                     </Nary_Pred>
                 </Binary_Pred>
             </Body>
         </Quantified_Pred>
         <Exp_Comparison op=":">
-            <Id value="piecesOrder" typref="2" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:16:1"/>
+            <Id value="piecesOrder" typref="2" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:16:1"/>
             <Binary_Exp op="&gt;-&gt;&gt;" typref="3">
                 <Binary_Exp op=".." typref="0">
-                    <Integer_Literal value="0" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:16:2:1:1"/>
-                    <Integer_Literal value="15" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:16:2:1:2"/>
+                    <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:16:2:1:1"/>
+                    <Integer_Literal value="15" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:16:2:1:2"/>
                 </Binary_Exp>
-                <Id value="PIECES" typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:16:2:2"/>
+                <Id value="PIECES" typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:16:2:2"/>
             </Binary_Exp>
         </Exp_Comparison>
     </Define>
@@ -179,136 +179,136 @@
     <Define name="sets" hash="0"/>
     <Define name="imlprp" hash="181779049780583433">
         <Exp_Comparison op=":">
-            <Id value="startPoint" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:3:1:1"/>
+            <Id value="startPoint" typref="2" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:3:1:1"/>
             <Binary_Exp op="--&gt;" typref="3">
-                <Id value="COLORS" typref="0" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:3:1:2:1"/>
+                <Id value="COLORS" typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:3:1:2:1"/>
                 <Binary_Exp op=".." typref="0">
-                    <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:3:1:2:2:1"/>
-                    <Integer_Literal value="51" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:3:1:2:2:2"/>
+                    <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:3:1:2:2:1"/>
+                    <Integer_Literal value="51" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:3:1:2:2:2"/>
                 </Binary_Exp>
             </Binary_Exp>
         </Exp_Comparison>
         <Exp_Comparison op="=">
             <Id value="COLORS" typref="0"/>
             <Binary_Exp op=".." typref="0">
-                <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:1:1:1"/>
-                <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:1:1:2"/>
+                <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:1:1:1"/>
+                <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:1:1:2"/>
             </Binary_Exp>
         </Exp_Comparison>
         <Exp_Comparison op="=">
             <Id value="PIECES" typref="0"/>
             <Binary_Exp op=".." typref="0">
-                <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:2:1:1"/>
-                <Integer_Literal value="15" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:2:1:2"/>
+                <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:2:1:1"/>
+                <Integer_Literal value="15" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:2:1:2"/>
             </Binary_Exp>
         </Exp_Comparison>
         <Exp_Comparison op="=">
             <Id value="colorOf" typref="2"/>
             <Nary_Exp op="{" typref="2">
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:1:1"/>
-                    <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:1:2"/>
+                    <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:1:1"/>
+                    <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:1:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:2:1"/>
-                    <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:2:2"/>
+                    <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:2:1"/>
+                    <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:2:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:3:1"/>
-                    <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:3:2"/>
+                    <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:3:1"/>
+                    <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:3:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:4:1"/>
-                    <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:4:2"/>
+                    <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:4:1"/>
+                    <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:4:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="4" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:5:1"/>
-                    <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:5:2"/>
+                    <Integer_Literal value="4" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:5:1"/>
+                    <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:5:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="5" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:6:1"/>
-                    <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:6:2"/>
+                    <Integer_Literal value="5" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:6:1"/>
+                    <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:6:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="6" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:7:1"/>
-                    <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:7:2"/>
+                    <Integer_Literal value="6" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:7:1"/>
+                    <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:7:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="7" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:8:1"/>
-                    <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:8:2"/>
+                    <Integer_Literal value="7" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:8:1"/>
+                    <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:8:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="8" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:9:1"/>
-                    <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:9:2"/>
+                    <Integer_Literal value="8" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:9:1"/>
+                    <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:9:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="9" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:10:1"/>
-                    <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:10:2"/>
+                    <Integer_Literal value="9" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:10:1"/>
+                    <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:10:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="10" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:11:1"/>
-                    <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:11:2"/>
+                    <Integer_Literal value="10" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:11:1"/>
+                    <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:11:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="11" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:12:1"/>
-                    <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:12:2"/>
+                    <Integer_Literal value="11" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:12:1"/>
+                    <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:12:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="12" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:13:1"/>
-                    <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:13:2"/>
+                    <Integer_Literal value="12" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:13:1"/>
+                    <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:13:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="13" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:14:1"/>
-                    <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:14:2"/>
+                    <Integer_Literal value="13" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:14:1"/>
+                    <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:14:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="14" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:15:1"/>
-                    <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:15:2"/>
+                    <Integer_Literal value="14" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:15:1"/>
+                    <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:15:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="15" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:16:1"/>
-                    <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:16:2"/>
+                    <Integer_Literal value="15" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:16:1"/>
+                    <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:16:2"/>
                 </Binary_Exp>
             </Nary_Exp>
         </Exp_Comparison>
         <Exp_Comparison op="=">
             <Id value="numColors" typref="1"/>
-            <Integer_Literal value="4" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:4:1"/>
+            <Integer_Literal value="4" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:4:1"/>
         </Exp_Comparison>
         <Exp_Comparison op="=">
             <Id value="numPiecesByColor" typref="1"/>
-            <Integer_Literal value="4" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:5:1"/>
+            <Integer_Literal value="4" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:5:1"/>
         </Exp_Comparison>
         <Exp_Comparison op="=">
             <Id value="numPieces" typref="1"/>
-            <Integer_Literal value="16" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:6:1"/>
+            <Integer_Literal value="16" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:6:1"/>
         </Exp_Comparison>
         <Exp_Comparison op="=">
             <Id value="numExternal" typref="1"/>
-            <Integer_Literal value="52" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:7:1"/>
+            <Integer_Literal value="52" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:7:1"/>
         </Exp_Comparison>
         <Exp_Comparison op="=">
             <Id value="numInternal" typref="1"/>
-            <Integer_Literal value="6" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:8:1"/>
+            <Integer_Literal value="6" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:8:1"/>
         </Exp_Comparison>
         <Exp_Comparison op="=">
             <Id value="startPoint" typref="2"/>
             <Nary_Exp op="{" typref="2">
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:9:1:1:1"/>
-                    <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:9:1:1:2"/>
+                    <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:9:1:1:1"/>
+                    <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:9:1:1:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:9:1:2:1"/>
-                    <Integer_Literal value="13" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:9:1:2:2"/>
+                    <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:9:1:2:1"/>
+                    <Integer_Literal value="13" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:9:1:2:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:9:1:3:1"/>
-                    <Integer_Literal value="26" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:9:1:3:2"/>
+                    <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:9:1:3:1"/>
+                    <Integer_Literal value="26" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:9:1:3:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:9:1:4:1"/>
-                    <Integer_Literal value="39" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:9:1:4:2"/>
+                    <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:9:1:4:1"/>
+                    <Integer_Literal value="39" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:9:1:4:2"/>
                 </Binary_Exp>
             </Nary_Exp>
         </Exp_Comparison>
@@ -316,20 +316,20 @@
             <Id value="colorsOrder" typref="2"/>
             <Nary_Exp op="{" typref="2">
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:10:1:1:1"/>
-                    <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:10:1:1:2"/>
+                    <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:10:1:1:1"/>
+                    <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:10:1:1:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:10:1:2:1"/>
-                    <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:10:1:2:2"/>
+                    <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:10:1:2:1"/>
+                    <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:10:1:2:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:10:1:3:1"/>
-                    <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:10:1:3:2"/>
+                    <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:10:1:3:1"/>
+                    <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:10:1:3:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:10:1:4:1"/>
-                    <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:10:1:4:2"/>
+                    <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:10:1:4:1"/>
+                    <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:10:1:4:2"/>
                 </Binary_Exp>
             </Nary_Exp>
         </Exp_Comparison>
@@ -337,68 +337,68 @@
             <Id value="piecesOrder" typref="2"/>
             <Nary_Exp op="{" typref="2">
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:1:1"/>
-                    <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:1:2"/>
+                    <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:1:1"/>
+                    <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:1:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:2:1"/>
-                    <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:2:2"/>
+                    <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:2:1"/>
+                    <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:2:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:3:1"/>
-                    <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:3:2"/>
+                    <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:3:1"/>
+                    <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:3:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:4:1"/>
-                    <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:4:2"/>
+                    <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:4:1"/>
+                    <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:4:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="4" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:5:1"/>
-                    <Integer_Literal value="4" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:5:2"/>
+                    <Integer_Literal value="4" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:5:1"/>
+                    <Integer_Literal value="4" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:5:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="5" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:6:1"/>
-                    <Integer_Literal value="5" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:6:2"/>
+                    <Integer_Literal value="5" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:6:1"/>
+                    <Integer_Literal value="5" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:6:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="6" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:7:1"/>
-                    <Integer_Literal value="6" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:7:2"/>
+                    <Integer_Literal value="6" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:7:1"/>
+                    <Integer_Literal value="6" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:7:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="7" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:8:1"/>
-                    <Integer_Literal value="7" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:8:2"/>
+                    <Integer_Literal value="7" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:8:1"/>
+                    <Integer_Literal value="7" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:8:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="8" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:9:1"/>
-                    <Integer_Literal value="8" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:9:2"/>
+                    <Integer_Literal value="8" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:9:1"/>
+                    <Integer_Literal value="8" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:9:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="9" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:10:1"/>
-                    <Integer_Literal value="9" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:10:2"/>
+                    <Integer_Literal value="9" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:10:1"/>
+                    <Integer_Literal value="9" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:10:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="10" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:11:1"/>
-                    <Integer_Literal value="10" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:11:2"/>
+                    <Integer_Literal value="10" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:11:1"/>
+                    <Integer_Literal value="10" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:11:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="11" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:12:1"/>
-                    <Integer_Literal value="11" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:12:2"/>
+                    <Integer_Literal value="11" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:12:1"/>
+                    <Integer_Literal value="11" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:12:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="12" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:13:1"/>
-                    <Integer_Literal value="12" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:13:2"/>
+                    <Integer_Literal value="12" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:13:1"/>
+                    <Integer_Literal value="12" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:13:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="13" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:14:1"/>
-                    <Integer_Literal value="13" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:14:2"/>
+                    <Integer_Literal value="13" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:14:1"/>
+                    <Integer_Literal value="13" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:14:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="14" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:15:1"/>
-                    <Integer_Literal value="14" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:15:2"/>
+                    <Integer_Literal value="14" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:15:1"/>
+                    <Integer_Literal value="14" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:15:2"/>
                 </Binary_Exp>
                 <Binary_Exp op="|-&gt;" typref="5">
-                    <Integer_Literal value="15" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:16:1"/>
-                    <Integer_Literal value="15" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:16:2"/>
+                    <Integer_Literal value="15" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:16:1"/>
+                    <Integer_Literal value="15" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:16:2"/>
                 </Binary_Exp>
             </Nary_Exp>
         </Exp_Comparison>
@@ -412,10 +412,10 @@
         <Definition name="imprp"/>
         <Local_Hyp num="1">
             <Exp_Comparison op=":">
-                <Id value="cc" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:15:2:1:1:1"/>
-                <Binary_Exp op=".." typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:15:2:1:1:2">
-                    <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:1:1:1"/>
-                    <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:1:1:2"/>
+                <Id value="cc" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:15:2:1:1:1"/>
+                <Binary_Exp op=".." typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:15:2:1:1:2">
+                    <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:1:1:1"/>
+                    <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:1:1:2"/>
                 </Binary_Exp>
             </Exp_Comparison>
         </Local_Hyp>
@@ -424,12 +424,12 @@
             <Goal>
                 <Exp_Comparison op="=">
                     <Unary_Exp op="card" typref="1">
-                        <Binary_Exp op=".." typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:5:1:1">
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:1:1:1"/>
-                            <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:1:1:2"/>
+                        <Binary_Exp op=".." typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:5:1:1">
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:1:1:1"/>
+                            <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:1:1:2"/>
                         </Binary_Exp>
                     </Unary_Exp>
-                    <Integer_Literal value="4" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:5:2,C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:4:1"/>
+                    <Integer_Literal value="4" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:5:2,/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:4:1"/>
                 </Exp_Comparison>
             </Goal>
         </Simple_Goal>
@@ -437,8 +437,8 @@
             <Tag>Valuation is correct</Tag>
             <Goal>
                 <Exp_Comparison op=":">
-                    <Integer_Literal value="16" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:6:1,C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:6:1"/>
-                    <Id value="NAT" typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:6:2"/>
+                    <Integer_Literal value="16" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:6:1,/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:6:1"/>
+                    <Id value="NAT" typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:6:2"/>
                 </Exp_Comparison>
             </Goal>
         </Simple_Goal>
@@ -446,10 +446,10 @@
             <Tag>Valuation is correct</Tag>
             <Goal>
                 <Exp_Comparison op="=">
-                    <Integer_Literal value="16" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:7:1,C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:6:1"/>
+                    <Integer_Literal value="16" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:7:1,/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:6:1"/>
                     <Binary_Exp op="*i" typref="1">
-                        <Integer_Literal value="4" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:7:2:1,C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:5:1"/>
-                        <Integer_Literal value="4" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:7:2:2,C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:4:1"/>
+                        <Integer_Literal value="4" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:7:2:1,/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:5:1"/>
+                        <Integer_Literal value="4" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:7:2:2,/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:4:1"/>
                     </Binary_Exp>
                 </Exp_Comparison>
             </Goal>
@@ -458,32 +458,32 @@
             <Tag>Valuation is correct</Tag>
             <Goal>
                 <Exp_Comparison op=":">
-                    <Nary_Exp op="{" typref="2" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:11:1">
+                    <Nary_Exp op="{" typref="2" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:11:1">
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:9:1:1:1"/>
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:9:1:1:2"/>
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:9:1:1:1"/>
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:9:1:1:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:9:1:2:1"/>
-                            <Integer_Literal value="13" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:9:1:2:2"/>
+                            <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:9:1:2:1"/>
+                            <Integer_Literal value="13" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:9:1:2:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:9:1:3:1"/>
-                            <Integer_Literal value="26" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:9:1:3:2"/>
+                            <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:9:1:3:1"/>
+                            <Integer_Literal value="26" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:9:1:3:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:9:1:4:1"/>
-                            <Integer_Literal value="39" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:9:1:4:2"/>
+                            <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:9:1:4:1"/>
+                            <Integer_Literal value="39" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:9:1:4:2"/>
                         </Binary_Exp>
                     </Nary_Exp>
                     <Binary_Exp op="&gt;-&gt;" typref="3">
-                        <Binary_Exp op=".." typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:11:2:1">
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:1:1:1"/>
-                            <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:1:1:2"/>
+                        <Binary_Exp op=".." typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:11:2:1">
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:1:1:1"/>
+                            <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:1:1:2"/>
                         </Binary_Exp>
                         <Binary_Exp op=".." typref="0">
-                            <Integer_Literal value="0" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:11:2:2:1"/>
-                            <Integer_Literal value="51" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:11:2:2:2"/>
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:11:2:2:1"/>
+                            <Integer_Literal value="51" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:11:2:2:2"/>
                         </Binary_Exp>
                     </Binary_Exp>
                 </Exp_Comparison>
@@ -494,14 +494,14 @@
             <Goal>
                 <Exp_Comparison op="=">
                     <Unary_Exp op="card" typref="1">
-                        <Binary_Exp op=".." typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:12:1:1">
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:2:1:1"/>
-                            <Integer_Literal value="15" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:2:1:2"/>
+                        <Binary_Exp op=".." typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:12:1:1">
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:2:1:1"/>
+                            <Integer_Literal value="15" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:2:1:2"/>
                         </Binary_Exp>
                     </Unary_Exp>
                     <Binary_Exp op="*i" typref="1">
-                        <Integer_Literal value="4" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:12:2:1,C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:5:1"/>
-                        <Integer_Literal value="4" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:12:2:2,C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:4:1"/>
+                        <Integer_Literal value="4" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:12:2:1,/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:5:1"/>
+                        <Integer_Literal value="4" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:12:2:2,/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:4:1"/>
                     </Binary_Exp>
                 </Exp_Comparison>
             </Goal>
@@ -510,32 +510,32 @@
             <Tag>Valuation is correct</Tag>
             <Goal>
                 <Exp_Comparison op=":">
-                    <Nary_Exp op="{" typref="2" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:13:1">
+                    <Nary_Exp op="{" typref="2" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:13:1">
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:10:1:1:1"/>
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:10:1:1:2"/>
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:10:1:1:1"/>
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:10:1:1:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:10:1:2:1"/>
-                            <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:10:1:2:2"/>
+                            <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:10:1:2:1"/>
+                            <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:10:1:2:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:10:1:3:1"/>
-                            <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:10:1:3:2"/>
+                            <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:10:1:3:1"/>
+                            <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:10:1:3:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:10:1:4:1"/>
-                            <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:10:1:4:2"/>
+                            <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:10:1:4:1"/>
+                            <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:10:1:4:2"/>
                         </Binary_Exp>
                     </Nary_Exp>
                     <Binary_Exp op="&gt;-&gt;&gt;" typref="3">
                         <Binary_Exp op=".." typref="0">
-                            <Integer_Literal value="0" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:13:2:1:1"/>
-                            <Integer_Literal value="3" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:13:2:1:2"/>
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:13:2:1:1"/>
+                            <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:13:2:1:2"/>
                         </Binary_Exp>
-                        <Binary_Exp op=".." typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:13:2:2">
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:1:1:1"/>
-                            <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:1:1:2"/>
+                        <Binary_Exp op=".." typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:13:2:2">
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:1:1:1"/>
+                            <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:1:1:2"/>
                         </Binary_Exp>
                     </Binary_Exp>
                 </Exp_Comparison>
@@ -545,80 +545,80 @@
             <Tag>Valuation is correct</Tag>
             <Goal>
                 <Exp_Comparison op=":">
-                    <Nary_Exp op="{" typref="2" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:14:1">
+                    <Nary_Exp op="{" typref="2" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:14:1">
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:1:1"/>
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:1:2"/>
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:1:1"/>
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:1:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:2:1"/>
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:2:2"/>
+                            <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:2:1"/>
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:2:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:3:1"/>
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:3:2"/>
+                            <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:3:1"/>
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:3:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:4:1"/>
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:4:2"/>
+                            <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:4:1"/>
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:4:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="4" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:5:1"/>
-                            <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:5:2"/>
+                            <Integer_Literal value="4" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:5:1"/>
+                            <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:5:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="5" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:6:1"/>
-                            <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:6:2"/>
+                            <Integer_Literal value="5" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:6:1"/>
+                            <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:6:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="6" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:7:1"/>
-                            <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:7:2"/>
+                            <Integer_Literal value="6" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:7:1"/>
+                            <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:7:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="7" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:8:1"/>
-                            <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:8:2"/>
+                            <Integer_Literal value="7" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:8:1"/>
+                            <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:8:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="8" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:9:1"/>
-                            <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:9:2"/>
+                            <Integer_Literal value="8" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:9:1"/>
+                            <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:9:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="9" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:10:1"/>
-                            <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:10:2"/>
+                            <Integer_Literal value="9" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:10:1"/>
+                            <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:10:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="10" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:11:1"/>
-                            <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:11:2"/>
+                            <Integer_Literal value="10" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:11:1"/>
+                            <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:11:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="11" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:12:1"/>
-                            <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:12:2"/>
+                            <Integer_Literal value="11" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:12:1"/>
+                            <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:12:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="12" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:13:1"/>
-                            <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:13:2"/>
+                            <Integer_Literal value="12" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:13:1"/>
+                            <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:13:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="13" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:14:1"/>
-                            <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:14:2"/>
+                            <Integer_Literal value="13" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:14:1"/>
+                            <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:14:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="14" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:15:1"/>
-                            <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:15:2"/>
+                            <Integer_Literal value="14" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:15:1"/>
+                            <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:15:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="15" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:16:1"/>
-                            <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:16:2"/>
+                            <Integer_Literal value="15" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:16:1"/>
+                            <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:16:2"/>
                         </Binary_Exp>
                     </Nary_Exp>
                     <Binary_Exp op="--&gt;&gt;" typref="3">
-                        <Binary_Exp op=".." typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:14:2:1">
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:2:1:1"/>
-                            <Integer_Literal value="15" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:2:1:2"/>
+                        <Binary_Exp op=".." typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:14:2:1">
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:2:1:1"/>
+                            <Integer_Literal value="15" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:2:1:2"/>
                         </Binary_Exp>
-                        <Binary_Exp op=".." typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:14:2:2">
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:1:1:1"/>
-                            <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:1:1:2"/>
+                        <Binary_Exp op=".." typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:14:2:2">
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:1:1:1"/>
+                            <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:1:1:2"/>
                         </Binary_Exp>
                     </Binary_Exp>
                 </Exp_Comparison>
@@ -631,81 +631,81 @@
                 <Exp_Comparison op=":">
                     <Binary_Exp op="[" typref="0">
                         <Unary_Exp op="~" typref="2">
-                            <Nary_Exp op="{" typref="2" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:15:2:1:2:1:1:1:1">
+                            <Nary_Exp op="{" typref="2" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:15:2:1:2:1:1:1:1">
                                 <Binary_Exp op="|-&gt;" typref="5">
-                                    <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:1:1"/>
-                                    <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:1:2"/>
+                                    <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:1:1"/>
+                                    <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:1:2"/>
                                 </Binary_Exp>
                                 <Binary_Exp op="|-&gt;" typref="5">
-                                    <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:2:1"/>
-                                    <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:2:2"/>
+                                    <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:2:1"/>
+                                    <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:2:2"/>
                                 </Binary_Exp>
                                 <Binary_Exp op="|-&gt;" typref="5">
-                                    <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:3:1"/>
-                                    <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:3:2"/>
+                                    <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:3:1"/>
+                                    <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:3:2"/>
                                 </Binary_Exp>
                                 <Binary_Exp op="|-&gt;" typref="5">
-                                    <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:4:1"/>
-                                    <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:4:2"/>
+                                    <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:4:1"/>
+                                    <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:4:2"/>
                                 </Binary_Exp>
                                 <Binary_Exp op="|-&gt;" typref="5">
-                                    <Integer_Literal value="4" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:5:1"/>
-                                    <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:5:2"/>
+                                    <Integer_Literal value="4" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:5:1"/>
+                                    <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:5:2"/>
                                 </Binary_Exp>
                                 <Binary_Exp op="|-&gt;" typref="5">
-                                    <Integer_Literal value="5" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:6:1"/>
-                                    <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:6:2"/>
+                                    <Integer_Literal value="5" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:6:1"/>
+                                    <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:6:2"/>
                                 </Binary_Exp>
                                 <Binary_Exp op="|-&gt;" typref="5">
-                                    <Integer_Literal value="6" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:7:1"/>
-                                    <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:7:2"/>
+                                    <Integer_Literal value="6" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:7:1"/>
+                                    <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:7:2"/>
                                 </Binary_Exp>
                                 <Binary_Exp op="|-&gt;" typref="5">
-                                    <Integer_Literal value="7" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:8:1"/>
-                                    <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:8:2"/>
+                                    <Integer_Literal value="7" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:8:1"/>
+                                    <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:8:2"/>
                                 </Binary_Exp>
                                 <Binary_Exp op="|-&gt;" typref="5">
-                                    <Integer_Literal value="8" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:9:1"/>
-                                    <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:9:2"/>
+                                    <Integer_Literal value="8" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:9:1"/>
+                                    <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:9:2"/>
                                 </Binary_Exp>
                                 <Binary_Exp op="|-&gt;" typref="5">
-                                    <Integer_Literal value="9" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:10:1"/>
-                                    <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:10:2"/>
+                                    <Integer_Literal value="9" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:10:1"/>
+                                    <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:10:2"/>
                                 </Binary_Exp>
                                 <Binary_Exp op="|-&gt;" typref="5">
-                                    <Integer_Literal value="10" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:11:1"/>
-                                    <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:11:2"/>
+                                    <Integer_Literal value="10" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:11:1"/>
+                                    <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:11:2"/>
                                 </Binary_Exp>
                                 <Binary_Exp op="|-&gt;" typref="5">
-                                    <Integer_Literal value="11" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:12:1"/>
-                                    <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:12:2"/>
+                                    <Integer_Literal value="11" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:12:1"/>
+                                    <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:12:2"/>
                                 </Binary_Exp>
                                 <Binary_Exp op="|-&gt;" typref="5">
-                                    <Integer_Literal value="12" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:13:1"/>
-                                    <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:13:2"/>
+                                    <Integer_Literal value="12" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:13:1"/>
+                                    <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:13:2"/>
                                 </Binary_Exp>
                                 <Binary_Exp op="|-&gt;" typref="5">
-                                    <Integer_Literal value="13" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:14:1"/>
-                                    <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:14:2"/>
+                                    <Integer_Literal value="13" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:14:1"/>
+                                    <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:14:2"/>
                                 </Binary_Exp>
                                 <Binary_Exp op="|-&gt;" typref="5">
-                                    <Integer_Literal value="14" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:15:1"/>
-                                    <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:15:2"/>
+                                    <Integer_Literal value="14" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:15:1"/>
+                                    <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:15:2"/>
                                 </Binary_Exp>
                                 <Binary_Exp op="|-&gt;" typref="5">
-                                    <Integer_Literal value="15" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:16:1"/>
-                                    <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:16:2"/>
+                                    <Integer_Literal value="15" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:16:1"/>
+                                    <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:16:2"/>
                                 </Binary_Exp>
                             </Nary_Exp>
                         </Unary_Exp>
                         <Nary_Exp op="{" typref="0">
-                            <Id value="cc" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:15:2:1:2:1:1:2:1"/>
+                            <Id value="cc" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:15:2:1:2:1:1:2:1"/>
                         </Nary_Exp>
                     </Binary_Exp>
                     <Unary_Exp op="FIN" typref="4">
-                        <Binary_Exp op=".." typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:15:2:1:2:1:2:1">
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:2:1:1"/>
-                            <Integer_Literal value="15" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:2:1:2"/>
+                        <Binary_Exp op=".." typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:15:2:1:2:1:2:1">
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:2:1:1"/>
+                            <Integer_Literal value="15" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:2:1:2"/>
                         </Binary_Exp>
                     </Unary_Exp>
                 </Exp_Comparison>
@@ -719,79 +719,79 @@
                     <Unary_Exp op="card" typref="1">
                         <Binary_Exp op="[" typref="0">
                             <Unary_Exp op="~" typref="2">
-                                <Nary_Exp op="{" typref="2" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:15:2:1:2:2:1:1:1:1">
+                                <Nary_Exp op="{" typref="2" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:15:2:1:2:2:1:1:1:1">
                                     <Binary_Exp op="|-&gt;" typref="5">
-                                        <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:1:1"/>
-                                        <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:1:2"/>
+                                        <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:1:1"/>
+                                        <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:1:2"/>
                                     </Binary_Exp>
                                     <Binary_Exp op="|-&gt;" typref="5">
-                                        <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:2:1"/>
-                                        <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:2:2"/>
+                                        <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:2:1"/>
+                                        <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:2:2"/>
                                     </Binary_Exp>
                                     <Binary_Exp op="|-&gt;" typref="5">
-                                        <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:3:1"/>
-                                        <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:3:2"/>
+                                        <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:3:1"/>
+                                        <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:3:2"/>
                                     </Binary_Exp>
                                     <Binary_Exp op="|-&gt;" typref="5">
-                                        <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:4:1"/>
-                                        <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:4:2"/>
+                                        <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:4:1"/>
+                                        <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:4:2"/>
                                     </Binary_Exp>
                                     <Binary_Exp op="|-&gt;" typref="5">
-                                        <Integer_Literal value="4" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:5:1"/>
-                                        <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:5:2"/>
+                                        <Integer_Literal value="4" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:5:1"/>
+                                        <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:5:2"/>
                                     </Binary_Exp>
                                     <Binary_Exp op="|-&gt;" typref="5">
-                                        <Integer_Literal value="5" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:6:1"/>
-                                        <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:6:2"/>
+                                        <Integer_Literal value="5" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:6:1"/>
+                                        <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:6:2"/>
                                     </Binary_Exp>
                                     <Binary_Exp op="|-&gt;" typref="5">
-                                        <Integer_Literal value="6" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:7:1"/>
-                                        <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:7:2"/>
+                                        <Integer_Literal value="6" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:7:1"/>
+                                        <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:7:2"/>
                                     </Binary_Exp>
                                     <Binary_Exp op="|-&gt;" typref="5">
-                                        <Integer_Literal value="7" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:8:1"/>
-                                        <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:8:2"/>
+                                        <Integer_Literal value="7" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:8:1"/>
+                                        <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:8:2"/>
                                     </Binary_Exp>
                                     <Binary_Exp op="|-&gt;" typref="5">
-                                        <Integer_Literal value="8" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:9:1"/>
-                                        <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:9:2"/>
+                                        <Integer_Literal value="8" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:9:1"/>
+                                        <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:9:2"/>
                                     </Binary_Exp>
                                     <Binary_Exp op="|-&gt;" typref="5">
-                                        <Integer_Literal value="9" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:10:1"/>
-                                        <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:10:2"/>
+                                        <Integer_Literal value="9" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:10:1"/>
+                                        <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:10:2"/>
                                     </Binary_Exp>
                                     <Binary_Exp op="|-&gt;" typref="5">
-                                        <Integer_Literal value="10" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:11:1"/>
-                                        <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:11:2"/>
+                                        <Integer_Literal value="10" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:11:1"/>
+                                        <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:11:2"/>
                                     </Binary_Exp>
                                     <Binary_Exp op="|-&gt;" typref="5">
-                                        <Integer_Literal value="11" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:12:1"/>
-                                        <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:12:2"/>
+                                        <Integer_Literal value="11" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:12:1"/>
+                                        <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:12:2"/>
                                     </Binary_Exp>
                                     <Binary_Exp op="|-&gt;" typref="5">
-                                        <Integer_Literal value="12" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:13:1"/>
-                                        <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:13:2"/>
+                                        <Integer_Literal value="12" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:13:1"/>
+                                        <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:13:2"/>
                                     </Binary_Exp>
                                     <Binary_Exp op="|-&gt;" typref="5">
-                                        <Integer_Literal value="13" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:14:1"/>
-                                        <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:14:2"/>
+                                        <Integer_Literal value="13" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:14:1"/>
+                                        <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:14:2"/>
                                     </Binary_Exp>
                                     <Binary_Exp op="|-&gt;" typref="5">
-                                        <Integer_Literal value="14" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:15:1"/>
-                                        <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:15:2"/>
+                                        <Integer_Literal value="14" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:15:1"/>
+                                        <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:15:2"/>
                                     </Binary_Exp>
                                     <Binary_Exp op="|-&gt;" typref="5">
-                                        <Integer_Literal value="15" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:16:1"/>
-                                        <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:3:1:16:2"/>
+                                        <Integer_Literal value="15" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:16:1"/>
+                                        <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:3:1:16:2"/>
                                     </Binary_Exp>
                                 </Nary_Exp>
                             </Unary_Exp>
                             <Nary_Exp op="{" typref="0">
-                                <Id value="cc" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:15:2:1:2:2:1:1:2:1"/>
+                                <Id value="cc" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:15:2:1:2:2:1:1:2:1"/>
                             </Nary_Exp>
                         </Binary_Exp>
                     </Unary_Exp>
-                    <Integer_Literal value="4" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:15:2:1:2:2:2,C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:5:1"/>
+                    <Integer_Literal value="4" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:15:2:1:2:2:2,/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:5:1"/>
                 </Exp_Comparison>
             </Goal>
         </Simple_Goal>
@@ -799,80 +799,80 @@
             <Tag>Valuation is correct</Tag>
             <Goal>
                 <Exp_Comparison op=":">
-                    <Nary_Exp op="{" typref="2" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:16:1">
+                    <Nary_Exp op="{" typref="2" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:16:1">
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:1:1"/>
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:1:2"/>
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:1:1"/>
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:1:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:2:1"/>
-                            <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:2:2"/>
+                            <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:2:1"/>
+                            <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:2:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:3:1"/>
-                            <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:3:2"/>
+                            <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:3:1"/>
+                            <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:3:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:4:1"/>
-                            <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:4:2"/>
+                            <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:4:1"/>
+                            <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:4:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="4" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:5:1"/>
-                            <Integer_Literal value="4" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:5:2"/>
+                            <Integer_Literal value="4" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:5:1"/>
+                            <Integer_Literal value="4" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:5:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="5" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:6:1"/>
-                            <Integer_Literal value="5" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:6:2"/>
+                            <Integer_Literal value="5" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:6:1"/>
+                            <Integer_Literal value="5" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:6:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="6" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:7:1"/>
-                            <Integer_Literal value="6" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:7:2"/>
+                            <Integer_Literal value="6" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:7:1"/>
+                            <Integer_Literal value="6" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:7:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="7" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:8:1"/>
-                            <Integer_Literal value="7" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:8:2"/>
+                            <Integer_Literal value="7" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:8:1"/>
+                            <Integer_Literal value="7" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:8:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="8" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:9:1"/>
-                            <Integer_Literal value="8" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:9:2"/>
+                            <Integer_Literal value="8" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:9:1"/>
+                            <Integer_Literal value="8" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:9:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="9" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:10:1"/>
-                            <Integer_Literal value="9" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:10:2"/>
+                            <Integer_Literal value="9" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:10:1"/>
+                            <Integer_Literal value="9" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:10:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="10" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:11:1"/>
-                            <Integer_Literal value="10" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:11:2"/>
+                            <Integer_Literal value="10" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:11:1"/>
+                            <Integer_Literal value="10" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:11:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="11" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:12:1"/>
-                            <Integer_Literal value="11" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:12:2"/>
+                            <Integer_Literal value="11" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:12:1"/>
+                            <Integer_Literal value="11" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:12:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="12" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:13:1"/>
-                            <Integer_Literal value="12" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:13:2"/>
+                            <Integer_Literal value="12" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:13:1"/>
+                            <Integer_Literal value="12" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:13:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="13" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:14:1"/>
-                            <Integer_Literal value="13" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:14:2"/>
+                            <Integer_Literal value="13" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:14:1"/>
+                            <Integer_Literal value="13" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:14:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="14" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:15:1"/>
-                            <Integer_Literal value="14" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:15:2"/>
+                            <Integer_Literal value="14" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:15:1"/>
+                            <Integer_Literal value="14" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:15:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="15" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:16:1"/>
-                            <Integer_Literal value="15" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:11:1:16:2"/>
+                            <Integer_Literal value="15" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:16:1"/>
+                            <Integer_Literal value="15" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:11:1:16:2"/>
                         </Binary_Exp>
                     </Nary_Exp>
                     <Binary_Exp op="&gt;-&gt;&gt;" typref="3">
                         <Binary_Exp op=".." typref="0">
-                            <Integer_Literal value="0" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:16:2:1:1"/>
-                            <Integer_Literal value="15" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:16:2:1:2"/>
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:16:2:1:1"/>
+                            <Integer_Literal value="15" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:16:2:1:2"/>
                         </Binary_Exp>
-                        <Binary_Exp op=".." typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:16:2:2">
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:2:1:1"/>
-                            <Integer_Literal value="15" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:2:1:2"/>
+                        <Binary_Exp op=".." typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:16:2:2">
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:2:1:1"/>
+                            <Integer_Literal value="15" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:2:1:2"/>
                         </Binary_Exp>
                     </Binary_Exp>
                 </Exp_Comparison>
@@ -882,32 +882,32 @@
             <Tag>Valuation is correct</Tag>
             <Goal>
                 <Exp_Comparison op=":">
-                    <Nary_Exp op="{" typref="2" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:3:1:1">
+                    <Nary_Exp op="{" typref="2" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:3:1:1">
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:9:1:1:1"/>
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:9:1:1:2"/>
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:9:1:1:1"/>
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:9:1:1:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="1" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:9:1:2:1"/>
-                            <Integer_Literal value="13" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:9:1:2:2"/>
+                            <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:9:1:2:1"/>
+                            <Integer_Literal value="13" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:9:1:2:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="2" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:9:1:3:1"/>
-                            <Integer_Literal value="26" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:9:1:3:2"/>
+                            <Integer_Literal value="2" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:9:1:3:1"/>
+                            <Integer_Literal value="26" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:9:1:3:2"/>
                         </Binary_Exp>
                         <Binary_Exp op="|-&gt;" typref="5">
-                            <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:9:1:4:1"/>
-                            <Integer_Literal value="39" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:9:1:4:2"/>
+                            <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:9:1:4:1"/>
+                            <Integer_Literal value="39" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:9:1:4:2"/>
                         </Binary_Exp>
                     </Nary_Exp>
                     <Binary_Exp op="--&gt;" typref="3">
-                        <Binary_Exp op=".." typref="0" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:3:1:2:1">
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:1:1:1"/>
-                            <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:1:1:2"/>
+                        <Binary_Exp op=".." typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:3:1:2:1">
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:1:1:1"/>
+                            <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:1:1:2"/>
                         </Binary_Exp>
                         <Binary_Exp op=".." typref="0">
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:3:1:2:2:1"/>
-                            <Integer_Literal value="51" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:3:1:2:2:2"/>
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:3:1:2:2:1"/>
+                            <Integer_Literal value="51" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:3:1:2:2:2"/>
                         </Binary_Exp>
                     </Binary_Exp>
                 </Exp_Comparison>
@@ -917,9 +917,9 @@
             <Tag>Valuation is correct</Tag>
             <Goal>
                 <Exp_Comparison op=":">
-                    <Binary_Exp op=".." typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:1:1:1">
-                        <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:1:1:1"/>
-                        <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:1:1:2"/>
+                    <Binary_Exp op=".." typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:1:1:1">
+                        <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:1:1:1"/>
+                        <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:1:1:2"/>
                     </Binary_Exp>
                     <Unary_Exp op="FIN" typref="4">
                         <Id value="INTEGER" typref="0"/>
@@ -932,9 +932,9 @@
             <Goal>
                 <Unary_Pred op="not">
                     <Exp_Comparison op="=">
-                        <Binary_Exp op=".." typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:1:1:1">
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:1:1:1"/>
-                            <Integer_Literal value="3" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:1:1:2"/>
+                        <Binary_Exp op=".." typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:1:1:1">
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:1:1:1"/>
+                            <Integer_Literal value="3" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:1:1:2"/>
                         </Binary_Exp>
                         <EmptySet typref="0"/>
                     </Exp_Comparison>
@@ -945,9 +945,9 @@
             <Tag>Valuation is correct</Tag>
             <Goal>
                 <Exp_Comparison op=":">
-                    <Binary_Exp op=".." typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:1:2:1">
-                        <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:2:1:1"/>
-                        <Integer_Literal value="15" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:2:1:2"/>
+                    <Binary_Exp op=".." typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:1:2:1">
+                        <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:2:1:1"/>
+                        <Integer_Literal value="15" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:2:1:2"/>
                     </Binary_Exp>
                     <Unary_Exp op="FIN" typref="4">
                         <Id value="INTEGER" typref="0"/>
@@ -960,9 +960,9 @@
             <Goal>
                 <Unary_Pred op="not">
                     <Exp_Comparison op="=">
-                        <Binary_Exp op=".." typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:1:2:1">
-                            <Integer_Literal value="0" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:2:1:1"/>
-                            <Integer_Literal value="15" typref="1" tag="C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:2:1:2"/>
+                        <Binary_Exp op=".." typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:1:2:1">
+                            <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:2:1:1"/>
+                            <Integer_Literal value="15" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:2:1:2"/>
                         </Binary_Exp>
                         <EmptySet typref="0"/>
                     </Exp_Comparison>
@@ -973,17 +973,17 @@
             <Tag>Valuation is correct</Tag>
             <Goal>
                 <Exp_Comparison op="&lt;:">
-                    <Nary_Exp op="{" typref="0" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:9:1">
-                        <Integer_Literal value="8" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:10:2:1"/>
-                        <Integer_Literal value="21" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:10:2:2"/>
-                        <Integer_Literal value="34" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:10:2:3"/>
-                        <Integer_Literal value="47" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:10:2:4"/>
+                    <Nary_Exp op="{" typref="0" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:9:1">
+                        <Integer_Literal value="8" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:10:2:1"/>
+                        <Integer_Literal value="21" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:10:2:2"/>
+                        <Integer_Literal value="34" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:10:2:3"/>
+                        <Integer_Literal value="47" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:10:2:4"/>
                     </Nary_Exp>
                     <Binary_Exp op=".." typref="0">
-                        <Integer_Literal value="0" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:9:2:1"/>
+                        <Integer_Literal value="0" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:9:2:1"/>
                         <Binary_Exp op="-i" typref="1">
-                            <Integer_Literal value="52" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:9:2:2:1,C:\Metodos\projeto\bdp\Ludo_ctx_i.bxml:1:2:7:1"/>
-                            <Integer_Literal value="1" typref="1" tag="C:/Metodos/projeto/bdp\/Ludo_ctx.bxml:1:4:1:9:2:2:2"/>
+                            <Integer_Literal value="52" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:9:2:2:1,/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/Ludo_ctx_i.bxml:1:2:7:1"/>
+                            <Integer_Literal value="1" typref="1" tag="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp//Ludo_ctx.bxml:1:4:1:9:2:2:2"/>
                         </Binary_Exp>
                     </Binary_Exp>
                 </Exp_Comparison>

@@ -50,12 +50,12 @@ void Ludo_board__setFree(Ludo_ctx__PIECES pp)
     Ludo_board__externalBoard[pp] = 0;
 }
 
-void Ludo_board__setExternalPos(Ludo_ctx__PIECES pp, int32_t nn)
+void Ludo_board__setExternalPos(Ludo_ctx__PIECES pp, int32_t nn, bool *atePiece)
 {
     {
         int32_t rest;
         Ludo_ctx__COLORS currentColor;
-        bool hasOtherColor;
+        bool atePiece;
         Ludo_ctx__COLORS otherColor;
         int32_t otherPos;
         int32_t ii;
@@ -66,9 +66,9 @@ void Ludo_board__setExternalPos(Ludo_ctx__PIECES pp, int32_t nn)
         {
             ii = 0;
             currentColor = Ludo_ctx__colorOf[pp];
-            hasOtherColor = false;
+            atePiece = false;
             while(((ii) < (Ludo_ctx__numPieces)) &&
-            (hasOtherColor == false))
+            (atePiece == false))
             {
                 otherColor = Ludo_ctx__colorOf[Ludo_ctx__piecesOrder[ii]];
                 otherPos = Ludo_board__externalBoard[Ludo_ctx__piecesOrder[ii]];
@@ -76,9 +76,8 @@ void Ludo_board__setExternalPos(Ludo_ctx__PIECES pp, int32_t nn)
                 (otherPos == nn))
                 {
                     Ludo_board__externalBoard[Ludo_ctx__piecesOrder[ii]] = -1;
-                    hasOtherColor = true;
+                    atePiece = true;
                 }
-                ;
                 ii = ii+1;
             }
         }
@@ -92,31 +91,9 @@ void Ludo_board__setInternalPos(Ludo_ctx__PIECES pp, int32_t nn)
     Ludo_board__internalBoard[pp] = nn;
 }
 
-void Ludo_board__isFinished(Ludo_ctx__COLORS color, bool *bb)
+void Ludo_board__getPos(Ludo_ctx__PIECES pp, int32_t *ee, int32_t *ii)
 {
-    (*bb) = true;
-    {
-        int32_t ii;
-        Ludo_ctx__PIECES piece;
-        Ludo_ctx__COLORS pieceColor;
-        int32_t piecePos;
-        int32_t endPos;
-        
-        ii = 0;
-        endPos = Ludo_ctx__numInternal-1;
-        while(((ii) < (Ludo_ctx__numPieces)) &&
-        ((*bb) == true))
-        {
-            piece = Ludo_ctx__piecesOrder[ii];
-            pieceColor = Ludo_ctx__colorOf[piece];
-            piecePos = Ludo_board__internalBoard[piece];
-            if((pieceColor == color) &&
-            ((piecePos) != (endPos)))
-            {
-                (*bb) = false;
-            }
-            ii = ii+1;
-        }
-    }
+    (*ee) = Ludo_board__externalBoard[pp];
+    (*ii) = Ludo_board__internalBoard[pp];
 }
 

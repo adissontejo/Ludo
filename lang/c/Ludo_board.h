@@ -25,9 +25,9 @@ extern void Ludo_board__INITIALISATION(void);
 
 extern void Ludo_board__clear(void);
 extern void Ludo_board__setFree(Ludo_ctx__PIECES pp);
-extern void Ludo_board__setExternalPos(Ludo_ctx__PIECES pp, int32_t nn);
+extern void Ludo_board__setExternalPos(Ludo_ctx__PIECES pp, int32_t nn, bool *atePiece);
 extern void Ludo_board__setInternalPos(Ludo_ctx__PIECES pp, int32_t nn);
-extern void Ludo_board__isFinished(Ludo_ctx__COLORS color, bool *bb);
+extern void Ludo_board__getPos(Ludo_ctx__PIECES pp, int32_t *ee, int32_t *ii);
 
 #ifdef __cplusplus
 }

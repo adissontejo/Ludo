@@ -1,8 +1,10 @@
 ﻿MACHINE Ludo
 SEES Ludo_ctx
 INCLUDES
-  (board.Ludo_board) ,
-  (turn.Ludo_turn)
+  Ludo_board ,
+  Ludo_turn
+PROMOTES
+  pickColor , unpickColor , endGame , getDiceValue
 
 
 
@@ -49,155 +51,148 @@ INCLUDES
 
 
 
+ABSTRACT_VARIABLES
+    atePieceDummy
 
 INVARIANT
-  ! cc . ( cc : ran ( (turn.finishOrder) ) => colorOf ~ [ { cc } ] <: (board.internalPos) ~ [ { numInternal - 1 } ] ) &
+  ! cc . ( cc : ran ( finishOrder ) => colorOf ~ [ { cc } ] <: internalPos ~ [ { numInternal - 1 } ] ) &
   // para todas as peças que a cor não esta habilitada ao jogo, ficam bloqueadas nos seus pontos
   // de partida
-  ! pp . ( pp : PIECES => ( colorOf ( pp ) /: (turn.enabledColors) => pp : (board.lockedPieces) ) )
+  ! pp . ( pp : PIECES => ( colorOf ( pp ) /: enabledColors => pp : lockedPieces ) ) &
+  atePieceDummy : BOOL
+
+INITIALISATION
+  atePieceDummy :: BOOL
 
 OPERATIONS
-  pickColor ( cc ) =
-    PRE cc : COLORS & cc /: (turn.enabledColors) & (turn.gameStarted) = FALSE
-    THEN (turn.pickColor) ( cc )
-    END ;
-
-  unpickColor ( cc ) =
-    PRE cc : COLORS & cc : (turn.enabledColors) & (turn.gameStarted) = FALSE
-    THEN (turn.unpickColor) ( cc )
-    END ;
-
-  initGame =
+  startGame =
     PRE
-      (turn.gameStarted) = FALSE
-      & card ( (turn.enabledColors) ) >= 2
+      gameStarted = FALSE
+      & card ( enabledColors ) >= 2
     THEN
-      (turn.initGame) ||
-      (board.clear)
+      initGame ||
+      clear
     END ;
 
   free ( pp ) =
     PRE
-      (turn.gameStarted) = TRUE &
+      gameStarted = TRUE &
       pp : PIECES &
-      colorOf ( pp ) = (turn.color) &
-      (turn.diceValue) = 6 & pp : (board.lockedPieces) & card ( (board.externalPos) |> { startPoint ( colorOf ( pp ) ) } ) < 2
+      colorOf ( pp ) = color &
+      diceValue = 6 & pp : lockedPieces & card ( externalPos |> { startPoint ( colorOf ( pp ) ) } ) < 2
     THEN
-      (turn.computeAction) ( FALSE , FALSE ) ||
-      (board.setFree) ( pp )
+      computeAction ( FALSE , FALSE ) ||
+      setFree ( pp )
     END ;
 
-  vv <-- rollDice =
+  vv <-- throwDice =
     PRE
-      (turn.gameStarted) = TRUE &
-      (turn.hasRoll) = TRUE &
-
-      ( (turn.diceValue) = 0 or not ( # pp . ( pp : PIECES & colorOf ( pp ) = (turn.color) & ( (turn.diceValue) = 6 & pp : (board.lockedPieces) & card ( (board.externalPos) |> { startPoint ( colorOf ( pp ) ) } ) < 2 or (turn.diceValue) /= 0 & pp /: (board.lockedPieces) & ( pp : dom ( (board.externalPos) ) => ( (turn.diceValue) <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal & ! nn . ( nn : 0 .. numExternal - 1 & nn /= (board.externalPos) ( pp ) & ( nn - (board.externalPos) ( pp ) + numExternal ) mod numExternal <= ( ( (board.externalPos) ( pp ) + (turn.diceValue) ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal => card ( (board.externalPos) |> { nn } ) < 2 ) ) or ( (turn.diceValue) - ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal - 1 < numInternal & ! nn . ( nn : 0 .. numExternal - 1 & nn /= (board.externalPos) ( pp ) & ( nn - (board.externalPos) ( pp ) + numExternal ) mod numExternal <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal => card ( (board.externalPos) |> { nn } ) < 2 ) ) ) & ( pp : dom ( (board.internalPos) ) => (board.internalPos) ( pp ) + (turn.diceValue) < numInternal ) ) ) ) )
-    THEN vv <-- (turn.rollDice)
+      gameStarted = TRUE &
+      hasRoll = TRUE &
+      // não tem ações pendentes ou não tem ações possíveis
+      ( diceValue = 0 or not ( # pp . ( pp : PIECES & colorOf ( pp ) = color & ( diceValue = 6 & pp : lockedPieces & card ( externalPos |> { startPoint ( colorOf ( pp ) ) } ) < 2 or diceValue /= 0 & pp /: lockedPieces & ( pp : dom ( externalPos ) => ( diceValue <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal & ! nn . ( nn : 0 .. numExternal - 1 & nn /= externalPos ( pp ) & ( nn - externalPos ( pp ) + numExternal ) mod numExternal <= ( ( externalPos ( pp ) + diceValue ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal => card ( externalPos |> { nn } ) < 2 ) ) or ( diceValue - ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal - 1 < numInternal & ! nn . ( nn : 0 .. numExternal - 1 & nn /= externalPos ( pp ) & ( nn - externalPos ( pp ) + numExternal ) mod numExternal <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal => card ( externalPos |> { nn } ) < 2 ) ) ) & ( pp : dom ( internalPos ) => internalPos ( pp ) + diceValue < numInternal ) ) ) ) )
+    THEN vv <-- rollDice
     END ;
 
-  nextTurn =
+  skipTurn =
     PRE
-      (turn.gameStarted) = TRUE &
-      (turn.hasRoll) = FALSE &
-      ( (turn.diceValue) = 0 or not ( # pp . ( pp : PIECES & colorOf ( pp ) = (turn.color) & ( (turn.diceValue) = 6 & pp : (board.lockedPieces) & card ( (board.externalPos) |> { startPoint ( colorOf ( pp ) ) } ) < 2 or (turn.diceValue) /= 0 & pp /: (board.lockedPieces) & ( pp : dom ( (board.externalPos) ) => ( (turn.diceValue) <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal & ! nn . ( nn : 0 .. numExternal - 1 & nn /= (board.externalPos) ( pp ) & ( nn - (board.externalPos) ( pp ) + numExternal ) mod numExternal <= ( ( (board.externalPos) ( pp ) + (turn.diceValue) ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal => card ( (board.externalPos) |> { nn } ) < 2 ) ) or ( (turn.diceValue) - ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal - 1 < numInternal & ! nn . ( nn : 0 .. numExternal - 1 & nn /= (board.externalPos) ( pp ) & ( nn - (board.externalPos) ( pp ) + numExternal ) mod numExternal <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal => card ( (board.externalPos) |> { nn } ) < 2 ) ) ) & ( pp : dom ( (board.internalPos) ) => (board.internalPos) ( pp ) + (turn.diceValue) < numInternal ) ) ) ) ) &
-      card ( (turn.finishOrder) ) < card ( (turn.enabledColors) )
-    THEN (turn.nextTurn)
+      gameStarted = TRUE &
+      hasRoll = FALSE &
+      ( diceValue = 0 or not ( # pp . ( pp : PIECES & colorOf ( pp ) = color & ( diceValue = 6 & pp : lockedPieces & card ( externalPos |> { startPoint ( colorOf ( pp ) ) } ) < 2 or diceValue /= 0 & pp /: lockedPieces & ( pp : dom ( externalPos ) => ( diceValue <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal & ! nn . ( nn : 0 .. numExternal - 1 & nn /= externalPos ( pp ) & ( nn - externalPos ( pp ) + numExternal ) mod numExternal <= ( ( externalPos ( pp ) + diceValue ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal => card ( externalPos |> { nn } ) < 2 ) ) or ( diceValue - ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal - 1 < numInternal & ! nn . ( nn : 0 .. numExternal - 1 & nn /= externalPos ( pp ) & ( nn - externalPos ( pp ) + numExternal ) mod numExternal <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal => card ( externalPos |> { nn } ) < 2 ) ) ) & ( pp : dom ( internalPos ) => internalPos ( pp ) + diceValue < numInternal ) ) ) ) ) &
+      card ( finishOrder ) < card ( enabledColors )
+    THEN nextTurn
     END ;
 
   walk ( pp ) =
     PRE
-      (turn.gameStarted) = TRUE &
+      gameStarted = TRUE &
       pp : PIECES &
-      colorOf ( pp ) = (turn.color) &
-      (turn.diceValue) /= 0 & pp /: (board.lockedPieces) & ( pp : dom ( (board.externalPos) ) => ( (turn.diceValue) <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal & ! nn . ( nn : 0 .. numExternal - 1 & nn /= (board.externalPos) ( pp ) & ( nn - (board.externalPos) ( pp ) + numExternal ) mod numExternal <= ( ( (board.externalPos) ( pp ) + (turn.diceValue) ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal => card ( (board.externalPos) |> { nn } ) < 2 ) ) or ( (turn.diceValue) - ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal - 1 < numInternal & ! nn . ( nn : 0 .. numExternal - 1 & nn /= (board.externalPos) ( pp ) & ( nn - (board.externalPos) ( pp ) + numExternal ) mod numExternal <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal => card ( (board.externalPos) |> { nn } ) < 2 ) ) ) & ( pp : dom ( (board.internalPos) ) => (board.internalPos) ( pp ) + (turn.diceValue) < numInternal )
+      colorOf ( pp ) = color &
+      diceValue /= 0 & pp /: lockedPieces & ( pp : dom ( externalPos ) => ( diceValue <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal & ! nn . ( nn : 0 .. numExternal - 1 & nn /= externalPos ( pp ) & ( nn - externalPos ( pp ) + numExternal ) mod numExternal <= ( ( externalPos ( pp ) + diceValue ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal => card ( externalPos |> { nn } ) < 2 ) ) or ( diceValue - ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal - 1 < numInternal & ! nn . ( nn : 0 .. numExternal - 1 & nn /= externalPos ( pp ) & ( nn - externalPos ( pp ) + numExternal ) mod numExternal <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal => card ( externalPos |> { nn } ) < 2 ) ) ) & ( pp : dom ( internalPos ) => internalPos ( pp ) + diceValue < numInternal )
     THEN
-      IF pp : dom ( (board.externalPos) ) & (turn.diceValue) <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal THEN
+      IF pp : dom ( externalPos ) & diceValue <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal THEN
         LET newPos
-        BE newPos = ( (turn.diceValue) + (board.externalPos) ( pp ) ) mod numExternal
+        BE newPos = ( diceValue + externalPos ( pp ) ) mod numExternal
         IN
-          (board.setExternalPos) ( pp , newPos ) ||
+          atePieceDummy <-- setExternalPos ( pp , newPos ) ||
           IF
             newPos /: ( stars \/ ran ( startPoint ) ) &
-            ( (board.externalPos) ~ ; colorOf ) [ { newPos } ] - { colorOf ( pp ) } /= {}
+            ( externalPos ~ ; colorOf ) [ { newPos } ] - { colorOf ( pp ) } /= {}
           THEN
-            (turn.computeAction) ( TRUE , FALSE )
+            computeAction ( TRUE , FALSE )
           ELSE
-            (turn.computeAction) ( FALSE , FALSE )
+            computeAction ( FALSE , FALSE )
           END
         END
       ELSE
-        IF pp : dom ( (board.externalPos) ) THEN
-          (board.setInternalPos) ( pp , (turn.diceValue) - ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal - 1 )
+        IF pp : dom ( externalPos ) THEN
+          setInternalPos ( pp , diceValue - ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal - 1 )
         ELSE
-          (board.setInternalPos) ( pp , (turn.diceValue) + (board.internalPos) ( pp ) )
+          setInternalPos ( pp , diceValue + internalPos ( pp ) )
         END ||
         IF
-          ( ( pp : dom ( (board.internalPos) ) & (turn.diceValue) + (board.internalPos) ( pp ) = numInternal - 1 )
-          or ( pp : dom ( (board.externalPos) ) & (turn.diceValue) - ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal - 1 = numInternal - 1 ) )
+          ( ( pp : dom ( internalPos ) & diceValue + internalPos ( pp ) = numInternal - 1 )
+          or ( pp : dom ( externalPos ) & diceValue - ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal - 1 = numInternal - 1 ) )
         THEN
-          IF card ( (board.internalPos) ~ [ { numInternal - 1 } ] /\ colorOf ~ [ { (turn.color) } ] ) = numPiecesByColor - 1 THEN
-            (turn.computeAction) ( FALSE , TRUE )
+          IF card ( internalPos ~ [ { numInternal - 1 } ] /\ colorOf ~ [ { color } ] ) = numPiecesByColor - 1 THEN
+            computeAction ( FALSE , TRUE )
           ELSE
-            (turn.computeAction) ( TRUE , FALSE )
+            computeAction ( TRUE , FALSE )
           END
         ELSE
-          (turn.computeAction) ( FALSE , FALSE )
+          computeAction ( FALSE , FALSE )
         END
       END
     END ;
 
-  dd <-- getDiceValue =
-    PRE (turn.gameStarted) = TRUE & (turn.diceValue) /= 0
-    THEN dd := (turn.diceValue)
-    END ;
-
-  ee , ii <-- getBoard =
-    PRE (turn.gameStarted) = TRUE
-    THEN ee , ii := (board.externalPos) , (board.internalPos)
+  ee , ii <-- getPiecePos ( pp ) =
+    PRE pp : PIECES
+    THEN ee , ii <-- getPos ( pp )
     END ;
 
   cc <-- getTurn =
-    PRE (turn.gameStarted) = TRUE & card ( (turn.finishOrder) ) < numColors
-    THEN cc := (turn.color)
-    END ;
+    cc := color ;
 
-  oo <-- finishGame =
-    PRE (turn.gameStarted) = TRUE & card ( (turn.finishOrder) ) >= 1
-    THEN
-      oo := (turn.finishOrder) ||
-      (turn.endGame)
-    END ;
+  nn <-- getNumWinners =
+      nn <-- numWinners ;
+
+  cc <-- getPlacement ( nn ) =
+      PRE nn : NAT & nn : dom ( finishOrder )
+      THEN cc <-- placement ( nn )
+      END ;
 
   // operações de pre condicao
 
   rr <-- pre_pickColor ( cc ) =
     PRE cc : COLORS
-    THEN rr := bool ( cc /: (turn.enabledColors) & (turn.gameStarted) = FALSE )
+    THEN rr := bool ( cc /: enabledColors & gameStarted = FALSE )
     END ;
 
   rr <-- pre_unpickColor ( cc ) =
     PRE cc : COLORS
-    THEN rr := bool ( cc /: (turn.enabledColors) & (turn.gameStarted) = FALSE )
+    THEN rr := bool ( cc /: enabledColors & gameStarted = FALSE )
     END ;
 
   rr <-- pre_initGame =
-    rr := bool ( (turn.gameStarted) = FALSE & card ( (turn.enabledColors) ) >= 2 ) ;
+    rr := bool ( gameStarted = FALSE & card ( enabledColors ) >= 2 ) ;
 
 
   rr <-- pre_free ( pp ) =
     PRE pp : PIECES
-    THEN rr := bool ( (turn.gameStarted) = TRUE & colorOf ( pp ) = (turn.color) & (turn.diceValue) = 6 & pp : (board.lockedPieces) & card ( (board.externalPos) |> { startPoint ( colorOf ( pp ) ) } ) < 2 )
+    THEN rr := bool ( gameStarted = TRUE & colorOf ( pp ) = color & diceValue = 6 & pp : lockedPieces & card ( externalPos |> { startPoint ( colorOf ( pp ) ) } ) < 2 )
     END ;
 
   rr <-- pre_rollDice =
-    rr := bool ( (turn.gameStarted) = TRUE & (turn.hasRoll) = TRUE & ( (turn.diceValue) = 0 or not ( # pp . ( pp : PIECES & colorOf ( pp ) = (turn.color) & ( (turn.diceValue) = 6 & pp : (board.lockedPieces) & card ( (board.externalPos) |> { startPoint ( colorOf ( pp ) ) } ) < 2 or (turn.diceValue) /= 0 & pp /: (board.lockedPieces) & ( pp : dom ( (board.externalPos) ) => ( (turn.diceValue) <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal & ! nn . ( nn : 0 .. numExternal - 1 & nn /= (board.externalPos) ( pp ) & ( nn - (board.externalPos) ( pp ) + numExternal ) mod numExternal <= ( ( (board.externalPos) ( pp ) + (turn.diceValue) ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal => card ( (board.externalPos) |> { nn } ) < 2 ) ) or ( (turn.diceValue) - ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal - 1 < numInternal & ! nn . ( nn : 0 .. numExternal - 1 & nn /= (board.externalPos) ( pp ) & ( nn - (board.externalPos) ( pp ) + numExternal ) mod numExternal <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal => card ( (board.externalPos) |> { nn } ) < 2 ) ) ) & ( pp : dom ( (board.internalPos) ) => (board.internalPos) ( pp ) + (turn.diceValue) < numInternal ) ) ) ) ) ) ;
+    rr := bool ( gameStarted = TRUE & hasRoll = TRUE & ( diceValue = 0 or not ( # pp . ( pp : PIECES & colorOf ( pp ) = color & ( diceValue = 6 & pp : lockedPieces & card ( externalPos |> { startPoint ( colorOf ( pp ) ) } ) < 2 or diceValue /= 0 & pp /: lockedPieces & ( pp : dom ( externalPos ) => ( diceValue <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal & ! nn . ( nn : 0 .. numExternal - 1 & nn /= externalPos ( pp ) & ( nn - externalPos ( pp ) + numExternal ) mod numExternal <= ( ( externalPos ( pp ) + diceValue ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal => card ( externalPos |> { nn } ) < 2 ) ) or ( diceValue - ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal - 1 < numInternal & ! nn . ( nn : 0 .. numExternal - 1 & nn /= externalPos ( pp ) & ( nn - externalPos ( pp ) + numExternal ) mod numExternal <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal => card ( externalPos |> { nn } ) < 2 ) ) ) & ( pp : dom ( internalPos ) => internalPos ( pp ) + diceValue < numInternal ) ) ) ) ) ) ;
 
   rr <-- pre_nextTurn =
-      rr := bool ( (turn.gameStarted) = TRUE & (turn.hasRoll) = FALSE & ( (turn.diceValue) = 0 or not ( # pp . ( pp : PIECES & colorOf ( pp ) = (turn.color) & ( (turn.diceValue) = 6 & pp : (board.lockedPieces) & card ( (board.externalPos) |> { startPoint ( colorOf ( pp ) ) } ) < 2 or (turn.diceValue) /= 0 & pp /: (board.lockedPieces) & ( pp : dom ( (board.externalPos) ) => ( (turn.diceValue) <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal & ! nn . ( nn : 0 .. numExternal - 1 & nn /= (board.externalPos) ( pp ) & ( nn - (board.externalPos) ( pp ) + numExternal ) mod numExternal <= ( ( (board.externalPos) ( pp ) + (turn.diceValue) ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal => card ( (board.externalPos) |> { nn } ) < 2 ) ) or ( (turn.diceValue) - ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal - 1 < numInternal & ! nn . ( nn : 0 .. numExternal - 1 & nn /= (board.externalPos) ( pp ) & ( nn - (board.externalPos) ( pp ) + numExternal ) mod numExternal <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal => card ( (board.externalPos) |> { nn } ) < 2 ) ) ) & ( pp : dom ( (board.internalPos) ) => (board.internalPos) ( pp ) + (turn.diceValue) < numInternal ) ) ) ) ) & card ( (turn.finishOrder) ) < card ( (turn.enabledColors) ) ) ;
+      rr := bool ( gameStarted = TRUE & hasRoll = FALSE & ( diceValue = 0 or not ( # pp . ( pp : PIECES & colorOf ( pp ) = color & ( diceValue = 6 & pp : lockedPieces & card ( externalPos |> { startPoint ( colorOf ( pp ) ) } ) < 2 or diceValue /= 0 & pp /: lockedPieces & ( pp : dom ( externalPos ) => ( diceValue <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal & ! nn . ( nn : 0 .. numExternal - 1 & nn /= externalPos ( pp ) & ( nn - externalPos ( pp ) + numExternal ) mod numExternal <= ( ( externalPos ( pp ) + diceValue ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal => card ( externalPos |> { nn } ) < 2 ) ) or ( diceValue - ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal - 1 < numInternal & ! nn . ( nn : 0 .. numExternal - 1 & nn /= externalPos ( pp ) & ( nn - externalPos ( pp ) + numExternal ) mod numExternal <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal => card ( externalPos |> { nn } ) < 2 ) ) ) & ( pp : dom ( internalPos ) => internalPos ( pp ) + diceValue < numInternal ) ) ) ) ) & card ( finishOrder ) < card ( enabledColors ) ) ;
 
   rr <-- pre_walk ( pp ) =
     PRE pp : PIECES
-    THEN rr := bool ( (turn.gameStarted) = TRUE & colorOf ( pp ) = (turn.color) & (turn.diceValue) /= 0 & pp /: (board.lockedPieces) & ( pp : dom ( (board.externalPos) ) => ( (turn.diceValue) <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal & ! nn . ( nn : 0 .. numExternal - 1 & nn /= (board.externalPos) ( pp ) & ( nn - (board.externalPos) ( pp ) + numExternal ) mod numExternal <= ( ( (board.externalPos) ( pp ) + (turn.diceValue) ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal => card ( (board.externalPos) |> { nn } ) < 2 ) ) or ( (turn.diceValue) - ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal - 1 < numInternal & ! nn . ( nn : 0 .. numExternal - 1 & nn /= (board.externalPos) ( pp ) & ( nn - (board.externalPos) ( pp ) + numExternal ) mod numExternal <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - (board.externalPos) ( pp ) + numExternal ) mod numExternal => card ( (board.externalPos) |> { nn } ) < 2 ) ) ) & ( pp : dom ( (board.internalPos) ) => (board.internalPos) ( pp ) + (turn.diceValue) < numInternal ) )
-    END
+    THEN rr := bool ( gameStarted = TRUE & colorOf ( pp ) = color & diceValue /= 0 & pp /: lockedPieces & ( pp : dom ( externalPos ) => ( diceValue <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal & ! nn . ( nn : 0 .. numExternal - 1 & nn /= externalPos ( pp ) & ( nn - externalPos ( pp ) + numExternal ) mod numExternal <= ( ( externalPos ( pp ) + diceValue ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal => card ( externalPos |> { nn } ) < 2 ) ) or ( diceValue - ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal - 1 < numInternal & ! nn . ( nn : 0 .. numExternal - 1 & nn /= externalPos ( pp ) & ( nn - externalPos ( pp ) + numExternal ) mod numExternal <= ( ( startPoint ( colorOf ( pp ) ) + numExternal - 2 ) mod numExternal - externalPos ( pp ) + numExternal ) mod numExternal => card ( externalPos |> { nn } ) < 2 ) ) ) & ( pp : dom ( internalPos ) => internalPos ( pp ) + diceValue < numInternal ) )
+    END ;
+
+  rr <-- pre_finishGame =
+      rr := bool ( gameStarted = TRUE & card ( finishOrder ) >= 1 )
 END

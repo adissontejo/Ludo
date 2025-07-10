@@ -53,7 +53,7 @@ OPERATIONS
 
   // não pode pertecencer as peças bloqueadas, e na posição que a peça vai não pode ter
   // duas ou mais peças dessa cor.
-  setExternalPos ( pp , nn ) =
+  atePiece <-- setExternalPos ( pp , nn ) =
     PRE
       pp : PIECES &
       pp /: lockedPieces &
@@ -67,10 +67,12 @@ OPERATIONS
         ( externalPos ~ ; colorOf ) [ { nn } ] - { colorOf ( pp ) } /= {}
       THEN
         externalPos := ( externalPos |>> { nn } ) <+ { pp |-> nn } ||
-        lockedPieces := lockedPieces \/ externalPos ~ [ { nn } ]
+        lockedPieces := lockedPieces \/ externalPos ~ [ { nn } ] ||
+        atePiece := TRUE
       // }
       ELSE
-        externalPos ( pp ) := nn
+        externalPos ( pp ) := nn ||
+        atePiece := FALSE
       END
     END ;
 

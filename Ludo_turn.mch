@@ -24,6 +24,7 @@ INVARIANT
   // array de de cores que finalizaram o jogo
   finishOrder : 0..numColors-1 >+> COLORS &
   finishOrder : FIN(finishOrder) &
+  dom(finishOrder) = 0..card(finishOrder)-1 &
   (gameStarted = FALSE or (
     card(enabledColors) >= 2 &
     color : enabledColors &
@@ -122,6 +123,21 @@ OPERATIONS
 
   endGame =
     PRE gameStarted = TRUE & card(finishOrder) >= 1
-    THEN gameStarted := FALSE
+    THEN
+        gameStarted := FALSE
+    END;
+  
+  value <-- getDiceValue =
+      value := diceValue;
+      
+  cc <-- getColor =
+      cc := color;
+      
+  nn <-- numWinners =
+      nn := card(finishOrder);
+      
+  cc <-- placement(nn) =
+    PRE nn : NAT & nn : dom(finishOrder)
+    THEN cc := finishOrder(nn)
     END
 END

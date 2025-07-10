@@ -57,7 +57,7 @@ THEORY ListInvariantX IS
   Expanded_List_Invariant(Machine(Ludo_turn))==(btrue);
   Abstract_List_Invariant(Machine(Ludo_turn))==(btrue);
   Context_List_Invariant(Machine(Ludo_turn))==(btrue);
-  List_Invariant(Machine(Ludo_turn))==(gameStarted: BOOL & enabledColors: POW(COLORS) & enabledColors: FIN(enabledColors) & color: COLORS & hasRoll: BOOL & diceValue: 0..6 & sixSequenceCount: 0..2 & finishOrder: 0..numColors-1 >+> COLORS & finishOrder: FIN(finishOrder) & (gameStarted = FALSE or (card(enabledColors)>=2 & color: enabledColors & ran(finishOrder) <: enabledColors)))
+  List_Invariant(Machine(Ludo_turn))==(gameStarted: BOOL & enabledColors: POW(COLORS) & enabledColors: FIN(enabledColors) & color: COLORS & hasRoll: BOOL & diceValue: 0..6 & sixSequenceCount: 0..2 & finishOrder: 0..numColors-1 >+> COLORS & finishOrder: FIN(finishOrder) & dom(finishOrder) = 0..card(finishOrder)-1 & (gameStarted = FALSE or (card(enabledColors)>=2 & color: enabledColors & ran(finishOrder) <: enabledColors)))
 END
 &
 THEORY ListAssertionsX IS
@@ -95,8 +95,8 @@ THEORY ListConstraintsX IS
 END
 &
 THEORY ListOperationsX IS
-  Internal_List_Operations(Machine(Ludo_turn))==(pickColor,unpickColor,initGame,computeAction,nextTurn,rollDice,endGame);
-  List_Operations(Machine(Ludo_turn))==(pickColor,unpickColor,initGame,computeAction,nextTurn,rollDice,endGame)
+  Internal_List_Operations(Machine(Ludo_turn))==(pickColor,unpickColor,initGame,computeAction,nextTurn,rollDice,endGame,getDiceValue,getColor,numWinners,placement);
+  List_Operations(Machine(Ludo_turn))==(pickColor,unpickColor,initGame,computeAction,nextTurn,rollDice,endGame,getDiceValue,getColor,numWinners,placement)
 END
 &
 THEORY ListInputX IS
@@ -106,7 +106,11 @@ THEORY ListInputX IS
   List_Input(Machine(Ludo_turn),computeAction)==(extraTurn,finished);
   List_Input(Machine(Ludo_turn),nextTurn)==(?);
   List_Input(Machine(Ludo_turn),rollDice)==(?);
-  List_Input(Machine(Ludo_turn),endGame)==(?)
+  List_Input(Machine(Ludo_turn),endGame)==(?);
+  List_Input(Machine(Ludo_turn),getDiceValue)==(?);
+  List_Input(Machine(Ludo_turn),getColor)==(?);
+  List_Input(Machine(Ludo_turn),numWinners)==(?);
+  List_Input(Machine(Ludo_turn),placement)==(nn)
 END
 &
 THEORY ListOutputX IS
@@ -116,7 +120,11 @@ THEORY ListOutputX IS
   List_Output(Machine(Ludo_turn),computeAction)==(?);
   List_Output(Machine(Ludo_turn),nextTurn)==(?);
   List_Output(Machine(Ludo_turn),rollDice)==(value);
-  List_Output(Machine(Ludo_turn),endGame)==(?)
+  List_Output(Machine(Ludo_turn),endGame)==(?);
+  List_Output(Machine(Ludo_turn),getDiceValue)==(value);
+  List_Output(Machine(Ludo_turn),getColor)==(cc);
+  List_Output(Machine(Ludo_turn),numWinners)==(nn);
+  List_Output(Machine(Ludo_turn),placement)==(cc)
 END
 &
 THEORY ListHeaderX IS
@@ -126,7 +134,11 @@ THEORY ListHeaderX IS
   List_Header(Machine(Ludo_turn),computeAction)==(computeAction(extraTurn,finished));
   List_Header(Machine(Ludo_turn),nextTurn)==(nextTurn);
   List_Header(Machine(Ludo_turn),rollDice)==(value <-- rollDice);
-  List_Header(Machine(Ludo_turn),endGame)==(endGame)
+  List_Header(Machine(Ludo_turn),endGame)==(endGame);
+  List_Header(Machine(Ludo_turn),getDiceValue)==(value <-- getDiceValue);
+  List_Header(Machine(Ludo_turn),getColor)==(cc <-- getColor);
+  List_Header(Machine(Ludo_turn),numWinners)==(nn <-- numWinners);
+  List_Header(Machine(Ludo_turn),placement)==(cc <-- placement(nn))
 END
 &
 THEORY ListOperationGuardX END
@@ -138,10 +150,18 @@ THEORY ListPreconditionX IS
   List_Precondition(Machine(Ludo_turn),computeAction)==(gameStarted = TRUE & diceValue/=0 & extraTurn: BOOL & finished: BOOL & (extraTurn = TRUE => finished = FALSE));
   List_Precondition(Machine(Ludo_turn),nextTurn)==(gameStarted = TRUE & hasRoll = FALSE & card(finishOrder)<card(enabledColors));
   List_Precondition(Machine(Ludo_turn),rollDice)==(gameStarted = TRUE & hasRoll = TRUE);
-  List_Precondition(Machine(Ludo_turn),endGame)==(gameStarted = TRUE & card(finishOrder)>=1)
+  List_Precondition(Machine(Ludo_turn),endGame)==(gameStarted = TRUE & card(finishOrder)>=1);
+  List_Precondition(Machine(Ludo_turn),getDiceValue)==(btrue);
+  List_Precondition(Machine(Ludo_turn),getColor)==(btrue);
+  List_Precondition(Machine(Ludo_turn),numWinners)==(btrue);
+  List_Precondition(Machine(Ludo_turn),placement)==(nn: NAT & nn: dom(finishOrder))
 END
 &
 THEORY ListSubstitutionX IS
+  Expanded_List_Substitution(Machine(Ludo_turn),placement)==(nn: NAT & nn: dom(finishOrder) | cc:=finishOrder(nn));
+  Expanded_List_Substitution(Machine(Ludo_turn),numWinners)==(btrue | nn:=card(finishOrder));
+  Expanded_List_Substitution(Machine(Ludo_turn),getColor)==(btrue | cc:=color);
+  Expanded_List_Substitution(Machine(Ludo_turn),getDiceValue)==(btrue | value:=diceValue);
   Expanded_List_Substitution(Machine(Ludo_turn),endGame)==(gameStarted = TRUE & card(finishOrder)>=1 | gameStarted:=FALSE);
   Expanded_List_Substitution(Machine(Ludo_turn),rollDice)==(gameStarted = TRUE & hasRoll = TRUE | @dd.(dd: 1..6 ==> (value:=dd || (dd = 6 ==> (sixSequenceCount<2 ==> sixSequenceCount,diceValue:=sixSequenceCount+1,dd [] not(sixSequenceCount<2) ==> sixSequenceCount,hasRoll,diceValue:=0,FALSE,0) [] not(dd = 6) ==> hasRoll,diceValue:=FALSE,dd))));
   Expanded_List_Substitution(Machine(Ludo_turn),nextTurn)==(gameStarted = TRUE & hasRoll = FALSE & card(finishOrder)<card(enabledColors) | hasRoll,sixSequenceCount,diceValue:=TRUE,0,0 || @numJumps.(numJumps = min({nn | nn: 1..numColors & colorsOrder((colorsOrder~(color)+nn) mod numColors): enabledColors-ran(finishOrder)}) ==> color:=colorsOrder((colorsOrder~(color)+numJumps) mod numColors)));
@@ -155,7 +175,11 @@ THEORY ListSubstitutionX IS
   List_Substitution(Machine(Ludo_turn),computeAction)==(diceValue:=0 || IF finished = TRUE THEN finishOrder(card(finishOrder)):=color || hasRoll:=FALSE ELSIF extraTurn = TRUE THEN hasRoll:=TRUE END);
   List_Substitution(Machine(Ludo_turn),nextTurn)==(hasRoll:=TRUE || sixSequenceCount:=0 || diceValue:=0 || LET numJumps BE numJumps = min({nn | nn: 1..numColors & colorsOrder((colorsOrder~(color)+nn) mod numColors): enabledColors-ran(finishOrder)}) IN color:=colorsOrder((colorsOrder~(color)+numJumps) mod numColors) END);
   List_Substitution(Machine(Ludo_turn),rollDice)==(ANY dd WHERE dd: 1..6 THEN value:=dd || IF dd = 6 THEN IF sixSequenceCount<2 THEN sixSequenceCount:=sixSequenceCount+1 || diceValue:=dd ELSE sixSequenceCount:=0 || hasRoll:=FALSE || diceValue:=0 END ELSE hasRoll:=FALSE || diceValue:=dd END END);
-  List_Substitution(Machine(Ludo_turn),endGame)==(gameStarted:=FALSE)
+  List_Substitution(Machine(Ludo_turn),endGame)==(gameStarted:=FALSE);
+  List_Substitution(Machine(Ludo_turn),getDiceValue)==(value:=diceValue);
+  List_Substitution(Machine(Ludo_turn),getColor)==(cc:=color);
+  List_Substitution(Machine(Ludo_turn),numWinners)==(nn:=card(finishOrder));
+  List_Substitution(Machine(Ludo_turn),placement)==(cc:=finishOrder(nn))
 END
 &
 THEORY ListConstantsX IS
@@ -209,11 +233,15 @@ THEORY ListANYVarX IS
   List_ANY_Var(Machine(Ludo_turn),computeAction)==(?);
   List_ANY_Var(Machine(Ludo_turn),nextTurn)==(?);
   List_ANY_Var(Machine(Ludo_turn),rollDice)==(Var(dd) == btype(INTEGER,?,?));
-  List_ANY_Var(Machine(Ludo_turn),endGame)==(?)
+  List_ANY_Var(Machine(Ludo_turn),endGame)==(?);
+  List_ANY_Var(Machine(Ludo_turn),getDiceValue)==(?);
+  List_ANY_Var(Machine(Ludo_turn),getColor)==(?);
+  List_ANY_Var(Machine(Ludo_turn),numWinners)==(?);
+  List_ANY_Var(Machine(Ludo_turn),placement)==(?)
 END
 &
 THEORY ListOfIdsX IS
-  List_Of_Ids(Machine(Ludo_turn)) == (? | ? | finishOrder,sixSequenceCount,diceValue,hasRoll,color,enabledColors,gameStarted | ? | pickColor,unpickColor,initGame,computeAction,nextTurn,rollDice,endGame | ? | seen(Machine(Ludo_ctx)) | ? | Ludo_turn);
+  List_Of_Ids(Machine(Ludo_turn)) == (? | ? | finishOrder,sixSequenceCount,diceValue,hasRoll,color,enabledColors,gameStarted | ? | pickColor,unpickColor,initGame,computeAction,nextTurn,rollDice,endGame,getDiceValue,getColor,numWinners,placement | ? | seen(Machine(Ludo_ctx)) | ? | Ludo_turn);
   List_Of_HiddenCst_Ids(Machine(Ludo_turn)) == (? | ?);
   List_Of_VisibleCst_Ids(Machine(Ludo_turn)) == (?);
   List_Of_VisibleVar_Ids(Machine(Ludo_turn)) == (? | ?);
@@ -230,7 +258,8 @@ THEORY VariablesEnvX IS
 END
 &
 THEORY OperationsEnvX IS
-  Operations(Machine(Ludo_turn)) == (Type(endGame) == Cst(No_type,No_type);Type(rollDice) == Cst(btype(INTEGER,?,?),No_type);Type(nextTurn) == Cst(No_type,No_type);Type(computeAction) == Cst(No_type,btype(BOOL,?,?)*btype(BOOL,?,?));Type(initGame) == Cst(No_type,No_type);Type(unpickColor) == Cst(No_type,atype(COLORS,?,?));Type(pickColor) == Cst(No_type,atype(COLORS,?,?)))
+  Operations(Machine(Ludo_turn)) == (Type(placement) == Cst(atype(COLORS,?,?),btype(INTEGER,?,?));Type(numWinners) == Cst(btype(INTEGER,?,?),No_type);Type(getColor) == Cst(atype(COLORS,?,?),No_type);Type(getDiceValue) == Cst(btype(INTEGER,?,?),No_type);Type(endGame) == Cst(No_type,No_type);Type(rollDice) == Cst(btype(INTEGER,?,?),No_type);Type(nextTurn) == Cst(No_type,No_type);Type(computeAction) == Cst(No_type,btype(BOOL,?,?)*btype(BOOL,?,?));Type(initGame) == Cst(No_type,No_type);Type(unpickColor) == Cst(No_type,atype(COLORS,?,?));Type(pickColor) == Cst(No_type,atype(COLORS,?,?)));
+  Observers(Machine(Ludo_turn)) == (Type(placement) == Cst(atype(COLORS,?,?),btype(INTEGER,?,?));Type(numWinners) == Cst(btype(INTEGER,?,?),No_type);Type(getColor) == Cst(atype(COLORS,?,?),No_type);Type(getDiceValue) == Cst(btype(INTEGER,?,?),No_type))
 END
 &
 THEORY TCIntRdX IS

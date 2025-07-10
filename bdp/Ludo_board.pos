@@ -1,268 +1,268 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<Proof_Obligations author="pmi2Pos" xmlns="https://www.atelierb.eu/Formats/pog" version="1.0">
+<Proof_Obligations version="1.0" author="pmi2Pos" xmlns="https://www.atelierb.eu/Formats/pog">
 <Proof_Obligation>
 <Tag>Initialisation</Tag>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 </Proof_Obligation>
 <Proof_Obligation>
 <Tag>Operation_clear</Tag>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 </Proof_Obligation>
 <Proof_Obligation>
 <Tag>Operation_setFree</Tag>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Unproved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Unproved" passList="Force(0),(?; 0)" methodList="?"/>
+<Proof_State passList="Force(0),(?; 0)" methodList="?" proofState="Unproved"/>
 </Simple_Goal>
 <Simple_Goal status="Unproved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Unproved" passList="Force(0),(?; 0)" methodList="?"/>
+<Proof_State passList="Force(0),(?; 0)" methodList="?" proofState="Unproved"/>
 </Simple_Goal>
 </Proof_Obligation>
 <Proof_Obligation>
 <Tag>Operation_setExternalPos</Tag>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Unproved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Unproved" passList="Force(0),(?; 0)" methodList="?"/>
+<Proof_State passList="Force(0),(?; 0)" methodList="?" proofState="Unproved"/>
 </Simple_Goal>
 <Simple_Goal status="Unproved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Unproved" passList="Force(0),(?; 0)" methodList="pr"/>
+<Proof_State passList="Force(0),(?; 0)" methodList="?" proofState="Unproved"/>
 </Simple_Goal>
 <Simple_Goal status="Unproved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Unproved" passList="Force(0),(?; 0)" methodList="?"/>
+<Proof_State passList="Force(0),(?; 0)" methodList="?" proofState="Unproved"/>
 </Simple_Goal>
 <Simple_Goal status="Unproved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Unproved" passList="Force(0),(?; 0)" methodList="?"/>
+<Proof_State passList="Force(0),(?; 0)" methodList="?" proofState="Unproved"/>
 </Simple_Goal>
 <Simple_Goal status="Unproved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Unproved" passList="Force(0),(?; 0)" methodList="?"/>
+<Proof_State passList="Force(0),(?; 0)" methodList="?" proofState="Unproved"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Unproved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Unproved" passList="Force(0),(?; 0)" methodList="?"/>
+<Proof_State passList="Force(0),(?; 0)" methodList="?" proofState="Unproved"/>
 </Simple_Goal>
 <Simple_Goal status="Unproved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Unproved" passList="Force(0),(?; 0)" methodList="?"/>
+<Proof_State passList="Force(0),(?; 0)" methodList="?" proofState="Unproved"/>
 </Simple_Goal>
 </Proof_Obligation>
 <Proof_Obligation>
 <Tag>Operation_setInternalPos</Tag>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Unproved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Unproved" passList="Force(0),(?; 0)" methodList="pr"/>
+<Proof_State passList="Force(0),(?; 0)" methodList="?" proofState="Unproved"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Unproved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Unproved" passList="Force(0),(?; 0)" methodList="?"/>
+<Proof_State passList="Force(0),(?; 0)" methodList="?" proofState="Unproved"/>
 </Simple_Goal>
 <Simple_Goal status="Unproved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Unproved" passList="Force(0),(?; 0)" methodList="?"/>
+<Proof_State passList="Force(0),(?; 0)" methodList="?" proofState="Unproved"/>
 </Simple_Goal>
 <Simple_Goal status="Unproved">
 <Tag>Invariant is preserved</Tag>
-<Proof_State proofState="Unproved" passList="Force(0),(?; 0)" methodList="?"/>
+<Proof_State passList="Force(0),(?; 0)" methodList="?" proofState="Unproved"/>
 </Simple_Goal>
 </Proof_Obligation>
 <Proof_Obligation>
 <Tag>WellDefinednessInvariant</Tag>
 <Simple_Goal status="Proved">
 <Tag>Invariant is well defined</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Invariant is well defined</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 </Proof_Obligation>
 <Proof_Obligation>
 <Tag>WellDefinednessPrecondition_setFree</Tag>
 <Simple_Goal status="Proved">
 <Tag>Operation precondition is well defined</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Operation precondition is well defined</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Operation precondition is well defined</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Operation precondition is well defined</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Operation precondition is well defined</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 </Proof_Obligation>
 <Proof_Obligation>
 <Tag>WellDefinedness_setFree</Tag>
 <Simple_Goal status="Proved">
 <Tag>Operation is well defined</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Operation is well defined</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Operation is well defined</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Operation is well defined</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 </Proof_Obligation>
 <Proof_Obligation>
 <Tag>WellDefinednessPrecondition_setExternalPos</Tag>
 <Simple_Goal status="Proved">
 <Tag>Operation precondition is well defined</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 </Proof_Obligation>
 <Proof_Obligation>
 <Tag>WellDefinedness_setExternalPos</Tag>
 <Simple_Goal status="Proved">
 <Tag>Operation is well defined</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Operation is well defined</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 </Proof_Obligation>
 <Proof_Obligation>
 <Tag>WellDefinedness_getPos</Tag>
 <Simple_Goal status="Proved">
 <Tag>Operation is well defined</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 <Simple_Goal status="Proved">
 <Tag>Operation is well defined</Tag>
-<Proof_State proofState="Proved(0)" passList="Force(0),?" methodList="pr"/>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
 </Simple_Goal>
 </Proof_Obligation>
 </Proof_Obligations>

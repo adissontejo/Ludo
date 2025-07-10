@@ -21,12 +21,12 @@ THEORY ListUsesX IS
 END
 &
 THEORY ListIncludesX IS
-  Inherited_List_Includes(Machine(Ludo))==(turn.Ludo_turn,board.Ludo_board);
-  List_Includes(Machine(Ludo))==(board.Ludo_board,turn.Ludo_turn)
+  Inherited_List_Includes(Machine(Ludo))==(Ludo_turn,Ludo_board);
+  List_Includes(Machine(Ludo))==(Ludo_board,Ludo_turn)
 END
 &
 THEORY ListPromotesX IS
-  List_Promotes(Machine(Ludo))==(?)
+  List_Promotes(Machine(Ludo))==(pickColor,unpickColor,endGame,getDiceValue)
 END
 &
 THEORY ListExtendsX IS
@@ -37,9 +37,9 @@ THEORY ListVariablesX IS
   External_Context_List_Variables(Machine(Ludo))==(?);
   Context_List_Variables(Machine(Ludo))==(?);
   Abstract_List_Variables(Machine(Ludo))==(?);
-  Local_List_Variables(Machine(Ludo))==(?);
-  List_Variables(Machine(Ludo))==(boardinternalPos,boardexternalPos,boardlockedPieces,turnfinishOrder,turnsixSequenceCount,turndiceValue,turnhasRoll,turncolor,turnenabledColors,turngameStarted);
-  External_List_Variables(Machine(Ludo))==(board.internalPos,board.externalPos,board.lockedPieces,turn.finishOrder,turn.sixSequenceCount,turn.diceValue,turn.hasRoll,turn.color,turn.enabledColors,turn.gameStarted)
+  Local_List_Variables(Machine(Ludo))==(atePieceDummy);
+  List_Variables(Machine(Ludo))==(atePieceDummy,internalPos,externalPos,lockedPieces,finishOrder,sixSequenceCount,diceValue,hasRoll,color,enabledColors,gameStarted);
+  External_List_Variables(Machine(Ludo))==(atePieceDummy,internalPos,externalPos,lockedPieces,finishOrder,sixSequenceCount,diceValue,hasRoll,color,enabledColors,gameStarted)
 END
 &
 THEORY ListVisibleVariablesX IS
@@ -55,9 +55,9 @@ THEORY ListInvariantX IS
   Gluing_Seen_List_Invariant(Machine(Ludo))==(btrue);
   Gluing_List_Invariant(Machine(Ludo))==(btrue);
   Abstract_List_Invariant(Machine(Ludo))==(btrue);
-  Expanded_List_Invariant(Machine(Ludo))==(boardlockedPieces: POW(PIECES) & boardexternalPos: PIECES +-> 0..numExternal-1 & boardinternalPos: PIECES +-> 0..numInternal-1 & dom(boardexternalPos)/\dom(boardinternalPos) = {} & dom(boardexternalPos)/\boardlockedPieces = {} & dom(boardinternalPos)/\boardlockedPieces = {} & dom(boardexternalPos)\/dom(boardinternalPos)\/boardlockedPieces = PIECES & !nn.(nn: 0..numExternal-1 => card(boardexternalPos|>{nn})<=2 & (nn/:(stars\/ran(startPoint)) => card((boardexternalPos~;colorOf)[{nn}])<=1)) & turngameStarted: BOOL & turnenabledColors: POW(COLORS) & turnenabledColors: FIN(turnenabledColors) & turncolor: COLORS & turnhasRoll: BOOL & turndiceValue: 0..6 & turnsixSequenceCount: 0..2 & turnfinishOrder: 0..numColors-1 >+> COLORS & turnfinishOrder: FIN(turnfinishOrder) & (turngameStarted = FALSE or (card(turnenabledColors)>=2 & turncolor: turnenabledColors & ran(turnfinishOrder) <: turnenabledColors)));
+  Expanded_List_Invariant(Machine(Ludo))==(lockedPieces: POW(PIECES) & externalPos: PIECES +-> 0..numExternal-1 & internalPos: PIECES +-> 0..numInternal-1 & dom(externalPos)/\dom(internalPos) = {} & dom(externalPos)/\lockedPieces = {} & dom(internalPos)/\lockedPieces = {} & dom(externalPos)\/dom(internalPos)\/lockedPieces = PIECES & !nn.(nn: 0..numExternal-1 => card(externalPos|>{nn})<=2 & (nn/:(stars\/ran(startPoint)) => card((externalPos~;colorOf)[{nn}])<=1)) & gameStarted: BOOL & enabledColors: POW(COLORS) & enabledColors: FIN(enabledColors) & color: COLORS & hasRoll: BOOL & diceValue: 0..6 & sixSequenceCount: 0..2 & finishOrder: 0..numColors-1 >+> COLORS & finishOrder: FIN(finishOrder) & dom(finishOrder) = 0..card(finishOrder)-1 & (gameStarted = FALSE or (card(enabledColors)>=2 & color: enabledColors & ran(finishOrder) <: enabledColors)));
   Context_List_Invariant(Machine(Ludo))==(btrue);
-  List_Invariant(Machine(Ludo))==(!cc.(cc: ran(turnfinishOrder) => colorOf~[{cc}] <: boardinternalPos~[{numInternal-1}]) & !pp.(pp: PIECES => (colorOf(pp)/:turnenabledColors => pp: boardlockedPieces)))
+  List_Invariant(Machine(Ludo))==(!cc.(cc: ran(finishOrder) => colorOf~[{cc}] <: internalPos~[{numInternal-1}]) & !pp.(pp: PIECES => (colorOf(pp)/:enabledColors => pp: lockedPieces)) & atePieceDummy: BOOL)
 END
 &
 THEORY ListAssertionsX IS
@@ -76,9 +76,9 @@ THEORY ListExclusivityX IS
 END
 &
 THEORY ListInitialisationX IS
-  Expanded_List_Initialisation(Machine(Ludo))==(boardlockedPieces,boardexternalPos,boardinternalPos:=PIECES,{},{};(turngameStarted,turnenabledColors:=FALSE,{} || @(color$0).(color$0: COLORS ==> turncolor:=color$0) || turnhasRoll:=FALSE || turndiceValue:=0 || turnsixSequenceCount:=0 || turnfinishOrder:={}));
+  Expanded_List_Initialisation(Machine(Ludo))==(lockedPieces,externalPos,internalPos:=PIECES,{},{};(gameStarted,enabledColors:=FALSE,{} || @(color$0).(color$0: COLORS ==> color:=color$0) || hasRoll:=FALSE || diceValue:=0 || sixSequenceCount:=0 || finishOrder:={});@(atePieceDummy$0).(atePieceDummy$0: BOOL ==> atePieceDummy:=atePieceDummy$0));
   Context_List_Initialisation(Machine(Ludo))==(skip);
-  List_Initialisation(Machine(Ludo))==(skip)
+  List_Initialisation(Machine(Ludo))==(atePieceDummy:: BOOL)
 END
 &
 THEORY ListParametersX IS
@@ -86,146 +86,168 @@ THEORY ListParametersX IS
 END
 &
 THEORY ListInstanciatedParametersX IS
-  List_Instanciated_Parameters(Machine(Ludo),Machine(board.Ludo_board))==(?);
-  List_Instanciated_Parameters(Machine(Ludo),Machine(turn.Ludo_turn))==(?);
+  List_Instanciated_Parameters(Machine(Ludo),Machine(Ludo_board))==(?);
+  List_Instanciated_Parameters(Machine(Ludo),Machine(Ludo_turn))==(?);
   List_Instanciated_Parameters(Machine(Ludo),Machine(Ludo_ctx))==(?)
 END
 &
 THEORY ListConstraintsX IS
-  List_Constraints(Machine(Ludo),Machine(turn.Ludo_turn))==(btrue);
+  List_Constraints(Machine(Ludo),Machine(Ludo_turn))==(btrue);
   List_Context_Constraints(Machine(Ludo))==(btrue);
   List_Constraints(Machine(Ludo))==(btrue);
-  List_Constraints(Machine(Ludo),Machine(board.Ludo_board))==(btrue)
+  List_Constraints(Machine(Ludo),Machine(Ludo_board))==(btrue)
 END
 &
 THEORY ListOperationsX IS
-  Internal_List_Operations(Machine(Ludo))==(pickColor,unpickColor,initGame,free,rollDice,nextTurn,walk,getDiceValue,getBoard,getTurn,finishGame,pre_pickColor,pre_unpickColor,pre_initGame,pre_free,pre_rollDice,pre_nextTurn,pre_walk);
-  List_Operations(Machine(Ludo))==(pickColor,unpickColor,initGame,free,rollDice,nextTurn,walk,getDiceValue,getBoard,getTurn,finishGame,pre_pickColor,pre_unpickColor,pre_initGame,pre_free,pre_rollDice,pre_nextTurn,pre_walk)
+  Internal_List_Operations(Machine(Ludo))==(startGame,free,throwDice,skipTurn,walk,getPiecePos,getTurn,getNumWinners,getPlacement,pre_pickColor,pre_unpickColor,pre_initGame,pre_free,pre_rollDice,pre_nextTurn,pre_walk,pre_finishGame,pickColor,unpickColor,endGame,getDiceValue);
+  List_Operations(Machine(Ludo))==(startGame,free,throwDice,skipTurn,walk,getPiecePos,getTurn,getNumWinners,getPlacement,pre_pickColor,pre_unpickColor,pre_initGame,pre_free,pre_rollDice,pre_nextTurn,pre_walk,pre_finishGame,pickColor,unpickColor,endGame,getDiceValue)
 END
 &
 THEORY ListInputX IS
-  List_Input(Machine(Ludo),pickColor)==(cc);
-  List_Input(Machine(Ludo),unpickColor)==(cc);
-  List_Input(Machine(Ludo),initGame)==(?);
-  List_Input(Machine(Ludo),free)==(pp);
-  List_Input(Machine(Ludo),rollDice)==(?);
-  List_Input(Machine(Ludo),nextTurn)==(?);
-  List_Input(Machine(Ludo),walk)==(pp);
   List_Input(Machine(Ludo),getDiceValue)==(?);
-  List_Input(Machine(Ludo),getBoard)==(?);
+  List_Input(Machine(Ludo),endGame)==(?);
+  List_Input(Machine(Ludo),unpickColor)==(cc);
+  List_Input(Machine(Ludo),pickColor)==(cc);
+  List_Input(Machine(Ludo),startGame)==(?);
+  List_Input(Machine(Ludo),free)==(pp);
+  List_Input(Machine(Ludo),throwDice)==(?);
+  List_Input(Machine(Ludo),skipTurn)==(?);
+  List_Input(Machine(Ludo),walk)==(pp);
+  List_Input(Machine(Ludo),getPiecePos)==(pp);
   List_Input(Machine(Ludo),getTurn)==(?);
-  List_Input(Machine(Ludo),finishGame)==(?);
+  List_Input(Machine(Ludo),getNumWinners)==(?);
+  List_Input(Machine(Ludo),getPlacement)==(nn);
   List_Input(Machine(Ludo),pre_pickColor)==(cc);
   List_Input(Machine(Ludo),pre_unpickColor)==(cc);
   List_Input(Machine(Ludo),pre_initGame)==(?);
   List_Input(Machine(Ludo),pre_free)==(pp);
   List_Input(Machine(Ludo),pre_rollDice)==(?);
   List_Input(Machine(Ludo),pre_nextTurn)==(?);
-  List_Input(Machine(Ludo),pre_walk)==(pp)
+  List_Input(Machine(Ludo),pre_walk)==(pp);
+  List_Input(Machine(Ludo),pre_finishGame)==(?)
 END
 &
 THEORY ListOutputX IS
-  List_Output(Machine(Ludo),pickColor)==(?);
+  List_Output(Machine(Ludo),getDiceValue)==(value);
+  List_Output(Machine(Ludo),endGame)==(?);
   List_Output(Machine(Ludo),unpickColor)==(?);
-  List_Output(Machine(Ludo),initGame)==(?);
+  List_Output(Machine(Ludo),pickColor)==(?);
+  List_Output(Machine(Ludo),startGame)==(?);
   List_Output(Machine(Ludo),free)==(?);
-  List_Output(Machine(Ludo),rollDice)==(vv);
-  List_Output(Machine(Ludo),nextTurn)==(?);
+  List_Output(Machine(Ludo),throwDice)==(vv);
+  List_Output(Machine(Ludo),skipTurn)==(?);
   List_Output(Machine(Ludo),walk)==(?);
-  List_Output(Machine(Ludo),getDiceValue)==(dd);
-  List_Output(Machine(Ludo),getBoard)==(ee,ii);
+  List_Output(Machine(Ludo),getPiecePos)==(ee,ii);
   List_Output(Machine(Ludo),getTurn)==(cc);
-  List_Output(Machine(Ludo),finishGame)==(oo);
+  List_Output(Machine(Ludo),getNumWinners)==(nn);
+  List_Output(Machine(Ludo),getPlacement)==(cc);
   List_Output(Machine(Ludo),pre_pickColor)==(rr);
   List_Output(Machine(Ludo),pre_unpickColor)==(rr);
   List_Output(Machine(Ludo),pre_initGame)==(rr);
   List_Output(Machine(Ludo),pre_free)==(rr);
   List_Output(Machine(Ludo),pre_rollDice)==(rr);
   List_Output(Machine(Ludo),pre_nextTurn)==(rr);
-  List_Output(Machine(Ludo),pre_walk)==(rr)
+  List_Output(Machine(Ludo),pre_walk)==(rr);
+  List_Output(Machine(Ludo),pre_finishGame)==(rr)
 END
 &
 THEORY ListHeaderX IS
-  List_Header(Machine(Ludo),pickColor)==(pickColor(cc));
+  List_Header(Machine(Ludo),getDiceValue)==(value <-- getDiceValue);
+  List_Header(Machine(Ludo),endGame)==(endGame);
   List_Header(Machine(Ludo),unpickColor)==(unpickColor(cc));
-  List_Header(Machine(Ludo),initGame)==(initGame);
+  List_Header(Machine(Ludo),pickColor)==(pickColor(cc));
+  List_Header(Machine(Ludo),startGame)==(startGame);
   List_Header(Machine(Ludo),free)==(free(pp));
-  List_Header(Machine(Ludo),rollDice)==(vv <-- rollDice);
-  List_Header(Machine(Ludo),nextTurn)==(nextTurn);
+  List_Header(Machine(Ludo),throwDice)==(vv <-- throwDice);
+  List_Header(Machine(Ludo),skipTurn)==(skipTurn);
   List_Header(Machine(Ludo),walk)==(walk(pp));
-  List_Header(Machine(Ludo),getDiceValue)==(dd <-- getDiceValue);
-  List_Header(Machine(Ludo),getBoard)==(ee,ii <-- getBoard);
+  List_Header(Machine(Ludo),getPiecePos)==(ee,ii <-- getPiecePos(pp));
   List_Header(Machine(Ludo),getTurn)==(cc <-- getTurn);
-  List_Header(Machine(Ludo),finishGame)==(oo <-- finishGame);
+  List_Header(Machine(Ludo),getNumWinners)==(nn <-- getNumWinners);
+  List_Header(Machine(Ludo),getPlacement)==(cc <-- getPlacement(nn));
   List_Header(Machine(Ludo),pre_pickColor)==(rr <-- pre_pickColor(cc));
   List_Header(Machine(Ludo),pre_unpickColor)==(rr <-- pre_unpickColor(cc));
   List_Header(Machine(Ludo),pre_initGame)==(rr <-- pre_initGame);
   List_Header(Machine(Ludo),pre_free)==(rr <-- pre_free(pp));
   List_Header(Machine(Ludo),pre_rollDice)==(rr <-- pre_rollDice);
   List_Header(Machine(Ludo),pre_nextTurn)==(rr <-- pre_nextTurn);
-  List_Header(Machine(Ludo),pre_walk)==(rr <-- pre_walk(pp))
+  List_Header(Machine(Ludo),pre_walk)==(rr <-- pre_walk(pp));
+  List_Header(Machine(Ludo),pre_finishGame)==(rr <-- pre_finishGame)
 END
 &
 THEORY ListOperationGuardX END
 &
 THEORY ListPreconditionX IS
-  List_Precondition(Machine(Ludo),pickColor)==(cc: COLORS & cc/:turnenabledColors & turngameStarted = FALSE);
-  List_Precondition(Machine(Ludo),unpickColor)==(cc: COLORS & cc: turnenabledColors & turngameStarted = FALSE);
-  List_Precondition(Machine(Ludo),initGame)==(turngameStarted = FALSE & card(turnenabledColors)>=2);
-  List_Precondition(Machine(Ludo),free)==(turngameStarted = TRUE & pp: PIECES & colorOf(pp) = turncolor & turndiceValue = 6 & pp: boardlockedPieces & card(boardexternalPos|>{startPoint(colorOf(pp))})<2);
-  List_Precondition(Machine(Ludo),rollDice)==(turngameStarted = TRUE & turnhasRoll = TRUE & (turndiceValue = 0 or not(#pp.(pp: PIECES & colorOf(pp) = turncolor & (turndiceValue = 6 & pp: boardlockedPieces & card(boardexternalPos|>{startPoint(colorOf(pp))})<2 or turndiceValue/=0 & pp/:boardlockedPieces & (pp: dom(boardexternalPos) => turndiceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal & !nn.(nn: 0..numExternal-1 & nn/=boardexternalPos(pp) & (nn-boardexternalPos(pp)+numExternal) mod numExternal<=((boardexternalPos(pp)+turndiceValue) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal => card(boardexternalPos|>{nn})<2) or (turndiceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal-1<numInternal & !nn.(nn: 0..numExternal-1 & nn/=boardexternalPos(pp) & (nn-boardexternalPos(pp)+numExternal) mod numExternal<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal => card(boardexternalPos|>{nn})<2))) & (pp: dom(boardinternalPos) => boardinternalPos(pp)+turndiceValue<numInternal))))));
-  List_Precondition(Machine(Ludo),nextTurn)==(turngameStarted = TRUE & turnhasRoll = FALSE & (turndiceValue = 0 or not(#pp.(pp: PIECES & colorOf(pp) = turncolor & (turndiceValue = 6 & pp: boardlockedPieces & card(boardexternalPos|>{startPoint(colorOf(pp))})<2 or turndiceValue/=0 & pp/:boardlockedPieces & (pp: dom(boardexternalPos) => turndiceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal & !nn.(nn: 0..numExternal-1 & nn/=boardexternalPos(pp) & (nn-boardexternalPos(pp)+numExternal) mod numExternal<=((boardexternalPos(pp)+turndiceValue) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal => card(boardexternalPos|>{nn})<2) or (turndiceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal-1<numInternal & !nn.(nn: 0..numExternal-1 & nn/=boardexternalPos(pp) & (nn-boardexternalPos(pp)+numExternal) mod numExternal<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal => card(boardexternalPos|>{nn})<2))) & (pp: dom(boardinternalPos) => boardinternalPos(pp)+turndiceValue<numInternal))))) & card(turnfinishOrder)<card(turnenabledColors));
-  List_Precondition(Machine(Ludo),walk)==(turngameStarted = TRUE & pp: PIECES & colorOf(pp) = turncolor & turndiceValue/=0 & pp/:boardlockedPieces & (pp: dom(boardexternalPos) => turndiceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal & !nn.(nn: 0..numExternal-1 & nn/=boardexternalPos(pp) & (nn-boardexternalPos(pp)+numExternal) mod numExternal<=((boardexternalPos(pp)+turndiceValue) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal => card(boardexternalPos|>{nn})<2) or (turndiceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal-1<numInternal & !nn.(nn: 0..numExternal-1 & nn/=boardexternalPos(pp) & (nn-boardexternalPos(pp)+numExternal) mod numExternal<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal => card(boardexternalPos|>{nn})<2))) & (pp: dom(boardinternalPos) => boardinternalPos(pp)+turndiceValue<numInternal));
-  List_Precondition(Machine(Ludo),getDiceValue)==(turngameStarted = TRUE & turndiceValue/=0);
-  List_Precondition(Machine(Ludo),getBoard)==(turngameStarted = TRUE);
-  List_Precondition(Machine(Ludo),getTurn)==(turngameStarted = TRUE & card(turnfinishOrder)<numColors);
-  List_Precondition(Machine(Ludo),finishGame)==(turngameStarted = TRUE & card(turnfinishOrder)>=1);
+  Own_Precondition(Machine(Ludo),getDiceValue)==(btrue);
+  List_Precondition(Machine(Ludo),getDiceValue)==(btrue);
+  Own_Precondition(Machine(Ludo),endGame)==(gameStarted = TRUE & card(finishOrder)>=1);
+  List_Precondition(Machine(Ludo),endGame)==(gameStarted = TRUE & card(finishOrder)>=1);
+  Own_Precondition(Machine(Ludo),unpickColor)==(cc: COLORS & cc: enabledColors & gameStarted = FALSE);
+  List_Precondition(Machine(Ludo),unpickColor)==(cc: COLORS & cc: enabledColors & gameStarted = FALSE);
+  Own_Precondition(Machine(Ludo),pickColor)==(cc: COLORS & cc/:enabledColors & gameStarted = FALSE);
+  List_Precondition(Machine(Ludo),pickColor)==(cc: COLORS & cc/:enabledColors & gameStarted = FALSE);
+  List_Precondition(Machine(Ludo),startGame)==(gameStarted = FALSE & card(enabledColors)>=2);
+  List_Precondition(Machine(Ludo),free)==(gameStarted = TRUE & pp: PIECES & colorOf(pp) = color & diceValue = 6 & pp: lockedPieces & card(externalPos|>{startPoint(colorOf(pp))})<2);
+  List_Precondition(Machine(Ludo),throwDice)==(gameStarted = TRUE & hasRoll = TRUE & (diceValue = 0 or not(#pp.(pp: PIECES & colorOf(pp) = color & (diceValue = 6 & pp: lockedPieces & card(externalPos|>{startPoint(colorOf(pp))})<2 or diceValue/=0 & pp/:lockedPieces & (pp: dom(externalPos) => diceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal & !nn.(nn: 0..numExternal-1 & nn/=externalPos(pp) & (nn-externalPos(pp)+numExternal) mod numExternal<=((externalPos(pp)+diceValue) mod numExternal-externalPos(pp)+numExternal) mod numExternal => card(externalPos|>{nn})<2) or (diceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal-1<numInternal & !nn.(nn: 0..numExternal-1 & nn/=externalPos(pp) & (nn-externalPos(pp)+numExternal) mod numExternal<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal => card(externalPos|>{nn})<2))) & (pp: dom(internalPos) => internalPos(pp)+diceValue<numInternal))))));
+  List_Precondition(Machine(Ludo),skipTurn)==(gameStarted = TRUE & hasRoll = FALSE & (diceValue = 0 or not(#pp.(pp: PIECES & colorOf(pp) = color & (diceValue = 6 & pp: lockedPieces & card(externalPos|>{startPoint(colorOf(pp))})<2 or diceValue/=0 & pp/:lockedPieces & (pp: dom(externalPos) => diceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal & !nn.(nn: 0..numExternal-1 & nn/=externalPos(pp) & (nn-externalPos(pp)+numExternal) mod numExternal<=((externalPos(pp)+diceValue) mod numExternal-externalPos(pp)+numExternal) mod numExternal => card(externalPos|>{nn})<2) or (diceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal-1<numInternal & !nn.(nn: 0..numExternal-1 & nn/=externalPos(pp) & (nn-externalPos(pp)+numExternal) mod numExternal<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal => card(externalPos|>{nn})<2))) & (pp: dom(internalPos) => internalPos(pp)+diceValue<numInternal))))) & card(finishOrder)<card(enabledColors));
+  List_Precondition(Machine(Ludo),walk)==(gameStarted = TRUE & pp: PIECES & colorOf(pp) = color & diceValue/=0 & pp/:lockedPieces & (pp: dom(externalPos) => diceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal & !nn.(nn: 0..numExternal-1 & nn/=externalPos(pp) & (nn-externalPos(pp)+numExternal) mod numExternal<=((externalPos(pp)+diceValue) mod numExternal-externalPos(pp)+numExternal) mod numExternal => card(externalPos|>{nn})<2) or (diceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal-1<numInternal & !nn.(nn: 0..numExternal-1 & nn/=externalPos(pp) & (nn-externalPos(pp)+numExternal) mod numExternal<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal => card(externalPos|>{nn})<2))) & (pp: dom(internalPos) => internalPos(pp)+diceValue<numInternal));
+  List_Precondition(Machine(Ludo),getPiecePos)==(pp: PIECES);
+  List_Precondition(Machine(Ludo),getTurn)==(btrue);
+  List_Precondition(Machine(Ludo),getNumWinners)==(btrue);
+  List_Precondition(Machine(Ludo),getPlacement)==(nn: NAT & nn: dom(finishOrder));
   List_Precondition(Machine(Ludo),pre_pickColor)==(cc: COLORS);
   List_Precondition(Machine(Ludo),pre_unpickColor)==(cc: COLORS);
   List_Precondition(Machine(Ludo),pre_initGame)==(btrue);
   List_Precondition(Machine(Ludo),pre_free)==(pp: PIECES);
   List_Precondition(Machine(Ludo),pre_rollDice)==(btrue);
   List_Precondition(Machine(Ludo),pre_nextTurn)==(btrue);
-  List_Precondition(Machine(Ludo),pre_walk)==(pp: PIECES)
+  List_Precondition(Machine(Ludo),pre_walk)==(pp: PIECES);
+  List_Precondition(Machine(Ludo),pre_finishGame)==(btrue)
 END
 &
 THEORY ListSubstitutionX IS
-  Expanded_List_Substitution(Machine(Ludo),pre_walk)==(pp: PIECES | rr:=bool(turngameStarted = TRUE & colorOf(pp) = turncolor & turndiceValue/=0 & pp/:boardlockedPieces & (pp: dom(boardexternalPos) => turndiceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal & !nn.(nn: 0..numExternal-1 & nn/=boardexternalPos(pp) & (nn-boardexternalPos(pp)+numExternal) mod numExternal<=((boardexternalPos(pp)+turndiceValue) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal => card(boardexternalPos|>{nn})<2) or (turndiceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal-1<numInternal & !nn.(nn: 0..numExternal-1 & nn/=boardexternalPos(pp) & (nn-boardexternalPos(pp)+numExternal) mod numExternal<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal => card(boardexternalPos|>{nn})<2))) & (pp: dom(boardinternalPos) => boardinternalPos(pp)+turndiceValue<numInternal)));
-  Expanded_List_Substitution(Machine(Ludo),pre_nextTurn)==(btrue | rr:=bool(turngameStarted = TRUE & turnhasRoll = FALSE & (turndiceValue = 0 or not(#pp.(pp: PIECES & colorOf(pp) = turncolor & (turndiceValue = 6 & pp: boardlockedPieces & card(boardexternalPos|>{startPoint(colorOf(pp))})<2 or turndiceValue/=0 & pp/:boardlockedPieces & (pp: dom(boardexternalPos) => turndiceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal & !nn.(nn: 0..numExternal-1 & nn/=boardexternalPos(pp) & (nn-boardexternalPos(pp)+numExternal) mod numExternal<=((boardexternalPos(pp)+turndiceValue) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal => card(boardexternalPos|>{nn})<2) or (turndiceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal-1<numInternal & !nn.(nn: 0..numExternal-1 & nn/=boardexternalPos(pp) & (nn-boardexternalPos(pp)+numExternal) mod numExternal<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal => card(boardexternalPos|>{nn})<2))) & (pp: dom(boardinternalPos) => boardinternalPos(pp)+turndiceValue<numInternal))))) & card(turnfinishOrder)<card(turnenabledColors)));
-  Expanded_List_Substitution(Machine(Ludo),pre_rollDice)==(btrue | rr:=bool(turngameStarted = TRUE & turnhasRoll = TRUE & (turndiceValue = 0 or not(#pp.(pp: PIECES & colorOf(pp) = turncolor & (turndiceValue = 6 & pp: boardlockedPieces & card(boardexternalPos|>{startPoint(colorOf(pp))})<2 or turndiceValue/=0 & pp/:boardlockedPieces & (pp: dom(boardexternalPos) => turndiceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal & !nn.(nn: 0..numExternal-1 & nn/=boardexternalPos(pp) & (nn-boardexternalPos(pp)+numExternal) mod numExternal<=((boardexternalPos(pp)+turndiceValue) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal => card(boardexternalPos|>{nn})<2) or (turndiceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal-1<numInternal & !nn.(nn: 0..numExternal-1 & nn/=boardexternalPos(pp) & (nn-boardexternalPos(pp)+numExternal) mod numExternal<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal => card(boardexternalPos|>{nn})<2))) & (pp: dom(boardinternalPos) => boardinternalPos(pp)+turndiceValue<numInternal)))))));
-  Expanded_List_Substitution(Machine(Ludo),pre_free)==(pp: PIECES | rr:=bool(turngameStarted = TRUE & colorOf(pp) = turncolor & turndiceValue = 6 & pp: boardlockedPieces & card(boardexternalPos|>{startPoint(colorOf(pp))})<2));
-  Expanded_List_Substitution(Machine(Ludo),pre_initGame)==(btrue | rr:=bool(turngameStarted = FALSE & card(turnenabledColors)>=2));
-  Expanded_List_Substitution(Machine(Ludo),pre_unpickColor)==(cc: COLORS | rr:=bool(cc/:turnenabledColors & turngameStarted = FALSE));
-  Expanded_List_Substitution(Machine(Ludo),pre_pickColor)==(cc: COLORS | rr:=bool(cc/:turnenabledColors & turngameStarted = FALSE));
-  Expanded_List_Substitution(Machine(Ludo),finishGame)==(turngameStarted = TRUE & card(turnfinishOrder)>=1 & turngameStarted = TRUE & card(turnfinishOrder)>=1 | oo:=turnfinishOrder || turngameStarted:=FALSE);
-  Expanded_List_Substitution(Machine(Ludo),getTurn)==(turngameStarted = TRUE & card(turnfinishOrder)<numColors | cc:=turncolor);
-  Expanded_List_Substitution(Machine(Ludo),getBoard)==(turngameStarted = TRUE | ee,ii:=boardexternalPos,boardinternalPos);
-  Expanded_List_Substitution(Machine(Ludo),getDiceValue)==(turngameStarted = TRUE & turndiceValue/=0 | dd:=turndiceValue);
-  Expanded_List_Substitution(Machine(Ludo),walk)==(turngameStarted = TRUE & pp: PIECES & colorOf(pp) = turncolor & turndiceValue/=0 & pp/:boardlockedPieces & (pp: dom(boardexternalPos) => turndiceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal & !nn.(nn: 0..numExternal-1 & nn/=boardexternalPos(pp) & (nn-boardexternalPos(pp)+numExternal) mod numExternal<=((boardexternalPos(pp)+turndiceValue) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal => card(boardexternalPos|>{nn})<2) or (turndiceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal-1<numInternal & !nn.(nn: 0..numExternal-1 & nn/=boardexternalPos(pp) & (nn-boardexternalPos(pp)+numExternal) mod numExternal<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal => card(boardexternalPos|>{nn})<2))) & (pp: dom(boardinternalPos) => boardinternalPos(pp)+turndiceValue<numInternal) | pp: dom(boardexternalPos) & turndiceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal ==> @newPos.(newPos = (turndiceValue+boardexternalPos(pp)) mod numExternal ==> (pp: PIECES & pp/:boardlockedPieces & pp/:dom(boardinternalPos) & newPos: 0..numExternal-1 & card(boardexternalPos|>{newPos})<2 | newPos/:(stars\/ran(startPoint)) & (boardexternalPos~;colorOf)[{newPos}]-{colorOf(pp)}/={} ==> boardexternalPos,boardlockedPieces:=boardexternalPos|>>{newPos}<+{pp|->newPos},boardlockedPieces\/boardexternalPos~[{newPos}] [] not(newPos/:(stars\/ran(startPoint)) & (boardexternalPos~;colorOf)[{newPos}]-{colorOf(pp)}/={}) ==> boardexternalPos:=boardexternalPos<+{pp|->newPos} || (newPos/:(stars\/ran(startPoint)) & (boardexternalPos~;colorOf)[{newPos}]-{colorOf(pp)}/={} ==> (turngameStarted = TRUE & turndiceValue/=0 & TRUE: BOOL & FALSE: BOOL & (TRUE = TRUE => FALSE = FALSE) | turndiceValue:=0 || (FALSE = TRUE ==> turnfinishOrder,turnhasRoll:=turnfinishOrder<+{card(turnfinishOrder)|->turncolor},FALSE [] not(FALSE = TRUE) ==> (TRUE = TRUE ==> turnhasRoll:=TRUE [] not(TRUE = TRUE) ==> skip))) [] not(newPos/:(stars\/ran(startPoint)) & (boardexternalPos~;colorOf)[{newPos}]-{colorOf(pp)}/={}) ==> (turngameStarted = TRUE & turndiceValue/=0 & FALSE: BOOL & FALSE: BOOL & (FALSE = TRUE => FALSE = FALSE) | turndiceValue:=0 || (FALSE = TRUE ==> turnfinishOrder,turnhasRoll:=turnfinishOrder<+{card(turnfinishOrder)|->turncolor},FALSE [] not(FALSE = TRUE) ==> (FALSE = TRUE ==> turnhasRoll:=TRUE [] not(FALSE = TRUE) ==> skip)))))) [] not(pp: dom(boardexternalPos) & turndiceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal) ==> (pp: dom(boardexternalPos) ==> (pp: PIECES & pp/:boardlockedPieces & turndiceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal-1: 0..numInternal-1 | boardinternalPos,boardexternalPos:=boardinternalPos<+{pp|->turndiceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal-1},{pp}<<|boardexternalPos) [] not(pp: dom(boardexternalPos)) ==> (pp: PIECES & pp/:boardlockedPieces & turndiceValue+boardinternalPos(pp): 0..numInternal-1 | boardinternalPos,boardexternalPos:=boardinternalPos<+{pp|->turndiceValue+boardinternalPos(pp)},{pp}<<|boardexternalPos) || (pp: dom(boardinternalPos) & turndiceValue+boardinternalPos(pp) = numInternal-1 or (pp: dom(boardexternalPos) & turndiceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal-1 = numInternal-1) ==> (card(boardinternalPos~[{numInternal-1}]/\colorOf~[{turncolor}]) = numPiecesByColor-1 ==> (turngameStarted = TRUE & turndiceValue/=0 & FALSE: BOOL & TRUE: BOOL & (FALSE = TRUE => TRUE = FALSE) | turndiceValue:=0 || (TRUE = TRUE ==> turnfinishOrder,turnhasRoll:=turnfinishOrder<+{card(turnfinishOrder)|->turncolor},FALSE [] not(TRUE = TRUE) ==> (FALSE = TRUE ==> turnhasRoll:=TRUE [] not(FALSE = TRUE) ==> skip))) [] not(card(boardinternalPos~[{numInternal-1}]/\colorOf~[{turncolor}]) = numPiecesByColor-1) ==> (turngameStarted = TRUE & turndiceValue/=0 & TRUE: BOOL & FALSE: BOOL & (TRUE = TRUE => FALSE = FALSE) | turndiceValue:=0 || (FALSE = TRUE ==> turnfinishOrder,turnhasRoll:=turnfinishOrder<+{card(turnfinishOrder)|->turncolor},FALSE [] not(FALSE = TRUE) ==> (TRUE = TRUE ==> turnhasRoll:=TRUE [] not(TRUE = TRUE) ==> skip)))) [] not(pp: dom(boardinternalPos) & turndiceValue+boardinternalPos(pp) = numInternal-1 or (pp: dom(boardexternalPos) & turndiceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal-1 = numInternal-1)) ==> (turngameStarted = TRUE & turndiceValue/=0 & FALSE: BOOL & FALSE: BOOL & (FALSE = TRUE => FALSE = FALSE) | turndiceValue:=0 || (FALSE = TRUE ==> turnfinishOrder,turnhasRoll:=turnfinishOrder<+{card(turnfinishOrder)|->turncolor},FALSE [] not(FALSE = TRUE) ==> (FALSE = TRUE ==> turnhasRoll:=TRUE [] not(FALSE = TRUE) ==> skip))))));
-  Expanded_List_Substitution(Machine(Ludo),nextTurn)==(turngameStarted = TRUE & turnhasRoll = FALSE & (turndiceValue = 0 or not(#pp.(pp: PIECES & colorOf(pp) = turncolor & (turndiceValue = 6 & pp: boardlockedPieces & card(boardexternalPos|>{startPoint(colorOf(pp))})<2 or turndiceValue/=0 & pp/:boardlockedPieces & (pp: dom(boardexternalPos) => turndiceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal & !nn.(nn: 0..numExternal-1 & nn/=boardexternalPos(pp) & (nn-boardexternalPos(pp)+numExternal) mod numExternal<=((boardexternalPos(pp)+turndiceValue) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal => card(boardexternalPos|>{nn})<2) or (turndiceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal-1<numInternal & !nn.(nn: 0..numExternal-1 & nn/=boardexternalPos(pp) & (nn-boardexternalPos(pp)+numExternal) mod numExternal<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal => card(boardexternalPos|>{nn})<2))) & (pp: dom(boardinternalPos) => boardinternalPos(pp)+turndiceValue<numInternal))))) & card(turnfinishOrder)<card(turnenabledColors) & turngameStarted = TRUE & turnhasRoll = FALSE & card(turnfinishOrder)<card(turnenabledColors) | turnhasRoll,turnsixSequenceCount,turndiceValue:=TRUE,0,0 || @numJumps.(numJumps = min({nn | nn: 1..numColors & colorsOrder((colorsOrder~(turncolor)+nn) mod numColors): turnenabledColors-ran(turnfinishOrder)}) ==> turncolor:=colorsOrder((colorsOrder~(turncolor)+numJumps) mod numColors)));
-  Expanded_List_Substitution(Machine(Ludo),rollDice)==(turngameStarted = TRUE & turnhasRoll = TRUE & (turndiceValue = 0 or not(#pp.(pp: PIECES & colorOf(pp) = turncolor & (turndiceValue = 6 & pp: boardlockedPieces & card(boardexternalPos|>{startPoint(colorOf(pp))})<2 or turndiceValue/=0 & pp/:boardlockedPieces & (pp: dom(boardexternalPos) => turndiceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal & !nn.(nn: 0..numExternal-1 & nn/=boardexternalPos(pp) & (nn-boardexternalPos(pp)+numExternal) mod numExternal<=((boardexternalPos(pp)+turndiceValue) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal => card(boardexternalPos|>{nn})<2) or (turndiceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal-1<numInternal & !nn.(nn: 0..numExternal-1 & nn/=boardexternalPos(pp) & (nn-boardexternalPos(pp)+numExternal) mod numExternal<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-boardexternalPos(pp)+numExternal) mod numExternal => card(boardexternalPos|>{nn})<2))) & (pp: dom(boardinternalPos) => boardinternalPos(pp)+turndiceValue<numInternal))))) & turngameStarted = TRUE & turnhasRoll = TRUE | @dd.(dd: 1..6 ==> (vv:=dd || (dd = 6 ==> (turnsixSequenceCount<2 ==> turnsixSequenceCount,turndiceValue:=turnsixSequenceCount+1,dd [] not(turnsixSequenceCount<2) ==> turnsixSequenceCount,turnhasRoll,turndiceValue:=0,FALSE,0) [] not(dd = 6) ==> turnhasRoll,turndiceValue:=FALSE,dd))));
-  Expanded_List_Substitution(Machine(Ludo),free)==(turngameStarted = TRUE & pp: PIECES & colorOf(pp) = turncolor & turndiceValue = 6 & pp: boardlockedPieces & card(boardexternalPos|>{startPoint(colorOf(pp))})<2 & turngameStarted = TRUE & turndiceValue/=0 & FALSE: BOOL & FALSE: BOOL & (FALSE = TRUE => FALSE = FALSE) & pp: PIECES & pp: boardlockedPieces & card(boardexternalPos|>{startPoint(colorOf(pp))})<2 | turndiceValue:=0 || (FALSE = TRUE ==> turnfinishOrder,turnhasRoll:=turnfinishOrder<+{card(turnfinishOrder)|->turncolor},FALSE [] not(FALSE = TRUE) ==> (FALSE = TRUE ==> turnhasRoll:=TRUE [] not(FALSE = TRUE) ==> skip)) || boardlockedPieces,boardexternalPos:=boardlockedPieces-{pp},boardexternalPos<+{pp|->startPoint(colorOf(pp))});
-  Expanded_List_Substitution(Machine(Ludo),initGame)==(turngameStarted = FALSE & card(turnenabledColors)>=2 & turngameStarted = FALSE & card(turnenabledColors)>=2 & btrue | turngameStarted:=TRUE || @(color$0).(color$0: turnenabledColors ==> turncolor:=color$0) || turnhasRoll:=TRUE || turndiceValue:=0 || turnsixSequenceCount:=0 || turnfinishOrder:={} || boardlockedPieces,boardexternalPos,boardinternalPos:=PIECES,{},{});
-  Expanded_List_Substitution(Machine(Ludo),unpickColor)==(cc: COLORS & cc: turnenabledColors & turngameStarted = FALSE & cc: COLORS & cc: turnenabledColors & turngameStarted = FALSE | turnenabledColors:=turnenabledColors-{cc});
-  Expanded_List_Substitution(Machine(Ludo),pickColor)==(cc: COLORS & cc/:turnenabledColors & turngameStarted = FALSE & cc: COLORS & cc/:turnenabledColors & turngameStarted = FALSE | turnenabledColors:=turnenabledColors\/{cc});
-  List_Substitution(Machine(Ludo),pickColor)==((turn.pickColor)(cc));
-  List_Substitution(Machine(Ludo),unpickColor)==((turn.unpickColor)(cc));
-  List_Substitution(Machine(Ludo),initGame)==(turn.initGame || board.clear);
-  List_Substitution(Machine(Ludo),free)==((turn.computeAction)(FALSE,FALSE) || (board.setFree)(pp));
-  List_Substitution(Machine(Ludo),rollDice)==(vv <-- turn.rollDice);
-  List_Substitution(Machine(Ludo),nextTurn)==(turn.nextTurn);
-  List_Substitution(Machine(Ludo),walk)==(IF pp: dom(board.externalPos) & turn.diceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-(board.externalPos)(pp)+numExternal) mod numExternal THEN LET newPos BE newPos = (turn.diceValue+(board.externalPos)(pp)) mod numExternal IN (board.setExternalPos)(pp,newPos) || IF newPos/:(stars\/ran(startPoint)) & ((board.externalPos)~;colorOf)[{newPos}]-{colorOf(pp)}/={} THEN (turn.computeAction)(TRUE,FALSE) ELSE (turn.computeAction)(FALSE,FALSE) END END ELSE IF pp: dom(board.externalPos) THEN (board.setInternalPos)(pp,turn.diceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-(board.externalPos)(pp)+numExternal) mod numExternal-1) ELSE (board.setInternalPos)(pp,turn.diceValue+(board.internalPos)(pp)) END || IF pp: dom(board.internalPos) & turn.diceValue+(board.internalPos)(pp) = numInternal-1 or (pp: dom(board.externalPos) & turn.diceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-(board.externalPos)(pp)+numExternal) mod numExternal-1 = numInternal-1) THEN IF card((board.internalPos)~[{numInternal-1}]/\colorOf~[{turn.color}]) = numPiecesByColor-1 THEN (turn.computeAction)(FALSE,TRUE) ELSE (turn.computeAction)(TRUE,FALSE) END ELSE (turn.computeAction)(FALSE,FALSE) END END);
-  List_Substitution(Machine(Ludo),getDiceValue)==(dd:=turn.diceValue);
-  List_Substitution(Machine(Ludo),getBoard)==(ee,ii:=board.externalPos,board.internalPos);
-  List_Substitution(Machine(Ludo),getTurn)==(cc:=turn.color);
-  List_Substitution(Machine(Ludo),finishGame)==(oo:=turn.finishOrder || turn.endGame);
-  List_Substitution(Machine(Ludo),pre_pickColor)==(rr:=bool(cc/:turn.enabledColors & turn.gameStarted = FALSE));
-  List_Substitution(Machine(Ludo),pre_unpickColor)==(rr:=bool(cc/:turn.enabledColors & turn.gameStarted = FALSE));
-  List_Substitution(Machine(Ludo),pre_initGame)==(rr:=bool(turn.gameStarted = FALSE & card(turn.enabledColors)>=2));
-  List_Substitution(Machine(Ludo),pre_free)==(rr:=bool(turn.gameStarted = TRUE & colorOf(pp) = turn.color & turn.diceValue = 6 & pp: board.lockedPieces & card(board.externalPos|>{startPoint(colorOf(pp))})<2));
-  List_Substitution(Machine(Ludo),pre_rollDice)==(rr:=bool(turn.gameStarted = TRUE & turn.hasRoll = TRUE & (turn.diceValue = 0 or not(#pp.(pp: PIECES & colorOf(pp) = turn.color & (turn.diceValue = 6 & pp: board.lockedPieces & card(board.externalPos|>{startPoint(colorOf(pp))})<2 or turn.diceValue/=0 & pp/:board.lockedPieces & (pp: dom(board.externalPos) => turn.diceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-(board.externalPos)(pp)+numExternal) mod numExternal & !nn.(nn: 0..numExternal-1 & nn/=(board.externalPos)(pp) & (nn-(board.externalPos)(pp)+numExternal) mod numExternal<=(((board.externalPos)(pp)+turn.diceValue) mod numExternal-(board.externalPos)(pp)+numExternal) mod numExternal => card(board.externalPos|>{nn})<2) or (turn.diceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-(board.externalPos)(pp)+numExternal) mod numExternal-1<numInternal & !nn.(nn: 0..numExternal-1 & nn/=(board.externalPos)(pp) & (nn-(board.externalPos)(pp)+numExternal) mod numExternal<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-(board.externalPos)(pp)+numExternal) mod numExternal => card(board.externalPos|>{nn})<2))) & (pp: dom(board.internalPos) => (board.internalPos)(pp)+turn.diceValue<numInternal)))))));
-  List_Substitution(Machine(Ludo),pre_nextTurn)==(rr:=bool(turn.gameStarted = TRUE & turn.hasRoll = FALSE & (turn.diceValue = 0 or not(#pp.(pp: PIECES & colorOf(pp) = turn.color & (turn.diceValue = 6 & pp: board.lockedPieces & card(board.externalPos|>{startPoint(colorOf(pp))})<2 or turn.diceValue/=0 & pp/:board.lockedPieces & (pp: dom(board.externalPos) => turn.diceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-(board.externalPos)(pp)+numExternal) mod numExternal & !nn.(nn: 0..numExternal-1 & nn/=(board.externalPos)(pp) & (nn-(board.externalPos)(pp)+numExternal) mod numExternal<=(((board.externalPos)(pp)+turn.diceValue) mod numExternal-(board.externalPos)(pp)+numExternal) mod numExternal => card(board.externalPos|>{nn})<2) or (turn.diceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-(board.externalPos)(pp)+numExternal) mod numExternal-1<numInternal & !nn.(nn: 0..numExternal-1 & nn/=(board.externalPos)(pp) & (nn-(board.externalPos)(pp)+numExternal) mod numExternal<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-(board.externalPos)(pp)+numExternal) mod numExternal => card(board.externalPos|>{nn})<2))) & (pp: dom(board.internalPos) => (board.internalPos)(pp)+turn.diceValue<numInternal))))) & card(turn.finishOrder)<card(turn.enabledColors)));
-  List_Substitution(Machine(Ludo),pre_walk)==(rr:=bool(turn.gameStarted = TRUE & colorOf(pp) = turn.color & turn.diceValue/=0 & pp/:board.lockedPieces & (pp: dom(board.externalPos) => turn.diceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-(board.externalPos)(pp)+numExternal) mod numExternal & !nn.(nn: 0..numExternal-1 & nn/=(board.externalPos)(pp) & (nn-(board.externalPos)(pp)+numExternal) mod numExternal<=(((board.externalPos)(pp)+turn.diceValue) mod numExternal-(board.externalPos)(pp)+numExternal) mod numExternal => card(board.externalPos|>{nn})<2) or (turn.diceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-(board.externalPos)(pp)+numExternal) mod numExternal-1<numInternal & !nn.(nn: 0..numExternal-1 & nn/=(board.externalPos)(pp) & (nn-(board.externalPos)(pp)+numExternal) mod numExternal<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-(board.externalPos)(pp)+numExternal) mod numExternal => card(board.externalPos|>{nn})<2))) & (pp: dom(board.internalPos) => (board.internalPos)(pp)+turn.diceValue<numInternal)))
+  Expanded_List_Substitution(Machine(Ludo),pre_finishGame)==(btrue | rr:=bool(gameStarted = TRUE & card(finishOrder)>=1));
+  Expanded_List_Substitution(Machine(Ludo),pre_walk)==(pp: PIECES | rr:=bool(gameStarted = TRUE & colorOf(pp) = color & diceValue/=0 & pp/:lockedPieces & (pp: dom(externalPos) => diceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal & !nn.(nn: 0..numExternal-1 & nn/=externalPos(pp) & (nn-externalPos(pp)+numExternal) mod numExternal<=((externalPos(pp)+diceValue) mod numExternal-externalPos(pp)+numExternal) mod numExternal => card(externalPos|>{nn})<2) or (diceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal-1<numInternal & !nn.(nn: 0..numExternal-1 & nn/=externalPos(pp) & (nn-externalPos(pp)+numExternal) mod numExternal<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal => card(externalPos|>{nn})<2))) & (pp: dom(internalPos) => internalPos(pp)+diceValue<numInternal)));
+  Expanded_List_Substitution(Machine(Ludo),pre_nextTurn)==(btrue | rr:=bool(gameStarted = TRUE & hasRoll = FALSE & (diceValue = 0 or not(#pp.(pp: PIECES & colorOf(pp) = color & (diceValue = 6 & pp: lockedPieces & card(externalPos|>{startPoint(colorOf(pp))})<2 or diceValue/=0 & pp/:lockedPieces & (pp: dom(externalPos) => diceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal & !nn.(nn: 0..numExternal-1 & nn/=externalPos(pp) & (nn-externalPos(pp)+numExternal) mod numExternal<=((externalPos(pp)+diceValue) mod numExternal-externalPos(pp)+numExternal) mod numExternal => card(externalPos|>{nn})<2) or (diceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal-1<numInternal & !nn.(nn: 0..numExternal-1 & nn/=externalPos(pp) & (nn-externalPos(pp)+numExternal) mod numExternal<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal => card(externalPos|>{nn})<2))) & (pp: dom(internalPos) => internalPos(pp)+diceValue<numInternal))))) & card(finishOrder)<card(enabledColors)));
+  Expanded_List_Substitution(Machine(Ludo),pre_rollDice)==(btrue | rr:=bool(gameStarted = TRUE & hasRoll = TRUE & (diceValue = 0 or not(#pp.(pp: PIECES & colorOf(pp) = color & (diceValue = 6 & pp: lockedPieces & card(externalPos|>{startPoint(colorOf(pp))})<2 or diceValue/=0 & pp/:lockedPieces & (pp: dom(externalPos) => diceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal & !nn.(nn: 0..numExternal-1 & nn/=externalPos(pp) & (nn-externalPos(pp)+numExternal) mod numExternal<=((externalPos(pp)+diceValue) mod numExternal-externalPos(pp)+numExternal) mod numExternal => card(externalPos|>{nn})<2) or (diceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal-1<numInternal & !nn.(nn: 0..numExternal-1 & nn/=externalPos(pp) & (nn-externalPos(pp)+numExternal) mod numExternal<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal => card(externalPos|>{nn})<2))) & (pp: dom(internalPos) => internalPos(pp)+diceValue<numInternal)))))));
+  Expanded_List_Substitution(Machine(Ludo),pre_free)==(pp: PIECES | rr:=bool(gameStarted = TRUE & colorOf(pp) = color & diceValue = 6 & pp: lockedPieces & card(externalPos|>{startPoint(colorOf(pp))})<2));
+  Expanded_List_Substitution(Machine(Ludo),pre_initGame)==(btrue | rr:=bool(gameStarted = FALSE & card(enabledColors)>=2));
+  Expanded_List_Substitution(Machine(Ludo),pre_unpickColor)==(cc: COLORS | rr:=bool(cc/:enabledColors & gameStarted = FALSE));
+  Expanded_List_Substitution(Machine(Ludo),pre_pickColor)==(cc: COLORS | rr:=bool(cc/:enabledColors & gameStarted = FALSE));
+  Expanded_List_Substitution(Machine(Ludo),getPlacement)==(nn: NAT & nn: dom(finishOrder) | cc:=finishOrder(nn));
+  Expanded_List_Substitution(Machine(Ludo),getNumWinners)==(btrue | nn:=card(finishOrder));
+  Expanded_List_Substitution(Machine(Ludo),getTurn)==(btrue | cc:=color);
+  Expanded_List_Substitution(Machine(Ludo),getPiecePos)==(pp: PIECES | pp: dom(externalPos) ==> ee,ii:=externalPos(pp), -1 [] not(pp: dom(externalPos)) ==> (pp: dom(internalPos) ==> ee,ii:= -1,internalPos(pp) [] not(pp: dom(internalPos)) ==> ee,ii:= -1, -1));
+  Expanded_List_Substitution(Machine(Ludo),walk)==(gameStarted = TRUE & pp: PIECES & colorOf(pp) = color & diceValue/=0 & pp/:lockedPieces & (pp: dom(externalPos) => diceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal & !nn.(nn: 0..numExternal-1 & nn/=externalPos(pp) & (nn-externalPos(pp)+numExternal) mod numExternal<=((externalPos(pp)+diceValue) mod numExternal-externalPos(pp)+numExternal) mod numExternal => card(externalPos|>{nn})<2) or (diceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal-1<numInternal & !nn.(nn: 0..numExternal-1 & nn/=externalPos(pp) & (nn-externalPos(pp)+numExternal) mod numExternal<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal => card(externalPos|>{nn})<2))) & (pp: dom(internalPos) => internalPos(pp)+diceValue<numInternal) | pp: dom(externalPos) & diceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal ==> @newPos.(newPos = (diceValue+externalPos(pp)) mod numExternal ==> (pp: PIECES & pp/:lockedPieces & pp/:dom(internalPos) & newPos: 0..numExternal-1 & card(externalPos|>{newPos})<2 | newPos/:(stars\/ran(startPoint)) & (externalPos~;colorOf)[{newPos}]-{colorOf(pp)}/={} ==> externalPos,lockedPieces,atePieceDummy:=externalPos|>>{newPos}<+{pp|->newPos},lockedPieces\/externalPos~[{newPos}],TRUE [] not(newPos/:(stars\/ran(startPoint)) & (externalPos~;colorOf)[{newPos}]-{colorOf(pp)}/={}) ==> externalPos,atePieceDummy:=externalPos<+{pp|->newPos},FALSE || (newPos/:(stars\/ran(startPoint)) & (externalPos~;colorOf)[{newPos}]-{colorOf(pp)}/={} ==> (gameStarted = TRUE & diceValue/=0 & TRUE: BOOL & FALSE: BOOL & (TRUE = TRUE => FALSE = FALSE) | diceValue:=0 || (FALSE = TRUE ==> finishOrder,hasRoll:=finishOrder<+{card(finishOrder)|->color},FALSE [] not(FALSE = TRUE) ==> (TRUE = TRUE ==> hasRoll:=TRUE [] not(TRUE = TRUE) ==> skip))) [] not(newPos/:(stars\/ran(startPoint)) & (externalPos~;colorOf)[{newPos}]-{colorOf(pp)}/={}) ==> (gameStarted = TRUE & diceValue/=0 & FALSE: BOOL & FALSE: BOOL & (FALSE = TRUE => FALSE = FALSE) | diceValue:=0 || (FALSE = TRUE ==> finishOrder,hasRoll:=finishOrder<+{card(finishOrder)|->color},FALSE [] not(FALSE = TRUE) ==> (FALSE = TRUE ==> hasRoll:=TRUE [] not(FALSE = TRUE) ==> skip)))))) [] not(pp: dom(externalPos) & diceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal) ==> (pp: dom(externalPos) ==> (pp: PIECES & pp/:lockedPieces & diceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal-1: 0..numInternal-1 | internalPos,externalPos:=internalPos<+{pp|->diceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal-1},{pp}<<|externalPos) [] not(pp: dom(externalPos)) ==> (pp: PIECES & pp/:lockedPieces & diceValue+internalPos(pp): 0..numInternal-1 | internalPos,externalPos:=internalPos<+{pp|->diceValue+internalPos(pp)},{pp}<<|externalPos) || (pp: dom(internalPos) & diceValue+internalPos(pp) = numInternal-1 or (pp: dom(externalPos) & diceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal-1 = numInternal-1) ==> (card(internalPos~[{numInternal-1}]/\colorOf~[{color}]) = numPiecesByColor-1 ==> (gameStarted = TRUE & diceValue/=0 & FALSE: BOOL & TRUE: BOOL & (FALSE = TRUE => TRUE = FALSE) | diceValue:=0 || (TRUE = TRUE ==> finishOrder,hasRoll:=finishOrder<+{card(finishOrder)|->color},FALSE [] not(TRUE = TRUE) ==> (FALSE = TRUE ==> hasRoll:=TRUE [] not(FALSE = TRUE) ==> skip))) [] not(card(internalPos~[{numInternal-1}]/\colorOf~[{color}]) = numPiecesByColor-1) ==> (gameStarted = TRUE & diceValue/=0 & TRUE: BOOL & FALSE: BOOL & (TRUE = TRUE => FALSE = FALSE) | diceValue:=0 || (FALSE = TRUE ==> finishOrder,hasRoll:=finishOrder<+{card(finishOrder)|->color},FALSE [] not(FALSE = TRUE) ==> (TRUE = TRUE ==> hasRoll:=TRUE [] not(TRUE = TRUE) ==> skip)))) [] not(pp: dom(internalPos) & diceValue+internalPos(pp) = numInternal-1 or (pp: dom(externalPos) & diceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal-1 = numInternal-1)) ==> (gameStarted = TRUE & diceValue/=0 & FALSE: BOOL & FALSE: BOOL & (FALSE = TRUE => FALSE = FALSE) | diceValue:=0 || (FALSE = TRUE ==> finishOrder,hasRoll:=finishOrder<+{card(finishOrder)|->color},FALSE [] not(FALSE = TRUE) ==> (FALSE = TRUE ==> hasRoll:=TRUE [] not(FALSE = TRUE) ==> skip))))));
+  Expanded_List_Substitution(Machine(Ludo),skipTurn)==(gameStarted = TRUE & hasRoll = FALSE & (diceValue = 0 or not(#pp.(pp: PIECES & colorOf(pp) = color & (diceValue = 6 & pp: lockedPieces & card(externalPos|>{startPoint(colorOf(pp))})<2 or diceValue/=0 & pp/:lockedPieces & (pp: dom(externalPos) => diceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal & !nn.(nn: 0..numExternal-1 & nn/=externalPos(pp) & (nn-externalPos(pp)+numExternal) mod numExternal<=((externalPos(pp)+diceValue) mod numExternal-externalPos(pp)+numExternal) mod numExternal => card(externalPos|>{nn})<2) or (diceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal-1<numInternal & !nn.(nn: 0..numExternal-1 & nn/=externalPos(pp) & (nn-externalPos(pp)+numExternal) mod numExternal<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal => card(externalPos|>{nn})<2))) & (pp: dom(internalPos) => internalPos(pp)+diceValue<numInternal))))) & card(finishOrder)<card(enabledColors) & gameStarted = TRUE & hasRoll = FALSE & card(finishOrder)<card(enabledColors) | hasRoll,sixSequenceCount,diceValue:=TRUE,0,0 || @numJumps.(numJumps = min({nn | nn: 1..numColors & colorsOrder((colorsOrder~(color)+nn) mod numColors): enabledColors-ran(finishOrder)}) ==> color:=colorsOrder((colorsOrder~(color)+numJumps) mod numColors)));
+  Expanded_List_Substitution(Machine(Ludo),throwDice)==(gameStarted = TRUE & hasRoll = TRUE & (diceValue = 0 or not(#pp.(pp: PIECES & colorOf(pp) = color & (diceValue = 6 & pp: lockedPieces & card(externalPos|>{startPoint(colorOf(pp))})<2 or diceValue/=0 & pp/:lockedPieces & (pp: dom(externalPos) => diceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal & !nn.(nn: 0..numExternal-1 & nn/=externalPos(pp) & (nn-externalPos(pp)+numExternal) mod numExternal<=((externalPos(pp)+diceValue) mod numExternal-externalPos(pp)+numExternal) mod numExternal => card(externalPos|>{nn})<2) or (diceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal-1<numInternal & !nn.(nn: 0..numExternal-1 & nn/=externalPos(pp) & (nn-externalPos(pp)+numExternal) mod numExternal<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal => card(externalPos|>{nn})<2))) & (pp: dom(internalPos) => internalPos(pp)+diceValue<numInternal))))) & gameStarted = TRUE & hasRoll = TRUE | @dd.(dd: 1..6 ==> (vv:=dd || (dd = 6 ==> (sixSequenceCount<2 ==> sixSequenceCount,diceValue:=sixSequenceCount+1,dd [] not(sixSequenceCount<2) ==> sixSequenceCount,hasRoll,diceValue:=0,FALSE,0) [] not(dd = 6) ==> hasRoll,diceValue:=FALSE,dd))));
+  Expanded_List_Substitution(Machine(Ludo),free)==(gameStarted = TRUE & pp: PIECES & colorOf(pp) = color & diceValue = 6 & pp: lockedPieces & card(externalPos|>{startPoint(colorOf(pp))})<2 & gameStarted = TRUE & diceValue/=0 & FALSE: BOOL & FALSE: BOOL & (FALSE = TRUE => FALSE = FALSE) & pp: PIECES & pp: lockedPieces & card(externalPos|>{startPoint(colorOf(pp))})<2 | diceValue:=0 || (FALSE = TRUE ==> finishOrder,hasRoll:=finishOrder<+{card(finishOrder)|->color},FALSE [] not(FALSE = TRUE) ==> (FALSE = TRUE ==> hasRoll:=TRUE [] not(FALSE = TRUE) ==> skip)) || lockedPieces,externalPos:=lockedPieces-{pp},externalPos<+{pp|->startPoint(colorOf(pp))});
+  Expanded_List_Substitution(Machine(Ludo),startGame)==(gameStarted = FALSE & card(enabledColors)>=2 & gameStarted = FALSE & card(enabledColors)>=2 & btrue | gameStarted:=TRUE || @(color$0).(color$0: enabledColors ==> color:=color$0) || hasRoll:=TRUE || diceValue:=0 || sixSequenceCount:=0 || finishOrder:={} || lockedPieces,externalPos,internalPos:=PIECES,{},{});
+  List_Substitution(Machine(Ludo),getDiceValue)==(value:=diceValue);
+  Expanded_List_Substitution(Machine(Ludo),getDiceValue)==(btrue | value:=diceValue);
+  List_Substitution(Machine(Ludo),endGame)==(gameStarted:=FALSE);
+  Expanded_List_Substitution(Machine(Ludo),endGame)==(gameStarted = TRUE & card(finishOrder)>=1 | gameStarted:=FALSE);
+  List_Substitution(Machine(Ludo),unpickColor)==(enabledColors:=enabledColors-{cc});
+  Expanded_List_Substitution(Machine(Ludo),unpickColor)==(cc: COLORS & cc: enabledColors & gameStarted = FALSE | enabledColors:=enabledColors-{cc});
+  List_Substitution(Machine(Ludo),pickColor)==(enabledColors:=enabledColors\/{cc});
+  Expanded_List_Substitution(Machine(Ludo),pickColor)==(cc: COLORS & cc/:enabledColors & gameStarted = FALSE | enabledColors:=enabledColors\/{cc});
+  List_Substitution(Machine(Ludo),startGame)==(initGame || clear);
+  List_Substitution(Machine(Ludo),free)==(computeAction(FALSE,FALSE) || setFree(pp));
+  List_Substitution(Machine(Ludo),throwDice)==(vv <-- rollDice);
+  List_Substitution(Machine(Ludo),skipTurn)==(nextTurn);
+  List_Substitution(Machine(Ludo),walk)==(IF pp: dom(externalPos) & diceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal THEN LET newPos BE newPos = (diceValue+externalPos(pp)) mod numExternal IN atePieceDummy <-- setExternalPos(pp,newPos) || IF newPos/:(stars\/ran(startPoint)) & (externalPos~;colorOf)[{newPos}]-{colorOf(pp)}/={} THEN computeAction(TRUE,FALSE) ELSE computeAction(FALSE,FALSE) END END ELSE IF pp: dom(externalPos) THEN setInternalPos(pp,diceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal-1) ELSE setInternalPos(pp,diceValue+internalPos(pp)) END || IF pp: dom(internalPos) & diceValue+internalPos(pp) = numInternal-1 or (pp: dom(externalPos) & diceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal-1 = numInternal-1) THEN IF card(internalPos~[{numInternal-1}]/\colorOf~[{color}]) = numPiecesByColor-1 THEN computeAction(FALSE,TRUE) ELSE computeAction(TRUE,FALSE) END ELSE computeAction(FALSE,FALSE) END END);
+  List_Substitution(Machine(Ludo),getPiecePos)==(ee,ii <-- getPos(pp));
+  List_Substitution(Machine(Ludo),getTurn)==(cc:=color);
+  List_Substitution(Machine(Ludo),getNumWinners)==(nn <-- numWinners);
+  List_Substitution(Machine(Ludo),getPlacement)==(cc <-- placement(nn));
+  List_Substitution(Machine(Ludo),pre_pickColor)==(rr:=bool(cc/:enabledColors & gameStarted = FALSE));
+  List_Substitution(Machine(Ludo),pre_unpickColor)==(rr:=bool(cc/:enabledColors & gameStarted = FALSE));
+  List_Substitution(Machine(Ludo),pre_initGame)==(rr:=bool(gameStarted = FALSE & card(enabledColors)>=2));
+  List_Substitution(Machine(Ludo),pre_free)==(rr:=bool(gameStarted = TRUE & colorOf(pp) = color & diceValue = 6 & pp: lockedPieces & card(externalPos|>{startPoint(colorOf(pp))})<2));
+  List_Substitution(Machine(Ludo),pre_rollDice)==(rr:=bool(gameStarted = TRUE & hasRoll = TRUE & (diceValue = 0 or not(#pp.(pp: PIECES & colorOf(pp) = color & (diceValue = 6 & pp: lockedPieces & card(externalPos|>{startPoint(colorOf(pp))})<2 or diceValue/=0 & pp/:lockedPieces & (pp: dom(externalPos) => diceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal & !nn.(nn: 0..numExternal-1 & nn/=externalPos(pp) & (nn-externalPos(pp)+numExternal) mod numExternal<=((externalPos(pp)+diceValue) mod numExternal-externalPos(pp)+numExternal) mod numExternal => card(externalPos|>{nn})<2) or (diceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal-1<numInternal & !nn.(nn: 0..numExternal-1 & nn/=externalPos(pp) & (nn-externalPos(pp)+numExternal) mod numExternal<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal => card(externalPos|>{nn})<2))) & (pp: dom(internalPos) => internalPos(pp)+diceValue<numInternal)))))));
+  List_Substitution(Machine(Ludo),pre_nextTurn)==(rr:=bool(gameStarted = TRUE & hasRoll = FALSE & (diceValue = 0 or not(#pp.(pp: PIECES & colorOf(pp) = color & (diceValue = 6 & pp: lockedPieces & card(externalPos|>{startPoint(colorOf(pp))})<2 or diceValue/=0 & pp/:lockedPieces & (pp: dom(externalPos) => diceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal & !nn.(nn: 0..numExternal-1 & nn/=externalPos(pp) & (nn-externalPos(pp)+numExternal) mod numExternal<=((externalPos(pp)+diceValue) mod numExternal-externalPos(pp)+numExternal) mod numExternal => card(externalPos|>{nn})<2) or (diceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal-1<numInternal & !nn.(nn: 0..numExternal-1 & nn/=externalPos(pp) & (nn-externalPos(pp)+numExternal) mod numExternal<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal => card(externalPos|>{nn})<2))) & (pp: dom(internalPos) => internalPos(pp)+diceValue<numInternal))))) & card(finishOrder)<card(enabledColors)));
+  List_Substitution(Machine(Ludo),pre_walk)==(rr:=bool(gameStarted = TRUE & colorOf(pp) = color & diceValue/=0 & pp/:lockedPieces & (pp: dom(externalPos) => diceValue<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal & !nn.(nn: 0..numExternal-1 & nn/=externalPos(pp) & (nn-externalPos(pp)+numExternal) mod numExternal<=((externalPos(pp)+diceValue) mod numExternal-externalPos(pp)+numExternal) mod numExternal => card(externalPos|>{nn})<2) or (diceValue-((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal-1<numInternal & !nn.(nn: 0..numExternal-1 & nn/=externalPos(pp) & (nn-externalPos(pp)+numExternal) mod numExternal<=((startPoint(colorOf(pp))+numExternal-2) mod numExternal-externalPos(pp)+numExternal) mod numExternal => card(externalPos|>{nn})<2))) & (pp: dom(internalPos) => internalPos(pp)+diceValue<numInternal)));
+  List_Substitution(Machine(Ludo),pre_finishGame)==(rr:=bool(gameStarted = TRUE & card(finishOrder)>=1))
 END
 &
 THEORY ListConstantsX IS
@@ -273,33 +295,36 @@ THEORY ListSeenInfoX IS
 END
 &
 THEORY ListANYVarX IS
-  List_ANY_Var(Machine(Ludo),pickColor)==(?);
-  List_ANY_Var(Machine(Ludo),unpickColor)==(?);
-  List_ANY_Var(Machine(Ludo),initGame)==(?);
-  List_ANY_Var(Machine(Ludo),free)==(?);
-  List_ANY_Var(Machine(Ludo),rollDice)==(?);
-  List_ANY_Var(Machine(Ludo),nextTurn)==(?);
-  List_ANY_Var(Machine(Ludo),walk)==(?);
   List_ANY_Var(Machine(Ludo),getDiceValue)==(?);
-  List_ANY_Var(Machine(Ludo),getBoard)==(?);
+  List_ANY_Var(Machine(Ludo),endGame)==(?);
+  List_ANY_Var(Machine(Ludo),unpickColor)==(?);
+  List_ANY_Var(Machine(Ludo),pickColor)==(?);
+  List_ANY_Var(Machine(Ludo),startGame)==(?);
+  List_ANY_Var(Machine(Ludo),free)==(?);
+  List_ANY_Var(Machine(Ludo),throwDice)==(?);
+  List_ANY_Var(Machine(Ludo),skipTurn)==(?);
+  List_ANY_Var(Machine(Ludo),walk)==(?);
+  List_ANY_Var(Machine(Ludo),getPiecePos)==(?);
   List_ANY_Var(Machine(Ludo),getTurn)==(?);
-  List_ANY_Var(Machine(Ludo),finishGame)==(?);
+  List_ANY_Var(Machine(Ludo),getNumWinners)==(?);
+  List_ANY_Var(Machine(Ludo),getPlacement)==(?);
   List_ANY_Var(Machine(Ludo),pre_pickColor)==(?);
   List_ANY_Var(Machine(Ludo),pre_unpickColor)==(?);
   List_ANY_Var(Machine(Ludo),pre_initGame)==(?);
   List_ANY_Var(Machine(Ludo),pre_free)==(?);
   List_ANY_Var(Machine(Ludo),pre_rollDice)==(?);
   List_ANY_Var(Machine(Ludo),pre_nextTurn)==(?);
-  List_ANY_Var(Machine(Ludo),pre_walk)==(?)
+  List_ANY_Var(Machine(Ludo),pre_walk)==(?);
+  List_ANY_Var(Machine(Ludo),pre_finishGame)==(?)
 END
 &
 THEORY ListOfIdsX IS
-  List_Of_Ids(Machine(Ludo)) == (? | ? | ? | turngameStarted,turnenabledColors,turncolor,turnhasRoll,turndiceValue,turnsixSequenceCount,turnfinishOrder,boardlockedPieces,boardexternalPos,boardinternalPos | pickColor,unpickColor,initGame,free,rollDice,nextTurn,walk,getDiceValue,getBoard,getTurn,finishGame,pre_pickColor,pre_unpickColor,pre_initGame,pre_free,pre_rollDice,pre_nextTurn,pre_walk | ? | seen(Machine(Ludo_ctx)),included(Machine(board.Ludo_board)),included(Machine(turn.Ludo_turn)) | ? | Ludo);
+  List_Of_Ids(Machine(Ludo)) == (? | ? | atePieceDummy | V,finishOrder,sixSequenceCount,diceValue,hasRoll,color,enabledColors,gameStarted,internalPos,externalPos,lockedPieces | startGame,free,throwDice,skipTurn,walk,getPiecePos,getTurn,getNumWinners,getPlacement,pre_pickColor,pre_unpickColor,pre_initGame,pre_free,pre_rollDice,pre_nextTurn,pre_walk,pre_finishGame | pickColor,unpickColor,endGame,getDiceValue | seen(Machine(Ludo_ctx)),included(Machine(Ludo_board)),included(Machine(Ludo_turn)) | ? | Ludo);
   List_Of_HiddenCst_Ids(Machine(Ludo)) == (? | ?);
   List_Of_VisibleCst_Ids(Machine(Ludo)) == (?);
   List_Of_VisibleVar_Ids(Machine(Ludo)) == (? | ?);
   List_Of_Ids_SeenBNU(Machine(Ludo)) == (seen(Machine(Ludo_ctx)): (colorOf,startPoint,colorsOrder,piecesOrder,numColors,numPiecesByColor,numPieces,numExternal,numInternal,COLORS,PIECES | ? | ? | ? | ? | ? | stars,diceOptions | ? | ?));
-  List_Of_Ids(Machine(Ludo_turn)) == (? | ? | finishOrder,sixSequenceCount,diceValue,hasRoll,color,enabledColors,gameStarted | ? | pickColor,unpickColor,initGame,computeAction,nextTurn,rollDice,endGame | ? | seen(Machine(Ludo_ctx)) | ? | Ludo_turn);
+  List_Of_Ids(Machine(Ludo_turn)) == (? | ? | finishOrder,sixSequenceCount,diceValue,hasRoll,color,enabledColors,gameStarted | ? | pickColor,unpickColor,initGame,computeAction,nextTurn,rollDice,endGame,getDiceValue,getColor,numWinners,placement | ? | seen(Machine(Ludo_ctx)) | ? | Ludo_turn);
   List_Of_HiddenCst_Ids(Machine(Ludo_turn)) == (? | ?);
   List_Of_VisibleCst_Ids(Machine(Ludo_turn)) == (?);
   List_Of_VisibleVar_Ids(Machine(Ludo_turn)) == (? | ?);
@@ -317,12 +342,12 @@ THEORY ListOfIdsX IS
 END
 &
 THEORY VariablesEnvX IS
-  Variables(Machine(Ludo)) == (Type(board.internalPos) == Mvl(SetOf(atype(PIECES,?,?)*btype(INTEGER,?,?)));Type(board.externalPos) == Mvl(SetOf(atype(PIECES,?,?)*btype(INTEGER,?,?)));Type(board.lockedPieces) == Mvl(SetOf(atype(PIECES,?,?)));Type(turn.finishOrder) == Mvl(SetOf(btype(INTEGER,?,?)*atype(COLORS,?,?)));Type(turn.sixSequenceCount) == Mvl(btype(INTEGER,?,?));Type(turn.diceValue) == Mvl(btype(INTEGER,?,?));Type(turn.hasRoll) == Mvl(btype(BOOL,?,?));Type(turn.color) == Mvl(atype(COLORS,?,?));Type(turn.enabledColors) == Mvl(SetOf(atype(COLORS,?,?)));Type(turn.gameStarted) == Mvl(btype(BOOL,?,?)))
+  Variables(Machine(Ludo)) == (Type(lockedPieces) == Mvl(SetOf(atype(PIECES,?,?)));Type(externalPos) == Mvl(SetOf(atype(PIECES,?,?)*btype(INTEGER,?,?)));Type(internalPos) == Mvl(SetOf(atype(PIECES,?,?)*btype(INTEGER,?,?)));Type(gameStarted) == Mvl(btype(BOOL,?,?));Type(enabledColors) == Mvl(SetOf(atype(COLORS,?,?)));Type(color) == Mvl(atype(COLORS,?,?));Type(hasRoll) == Mvl(btype(BOOL,?,?));Type(diceValue) == Mvl(btype(INTEGER,?,?));Type(sixSequenceCount) == Mvl(btype(INTEGER,?,?));Type(finishOrder) == Mvl(SetOf(btype(INTEGER,?,?)*atype(COLORS,?,?)));Type(atePieceDummy) == Mvl(btype(BOOL,?,?)))
 END
 &
 THEORY OperationsEnvX IS
-  Operations(Machine(Ludo)) == (Type(pre_walk) == Cst(btype(BOOL,?,?),atype(PIECES,?,?));Type(pre_nextTurn) == Cst(btype(BOOL,?,?),No_type);Type(pre_rollDice) == Cst(btype(BOOL,?,?),No_type);Type(pre_free) == Cst(btype(BOOL,?,?),atype(PIECES,?,?));Type(pre_initGame) == Cst(btype(BOOL,?,?),No_type);Type(pre_unpickColor) == Cst(btype(BOOL,?,?),atype(COLORS,?,?));Type(pre_pickColor) == Cst(btype(BOOL,?,?),atype(COLORS,?,?));Type(finishGame) == Cst(SetOf(btype(INTEGER,?,?)*atype(COLORS,?,?)),No_type);Type(getTurn) == Cst(atype(COLORS,?,?),No_type);Type(getBoard) == Cst(SetOf(atype(PIECES,?,?)*btype(INTEGER,?,?))*SetOf(atype(PIECES,?,?)*btype(INTEGER,?,?)),No_type);Type(getDiceValue) == Cst(btype(INTEGER,?,?),No_type);Type(walk) == Cst(No_type,atype(PIECES,?,?));Type(nextTurn) == Cst(No_type,No_type);Type(rollDice) == Cst(btype(INTEGER,?,?),No_type);Type(free) == Cst(No_type,atype(PIECES,?,?));Type(initGame) == Cst(No_type,No_type);Type(unpickColor) == Cst(No_type,atype(COLORS,?,?));Type(pickColor) == Cst(No_type,atype(COLORS,?,?)));
-  Observers(Machine(Ludo)) == (Type(pre_walk) == Cst(btype(BOOL,?,?),atype(PIECES,?,?));Type(pre_nextTurn) == Cst(btype(BOOL,?,?),No_type);Type(pre_rollDice) == Cst(btype(BOOL,?,?),No_type);Type(pre_free) == Cst(btype(BOOL,?,?),atype(PIECES,?,?));Type(pre_initGame) == Cst(btype(BOOL,?,?),No_type);Type(pre_unpickColor) == Cst(btype(BOOL,?,?),atype(COLORS,?,?));Type(pre_pickColor) == Cst(btype(BOOL,?,?),atype(COLORS,?,?));Type(getTurn) == Cst(atype(COLORS,?,?),No_type);Type(getBoard) == Cst(SetOf(atype(PIECES,?,?)*btype(INTEGER,?,?))*SetOf(atype(PIECES,?,?)*btype(INTEGER,?,?)),No_type);Type(getDiceValue) == Cst(btype(INTEGER,?,?),No_type);Type(rollDice) == Cst(btype(INTEGER,?,?),No_type))
+  Operations(Machine(Ludo)) == (Type(pickColor) == Cst(No_type,atype(COLORS,?,?));Type(unpickColor) == Cst(No_type,atype(COLORS,?,?));Type(endGame) == Cst(No_type,No_type);Type(getDiceValue) == Cst(btype(INTEGER,?,?),No_type);Type(pre_finishGame) == Cst(btype(BOOL,?,?),No_type);Type(pre_walk) == Cst(btype(BOOL,?,?),atype(PIECES,?,?));Type(pre_nextTurn) == Cst(btype(BOOL,?,?),No_type);Type(pre_rollDice) == Cst(btype(BOOL,?,?),No_type);Type(pre_free) == Cst(btype(BOOL,?,?),atype(PIECES,?,?));Type(pre_initGame) == Cst(btype(BOOL,?,?),No_type);Type(pre_unpickColor) == Cst(btype(BOOL,?,?),atype(COLORS,?,?));Type(pre_pickColor) == Cst(btype(BOOL,?,?),atype(COLORS,?,?));Type(getPlacement) == Cst(atype(COLORS,?,?),btype(INTEGER,?,?));Type(getNumWinners) == Cst(btype(INTEGER,?,?),No_type);Type(getTurn) == Cst(atype(COLORS,?,?),No_type);Type(getPiecePos) == Cst(btype(INTEGER,?,?)*btype(INTEGER,?,?),atype(PIECES,?,?));Type(walk) == Cst(No_type,atype(PIECES,?,?));Type(skipTurn) == Cst(No_type,No_type);Type(throwDice) == Cst(btype(INTEGER,?,?),No_type);Type(free) == Cst(No_type,atype(PIECES,?,?));Type(startGame) == Cst(No_type,No_type));
+  Observers(Machine(Ludo)) == (Type(getDiceValue) == Cst(btype(INTEGER,?,?),No_type);Type(pre_finishGame) == Cst(btype(BOOL,?,?),No_type);Type(pre_walk) == Cst(btype(BOOL,?,?),atype(PIECES,?,?));Type(pre_nextTurn) == Cst(btype(BOOL,?,?),No_type);Type(pre_rollDice) == Cst(btype(BOOL,?,?),No_type);Type(pre_free) == Cst(btype(BOOL,?,?),atype(PIECES,?,?));Type(pre_initGame) == Cst(btype(BOOL,?,?),No_type);Type(pre_unpickColor) == Cst(btype(BOOL,?,?),atype(COLORS,?,?));Type(pre_pickColor) == Cst(btype(BOOL,?,?),atype(COLORS,?,?));Type(getPlacement) == Cst(atype(COLORS,?,?),btype(INTEGER,?,?));Type(getNumWinners) == Cst(btype(INTEGER,?,?),No_type);Type(getTurn) == Cst(atype(COLORS,?,?),No_type);Type(getPiecePos) == Cst(btype(INTEGER,?,?)*btype(INTEGER,?,?),atype(PIECES,?,?));Type(throwDice) == Cst(btype(INTEGER,?,?),No_type))
 END
 &
 THEORY TCIntRdX IS

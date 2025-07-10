@@ -1,9 +1,10 @@
 ﻿MACHINE Ludo
 SEES Ludo_ctx
 INCLUDES
-  board.Ludo_board ,
-  turn.Ludo_turn
-
+  Ludo_board ,
+  Ludo_turn
+PROMOTES
+  pickColor , unpickColor , endGame , getDiceValue
 DEFINITIONS
   // ponto final externo
   finishPoint ( color ) == ( startPoint ( color ) + numExternal - 2 ) mod numExternal ;
@@ -12,192 +13,186 @@ DEFINITIONS
   stepsDiff ( n1 , n2 ) == ( n2 - n1 + numExternal ) mod numExternal ;
 
 
-  stepsToFinish ( piece ) == stepsDiff ( board.externalPos ( piece ) , finishPoint ( colorOf ( piece ) ) ) ;
+  stepsToFinish ( piece ) == stepsDiff ( externalPos ( piece ) , finishPoint ( colorOf ( piece ) ) ) ;
 
 
-  isFinished ( color ) == colorOf ~ [ { color } ] <: board.internalPos ~ [ { numInternal - 1 } ] ;
+  isFinished ( color ) == colorOf ~ [ { color } ] <: internalPos ~ [ { numInternal - 1 } ] ;
 
 
   canFree ( pp ) ==
-    turn.diceValue = 6 &
-    pp : board.lockedPieces &
-    card ( board.externalPos |> { startPoint ( colorOf ( pp ) ) } ) < 2 ;
+    diceValue = 6 &
+    pp : lockedPieces &
+    card ( externalPos |> { startPoint ( colorOf ( pp ) ) } ) < 2 ;
 
 
 
   isPathFree ( n1 , n2 ) == ! nn . (
     nn : 0 .. numExternal - 1 & nn /= n1 & stepsDiff ( n1 , nn ) <= stepsDiff ( n1 , n2 ) =>
-    card ( board.externalPos |> { nn } ) < 2
+    card ( externalPos |> { nn } ) < 2
   ) ;
 
 
   canWalk ( pp ) ==
-    turn.diceValue /= 0 &
-    pp /: board.lockedPieces &
-    ( pp : dom ( board.externalPos ) =>
+    diceValue /= 0 &
+    pp /: lockedPieces &
+    ( pp : dom ( externalPos ) =>
       (
-        turn.diceValue <= stepsToFinish ( pp ) &
-        isPathFree ( board.externalPos ( pp ) , ( board.externalPos ( pp ) + turn.diceValue ) mod numExternal )
+        diceValue <= stepsToFinish ( pp ) &
+        isPathFree ( externalPos ( pp ) , ( externalPos ( pp ) + diceValue ) mod numExternal )
       ) or (
-        turn.diceValue - stepsToFinish ( pp ) - 1 < numInternal &
-        isPathFree ( board.externalPos ( pp ) , finishPoint ( colorOf ( pp ) ) )
+        diceValue - stepsToFinish ( pp ) - 1 < numInternal &
+        isPathFree ( externalPos ( pp ) , finishPoint ( colorOf ( pp ) ) )
       )
     ) &
-    ( pp : dom ( board.internalPos ) =>
-      board.internalPos ( pp ) + turn.diceValue < numInternal
+    ( pp : dom ( internalPos ) =>
+      internalPos ( pp ) + diceValue < numInternal
     ) ;
 
 
-  hasActions == # pp . ( pp : PIECES & colorOf ( pp ) = turn.color & ( canFree ( pp ) or canWalk ( pp ) ) )
+  hasActions == # pp . ( pp : PIECES & colorOf ( pp ) = color & ( canFree ( pp ) or canWalk ( pp ) ) )
+
+ABSTRACT_VARIABLES
+    atePieceDummy
 
 INVARIANT
-  ! cc . ( cc : ran ( turn.finishOrder ) => isFinished ( cc ) ) &
+  ! cc . ( cc : ran ( finishOrder ) => isFinished ( cc ) ) &
   // para todas as peças que a cor não esta habilitada ao jogo, ficam bloqueadas nos seus pontos
   // de partida
-  ! pp . ( pp : PIECES => ( colorOf ( pp ) /: turn.enabledColors => pp : board.lockedPieces ) )
+  ! pp . ( pp : PIECES => ( colorOf ( pp ) /: enabledColors => pp : lockedPieces ) ) &
+  atePieceDummy : BOOL
+
+INITIALISATION
+  atePieceDummy :: BOOL
 
 OPERATIONS
-  pickColor ( cc ) =
-    PRE cc : COLORS & cc /: turn.enabledColors & turn.gameStarted = FALSE
-    THEN turn.pickColor ( cc )
-    END ;
-
-  unpickColor ( cc ) =
-    PRE cc : COLORS & cc : turn.enabledColors & turn.gameStarted = FALSE
-    THEN turn.unpickColor ( cc )
-    END ;
-
-  initGame =
+  startGame =
     PRE
-      turn.gameStarted = FALSE
-      & card ( turn.enabledColors ) >= 2
+      gameStarted = FALSE
+      & card ( enabledColors ) >= 2
     THEN
-      turn.initGame ||
-      board.clear
+      initGame ||
+      clear
     END ;
 
   free ( pp ) =
     PRE
-      turn.gameStarted = TRUE &
+      gameStarted = TRUE &
       pp : PIECES &
-      colorOf ( pp ) = turn.color &
+      colorOf ( pp ) = color &
       canFree ( pp )
     THEN
-      turn.computeAction ( FALSE , FALSE ) ||
-      board.setFree ( pp )
+      computeAction ( FALSE , FALSE ) ||
+      setFree ( pp )
     END ;
 
-  vv <-- rollDice =
+  vv <-- throwDice =
     PRE
-      turn.gameStarted = TRUE &
-      turn.hasRoll = TRUE &
+      gameStarted = TRUE &
+      hasRoll = TRUE &
       // não tem ações pendentes ou não tem ações possíveis
-      ( turn.diceValue = 0 or not ( hasActions ) )
-    THEN vv <-- turn.rollDice
+      ( diceValue = 0 or not ( hasActions ) )
+    THEN vv <-- rollDice
     END ;
 
-  nextTurn =
+  skipTurn =
     PRE
-      turn.gameStarted = TRUE &
-      turn.hasRoll = FALSE &
-      ( turn.diceValue = 0 or not ( hasActions ) ) &
-      card ( turn.finishOrder ) < card ( turn.enabledColors )
-    THEN turn.nextTurn
+      gameStarted = TRUE &
+      hasRoll = FALSE &
+      ( diceValue = 0 or not ( hasActions ) ) &
+      card ( finishOrder ) < card ( enabledColors )
+    THEN nextTurn
     END ;
 
   walk ( pp ) =
     PRE
-      turn.gameStarted = TRUE &
+      gameStarted = TRUE &
       pp : PIECES &
-      colorOf ( pp ) = turn.color &
+      colorOf ( pp ) = color &
       canWalk ( pp )
     THEN
-      IF pp : dom ( board.externalPos ) & turn.diceValue <= stepsToFinish ( pp ) THEN
+      IF pp : dom ( externalPos ) & diceValue <= stepsToFinish ( pp ) THEN
         LET newPos
-        BE newPos = ( turn.diceValue + board.externalPos ( pp ) ) mod numExternal
+        BE newPos = ( diceValue + externalPos ( pp ) ) mod numExternal
         IN
-          board.setExternalPos ( pp , newPos ) ||
+          atePieceDummy <-- setExternalPos ( pp , newPos ) ||
           IF
             newPos /: ( stars \/ ran ( startPoint ) ) &
-            ( board.externalPos ~ ; colorOf ) [ { newPos } ] - { colorOf ( pp ) } /= {}
+            ( externalPos ~ ; colorOf ) [ { newPos } ] - { colorOf ( pp ) } /= {}
           THEN
-            turn.computeAction ( TRUE , FALSE )
+            computeAction ( TRUE , FALSE )
           ELSE
-            turn.computeAction ( FALSE , FALSE )
+            computeAction ( FALSE , FALSE )
           END
         END
       ELSE
-        IF pp : dom ( board.externalPos ) THEN
-          board.setInternalPos ( pp , turn.diceValue - stepsToFinish ( pp ) - 1 )
+        IF pp : dom ( externalPos ) THEN
+          setInternalPos ( pp , diceValue - stepsToFinish ( pp ) - 1 )
         ELSE
-          board.setInternalPos ( pp , turn.diceValue + board.internalPos ( pp ) )
+          setInternalPos ( pp , diceValue + internalPos ( pp ) )
         END ||
         IF
-          ( ( pp : dom ( board.internalPos ) & turn.diceValue + board.internalPos ( pp ) = numInternal - 1 )
-          or ( pp : dom ( board.externalPos ) & turn.diceValue - stepsToFinish ( pp ) - 1 = numInternal - 1 ) )
+          ( ( pp : dom ( internalPos ) & diceValue + internalPos ( pp ) = numInternal - 1 )
+          or ( pp : dom ( externalPos ) & diceValue - stepsToFinish ( pp ) - 1 = numInternal - 1 ) )
         THEN
-          IF card ( board.internalPos ~ [ { numInternal - 1 } ] /\ colorOf ~ [ { turn.color } ] ) = numPiecesByColor - 1 THEN
-            turn.computeAction ( FALSE , TRUE )
+          IF card ( internalPos ~ [ { numInternal - 1 } ] /\ colorOf ~ [ { color } ] ) = numPiecesByColor - 1 THEN
+            computeAction ( FALSE , TRUE )
           ELSE
-            turn.computeAction ( TRUE , FALSE )
+            computeAction ( TRUE , FALSE )
           END
         ELSE
-          turn.computeAction ( FALSE , FALSE )
+          computeAction ( FALSE , FALSE )
         END
       END
     END ;
 
-  dd <-- getDiceValue =
-    PRE turn.gameStarted = TRUE & turn.diceValue /= 0
-    THEN dd := turn.diceValue
-    END ;
-
-  ee , ii <-- getBoard =
-    PRE turn.gameStarted = TRUE
-    THEN ee , ii := board.externalPos , board.internalPos
+  ee , ii <-- getPiecePos ( pp ) =
+    PRE pp : PIECES
+    THEN ee , ii <-- getPos ( pp )
     END ;
 
   cc <-- getTurn =
-    PRE turn.gameStarted = TRUE & card ( turn.finishOrder ) < numColors
-    THEN cc := turn.color
-    END ;
+    cc := color ;
 
-  oo <-- finishGame =
-    PRE turn.gameStarted = TRUE & card ( turn.finishOrder ) >= 1
-    THEN
-      oo := turn.finishOrder ||
-      turn.endGame
-    END ;
+  nn <-- getNumWinners =
+      nn <-- numWinners ;
+
+  cc <-- getPlacement ( nn ) =
+      PRE nn : NAT & nn : dom ( finishOrder )
+      THEN cc <-- placement ( nn )
+      END ;
 
   // operações de pre condicao
 
   rr <-- pre_pickColor ( cc ) =
     PRE cc : COLORS
-    THEN rr := bool ( cc /: turn.enabledColors & turn.gameStarted = FALSE )
+    THEN rr := bool ( cc /: enabledColors & gameStarted = FALSE )
     END ;
 
   rr <-- pre_unpickColor ( cc ) =
     PRE cc : COLORS
-    THEN rr := bool ( cc /: turn.enabledColors & turn.gameStarted = FALSE )
+    THEN rr := bool ( cc /: enabledColors & gameStarted = FALSE )
     END ;
 
   rr <-- pre_initGame =
-    rr := bool ( turn.gameStarted = FALSE & card ( turn.enabledColors ) >= 2 ) ;
+    rr := bool ( gameStarted = FALSE & card ( enabledColors ) >= 2 ) ;
 
 
   rr <-- pre_free ( pp ) =
     PRE pp : PIECES
-    THEN rr := bool ( turn.gameStarted = TRUE & colorOf ( pp ) = turn.color & canFree ( pp ) )
+    THEN rr := bool ( gameStarted = TRUE & colorOf ( pp ) = color & canFree ( pp ) )
     END ;
 
   rr <-- pre_rollDice =
-    rr := bool ( turn.gameStarted = TRUE & turn.hasRoll = TRUE & ( turn.diceValue = 0 or not ( hasActions ) ) ) ;
+    rr := bool ( gameStarted = TRUE & hasRoll = TRUE & ( diceValue = 0 or not ( hasActions ) ) ) ;
 
   rr <-- pre_nextTurn =
-      rr := bool ( turn.gameStarted = TRUE & turn.hasRoll = FALSE & ( turn.diceValue = 0 or not ( hasActions ) ) & card ( turn.finishOrder ) < card ( turn.enabledColors ) ) ;
+      rr := bool ( gameStarted = TRUE & hasRoll = FALSE & ( diceValue = 0 or not ( hasActions ) ) & card ( finishOrder ) < card ( enabledColors ) ) ;
 
   rr <-- pre_walk ( pp ) =
     PRE pp : PIECES
-    THEN rr := bool ( turn.gameStarted = TRUE & colorOf ( pp ) = turn.color & canWalk ( pp ) )
-    END
+    THEN rr := bool ( gameStarted = TRUE & colorOf ( pp ) = color & canWalk ( pp ) )
+    END ;
+
+  rr <-- pre_finishGame =
+      rr := bool ( gameStarted = TRUE & card ( finishOrder ) >= 1 )
 END

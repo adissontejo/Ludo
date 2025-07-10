@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<db_xml>
+    <atelierb version="3_7_ubuntu-cvs" />
+    <project decomp_dir="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/expand_src" old_decomp_dir="/home/adisson/Documents/Universidade/Metodos Formais/Ludo/bdp/src">
+        <!-- Definition directory list -->
+        <definition_dir path="/home/adisson/Documents/Universidade/Metodos Formais/Ludo" />
+        <!-- Proof mechanisms -->
+        <!-- Component file list -->
+        <component_file path="/home/adisson/Documents/Universidade/Metodos Formais/Ludo" name="Ludo" suffix="mch" user="adisson">
+            <component name="Ludo" type="specification" />
+        </component_file>
+        <component_file path="/home/adisson/Documents/Universidade/Metodos Formais/Ludo" name="Ludo_ProB" suffix="mch" user="adisson">
+            <component name="Ludo_ProB" type="specification" />
+        </component_file>
+        <component_file path="/home/adisson/Documents/Universidade/Metodos Formais/Ludo" name="Ludo_board" suffix="mch" user="adisson">
+            <component name="Ludo_board" type="specification" />
+        </component_file>
+        <component_file path="/home/adisson/Documents/Universidade/Metodos Formais/Ludo" name="Ludo_board_i" suffix="imp" user="adisson">
+            <component name="Ludo_board_i" type="implementation" />
+        </component_file>
+        <component_file path="/home/adisson/Documents/Universidade/Metodos Formais/Ludo" name="Ludo_ctx" suffix="mch" user="adisson">
+            <component name="Ludo_ctx" type="specification" />
+        </component_file>
+        <component_file path="/home/adisson/Documents/Universidade/Metodos Formais/Ludo" name="Ludo_ctx_i" suffix="imp" user="adisson">
+            <component name="Ludo_ctx_i" type="implementation" />
+        </component_file>
+        <component_file path="/home/adisson/Documents/Universidade/Metodos Formais/Ludo" name="Ludo_i" suffix="imp" user="adisson">
+            <component name="Ludo_i" type="implementation" />
+        </component_file>
+        <component_file path="/home/adisson/Documents/Universidade/Metodos Formais/Ludo" name="Ludo_turn" suffix="mch" user="adisson">
+            <component name="Ludo_turn" type="specification" />
+        </component_file>
+        <component_file path="/home/adisson/Documents/Universidade/Metodos Formais/Ludo" name="Ludo_turn_i" suffix="imp" user="adisson">
+            <component name="Ludo_turn_i" type="implementation" />
+        </component_file>
+    </project>
+</db_xml>

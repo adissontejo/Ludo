@@ -1,10 +1,13 @@
 digraph {
+Ludo_ProB [ label=" Ludo_ProB " shape= box ]
 Ludo_board_i [ label=" Ludo_board\nLudo_board_i " shape= box ]
 Ludo_ctx_i [ label=" Ludo_ctx\nLudo_ctx_i " shape= box ]
 Ludo_i [ label=" Ludo\nLudo_i " shape= box ]
 Ludo_turn_i [ label=" Ludo_turn\nLudo_turn_i " shape= box ]
 
 "Ludo_i" -> "Ludo_ctx_i" [style= dotted ]
+"Ludo_ProB" -> "Ludo_ctx_i" [style= dotted ]
+"Ludo_ProB" -> "Ludo_i" []
 "Ludo_board_i" -> "Ludo_ctx_i" [style= dotted ]
 "Ludo_i" -> "Ludo_board_i" []
 "Ludo_i" -> "Ludo_turn_i" []

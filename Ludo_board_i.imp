@@ -36,33 +36,31 @@ OPERATIONS
       externalBoard(pp) := 0
     END;
 
-  setExternalPos(pp, nn) =
+  atePiece <-- setExternalPos(pp, nn) =
     BEGIN
-      VAR rest, currentColor, hasOtherColor, otherColor, otherPos, ii
+      VAR rest, currentColor, atePiece, otherColor, otherPos, ii
       IN
         rest := nn mod 13;
         IF rest /= 0 & rest /= 8
         THEN
           ii := 0;
           currentColor := colorOf(pp);
-          hasOtherColor := FALSE;
-          WHILE ii < numPieces & hasOtherColor = FALSE
+          atePiece := FALSE;
+          WHILE ii < numPieces & atePiece = FALSE
           DO
             otherColor := colorOf(piecesOrder(ii));
             otherPos := externalBoard(piecesOrder(ii));
             IF otherColor /= currentColor & otherPos = nn THEN
               externalBoard(piecesOrder(ii)) := -1;
-              hasOtherColor := TRUE
+              atePiece := TRUE
             END;
-            ASSERT hasOtherColor = TRUE => card(externalPos |> {nn}) = 0 THEN skip END;
             ii := ii + 1
           INVARIANT
             externalBoard : PIECES --> -1..numExternal-1 &
-            hasOtherColor : BOOL &
             ii : NAT &
             ii <= numPieces &
-            hasOtherColor = TRUE <=> (((piecesOrder[0..ii-1] <| externalPos)~;colorOf)[{nn}]) - {colorOf(pp)} /= {} &
-            hasOtherColor = TRUE => card(externalBoard |> {nn}) = 0
+            (atePiece = TRUE <=> (((piecesOrder[0..ii-1] <| externalPos)~;colorOf)[{nn}]) - {colorOf(pp)} /= {}) &
+            (atePiece = TRUE => card(externalBoard |> {nn}) = 0)
 
           VARIANT numPieces - ii
           END
