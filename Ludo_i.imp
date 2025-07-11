@@ -27,7 +27,29 @@ DEFINITIONS
   isPathFree_def(n1, n2) == !nn . (
     nn : 0..numExternal-1 & nn /= n1 & stepsDiff(n1, nn) <= stepsDiff(n1, n2) =>
     card(externalPos |> {nn}) < 2
-  )
+  );
+  
+  canFree_def(pp) ==
+    diceValue = 6 &
+    pp : lockedPieces &
+    card(externalPos |> {startPoint(colorOf(pp))}) < 2;
+
+  // verifica se a peça pode andar
+  canWalk_def(pp)==
+    diceValue /= 0 &
+    pp /: lockedPieces &
+    (pp : dom(externalPos) =>
+      (
+        diceValue <= stepsToFinish_def(pp) &
+        isPathFree_def(externalPos(pp), (externalPos(pp) + diceValue) mod numExternal)
+      ) or (
+        diceValue - stepsToFinish_def(pp) - 1 < numInternal &
+        isPathFree_def(externalPos(pp), finishPoint(colorOf(pp)))
+      )
+    ) &
+    (pp : dom(internalPos) =>
+      internalPos(pp) + diceValue < numInternal
+    )
 
 LOCAL_OPERATIONS
   nn <-- stepsToFinish(piece) =
@@ -75,7 +97,10 @@ LOCAL_OPERATIONS
           internalPos(pp) + diceValue < numInternal
         )
       )
-    END
+    END;
+    
+  bb <-- hasActions =
+      bb := bool(# pp . (pp : PIECES & colorOf(pp) = color & (canFree_def(pp) or canWalk_def(pp))))
 
 OPERATIONS
   nn <-- stepsToFinish(piece) =
@@ -154,6 +179,29 @@ OPERATIONS
     BEGIN
       bb := TRUE
     END;
+    
+  bb <-- hasActions = 
+  BEGIN
+      VAR ii, piece, pieceColor, canFreePiece, canWalkPiece, color
+      IN
+          ii := 0;
+          bb := FALSE;
+          color <-- getColor;
+          WHILE ii < numPieces & bb = FALSE
+          DO 
+            piece := piecesOrder(ii);
+            pieceColor := colorOf(piece);
+            canFreePiece <-- canFree(piece);
+            canWalkPiece <-- canWalk(piece);
+            IF pieceColor = color & (canFreePiece = TRUE or canWalkPiece = TRUE) THEN
+                bb := TRUE
+            END;
+            ii := ii + 1
+          INVARIANT ii <= numPieces & bb = TRUE <=> (# pp . (pp : PIECES & colorOf(pp) = color & (canFree_def(pp) or canWalk_def(pp))  & pp : piecesOrder[0..ii-1]))
+          VARIANT numPieces - ii
+          END
+      END
+  END;
 
 
   startGame =
@@ -231,19 +279,66 @@ OPERATIONS
 
   rr <-- pre_pickColor(cc) =
     BEGIN
-      //rr := bool(cc /: enabledColors & gameStarted = FALSE)
-      rr := TRUE
+      VAR isGameStarted, isEnabled
+      IN
+        isGameStarted <-- getGameStarted;
+        isEnabled <-- isColorEnabled(cc);
+
+        IF isGameStarted = FALSE & isEnabled = FALSE THEN    
+            rr := TRUE
+        ELSE
+            rr := FALSE
+        END
+      END
     END;
 
   rr <-- pre_unpickColor(cc) =
     BEGIN
-      //rr := bool(cc /: enabledColors & gameStarted = FALSE)
-      rr := TRUE
+      VAR isGameStarted, isEnabled
+      IN
+        isGameStarted <-- getGameStarted;
+        isEnabled <-- isColorEnabled(cc);
+
+        IF isGameStarted = FALSE & isEnabled = TRUE THEN    
+            rr := TRUE
+        ELSE
+            rr := FALSE
+        END
+      END
     END;
 
   rr <-- pre_initGame =
     BEGIN
-      rr := TRUE
+      VAR isGameStarted, ii, isEnabled, color, countEnableds
+      IN
+        isGameStarted <-- getGameStarted;
+        IF isGameStarted = FALSE THEN
+            ii := 0;
+            countEnableds := 0;
+            rr := FALSE;
+            WHILE ii < 4 & rr = FALSE
+            DO
+              color := colorsOrder(ii);
+              isEnabled <-- isColorEnabled(color);
+              
+              IF isEnabled = TRUE THEN
+                  countEnableds := countEnableds + 1
+              END;
+              
+              IF countEnableds = 2 THEN
+                  rr := TRUE
+              END;
+              ii := ii + 1
+        
+            INVARIANT
+              ii : NAT & ii <= 4 & isGameStarted : BOOL & countEnableds : 0..4 &
+              rr = TRUE <=> (countEnableds = card(enabledColors /\ colorsOrder[0..ii-1]) & countEnableds >= 2)
+            VARIANT 4 - ii
+            END
+         ELSE
+             rr := FALSE
+         END
+      END
     END;
 
   rr <-- pre_free(pp) =
@@ -255,20 +350,35 @@ OPERATIONS
   rr <-- pre_rollDice =
     BEGIN
       //rr := bool(gameStarted = TRUE & hasRoll = TRUE & (diceValue = 0 or not(hasActions)));
-      rr := TRUE
+     rr := TRUE
     END;
 
   rr <-- pre_walk(pp) =
     BEGIN
       //rr := bool(gameStarted = TRUE & colorOf(pp) = color & canWalk(pp))
-      rr := TRUE
+     VAR isGameStarted, color, colorPiece, isCanWalk
+      IN
+        isGameStarted <-- getGameStarted;
+        colorPiece := colorOf(pp);
+        color <-- getColor;
+        isCanWalk <-- canWalk(pp);
+
+        IF isGameStarted = TRUE & colorPiece = color & isCanWalk = TRUE THEN    
+            rr := TRUE
+        ELSE
+            rr := FALSE
+        END
+      END
     END;
 
   rr <-- pre_nextTurn =
     BEGIN
+      //      rr := bool(gameStarted = TRUE & hasRoll = FALSE & (diceValue = 0 or not(hasActions)) & card(finishOrder) < card(enabledColors));
       rr := TRUE
     END;
-
+      
   rr <-- pre_finishGame =
+      //rr := bool(gameStarted = TRUE & card(finishOrder) >= 1)
       rr := TRUE
+ 
 END

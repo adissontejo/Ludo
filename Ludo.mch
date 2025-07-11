@@ -170,7 +170,7 @@ OPERATIONS
 
   rr <-- pre_unpickColor(cc) =
     PRE cc : COLORS
-    THEN rr := bool(cc /: enabledColors & gameStarted = FALSE)
+    THEN rr := bool(cc : enabledColors & gameStarted = FALSE)
     END;
 
   rr <-- pre_initGame =

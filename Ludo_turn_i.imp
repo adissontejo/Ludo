@@ -204,5 +204,13 @@ OPERATIONS
       nn := finishCount;
 
   cc <-- placement(nn) =
-      cc := finishList(nn)
+      cc := finishList(nn);
+  
+  bb <-- getGameStarted  = 
+      bb := gameStarted;
+
+
+  bb <-- isColorEnabled(cc) = 
+      bb:= colorEnabled(cc)
+      
 END

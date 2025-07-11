@@ -139,5 +139,15 @@ OPERATIONS
   cc <-- placement(nn) =
     PRE nn : NAT & nn : dom(finishOrder)
     THEN cc := finishOrder(nn)
-    END
+    END;
+    
+  bb <-- getGameStarted  = 
+      bb := gameStarted;
+    
+  bb <-- isColorEnabled(cc) = 
+      PRE cc : COLORS 
+      THEN 
+          bb := bool(cc : enabledColors)
+      END
+      
 END
