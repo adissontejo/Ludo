@@ -141,6 +141,9 @@ OPERATIONS
     THEN cc := finishOrder(nn)
     END;
     
+  bb <-- getHasRoll =
+      bb := hasRoll;
+      
   bb <-- getGameStarted  = 
       bb := gameStarted;
     
@@ -148,6 +151,9 @@ OPERATIONS
       PRE cc : COLORS 
       THEN 
           bb := bool(cc : enabledColors)
-      END
+      END;
+      
+  nn <-- getFinishCount =
+      nn := card(finishOrder)
       
 END

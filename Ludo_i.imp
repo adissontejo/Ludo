@@ -343,19 +343,40 @@ OPERATIONS
 
   rr <-- pre_free(pp) =
     BEGIN
-      //rr := bool(gameStarted = TRUE & colorOf(pp) = color & canFree(pp))
-      rr := TRUE
+     VAR isGameStarted, color, colorPiece, isCanFree
+      IN
+        isGameStarted <-- getGameStarted;
+        colorPiece := colorOf(pp);
+        color <-- getColor;
+        isCanFree <-- canFree(pp);
+
+        IF isGameStarted = TRUE & colorPiece = color & isCanFree = TRUE THEN    
+            rr := TRUE
+        ELSE
+            rr := FALSE
+        END
+      END
     END;
 
   rr <-- pre_rollDice =
     BEGIN
-      //rr := bool(gameStarted = TRUE & hasRoll = TRUE & (diceValue = 0 or not(hasActions)));
-     rr := TRUE
+     VAR isGameStarted, diceValue, hasRoll, isHasActions
+      IN
+        isGameStarted <-- getGameStarted;
+        diceValue <-- getDiceValue;
+        hasRoll <-- getHasRoll;
+        isHasActions <-- hasActions;
+        
+        IF isGameStarted = TRUE & hasRoll = TRUE & (diceValue = 0 or isHasActions = TRUE) THEN
+          rr := TRUE
+        ELSE
+          rr := FALSE
+        END
+      END
     END;
-
+    
   rr <-- pre_walk(pp) =
     BEGIN
-      //rr := bool(gameStarted = TRUE & colorOf(pp) = color & canWalk(pp))
      VAR isGameStarted, color, colorPiece, isCanWalk
       IN
         isGameStarted <-- getGameStarted;
@@ -378,7 +399,17 @@ OPERATIONS
     END;
       
   rr <-- pre_finishGame =
-      //rr := bool(gameStarted = TRUE & card(finishOrder) >= 1)
-      rr := TRUE
- 
+    BEGIN
+     VAR isGameStarted, finishCount
+      IN
+        isGameStarted <-- getGameStarted;
+        finishCount <-- getFinishCount;
+
+        IF isGameStarted = TRUE & finishCount >= 1 THEN    
+            rr := TRUE
+        ELSE
+            rr := FALSE
+        END
+      END
+    END
 END

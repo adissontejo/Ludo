@@ -208,9 +208,13 @@ OPERATIONS
   
   bb <-- getGameStarted  = 
       bb := gameStarted;
-
+      
+  bb <-- getHasRoll =
+      bb := hasRoll;
 
   bb <-- isColorEnabled(cc) = 
-      bb:= colorEnabled(cc)
+      bb:= colorEnabled(cc);
       
+  nn <-- getFinishCount =
+      nn := finishCount
 END
