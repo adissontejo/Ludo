@@ -16,15 +16,19 @@ static int32_t Ludo_board__internalBoard[Ludo_ctx__PIECES__max+1];
 /* Clause INITIALISATION */
 void Ludo_board__INITIALISATION(void)
 {
-    
-    unsigned int i = 0;
-    for(i = 0; i <= Ludo_ctx__PIECES__max-1;i++)
+
     {
-        Ludo_board__externalBoard[i] = -1;
-    }
-    for(i = 0; i <= Ludo_ctx__PIECES__max-1;i++)
-    {
-        Ludo_board__internalBoard[i] = -1;
+        int32_t ii;
+        Ludo_ctx__PIECES pp;
+
+        ii = 0;
+        while((ii) < (Ludo_ctx__numPieces))
+        {
+            pp = Ludo_ctx__piecesOrder[ii];
+            Ludo_board__externalBoard[pp] = -1;
+            Ludo_board__internalBoard[pp] = -1;
+            ii = ii+1;
+        }
     }
 }
 
@@ -32,22 +36,24 @@ void Ludo_board__INITIALISATION(void)
 
 void Ludo_board__clear(void)
 {
-    unsigned int i = 0;
     {
-        for(i = 0; i <= Ludo_ctx__PIECES__max-1;i++)
+        int32_t ii;
+        Ludo_ctx__PIECES pp;
+
+        ii = 0;
+        while((ii) < (Ludo_ctx__numPieces))
         {
-            Ludo_board__externalBoard[i] = -1;
-        }
-        for(i = 0; i <= Ludo_ctx__PIECES__max-1;i++)
-        {
-            Ludo_board__internalBoard[i] = -1;
+            pp = Ludo_ctx__piecesOrder[ii];
+            Ludo_board__externalBoard[pp] = -1;
+            Ludo_board__internalBoard[pp] = -1;
+            ii = ii+1;
         }
     }
 }
 
 void Ludo_board__setFree(Ludo_ctx__PIECES pp)
 {
-    Ludo_board__externalBoard[pp] = 0;
+    Ludo_board__externalBoard[pp] = Ludo_ctx__startPoint[Ludo_ctx__colorOf[pp]];
 }
 
 void Ludo_board__setExternalPos(Ludo_ctx__PIECES pp, int32_t nn, bool *atePiece)
@@ -59,7 +65,7 @@ void Ludo_board__setExternalPos(Ludo_ctx__PIECES pp, int32_t nn, bool *atePiece)
         Ludo_ctx__COLORS otherColor;
         int32_t otherPos;
         int32_t ii;
-        
+
         rest = nn % 13;
         if(((rest) != (0)) &&
         ((rest) != (8)))

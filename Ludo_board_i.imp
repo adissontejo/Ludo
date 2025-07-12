@@ -20,20 +20,48 @@ INVARIANT
   internalBoard |>> {-1} = internalPos
 
 INITIALISATION
-  externalBoard := PIECES * {-1};
-  internalBoard := PIECES * {-1}
+  VAR ii, pp IN
+    ii := 0;
+    WHILE ii < numPieces
+    DO
+      pp := piecesOrder(ii);
+      externalBoard(pp) := -1;
+      internalBoard(pp) := -1;
+      ii := ii + 1
+    INVARIANT
+      ii : NAT &
+      ii < numPieces &
+      (piecesOrder[0..ii-1] <| externalBoard) = piecesOrder[0..ii-1] * {-1} &
+      (piecesOrder[0..ii-1] <| internalBoard) = piecesOrder[0..ii-1] * {-1}
+    VARIANT numPieces - ii
+    END
+  END
 
 OPERATIONS
 
   clear =
     BEGIN
-      externalBoard := PIECES * {-1};
-      internalBoard := PIECES * {-1}
+      VAR ii, pp IN
+        ii := 0;
+        WHILE ii < numPieces
+        DO
+          pp := piecesOrder(ii);
+          externalBoard(pp) := -1;
+          internalBoard(pp) := -1;
+          ii := ii + 1
+        INVARIANT
+          ii : NAT &
+          ii < numPieces &
+          (piecesOrder[0..ii-1] <| externalBoard) = piecesOrder[0..ii-1] * {-1} &
+          (piecesOrder[0..ii-1] <| internalBoard) = piecesOrder[0..ii-1] * {-1}
+        VARIANT numPieces - ii
+        END
+      END
     END;
 
   setFree(pp) =
     BEGIN
-      externalBoard(pp) := 0
+      externalBoard(pp) := startPoint(colorOf(pp))
     END;
 
   atePiece <-- setExternalPos(pp, nn) =

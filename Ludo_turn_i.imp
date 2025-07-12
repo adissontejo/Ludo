@@ -62,28 +62,26 @@ OPERATIONS
             ii := ii + 1
           INVARIANT ii : 0..finishCount & ((bb = TRUE) <=> (cc : finishList[0..ii-1]))
           VARIANT numColors - ii
-          END;
-          color := colorsOrder(ii)
+          END
       END
   END;
 
   nn <-- turnIndex =
   BEGIN
-      VAR ii, isColorTurn, color IN
-          ii := 0;
-          isColorTurn := FALSE;
-          WHILE ii < numColors & isColorTurn = FALSE
+      VAR ii, maxII, isColorTurn, cc IN
+          ii := 1;
+          maxII := numColors - 1;
+          cc := colorsOrder(ii);
+          isColorTurn := bool(cc = color);
+          WHILE ii < maxII & isColorTurn = FALSE
           DO
-            color := finishList(ii);
-            isColorTurn := bool(color = color);
-            IF isColorTurn = TRUE THEN
-                nn := ii
-            END;
-            ii := ii + 1
-          INVARIANT ii : 0..numColors & isColorTurn : BOOL & ((isColorTurn = TRUE) <=> (nn = colorsOrder~(color)))
-          VARIANT numColors - ii
+            ii := ii + 1;
+            cc := colorsOrder(ii);
+            isColorTurn := bool(cc = color)
+          INVARIANT ii : 0..maxII & isColorTurn = bool(colorsOrder(ii) = color)
+          VARIANT maxII - ii
           END;
-          color := colorsOrder(ii)
+          nn := ii
       END
   END;
 
@@ -140,28 +138,36 @@ OPERATIONS
 
   nextTurn =
     BEGIN
-      VAR numJumps, color, isFinished, currentIndex, enabled
+      VAR numJumps, cc, isFinished, currentIndex, enabled
       IN
-          numJumps := 0;
           currentIndex <-- turnIndex;
-          enabled := FALSE;
-          isFinished := FALSE;
+          numJumps := 1;
+          cc := colorsOrder((currentIndex + 1) mod numColors);
+          enabled := colorEnabled(cc);
+          isFinished <-- isColorFinished(cc);
           WHILE numJumps < numColors & (enabled = FALSE or isFinished = TRUE)
           DO
 
               numJumps := numJumps + 1;
-              color := colorsOrder((currentIndex + numJumps) mod numColors);
-              isFinished <-- isColorFinished(color);
-              enabled := colorEnabled(color)
+              cc := colorsOrder((currentIndex + numJumps) mod numColors);
+              isFinished <-- isColorFinished(cc);
+              enabled := colorEnabled(cc)
 
-          INVARIANT numJumps <= numColors &
-                    enabled : BOOL &
-                    isFinished : BOOL &
-                    ({ nn |
-          nn : 1..numJumps-1 & colorsOrder((currentIndex + nn) mod numColors) : enabledColors - ran(finishOrder)
-        } = {})
+          INVARIANT 
+            numJumps <= numColors &
+            enabled : BOOL &
+            isFinished : BOOL &
+            enabled = bool(colorsOrder((currentIndex + numJumps) mod numColors) : enabledColors) &
+            isFinished = bool(colorsOrder((currentIndex + numJumps) mod numColors) /: ran(finishOrder)) &
+            numJumps <= min({ nn |
+              nn : 1..numColors & colorsOrder((currentIndex + nn) mod numColors) : enabledColors - ran(finishOrder)
+            })
           VARIANT numColors - numJumps
-          END
+          END;
+          hasRoll := TRUE;
+          sixSequenceCount := 0;
+          diceValue := 0;
+          color := colorsOrder((currentIndex + numJumps) mod numColors)
 
       END
     END;
