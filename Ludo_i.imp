@@ -12,7 +12,7 @@ IMPORTS
   Ludo_turn
   
 PROMOTES
-  pickColor, unpickColor, endGame, getDiceValue, getGameStarted
+  pickColor, unpickColor, endGame, getDiceValue, getGameStarted, getFinishCount, getPlacement
 
 DEFINITIONS
   // ponto final externo
@@ -100,7 +100,12 @@ LOCAL_OPERATIONS
     END;
     
   bb <-- hasActions =
-      bb := bool(# pp . (pp : PIECES & colorOf(pp) = color & (canFree_def(pp) or canWalk_def(pp))))
+      bb := bool(# pp . (pp : PIECES & colorOf(pp) = color & (canFree_def(pp) or canWalk_def(pp))));
+      
+  vv <-- getEnabledCount =
+    BEGIN
+      vv := card(enabledColors)
+    END
 
 OPERATIONS
   nn <-- stepsToFinish(piece) =
@@ -187,7 +192,7 @@ OPERATIONS
       INVARIANT
         ii : 0..numPieces &
         countPerPos : 0..numExternal --> NAT &
-        countPerPos = % nn . (nn : 0..numExternal-1 | card((piecesOrder[0..ii-1] <| externalPos) |> {nn}))
+        countPerPos = % nn . (nn : 0..numExternal | card((piecesOrder[0..ii-1] <| externalPos) |> {nn}))
       VARIANT numPieces - ii
       END;
       ii := 1;
@@ -242,25 +247,54 @@ OPERATIONS
     
   bb <-- hasActions = 
   BEGIN
-      VAR ii, piece, pieceColor, canFreePiece, canWalkPiece, color
+      VAR ii, piece, pieceColor, canFreePiece, canWalkPiece, turnColor
       IN
           ii := 0;
           bb := FALSE;
-          color <-- getColor;
+          turnColor <-- getColor;
           WHILE ii < numPieces & bb = FALSE
           DO 
             piece := piecesOrder(ii);
             pieceColor := colorOf(piece);
             canFreePiece <-- canFree(piece);
             canWalkPiece <-- canWalk(piece);
-            IF pieceColor = color & (canFreePiece = TRUE or canWalkPiece = TRUE) THEN
+            IF pieceColor = turnColor & (canFreePiece = TRUE or canWalkPiece = TRUE) THEN
                 bb := TRUE
             END;
             ii := ii + 1
-          INVARIANT ii <= numPieces & bb = TRUE <=> (# pp . (pp : PIECES & colorOf(pp) = color & (canFree_def(pp) or canWalk_def(pp))  & pp : piecesOrder[0..ii-1]))
+          INVARIANT 
+            ii <= numPieces & (bb = TRUE <=> (# pp . (
+                pp : PIECES  &
+                pp : piecesOrder[0..ii-1] &
+                colorOf(pp) = color &
+                (canFree_def(pp) or canWalk_def(pp))
+            )))
           VARIANT numPieces - ii
           END
       END
+  END;
+  
+  vv <-- getEnabledCount =
+  BEGIN
+    VAR ii, isEnabled, currColor IN
+      ii := 0;
+      vv := 0;
+      WHILE ii < numColors
+      DO
+        currColor := colorsOrder(ii);
+        isEnabled <-- isColorEnabled(currColor);
+              
+        IF isEnabled = TRUE THEN
+          vv := vv + 1
+        END;
+        ii := ii + 1
+        
+        INVARIANT
+         ii : NAT & ii <= 4 & vv : 0..4 &
+         vv = card(enabledColors /\ colorsOrder[0..ii-1])
+        VARIANT 4 - ii
+        END
+    END
   END;
 
 
@@ -313,6 +347,8 @@ OPERATIONS
               ELSE
                   computeAction(TRUE, FALSE)
               END
+          ELSE
+            computeAction(FALSE, FALSE)
           END
       END
     END;
@@ -328,12 +364,6 @@ OPERATIONS
     BEGIN
       cc <-- getColor
     END;
-
-  nn <-- getNumWinners =
-      nn <-- numWinners;
-
-  cc <-- getPlacement(nn) =
-      cc <-- placement(nn);
 
 // operações de pre condicao
 
@@ -369,32 +399,12 @@ OPERATIONS
 
   rr <-- pre_initGame =
     BEGIN
-      VAR isGameStarted, ii, isEnabled, color, countEnableds
+      VAR isGameStarted, countEnableds
       IN
         isGameStarted <-- getGameStarted;
-        IF isGameStarted = FALSE THEN
-            ii := 0;
-            countEnableds := 0;
-            rr := FALSE;
-            WHILE ii < 4 & rr = FALSE
-            DO
-              color := colorsOrder(ii);
-              isEnabled <-- isColorEnabled(color);
-              
-              IF isEnabled = TRUE THEN
-                  countEnableds := countEnableds + 1
-              END;
-              
-              IF countEnableds = 2 THEN
-                  rr := TRUE
-              END;
-              ii := ii + 1
-        
-            INVARIANT
-              ii : NAT & ii <= 4 & isGameStarted : BOOL & countEnableds : 0..4 &
-              rr = TRUE <=> (countEnableds = card(enabledColors /\ colorsOrder[0..ii-1]) & countEnableds >= 2)
-            VARIANT 4 - ii
-            END
+        countEnableds <-- getEnabledCount;
+        IF isGameStarted = FALSE & countEnableds >= 2 THEN
+            rr := TRUE
          ELSE
              rr := FALSE
          END
@@ -455,7 +465,20 @@ OPERATIONS
   rr <-- pre_nextTurn =
     BEGIN
       //      rr := bool(gameStarted = TRUE & hasRoll = FALSE & (diceValue = 0 or not(hasActions)) & card(finishOrder) < card(enabledColors));
-      rr := TRUE
+      VAR isGameStarted, diceValue, hasRoll, isHasActions, finishCount, countEnableds
+      IN
+        isGameStarted <-- getGameStarted;
+        diceValue <-- getDiceValue;
+        hasRoll <-- getHasRoll;
+        isHasActions <-- hasActions;
+        finishCount <-- getFinishCount;
+        countEnableds <-- getEnabledCount;
+        IF isGameStarted = TRUE & hasRoll = FALSE & (diceValue = 0 or isHasActions = FALSE) & finishCount < countEnableds THEN
+          rr := TRUE
+        ELSE
+          rr := FALSE
+        END
+      END
     END;
       
   rr <-- pre_finishGame =

@@ -61,7 +61,6 @@ void Ludo_board__setExternalPos(Ludo_ctx__PIECES pp, int32_t nn, bool *atePiece)
     {
         int32_t rest;
         Ludo_ctx__COLORS currentColor;
-        bool atePiece;
         Ludo_ctx__COLORS otherColor;
         int32_t otherPos;
         int32_t ii;
@@ -72,9 +71,9 @@ void Ludo_board__setExternalPos(Ludo_ctx__PIECES pp, int32_t nn, bool *atePiece)
         {
             ii = 0;
             currentColor = Ludo_ctx__colorOf[pp];
-            atePiece = false;
+            (*atePiece) = false;
             while(((ii) < (Ludo_ctx__numPieces)) &&
-            (atePiece == false))
+            ((*atePiece) == false))
             {
                 otherColor = Ludo_ctx__colorOf[Ludo_ctx__piecesOrder[ii]];
                 otherPos = Ludo_board__externalBoard[Ludo_ctx__piecesOrder[ii]];
@@ -82,7 +81,7 @@ void Ludo_board__setExternalPos(Ludo_ctx__PIECES pp, int32_t nn, bool *atePiece)
                 (otherPos == nn))
                 {
                     Ludo_board__externalBoard[Ludo_ctx__piecesOrder[ii]] = -1;
-                    atePiece = true;
+                    (*atePiece) = true;
                 }
                 ii = ii+1;
             }

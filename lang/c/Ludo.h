@@ -18,6 +18,8 @@
 #define Ludo__endGame Ludo_turn__endGame
 #define Ludo__getDiceValue Ludo_turn__getDiceValue
 #define Ludo__getGameStarted Ludo_turn__getGameStarted
+#define Ludo__getFinishCount Ludo_turn__getFinishCount
+#define Ludo__getPlacement Ludo_turn__getPlacement
 
 #ifdef __cplusplus
 extern "C" {
@@ -43,8 +45,6 @@ extern void Ludo__skipTurn(void);
 extern void Ludo__walk(Ludo_ctx__PIECES pp);
 extern void Ludo__getPiecePos(Ludo_ctx__PIECES pp, int32_t *ee, int32_t *ii);
 extern void Ludo__getTurn(Ludo_ctx__COLORS *cc);
-extern void Ludo__getNumWinners(int32_t *nn);
-extern void Ludo__getPlacement(int32_t nn, Ludo_ctx__COLORS *cc);
 extern void Ludo__pre_pickColor(Ludo_ctx__COLORS cc, bool *rr);
 extern void Ludo__pre_unpickColor(Ludo_ctx__COLORS cc, bool *rr);
 extern void Ludo__pre_initGame(bool *rr);

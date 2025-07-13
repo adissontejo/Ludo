@@ -36,12 +36,11 @@ extern void Ludo_turn__rollDice(int32_t *value);
 extern void Ludo_turn__endGame(void);
 extern void Ludo_turn__getDiceValue(int32_t *value);
 extern void Ludo_turn__getColor(Ludo_ctx__COLORS *cc);
-extern void Ludo_turn__numWinners(int32_t *nn);
-extern void Ludo_turn__placement(int32_t nn, Ludo_ctx__COLORS *cc);
 extern void Ludo_turn__getHasRoll(bool *bb);
 extern void Ludo_turn__getGameStarted(bool *bb);
 extern void Ludo_turn__isColorEnabled(Ludo_ctx__COLORS cc, bool *bb);
 extern void Ludo_turn__getFinishCount(int32_t *nn);
+extern void Ludo_turn__getPlacement(int32_t nn, Ludo_ctx__COLORS *cc);
 
 #ifdef __cplusplus
 }

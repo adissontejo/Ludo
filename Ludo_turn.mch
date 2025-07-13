@@ -132,14 +132,6 @@ OPERATIONS
       
   cc <-- getColor =
       cc := color;
-      
-  nn <-- numWinners =
-      nn := card(finishOrder);
-      
-  cc <-- placement(nn) =
-    PRE nn : NAT & nn : dom(finishOrder)
-    THEN cc := finishOrder(nn)
-    END;
     
   bb <-- getHasRoll =
       bb := hasRoll;
@@ -154,6 +146,11 @@ OPERATIONS
       END;
       
   nn <-- getFinishCount =
-      nn := card(finishOrder)
+      nn := card(finishOrder);
+      
+  cc <-- getPlacement(nn) =
+    PRE nn : NAT & nn : dom(finishOrder)
+    THEN cc := finishOrder(nn)
+    END
       
 END

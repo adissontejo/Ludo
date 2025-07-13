@@ -4,7 +4,7 @@ INCLUDES
   Ludo_board,
   Ludo_turn
 PROMOTES
-  pickColor, unpickColor, endGame, getDiceValue, getGameStarted
+  pickColor, unpickColor, endGame, getDiceValue, getGameStarted, getFinishCount, getPlacement
 DEFINITIONS
   // ponto final externo
   finishPoint(color) == (startPoint(color) + numExternal - 2) mod numExternal;
@@ -152,14 +152,6 @@ OPERATIONS
 
   cc <-- getTurn =
     cc := color;
-
-  nn <-- getNumWinners =
-      nn <-- numWinners;
-
-  cc <-- getPlacement(nn) =
-      PRE nn : NAT & nn : dom(finishOrder)
-      THEN cc <-- placement(nn)
-      END;
 
   // operações de pre condicao
 

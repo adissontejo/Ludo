@@ -193,6 +193,12 @@ int push_piece_action(int* selection_offset, int piece) {
     }
 }
 
+void print_color(WINDOW *win, int color) {
+    wattron(win, COLOR_PAIR(9 + color));
+    wprintw(win, " %s\n", color_names[color]);
+    wattroff(win, COLOR_PAIR(9 + color));
+}
+
 void print_scoreboard(WINDOW *win, int row) {
     int col = 62;
     bool game_started, can_throw_dice;
@@ -333,9 +339,7 @@ void print_colors_selector(WINDOW *win, int* row_offset, int* selection_offset) 
             wattroff(win, COLOR_PAIR(9 + i));
         }
 
-        wattron(win, COLOR_PAIR(9 + i));
-        wprintw(win, " %s\n", color_names[i]);
-        wattroff(win, COLOR_PAIR(9 + i));
+        print_color(win, i);
     }
 
     *row_offset += Ludo_ctx__numColors + 2;
@@ -358,6 +362,10 @@ void print_menu_action(WINDOW *win, int* row_offset, int* selection_offset, Acti
         case NEXT_TURN:
             Ludo__pre_nextTurn(&can_do);
             name = "Próximo turno";
+            break;
+        case FINISH_GAME:
+            Ludo__pre_finishGame(&can_do);
+            name = "Finaizar jogo";
             break;
     }
 
@@ -443,6 +451,11 @@ int main() {
                     break;
                 case NEXT_TURN:
                     Ludo__skipTurn();
+                    dice = 0;
+                    selected = 0;
+                    break;
+                case FINISH_GAME:
+                    Ludo__endGame();
                     dice = 0;
                     selected = 0;
                     break;

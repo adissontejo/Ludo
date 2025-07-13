@@ -23,6 +23,7 @@ static void Ludo__canFree(Ludo_ctx__PIECES pp, bool *bb);
 static void Ludo__isPathFree(int32_t n1, int32_t n2, bool *bb);
 static void Ludo__canWalk(Ludo_ctx__PIECES pp, bool *bb);
 static void Ludo__hasActions(bool *bb);
+static void Ludo__getEnabledCount(int32_t *vv);
 /* Clause INITIALISATION */
 void Ludo__INITIALISATION(void)
 {
@@ -160,7 +161,45 @@ void Ludo__isPathFree(int32_t n1, int32_t n2, bool *bb)
 
 void Ludo__canWalk(Ludo_ctx__PIECES pp, bool *bb)
 {
-    (*bb) = true;
+    {
+        int32_t diceValue;
+        bool isLockedPiece;
+        Ludo_ctx__COLORS colorPiece;
+        int32_t externalPosPiece;
+        int32_t internalPosPiece;
+        int32_t sumInternal;
+        int32_t stepsFinish;
+        int32_t finishDiff;
+        
+        Ludo_turn__getDiceValue(&diceValue);
+        Ludo_board__isLocked(pp, &isLockedPiece);
+        colorPiece = Ludo_ctx__colorOf[pp];
+        Ludo_board__getPos(pp, &externalPosPiece, &internalPosPiece);
+        (*bb) = false;
+        if(((diceValue) != (0)) &&
+        (isLockedPiece == false))
+        {
+            (*bb) = false;
+            sumInternal = internalPosPiece+diceValue;
+            Ludo__stepsToFinish(pp, &stepsFinish);
+            if((externalPosPiece) >= (0))
+            {
+                finishDiff = diceValue-stepsFinish-1;
+                if((diceValue) <= (stepsFinish))
+                {
+                    Ludo__isPathFree(externalPosPiece, (externalPosPiece+diceValue) % Ludo_ctx__numExternal, bb);
+                }
+                else if((finishDiff) < (Ludo_ctx__numInternal))
+                {
+                    Ludo__isPathFree(externalPosPiece, (Ludo_ctx__startPoint[Ludo_ctx__colorOf[pp]]+Ludo_ctx__numExternal-2) % Ludo_ctx__numExternal, bb);
+                }
+            }
+            else if((sumInternal) < (Ludo_ctx__numInternal))
+            {
+                (*bb) = true;
+            }
+        }
+    }
 }
 
 void Ludo__hasActions(bool *bb)
@@ -171,11 +210,11 @@ void Ludo__hasActions(bool *bb)
         Ludo_ctx__COLORS pieceColor;
         bool canFreePiece;
         bool canWalkPiece;
-        Ludo_ctx__COLORS color;
+        Ludo_ctx__COLORS turnColor;
         
         ii = 0;
         (*bb) = false;
-        Ludo_turn__getColor(&color);
+        Ludo_turn__getColor(&turnColor);
         while(((ii) < (Ludo_ctx__numPieces)) &&
         ((*bb) == false))
         {
@@ -183,11 +222,33 @@ void Ludo__hasActions(bool *bb)
             pieceColor = Ludo_ctx__colorOf[piece];
             Ludo__canFree(piece, &canFreePiece);
             Ludo__canWalk(piece, &canWalkPiece);
-            if((pieceColor == color) &&
+            if((pieceColor == turnColor) &&
             (((canFreePiece == true) ||
                     (canWalkPiece == true))))
             {
                 (*bb) = true;
+            }
+            ii = ii+1;
+        }
+    }
+}
+
+void Ludo__getEnabledCount(int32_t *vv)
+{
+    {
+        int32_t ii;
+        bool isEnabled;
+        Ludo_ctx__COLORS currColor;
+        
+        ii = 0;
+        (*vv) = 0;
+        while((ii) < (Ludo_ctx__numColors))
+        {
+            currColor = Ludo_ctx__colorsOrder[ii];
+            Ludo_turn__isColorEnabled(currColor, &isEnabled);
+            if(isEnabled == true)
+            {
+                (*vv) = (*vv)+1;
             }
             ii = ii+1;
         }
@@ -261,6 +322,10 @@ void Ludo__walk(Ludo_ctx__PIECES pp)
                 Ludo_turn__computeAction(true, false);
             }
         }
+        else
+        {
+            Ludo_turn__computeAction(false, false);
+        }
     }
 }
 
@@ -272,16 +337,6 @@ void Ludo__getPiecePos(Ludo_ctx__PIECES pp, int32_t *ee, int32_t *ii)
 void Ludo__getTurn(Ludo_ctx__COLORS *cc)
 {
     Ludo_turn__getColor(cc);
-}
-
-void Ludo__getNumWinners(int32_t *nn)
-{
-    Ludo_turn__numWinners(nn);
-}
-
-void Ludo__getPlacement(int32_t nn, Ludo_ctx__COLORS *cc)
-{
-    Ludo_turn__placement(nn, cc);
 }
 
 void Ludo__pre_pickColor(Ludo_ctx__COLORS cc, bool *rr)
@@ -328,32 +383,14 @@ void Ludo__pre_initGame(bool *rr)
 {
     {
         bool isGameStarted;
-        int32_t ii;
-        bool isEnabled;
-        Ludo_ctx__COLORS color;
         int32_t countEnableds;
         
         Ludo_turn__getGameStarted(&isGameStarted);
-        if(isGameStarted == false)
+        Ludo__getEnabledCount(&countEnableds);
+        if((isGameStarted == false) &&
+        ((countEnableds) >= (2)))
         {
-            ii = 0;
-            countEnableds = 0;
-            (*rr) = false;
-            while(((ii) < (4)) &&
-            ((*rr) == false))
-            {
-                color = Ludo_ctx__colorsOrder[ii];
-                Ludo_turn__isColorEnabled(color, &isEnabled);
-                if(isEnabled == true)
-                {
-                    countEnableds = countEnableds+1;
-                }
-                if(countEnableds == 2)
-                {
-                    (*rr) = true;
-                }
-                ii = ii+1;
-            }
+            (*rr) = true;
         }
         else
         {
@@ -440,7 +477,33 @@ void Ludo__pre_walk(Ludo_ctx__PIECES pp, bool *rr)
 
 void Ludo__pre_nextTurn(bool *rr)
 {
-    (*rr) = true;
+    {
+        bool isGameStarted;
+        int32_t diceValue;
+        bool hasRoll;
+        bool isHasActions;
+        int32_t finishCount;
+        int32_t countEnableds;
+        
+        Ludo_turn__getGameStarted(&isGameStarted);
+        Ludo_turn__getDiceValue(&diceValue);
+        Ludo_turn__getHasRoll(&hasRoll);
+        Ludo__hasActions(&isHasActions);
+        Ludo_turn__getFinishCount(&finishCount);
+        Ludo__getEnabledCount(&countEnableds);
+        if((((isGameStarted == true) &&
+                (hasRoll == false)) &&
+            (((diceValue == 0) ||
+                    (isHasActions == false)))) &&
+        ((finishCount) < (countEnableds)))
+        {
+            (*rr) = true;
+        }
+        else
+        {
+            (*rr) = false;
+        }
+    }
 }
 
 void Ludo__pre_finishGame(bool *rr)

@@ -29,7 +29,7 @@ static void Ludo_turn__turnIndex(int32_t *nn);
 /* Clause INITIALISATION */
 void Ludo_turn__INITIALISATION(void)
 {
-
+    
     unsigned int i = 0;
     Random__INITIALISATION();
     Ludo_turn__gameStarted = false;
@@ -52,7 +52,7 @@ void Ludo_turn__isColorFinished(Ludo_ctx__COLORS cc, bool *bb)
     {
         int32_t ii;
         Ludo_ctx__COLORS color;
-
+        
         ii = 0;
         (*bb) = false;
         while(((ii) < (Ludo_turn__finishCount)) &&
@@ -71,7 +71,7 @@ void Ludo_turn__turnIndex(int32_t *nn)
         int32_t ii;
         bool isColorTurn;
         Ludo_ctx__COLORS cc;
-
+        
         ii = 0;
         cc = Ludo_ctx__colorsOrder[ii];
         isColorTurn = ((cc == Ludo_turn__color) ? true : false);
@@ -106,7 +106,7 @@ void Ludo_turn__initGame(void)
             Ludo_ctx__COLORS enabledList[5];
             int32_t enabledCount;
             bool isEnabled;
-
+            
             ii = 0;
             for(i = 0; i <= 4;i++)
             {
@@ -157,20 +157,21 @@ void Ludo_turn__nextTurn(void)
         bool isFinished;
         int32_t currentIndex;
         bool enabled;
-
+        bool isValid;
+        
         Ludo_turn__turnIndex(&currentIndex);
         numJumps = 1;
         cc = Ludo_ctx__colorsOrder[(currentIndex+1) % Ludo_ctx__numColors];
         enabled = Ludo_turn__colorEnabled[cc];
         Ludo_turn__isColorFinished(cc, &isFinished);
-        while(((numJumps) < (Ludo_ctx__numColors)) &&
-        (((enabled == false) ||
-                (isFinished == true))))
+        isValid = (((enabled == true) &&(isFinished == false)) ? true : false);
+        while(isValid == false)
         {
             numJumps = numJumps+1;
             cc = Ludo_ctx__colorsOrder[(currentIndex+numJumps) % Ludo_ctx__numColors];
-            Ludo_turn__isColorFinished(cc, &isFinished);
             enabled = Ludo_turn__colorEnabled[cc];
+            Ludo_turn__isColorFinished(cc, &isFinished);
+            isValid = (((enabled == true) &&(isFinished == false)) ? true : false);
         }
         Ludo_turn__hasRoll = true;
         Ludo_turn__sixSequenceCount = 0;
@@ -183,7 +184,7 @@ void Ludo_turn__rollDice(int32_t *value)
 {
     {
         int32_t dd;
-
+        
         Random__getRandomInt(1, 6, &dd);
         (*value) = dd;
         if(dd == 6)
@@ -223,16 +224,6 @@ void Ludo_turn__getColor(Ludo_ctx__COLORS *cc)
     (*cc) = Ludo_turn__color;
 }
 
-void Ludo_turn__numWinners(int32_t *nn)
-{
-    (*nn) = Ludo_turn__finishCount;
-}
-
-void Ludo_turn__placement(int32_t nn, Ludo_ctx__COLORS *cc)
-{
-    (*cc) = Ludo_turn__finishList[nn];
-}
-
 void Ludo_turn__getGameStarted(bool *bb)
 {
     (*bb) = Ludo_turn__gameStarted;
@@ -251,5 +242,10 @@ void Ludo_turn__isColorEnabled(Ludo_ctx__COLORS cc, bool *bb)
 void Ludo_turn__getFinishCount(int32_t *nn)
 {
     (*nn) = Ludo_turn__finishCount;
+}
+
+void Ludo_turn__getPlacement(int32_t nn, Ludo_ctx__COLORS *cc)
+{
+    (*cc) = Ludo_turn__finishList[nn];
 }
 

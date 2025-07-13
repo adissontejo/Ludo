@@ -215,12 +215,6 @@ OPERATIONS
 
   cc <-- getColor =
       cc := color;
-
-  nn <-- numWinners =
-      nn := finishCount;
-
-  cc <-- placement(nn) =
-      cc := finishList(nn);
   
   bb <-- getGameStarted  = 
       bb := gameStarted;
@@ -232,5 +226,8 @@ OPERATIONS
       bb:= colorEnabled(cc);
       
   nn <-- getFinishCount =
-      nn := finishCount
+      nn := finishCount;
+      
+  cc <-- getPlacement(nn) =
+      cc := finishList(nn)
 END
