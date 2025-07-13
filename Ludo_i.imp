@@ -212,8 +212,33 @@ OPERATIONS
 
   bb <-- canWalk(pp) =
     BEGIN
-      bb := TRUE
-    END;
+     VAR diceValue, isLockedPiece, colorPiece, externalPosPiece, internalPosPiece, sumInternal, stepsFinish, finishDiff
+      IN
+        diceValue <-- getDiceValue;
+        isLockedPiece <-- isLocked(pp);
+        colorPiece := colorOf(pp);
+        externalPosPiece, internalPosPiece <-- getPos(pp);
+        bb := FALSE;
+        
+        IF diceValue /= 0 & isLockedPiece = FALSE THEN
+          bb := FALSE;
+          sumInternal := internalPosPiece + diceValue;
+          stepsFinish <-- stepsToFinish(pp);
+
+            IF externalPosPiece >= 0 THEN
+              finishDiff := diceValue - stepsFinish - 1;
+          
+              IF diceValue <= stepsFinish THEN
+                bb <-- isPathFree(externalPosPiece, (externalPosPiece + diceValue) mod numExternal)
+              ELSIF finishDiff < numInternal THEN
+                bb <-- isPathFree(externalPosPiece, finishPoint(colorOf(pp)))
+              END
+            ELSIF sumInternal < numInternal THEN
+              bb := TRUE
+            END
+         END  
+    END
+  END;
     
   bb <-- hasActions = 
   BEGIN
