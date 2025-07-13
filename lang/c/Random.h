@@ -22,6 +22,8 @@ extern void Random__INITIALISATION(void);
 
 extern void Random__getRandomInt(int32_t n1, int32_t n2, int32_t *vv);
 
+extern void Random__mockValue(int vv);
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

@@ -29,7 +29,7 @@ static void Ludo_turn__turnIndex(int32_t *nn);
 /* Clause INITIALISATION */
 void Ludo_turn__INITIALISATION(void)
 {
-    
+
     unsigned int i = 0;
     Random__INITIALISATION();
     Ludo_turn__gameStarted = false;
@@ -52,7 +52,7 @@ void Ludo_turn__isColorFinished(Ludo_ctx__COLORS cc, bool *bb)
     {
         int32_t ii;
         Ludo_ctx__COLORS color;
-        
+
         ii = 0;
         (*bb) = false;
         while(((ii) < (Ludo_turn__finishCount)) &&
@@ -71,7 +71,7 @@ void Ludo_turn__turnIndex(int32_t *nn)
         int32_t ii;
         bool isColorTurn;
         Ludo_ctx__COLORS cc;
-        
+
         ii = 0;
         cc = Ludo_ctx__colorsOrder[ii];
         isColorTurn = ((cc == Ludo_turn__color) ? true : false);
@@ -106,7 +106,7 @@ void Ludo_turn__initGame(void)
             Ludo_ctx__COLORS enabledList[5];
             int32_t enabledCount;
             bool isEnabled;
-            
+
             ii = 0;
             for(i = 0; i <= 4;i++)
             {
@@ -157,7 +157,7 @@ void Ludo_turn__nextTurn(void)
         bool isFinished;
         int32_t currentIndex;
         bool enabled;
-        
+
         Ludo_turn__turnIndex(&currentIndex);
         numJumps = 1;
         cc = Ludo_ctx__colorsOrder[(currentIndex+1) % Ludo_ctx__numColors];
@@ -183,7 +183,7 @@ void Ludo_turn__rollDice(int32_t *value)
 {
     {
         int32_t dd;
-        
+
         Random__getRandomInt(1, 6, &dd);
         (*value) = dd;
         if(dd == 6)

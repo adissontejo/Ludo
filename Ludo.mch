@@ -4,7 +4,7 @@ INCLUDES
   Ludo_board,
   Ludo_turn
 PROMOTES
-  pickColor, unpickColor, endGame, getDiceValue
+  pickColor, unpickColor, endGame, getDiceValue, getGameStarted
 DEFINITIONS
   // ponto final externo
   finishPoint(color) == (startPoint(color) + numExternal - 2) mod numExternal;

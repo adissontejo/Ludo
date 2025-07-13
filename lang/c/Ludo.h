@@ -17,6 +17,7 @@
 #define Ludo__unpickColor Ludo_turn__unpickColor
 #define Ludo__endGame Ludo_turn__endGame
 #define Ludo__getDiceValue Ludo_turn__getDiceValue
+#define Ludo__getGameStarted Ludo_turn__getGameStarted
 
 #ifdef __cplusplus
 extern "C" {

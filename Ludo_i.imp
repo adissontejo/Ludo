@@ -12,7 +12,7 @@ IMPORTS
   Ludo_turn
   
 PROMOTES
-  pickColor, unpickColor, endGame, getDiceValue
+  pickColor, unpickColor, endGame, getDiceValue, getGameStarted
 
 DEFINITIONS
   // ponto final externo
@@ -402,7 +402,7 @@ OPERATIONS
         hasRoll <-- getHasRoll;
         isHasActions <-- hasActions;
         
-        IF isGameStarted = TRUE & hasRoll = TRUE & (diceValue = 0 or isHasActions = TRUE) THEN
+        IF isGameStarted = TRUE & hasRoll = TRUE & (diceValue = 0 or isHasActions = FALSE) THEN
           rr := TRUE
         ELSE
           rr := FALSE

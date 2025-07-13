@@ -16,11 +16,11 @@ static int32_t Ludo_board__internalBoard[Ludo_ctx__PIECES__max+1];
 /* Clause INITIALISATION */
 void Ludo_board__INITIALISATION(void)
 {
-
+    
     {
         int32_t ii;
         Ludo_ctx__PIECES pp;
-
+        
         ii = 0;
         while((ii) < (Ludo_ctx__numPieces))
         {
@@ -39,7 +39,7 @@ void Ludo_board__clear(void)
     {
         int32_t ii;
         Ludo_ctx__PIECES pp;
-
+        
         ii = 0;
         while((ii) < (Ludo_ctx__numPieces))
         {
@@ -65,7 +65,7 @@ void Ludo_board__setExternalPos(Ludo_ctx__PIECES pp, int32_t nn, bool *atePiece)
         Ludo_ctx__COLORS otherColor;
         int32_t otherPos;
         int32_t ii;
-
+        
         rest = nn % 13;
         if(((rest) != (0)) &&
         ((rest) != (8)))
@@ -101,5 +101,25 @@ void Ludo_board__getPos(Ludo_ctx__PIECES pp, int32_t *ee, int32_t *ii)
 {
     (*ee) = Ludo_board__externalBoard[pp];
     (*ii) = Ludo_board__internalBoard[pp];
+}
+
+void Ludo_board__isLocked(Ludo_ctx__PIECES pp, bool *bb)
+{
+    {
+        int32_t extenalPos;
+        int32_t internalPos;
+        
+        extenalPos = Ludo_board__externalBoard[pp];
+        internalPos = Ludo_board__internalBoard[pp];
+        if((extenalPos == -1) &&
+        (internalPos == -1))
+        {
+            (*bb) = true;
+        }
+        else
+        {
+            (*bb) = false;
+        }
+    }
 }
 

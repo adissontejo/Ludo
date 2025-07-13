@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ncurses.h>
+#include <unistd.h>
 #include "Ludo_ctx.h"
 #include "Ludo.h"
+#include "Random.h"
 
 #define MAX_ACTIONS 100
 
@@ -25,6 +27,7 @@ typedef struct Action {
 
 const char *color_names[] = {"Vermelho", "Verde", "Amarelo", "Azul"};
 int selected = 0;
+int dice = 0;
 Action available_actions[MAX_ACTIONS];
 
 void init_colors() {
@@ -43,6 +46,10 @@ void init_colors() {
     init_pair(6, COLOR_WHITE, COLOR_BLACK);
     init_pair(7, COLOR_WHITE, COLOR_YELLOW + 100);
     init_pair(8, COLOR_CYAN, -1);
+    init_pair(9, COLOR_RED, -1);
+    init_pair(10, COLOR_GREEN, -1);
+    init_pair(11, COLOR_YELLOW, -1);
+    init_pair(12, COLOR_BLUE, -1);
 }
 
 int get_external_pos(int row, int col) {
@@ -186,6 +193,21 @@ int push_piece_action(int* selection_offset, int piece) {
     }
 }
 
+void print_scoreboard(WINDOW *win, int row) {
+    int col = 62;
+    bool game_started, can_throw_dice;
+
+    Ludo__getGameStarted(&game_started);
+
+    if (!game_started) {
+        return;
+    }
+
+    if (dice != 0) {
+        mvwprintw(win, row++, col, "Valor do dado: %d", dice);
+    }
+}
+
 void print_ludo_board_with_pieces(WINDOW *win, int* row_offset, int* selection_offset) {
     char colors_codes[] = {'R', 'G', 'Y', 'B'};
 
@@ -251,6 +273,7 @@ void print_ludo_board_with_pieces(WINDOW *win, int* row_offset, int* selection_o
         }
     }
 
+    print_scoreboard(win, *row_offset);
     *row_offset += 16;
 }
 
@@ -289,22 +312,30 @@ void print_colors_selector(WINDOW *win, int* row_offset, int* selection_offset) 
         if (i == selected_color) {
             wattron(win, COLOR_PAIR(8));
             wprintw(win, "> ");
+
         } else {
+            if (is_picked) wattron(win, COLOR_PAIR(9 + i));
             wprintw(win, "  ");
         }
 
         if (is_picked) {
-            wprintw(win, "[x] %s", color_names[i]);
+            wprintw(win, "[x]");
             available_actions[code].key = UNPICK_COLOR;
         } else {
-            wprintw(win, "[ ] %s", color_names[i]);
+            wprintw(win, "[ ]");
             available_actions[code].key = PICK_COLOR;
         }
         available_actions[code].color = i;
 
         if (i == selected_color) {
             wattroff(win, COLOR_PAIR(8));
+        } else if (is_picked) {
+            wattroff(win, COLOR_PAIR(9 + i));
         }
+
+        wattron(win, COLOR_PAIR(9 + i));
+        wprintw(win, " %s\n", color_names[i]);
+        wattroff(win, COLOR_PAIR(9 + i));
     }
 
     *row_offset += Ludo_ctx__numColors + 2;
@@ -350,16 +381,6 @@ void print_menu(WINDOW *win, int* row_offset, int* selection_offset) {
     print_menu_action(win, row_offset, selection_offset, ROLL_DICE);
     print_menu_action(win, row_offset, selection_offset, NEXT_TURN);
     print_menu_action(win, row_offset, selection_offset, FINISH_GAME);
-}
-
-void test() {
-    Ludo__pickColor(1);
-    Ludo__pickColor(2);
-    Ludo__startGame();
-    Ludo__skipTurn();
-    Ludo__skipTurn();
-
-    exit(0);
 }
 
 int main() {
@@ -409,8 +430,7 @@ int main() {
                     selected = 0;
                     break;
                 case ROLL_DICE:
-                    int v;
-                    Ludo__throwDice(&v);
+                    Ludo__throwDice(&dice);
                     selected = 0;
                     break;
                 case FREE:
@@ -423,8 +443,20 @@ int main() {
                     break;
                 case NEXT_TURN:
                     Ludo__skipTurn();
+                    dice = 0;
                     selected = 0;
                     break;
+            }
+        } else if (key >= '1' && key <= '6') {
+            bool can_roll;
+
+            Ludo__pre_rollDice(&can_roll);
+
+            if (can_roll) {
+                int val = key - '1';
+                Random__mockValue(val);
+                Ludo__throwDice(&dice);
+                selected = 0;
             }
         }
     }

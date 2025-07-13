@@ -148,30 +148,30 @@ OPERATIONS
 
   nextTurn =
     BEGIN
-      VAR numJumps, cc, isFinished, currentIndex, enabled
+      VAR numJumps, cc, isFinished, currentIndex, enabled, isValid
       IN
           currentIndex <-- turnIndex;
           numJumps := 1;
           cc := colorsOrder((currentIndex + 1) mod numColors);
           enabled := colorEnabled(cc);
           isFinished <-- isColorFinished(cc);
-          WHILE numJumps < numColors & (enabled = FALSE or isFinished = TRUE)
+          isValid := bool(enabled = TRUE & isFinished = FALSE);
+          WHILE isValid = FALSE
           DO
 
               numJumps := numJumps + 1;
               cc := colorsOrder((currentIndex + numJumps) mod numColors);
+              enabled := colorEnabled(cc);
               isFinished <-- isColorFinished(cc);
-              enabled := colorEnabled(cc)
+              isValid := bool(enabled = TRUE & isFinished = FALSE)
 
           INVARIANT 
             numJumps <= numColors &
-            enabled : BOOL &
-            isFinished : BOOL &
-            enabled = bool(colorsOrder((currentIndex + numJumps) mod numColors) : enabledColors) &
-            isFinished = bool(colorsOrder((currentIndex + numJumps) mod numColors) /: ran(finishOrder)) &
-            numJumps <= min({ nn |
-              nn : 1..numColors & colorsOrder((currentIndex + nn) mod numColors) : enabledColors - ran(finishOrder)
-            })
+            isValid : BOOL &
+            isValid = bool(colorsOrder((currentIndex + numJumps) mod numColors) : enabledColors - ran(finishOrder)) &
+            { nn |
+              nn : 1..numJumps-1 & colorsOrder((currentIndex + nn) mod numColors) : enabledColors - ran(finishOrder)
+            } = {}
           VARIANT numColors - numJumps
           END;
           hasRoll := TRUE;
