@@ -5,6 +5,9 @@
 /* Clause SEES */
 #include "Ludo_ctx.h"
 
+/* Clause IMPORTS */
+#include "Random.h"
+
 /* Clause CONCRETE_CONSTANTS */
 /* Basic constants */
 
@@ -28,6 +31,7 @@ void Ludo_turn__INITIALISATION(void)
 {
     
     unsigned int i = 0;
+    Random__INITIALISATION();
     Ludo_turn__gameStarted = false;
     for(i = 0; i <= Ludo_ctx__COLORS__max-1;i++)
     {
@@ -65,16 +69,13 @@ void Ludo_turn__turnIndex(int32_t *nn)
 {
     {
         int32_t ii;
-        int32_t maxII;
         bool isColorTurn;
         Ludo_ctx__COLORS cc;
         
-        ii = 1;
-        maxII = Ludo_ctx__numColors-1;
+        ii = 0;
         cc = Ludo_ctx__colorsOrder[ii];
         isColorTurn = ((cc == Ludo_turn__color) ? true : false);
-        while(((ii) < (maxII)) &&
-        (isColorTurn == false))
+        while(isColorTurn == false)
         {
             ii = ii+1;
             cc = Ludo_ctx__colorsOrder[ii];
@@ -96,25 +97,41 @@ void Ludo_turn__unpickColor(Ludo_ctx__COLORS cc)
 
 void Ludo_turn__initGame(void)
 {
-    Ludo_turn__gameStarted = true;
+    unsigned int i = 0;
     {
-        int32_t ii;
-        bool isEnabled;
-        
-        ii = 0;
-        isEnabled = Ludo_turn__colorEnabled[Ludo_ctx__colorsOrder[ii]];
-        while(isEnabled == false)
+        Ludo_turn__gameStarted = true;
         {
-            ii = ii+1;
-            isEnabled = Ludo_turn__colorEnabled[Ludo_ctx__colorsOrder[ii]];
+            int32_t ii;
+            int32_t vv;
+            Ludo_ctx__COLORS enabledList[5];
+            int32_t enabledCount;
+            bool isEnabled;
+            
+            ii = 0;
+            for(i = 0; i <= 4;i++)
+            {
+                enabledList[i] = Ludo_ctx__colorsOrder[0];
+            }
+            enabledCount = 0;
+            while((ii) < (Ludo_ctx__numColors))
+            {
+                isEnabled = Ludo_turn__colorEnabled[Ludo_ctx__colorsOrder[ii]];
+                if(isEnabled == true)
+                {
+                    enabledList[enabledCount] = Ludo_ctx__colorsOrder[ii];
+                    enabledCount = enabledCount+1;
+                }
+                ii = ii+1;
+            }
+            Random__getRandomInt(0, enabledCount-1, &vv);
+            Ludo_turn__color = enabledList[vv];
         }
-        Ludo_turn__color = Ludo_ctx__colorsOrder[ii];
+        Ludo_turn__hasRoll = true;
+        Ludo_turn__diceValue = 0;
+        Ludo_turn__sixSequenceCount = 0;
+        memmove(Ludo_turn__finishList,Ludo_ctx__colorsOrder,(4)* sizeof(Ludo_ctx__COLORS));
+        Ludo_turn__finishCount = 0;
     }
-    Ludo_turn__hasRoll = true;
-    Ludo_turn__diceValue = 0;
-    Ludo_turn__sixSequenceCount = 0;
-    memmove(Ludo_turn__finishList,Ludo_ctx__colorsOrder,(4)* sizeof(Ludo_ctx__COLORS));
-    Ludo_turn__finishCount = 0;
 }
 
 void Ludo_turn__computeAction(bool extraTurn, bool finished)
@@ -167,7 +184,7 @@ void Ludo_turn__rollDice(int32_t *value)
     {
         int32_t dd;
         
-        dd = 5;
+        Random__getRandomInt(1, 6, &dd);
         (*value) = dd;
         if(dd == 6)
         {

@@ -7,6 +7,9 @@
 /* Clause SEES */
 #include "Ludo_ctx.h"
 
+/* Clause IMPORTS */
+#include "Random.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */

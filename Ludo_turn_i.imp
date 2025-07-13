@@ -7,6 +7,7 @@ IMPLEMENTATION Ludo_turn_i
 REFINES Ludo_turn
 
 SEES Ludo_ctx
+IMPORTS Random
 
 
 CONCRETE_VARIABLES
@@ -68,18 +69,17 @@ OPERATIONS
 
   nn <-- turnIndex =
   BEGIN
-      VAR ii, maxII, isColorTurn, cc IN
-          ii := 1;
-          maxII := numColors - 1;
+      VAR ii, isColorTurn, cc IN
+          ii := 0;
           cc := colorsOrder(ii);
           isColorTurn := bool(cc = color);
-          WHILE ii < maxII & isColorTurn = FALSE
+          WHILE isColorTurn = FALSE
           DO
             ii := ii + 1;
             cc := colorsOrder(ii);
             isColorTurn := bool(cc = color)
-          INVARIANT ii : 0..maxII & isColorTurn = bool(colorsOrder(ii) = color)
-          VARIANT maxII - ii
+          INVARIANT ii : 0..numColors & isColorTurn = bool(colorsOrder(ii) = color)
+          VARIANT numColors - ii
           END;
           nn := ii
       END
@@ -100,17 +100,27 @@ OPERATIONS
   initGame =
     BEGIN
       gameStarted := TRUE;
-      VAR ii, isEnabled IN
+      VAR ii, vv, enabledList, enabledCount, isEnabled IN
           ii := 0;
-          isEnabled := colorEnabled(colorsOrder(ii));
-          WHILE isEnabled = FALSE
+          enabledList := (0..4) * {colorsOrder(0)};
+          enabledCount := 0;
+          WHILE ii < numColors
           DO
-            ii := ii + 1;
-            isEnabled := colorEnabled(colorsOrder(ii))
-          INVARIANT ii : 0..(numColors - 1) & isEnabled = colorEnabled(colorsOrder(ii))
+            isEnabled := colorEnabled(colorsOrder(ii));
+            IF isEnabled = TRUE THEN
+              enabledList(enabledCount) := colorsOrder(ii);
+              enabledCount := enabledCount + 1
+            END;
+            ii := ii + 1
+          INVARIANT
+            ii : 0..(numColors - 1)
+            & enabledList : 0..4 --> COLORS
+            & enabledList[0..enabledCount-1] = enabledColors /\ colorsOrder[0..ii-1]
+            & enabledCount = card(enabledColors /\ colorsOrder[0..ii-1])
           VARIANT numColors - ii
           END;
-          color := colorsOrder(ii)
+          vv <-- getRandomInt(0, enabledCount - 1);
+          color := enabledList(vv)
       END;
       hasRoll := TRUE;
       diceValue := 0;
@@ -176,7 +186,7 @@ OPERATIONS
   value <-- rollDice =
     BEGIN
       VAR dd IN
-        dd := 5;
+        dd <-- getRandomInt(1, 6);
         value := dd;
         IF dd = 6 THEN
           IF sixSequenceCount < 2 THEN

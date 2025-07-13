@@ -1,0 +1,13 @@
+/* Random_i
+ * Author: adisson
+ * Creation date: 12/07/2025
+ */
+
+IMPLEMENTATION Random_i
+REFINES Random
+
+OPERATIONS
+  vv <-- getRandomInt(n1, n2) =
+    vv := n1
+
+ END
