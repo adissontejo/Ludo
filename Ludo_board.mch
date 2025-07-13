@@ -93,5 +93,12 @@ OPERATIONS
       ELSE 
           ee, ii := -1, -1
       END
+    END;
+    
+    bb <-- isLocked(pp) =
+    PRE pp : PIECES
+    THEN 
+        bb := bool(pp : lockedPieces)
     END
+    
 END

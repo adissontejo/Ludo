@@ -107,5 +107,21 @@ OPERATIONS
     BEGIN
       ee := externalBoard(pp);
       ii := internalBoard(pp)
+    END;
+    
+  bb <-- isLocked(pp) =
+  BEGIN
+     VAR extenalPos, internalPos
+     IN
+         extenalPos := externalBoard(pp);
+         internalPos := internalBoard(pp);
+         
+        IF extenalPos = -1 & internalPos = -1 THEN
+            bb := TRUE
+        ELSE
+            bb := FALSE
+        END 
+     END
+         
     END
 END

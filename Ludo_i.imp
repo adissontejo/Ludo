@@ -135,9 +135,44 @@ OPERATIONS
     END;
 
   bb <-- canFree(pp) =
+      
     BEGIN
-      bb := TRUE
+     VAR diceValue, isLockedPiece, startPointColor, colorPiece, piece, color, ii, externalPosPiece, internalPosPiece, countStart
+      IN
+        diceValue <-- getDiceValue;
+        isLockedPiece <-- isLocked(pp);
+        colorPiece := colorOf(pp);
+        
+        IF diceValue = 6 & isLockedPiece = TRUE THEN
+            
+          startPointColor := startPoint(colorPiece);
+          bb := FALSE;
+          ii := 0;
+          countStart := 0;
+          
+          WHILE ii < numPieces
+          DO 
+            piece := piecesOrder(ii);
+            color := colorOf(piece);
+            externalPosPiece, internalPosPiece <-- getPos(piece);
+            IF externalPosPiece =  startPointColor THEN
+                countStart := countStart + 1
+            END;
+            ii := ii + 1
+          INVARIANT ii <= numPieces & countStart : NAT & countStart = card((piecesOrder[0..ii-1] <| externalPos) |> {startPointColor}) 
+          VARIANT numPieces - ii
+          END;
+            
+          IF countStart < 2 THEN
+              bb := TRUE
+          END
+          
+        ELSE
+          bb := FALSE
+        END
+      END
     END;
+    
 
   bb <-- isPathFree(n1, n2) =
     VAR countPerPos, ii, piece, pos, dummy, numSteps, count IN
