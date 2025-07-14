@@ -271,7 +271,7 @@ void print_ludo_board_with_pieces(WINDOW *win, int* row_offset, int* selection_o
             int attrs = COLOR_PAIR(color_pair) | A_BOLD;
 
             wattron(win, attrs);
-            if (is_house)
+            if (is_house && internal_pos != Ludo_ctx__numInternal - 1)
                 wprintw(win, "[%c%c]", p1_char, p2_char);
             else
                 wprintw(win, " %c%c ", p1_char, p2_char);
@@ -363,10 +363,6 @@ void print_menu_action(WINDOW *win, int* row_offset, int* selection_offset, Acti
             Ludo__pre_nextTurn(&can_do);
             name = "Próximo turno";
             break;
-        case FINISH_GAME:
-            Ludo__pre_finishGame(&can_do);
-            name = "Finaizar jogo";
-            break;
     }
 
     if (can_do) {
@@ -388,7 +384,6 @@ void print_menu(WINDOW *win, int* row_offset, int* selection_offset) {
     print_menu_action(win, row_offset, selection_offset, START_GAME);
     print_menu_action(win, row_offset, selection_offset, ROLL_DICE);
     print_menu_action(win, row_offset, selection_offset, NEXT_TURN);
-    print_menu_action(win, row_offset, selection_offset, FINISH_GAME);
 }
 
 int main() {
@@ -405,12 +400,20 @@ int main() {
     while (1) {
         int row_offset = 0;
         int selection_offset = 0;
+        bool can_finish = 0;
+
+        Ludo__pre_finishGame(&can_finish);
 
         clear();
 
         print_ludo_board_with_pieces(stdscr, &row_offset, &selection_offset);
         print_colors_selector(stdscr, &row_offset, &selection_offset);
         print_menu(stdscr, &row_offset, &selection_offset);
+
+        if (can_finish) {
+            mvwprintw(stdscr, row_offset + 1, 2, "(Para finalizar o jogo aqui, aperte F2)");
+        }
+
         refresh();
 
         int key = getch();
@@ -471,6 +474,10 @@ int main() {
                 Ludo__throwDice(&dice);
                 selected = 0;
             }
+        } else if (key == KEY_F(2) && can_finish) {
+            Ludo__endGame();
+            selected = 0;
+            dice = 0;
         }
     }
 

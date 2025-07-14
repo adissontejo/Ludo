@@ -115,6 +115,7 @@ OPERATIONS
             diceValue := 0
           END
         ELSE
+          sixSequenceCount := 0 ||
           hasRoll := FALSE ||
           diceValue := dd
         END

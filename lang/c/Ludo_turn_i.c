@@ -203,6 +203,7 @@ void Ludo_turn__rollDice(int32_t *value)
         }
         else
         {
+            Ludo_turn__sixSequenceCount = 0;
             Ludo_turn__hasRoll = false;
             Ludo_turn__diceValue = dd;
         }
