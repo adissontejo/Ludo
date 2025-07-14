@@ -544,17 +544,6 @@ int main() {
                     selected = 0;
                     break;
             }
-        } else if (key >= '1' && key <= '6') {
-            bool can_roll;
-
-            Ludo__pre_rollDice(&can_roll);
-
-            if (can_roll) {
-                int val = key - '1';
-                Random__mockValue(val);
-                Ludo__throwDice(&dice);
-                selected = 0;
-            }
         } else if (key == KEY_F(2)) {
             bool can_finish;
             Ludo__pre_finishGame(&can_finish);
