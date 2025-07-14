@@ -28,6 +28,7 @@ typedef struct Action {
 const char *color_names[] = {"Vermelho", "Verde", "Amarelo", "Azul"};
 int selected = 0;
 int dice = 0;
+int action_count = 0;
 Action available_actions[MAX_ACTIONS];
 
 void init_colors() {
@@ -50,6 +51,7 @@ void init_colors() {
     init_pair(10, COLOR_GREEN, -1);
     init_pair(11, COLOR_YELLOW, -1);
     init_pair(12, COLOR_BLUE, -1);
+    init_pair(13, COLOR_MAGENTA, -1);
 }
 
 int get_external_pos(int row, int col) {
@@ -170,23 +172,21 @@ void get_selectable_pieces(int external_pos, int internal_pos, int lock_piece, i
     }
 }
 
-int push_piece_action(int* selection_offset, int piece) {
+int push_piece_action(int piece) {
     bool can_free, can_walk;
 
     Ludo__pre_free(piece, &can_free);
     Ludo__pre_walk(piece, &can_walk);
 
-    int code = *selection_offset;
+    int code = action_count;
 
     if (can_free) {
-        available_actions[code].key = FREE;
-        available_actions[code].piece = piece;
-        *selection_offset += 1;
+        available_actions[action_count].key = FREE;
+        available_actions[action_count++].piece = piece;
         return code;
     } else if (can_walk) {
-        available_actions[code].key = WALK;
-        available_actions[code].piece = piece;
-        *selection_offset += 1;
+        available_actions[action_count].key = WALK;
+        available_actions[action_count++].piece = piece;
         return code;
     } else {
         return -1;
@@ -195,67 +195,55 @@ int push_piece_action(int* selection_offset, int piece) {
 
 void print_color(WINDOW *win, int color) {
     wattron(win, COLOR_PAIR(9 + color));
-    wprintw(win, " %s\n", color_names[color]);
+    wprintw(win, "%s\n", color_names[color]);
     wattroff(win, COLOR_PAIR(9 + color));
 }
 
-void print_scoreboard(WINDOW *win, int row) {
- int col = 62;
+void print_scoreboard(WINDOW *win) {
+    int col = 100;
     bool game_started;
     Ludo_ctx__COLORS current_turn_color;
     int finish_count;
     Ludo_ctx__COLORS finished_color;
 
     Ludo__getGameStarted(&game_started);
+    Ludo__getFinishCount(&finish_count);
+
+    if (!game_started && finish_count == 0) {
+        return;
+    }
+
+    int row = 0;
 
     if (game_started) {
-        bool is_color_enabled; 
-        mvwprintw(win, row++, col, "--------------------------------------"); 
+        bool is_color_enabled;
+        mvwprintw(win, row++, col, "--------------------------------------");
         mvwprintw(win, row++, col, "--> Jogadores Ativos");
         mvwprintw(win, row++, col, " ");
         for (int i = 0; i < Ludo_ctx__numColors; i++) {
             Ludo_turn__isColorEnabled(i, &is_color_enabled);
             if (is_color_enabled) {
-                mvwprintw(win, row++, col, " ");
-                wattron(win, COLOR_PAIR(9 + i));
-                wprintw(win, "%s", color_names[i]);
-                wattroff(win, COLOR_PAIR(9 + i));
+                wmove(win, row++, col);
+                print_color(win, i);
             }
         }
-        mvwprintw(win, row++, col, "--------------------------------------"); 
-
-        mvwprintw(win, row++, col, "--------------------------------------"); 
-        Ludo__getTurn(&current_turn_color);
-        mvwprintw(win, row++, col, "--> Cor da vez : ");
-        wattron(win, COLOR_PAIR(9 + current_turn_color));
-        wprintw(win, "%s", color_names[current_turn_color]); 
-        wattroff(win, COLOR_PAIR(9 + current_turn_color));
-        mvwprintw(win, row++, col, "--------------------------------------"); 
-    } 
-    
-    if (dice != 0) {
-        mvwprintw(win, row++, col, "--------------------------------------"); 
-        mvwprintw(win, row++, col, "--> Valor do dado : %d", dice);
-        mvwprintw(win, row++, col, "--------------------------------------"); 
     }
 
-    Ludo__getFinishCount(&finish_count);
     if (finish_count > 0) {
-        mvwprintw(win, row++, col, "--------------------------------------"); 
+        mvwprintw(win, row++, col, "--------------------------------------");
         mvwprintw(win, row++, col, "--> Lista de chegada");
         mvwprintw(win, row++, col, " ");
         for (int i = 0; i < finish_count; i++) {
             Ludo__getPlacement(i, &finished_color);
             mvwprintw(win, row++, col, "%dº ", i + 1);
-            wattron(win, COLOR_PAIR(9 + finished_color));
-            wprintw(win, "%s", color_names[finished_color]);
-            wattroff(win, COLOR_PAIR(9 + finished_color));
+            print_color(win, finished_color);
         }
-        mvwprintw(win, row++, col, "--------------------------------------"); 
     }
+
+    mvwprintw(win, row++, col, "--------------------------------------");
 }
 
-void print_ludo_board_with_pieces(WINDOW *win, int* row_offset, int* selection_offset) {
+void print_ludo_board_with_pieces(WINDOW *win) {
     char colors_codes[] = {'R', 'G', 'Y', 'B'};
 
     int is_locked[16];
@@ -278,8 +266,8 @@ void print_ludo_board_with_pieces(WINDOW *win, int* row_offset, int* selection_o
 
             get_selectable_pieces(external_pos, internal_pos, lock_piece, color, &p1, &p2, &count);
 
-            int p1_code = p1 != -1 ? push_piece_action(selection_offset, p1) : -1;
-            int p2_code = p2 != -1 ? push_piece_action(selection_offset, p2) : -1;
+            int p1_code = p1 != -1 ? push_piece_action(p1) : -1;
+            int p2_code = p2 != -1 ? push_piece_action(p2) : -1;
 
             char p1_char = p1 != -1 ? colors_codes[Ludo_ctx__colorOf[p1]] : ' ';
             char p2_char =
@@ -319,14 +307,12 @@ void print_ludo_board_with_pieces(WINDOW *win, int* row_offset, int* selection_o
             wattroff(win, attrs);
         }
     }
-
-    print_scoreboard(win, *row_offset);
-    *row_offset += 16;
 }
 
 
-void print_colors_selector(WINDOW *win, int* row_offset, int* selection_offset) {
+void print_colors_selector(WINDOW *win, int* row_ptr) {
     int is_picking_colors = 0;
+    int row = *row_ptr;
 
     for (int i = 0; i < Ludo_ctx__numColors; i++) {
         bool can_pick, can_unpick;
@@ -344,17 +330,24 @@ void print_colors_selector(WINDOW *win, int* row_offset, int* selection_offset) 
         return;
     }
 
-    int line = *row_offset;
-    int selected_color = selected - *selection_offset;
+    wattron(win, COLOR_PAIR(13) | A_BOLD);
+    mvwprintw(win, row++, 64, "LUDO - BY ADISSON E ANA CAROLINA");
+    wattroff(win, COLOR_PAIR(13) | A_BOLD);
 
-    mvwprintw(win, line, 2, "Selecione duas ou mais cores para iniciar o jogo:");
+    row += 1;
+
+    int selected_color = selected - action_count;
+
+    mvwprintw(win, row++, 64, "Selecione duas ou mais cores para iniciar o jogo:");
+
+    row += 1;
 
     for (int i = 0; i < Ludo_ctx__numColors; i++) {
-        int code = *selection_offset + i;
+        int code = action_count++;
         bool is_picked;
         Ludo__pre_unpickColor(i, &is_picked);
 
-        wmove(win, line + 1 + i, 2);
+        wmove(win, row++, 62);
 
         if (i == selected_color) {
             wattron(win, COLOR_PAIR(8));
@@ -366,10 +359,10 @@ void print_colors_selector(WINDOW *win, int* row_offset, int* selection_offset) 
         }
 
         if (is_picked) {
-            wprintw(win, "[x]");
+            wprintw(win, "[x] ");
             available_actions[code].key = UNPICK_COLOR;
         } else {
-            wprintw(win, "[ ]");
+            wprintw(win, "[ ] ");
             available_actions[code].key = PICK_COLOR;
         }
         available_actions[code].color = i;
@@ -383,11 +376,12 @@ void print_colors_selector(WINDOW *win, int* row_offset, int* selection_offset) 
         print_color(win, i);
     }
 
-    *row_offset += Ludo_ctx__numColors + 2;
-    *selection_offset += 4;
+    row += 1;
+
+    *row_ptr = row;
 }
 
-void print_menu_action(WINDOW *win, int* row_offset, int* selection_offset, ActionKey action_key) {
+void print_menu_action(WINDOW *win, int* row, ActionKey action_key) {
     bool can_do = 0;
     char* name;
 
@@ -407,24 +401,78 @@ void print_menu_action(WINDOW *win, int* row_offset, int* selection_offset, Acti
     }
 
     if (can_do) {
-        if (selected == *selection_offset) {
+        if (selected == action_count) {
             wattron(win, COLOR_PAIR(8));
-            mvwprintw(win, *row_offset, 0, "> %s", name);
+            mvwprintw(win, *row, 62, "> %s", name);
             wattroff(win, COLOR_PAIR(8));
         } else {
-            mvwprintw(win, *row_offset, 0, "  %s", name);
+            mvwprintw(win, *row, 62, "  %s", name);
         }
 
-        available_actions[*selection_offset].key = action_key;
-        *row_offset += 1;
-        *selection_offset += 1;
+        available_actions[action_count++].key = action_key;
+        *row += 1;
     }
 }
 
-void print_menu(WINDOW *win, int* row_offset, int* selection_offset) {
-    print_menu_action(win, row_offset, selection_offset, START_GAME);
-    print_menu_action(win, row_offset, selection_offset, ROLL_DICE);
-    print_menu_action(win, row_offset, selection_offset, NEXT_TURN);
+void print_menu(WINDOW *win) {
+    int row = 0;
+
+    bool can_finish, game_started;
+
+    Ludo__pre_finishGame(&can_finish);
+    Ludo__getGameStarted(&game_started);
+
+    print_colors_selector(win, &row);
+
+    int has_piece_action = 0;
+
+    for (int i = 0; i < Ludo_ctx__numPieces; i++) {
+        bool can_walk, can_free;
+
+        Ludo__pre_walk(i, &can_walk);
+        Ludo__pre_free(i, &can_free);
+
+        if (can_walk || can_free) {
+            has_piece_action = 1;
+
+            break;
+        }
+    }
+
+    if (game_started) {
+        int color;
+
+        Ludo__getTurn(&color);
+
+        int total_chars[] = {8, 5, 7, 4};
+
+        mvwprintw(stdscr, row++, 64, "Vez de: ");
+        print_color(stdscr, color);
+
+        if (dice != 0) {
+            mvwprintw(stdscr, row++, 64, "Valor do dado: ");
+            wattron(stdscr, A_BOLD | COLOR_PAIR(13));
+            wprintw(stdscr, "%d", dice);
+            wattroff(stdscr, A_BOLD | COLOR_PAIR(13));
+        }
+
+        row += 1;
+    }
+
+    if (has_piece_action) {
+        mvwprintw(stdscr, row++, 64, "Selecione uma peça");
+        mvwprintw(stdscr, row++, 64, "utilizando as setas");
+    }
+
+    print_menu_action(win, &row, START_GAME);
+    print_menu_action(win, &row, ROLL_DICE);
+    print_menu_action(win, &row, NEXT_TURN);
+
+    row++;
+
+    if (can_finish) {
+        mvwprintw(stdscr, row++, 64, "(Aperte F2 para finalizar)");
+    }
 }
 
 int main() {
@@ -439,34 +487,26 @@ int main() {
     init_colors();
 
     while (1) {
-        int row_offset = 0;
-        int selection_offset = 0;
-        bool can_finish = 0;
-
-        Ludo__pre_finishGame(&can_finish);
-
         clear();
 
-        print_ludo_board_with_pieces(stdscr, &row_offset, &selection_offset);
-        print_colors_selector(stdscr, &row_offset, &selection_offset);
-        print_menu(stdscr, &row_offset, &selection_offset);
+        action_count = 0;
 
-        if (can_finish) {
-            mvwprintw(stdscr, row_offset + 1, 2, "(Para finalizar o jogo aqui, aperte F2)");
-        }
+        print_ludo_board_with_pieces(stdscr);
+        print_menu(stdscr);
+        print_scoreboard(stdscr);
 
         refresh();
 
         int key = getch();
 
-        if (selection_offset == 0) {
+        if (action_count == 0) {
             continue;
         }
 
         if (key == KEY_UP || key == KEY_LEFT) {
-            selected = (selected - 1 + selection_offset) % selection_offset;
+            selected = (selected - 1 + action_count) % action_count;
         } else if (key == KEY_DOWN || key == KEY_RIGHT) {
-            selected = (selected + 1) % selection_offset;
+            selected = (selected + 1) % action_count;
         } else if (key == '\n') {
             Action action = available_actions[selected];
 
@@ -515,10 +555,14 @@ int main() {
                 Ludo__throwDice(&dice);
                 selected = 0;
             }
-        } else if (key == KEY_F(2) && can_finish) {
-            Ludo__endGame();
-            selected = 0;
-            dice = 0;
+        } else if (key == KEY_F(2)) {
+            bool can_finish;
+            Ludo__pre_finishGame(&can_finish);
+            if (can_finish) {
+                Ludo__endGame();
+                selected = 0;
+                dice = 0;
+            }
         }
     }
 
