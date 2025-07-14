@@ -1,5 +1,0 @@
-file:b86fd55f07bb8d8d3d1ac6b9afc90c46
-abst:Ludo
-sees:Ludo_ctx
-impo:Ludo_board
-impo:Ludo_turn
