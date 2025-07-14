@@ -338,7 +338,8 @@ void print_colors_selector(WINDOW *win, int* row_ptr) {
 
     int selected_color = selected - action_count;
 
-    mvwprintw(win, row++, 64, "Selecione duas ou mais cores para iniciar o jogo:");
+    mvwprintw(win, row++, 64, "Selecione duas ou mais cores");
+    mvwprintw(win, row++, 64, "para iniciar o jogo:");
 
     row += 1;
 
@@ -499,15 +500,23 @@ int main() {
 
         int key = getch();
 
-        if (action_count == 0) {
-            continue;
-        }
-
         if (key == KEY_UP || key == KEY_LEFT) {
+            if (action_count == 0) {
+                continue;
+            }
+
             selected = (selected - 1 + action_count) % action_count;
         } else if (key == KEY_DOWN || key == KEY_RIGHT) {
+            if (action_count == 0) {
+                continue;
+            }
+
             selected = (selected + 1) % action_count;
         } else if (key == '\n') {
+            if (action_count == 0) {
+                continue;
+            }
+
             Action action = available_actions[selected];
 
             switch (action.key) {
