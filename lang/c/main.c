@@ -200,17 +200,58 @@ void print_color(WINDOW *win, int color) {
 }
 
 void print_scoreboard(WINDOW *win, int row) {
-    int col = 62;
-    bool game_started, can_throw_dice;
+ int col = 62;
+    bool game_started;
+    Ludo_ctx__COLORS current_turn_color;
+    int finish_count;
+    Ludo_ctx__COLORS finished_color;
 
     Ludo__getGameStarted(&game_started);
 
-    if (!game_started) {
-        return;
+    if (game_started) {
+        bool is_color_enabled; 
+        mvwprintw(win, row++, col, "--------------------------------------"); 
+        mvwprintw(win, row++, col, "--> Jogadores Ativos");
+        mvwprintw(win, row++, col, " ");
+        for (int i = 0; i < Ludo_ctx__numColors; i++) {
+            Ludo_turn__isColorEnabled(i, &is_color_enabled);
+            if (is_color_enabled) {
+                mvwprintw(win, row++, col, " ");
+                wattron(win, COLOR_PAIR(9 + i));
+                wprintw(win, "%s", color_names[i]);
+                wattroff(win, COLOR_PAIR(9 + i));
+            }
+        }
+        mvwprintw(win, row++, col, "--------------------------------------"); 
+
+        mvwprintw(win, row++, col, "--------------------------------------"); 
+        Ludo__getTurn(&current_turn_color);
+        mvwprintw(win, row++, col, "--> Cor da vez : ");
+        wattron(win, COLOR_PAIR(9 + current_turn_color));
+        wprintw(win, "%s", color_names[current_turn_color]); 
+        wattroff(win, COLOR_PAIR(9 + current_turn_color));
+        mvwprintw(win, row++, col, "--------------------------------------"); 
+    } 
+    
+    if (dice != 0) {
+        mvwprintw(win, row++, col, "--------------------------------------"); 
+        mvwprintw(win, row++, col, "--> Valor do dado : %d", dice);
+        mvwprintw(win, row++, col, "--------------------------------------"); 
     }
 
-    if (dice != 0) {
-        mvwprintw(win, row++, col, "Valor do dado: %d", dice);
+    Ludo__getFinishCount(&finish_count);
+    if (finish_count > 0) {
+        mvwprintw(win, row++, col, "--------------------------------------"); 
+        mvwprintw(win, row++, col, "--> Lista de chegada");
+        mvwprintw(win, row++, col, " ");
+        for (int i = 0; i < finish_count; i++) {
+            Ludo__getPlacement(i, &finished_color);
+            mvwprintw(win, row++, col, "%dº ", i + 1);
+            wattron(win, COLOR_PAIR(9 + finished_color));
+            wprintw(win, "%s", color_names[finished_color]);
+            wattroff(win, COLOR_PAIR(9 + finished_color));
+        }
+        mvwprintw(win, row++, col, "--------------------------------------"); 
     }
 }
 
