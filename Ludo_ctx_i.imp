@@ -6,10 +6,6 @@
 IMPLEMENTATION Ludo_ctx_i
 REFINES Ludo_ctx
     
-PROPERTIES
-    
-  startPoint : COLORS --> 0..51
-    
 VALUES
   COLORS = 0..3;
   PIECES = 0..15;

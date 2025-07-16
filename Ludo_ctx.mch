@@ -32,7 +32,7 @@ PROPERTIES
   stars = {8,21,34,47} &
   // função total com pontos iniciais de cada cor
   startPoint : COLORS >-> 0..51 &
-  card(PIECES) = numPiecesByColor * numColors &
+  card(PIECES) = numPieces &
 
   colorsOrder : 0..3 >->> COLORS &
   
